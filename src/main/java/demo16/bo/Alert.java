@@ -1,6 +1,6 @@
-package demo;
+package demo16.bo;
 
-import demo.handler.AlertHandler;
+import demo16.handler.AlertHandler;
 
 import java.util.ArrayList;
 import java.util.List;

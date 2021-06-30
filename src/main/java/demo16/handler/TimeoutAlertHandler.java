@@ -1,8 +1,8 @@
-package demo.handler;
+package demo16.handler;
 
-import demo.AlertRule;
-import demo.ApiStatInfo;
-import demo.Notification;
+import demo16.bo.AlertRule;
+import demo16.bo.ApiStatInfo;
+import demo16.bo.Notification;
 
 // 改动二：添加新的handler
 public class TimeoutAlertHandler extends AlertHandler {

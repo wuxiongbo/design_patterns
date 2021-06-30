@@ -1,8 +1,9 @@
-package demo;
+package demo16.bo;
 
 import lombok.Data;
 
 @Data
+// 方法入参
 public class ApiStatInfo {
     private String api;
     private long requestCount;

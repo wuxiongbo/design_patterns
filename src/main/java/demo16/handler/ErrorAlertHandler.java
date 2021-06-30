@@ -1,9 +1,9 @@
-package demo.handler;
+package demo16.handler;
 
-import demo.AlertRule;
-import demo.ApiStatInfo;
-import demo.Notification;
-import demo.NotificationEmergencyLevel;
+import demo16.bo.AlertRule;
+import demo16.bo.ApiStatInfo;
+import demo16.bo.Notification;
+import demo16.bo.NotificationEmergencyLevel;
 
 public class ErrorAlertHandler extends AlertHandler {
     public ErrorAlertHandler(AlertRule rule, Notification notification) {
