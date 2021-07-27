@@ -13,8 +13,8 @@ public class Main {
 
         ApiStatInfo apiStatInfo = new ApiStatInfo();
 
-        // ...省略设置apiStatInfo数据值的代码
-        // 改动四：设置tiemoutCount值
+        // ...省略设置apiStatInfo其他数据值的代码
+        // 改动四：设置timeoutCount值
         apiStatInfo.setTimeoutCount(289);
 
 
