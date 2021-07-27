@@ -12,7 +12,6 @@ import chapter16.demo1.bo.ApplicationContext;
  *      在已有代码基础上 ‘扩展’ 代码（新增模块、类、方法等），
  *      而非 ‘修改’ 已有代码（修改模块、类、方法等）
  */
-
 public class Main {
     public static void main(String[] args) {
 
