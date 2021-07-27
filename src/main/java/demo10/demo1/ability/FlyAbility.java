@@ -13,6 +13,6 @@ import demo10.demo1.interface1.Flyable;
 public class FlyAbility implements Flyable {
     @Override
     public void fly() {
-
+        System.out.println("飞（委托实现）");
     }
 }

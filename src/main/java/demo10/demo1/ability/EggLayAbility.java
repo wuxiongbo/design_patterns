@@ -13,6 +13,6 @@ import demo10.demo1.interface1.EggLayable;
 public class EggLayAbility implements EggLayable {
     @Override
     public void layEgg() {
-
+        System.out.println("下蛋（委托实现）");
     }
 }

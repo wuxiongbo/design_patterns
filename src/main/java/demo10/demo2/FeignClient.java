@@ -10,8 +10,12 @@ package demo10.demo2;
  * </pre>
  */
 public class FeignClient {
+
     //...省略其他代码...
-    public void encode(String url) {
+
+    protected void encode(String url) {
         //...
     }
+
+    //...省略其他代码...
 }

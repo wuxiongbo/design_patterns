@@ -13,6 +13,6 @@ import demo10.demo1.interface1.Tweetable;
 public class TweetAbility implements Tweetable {
     @Override
     public void tweet() {
-
+        System.out.println("叫（委托实现）");
     }
 }

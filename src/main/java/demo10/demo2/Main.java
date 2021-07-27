@@ -10,14 +10,14 @@ package demo10.demo2;
  */
 public class Main {
     public static void main(String[] args){
-        // 调用
+        // 调用 我们重写后的类。
         FeignClient client = new CustomizedFeignClient();
 
-        new Main()
-                .demofunction(client);
+        // 传入我们重写后的子类
+        new Main().demofunction(client);
     }
 
-    // 不能改变函数demofunction的入参类型，而入参又非接口。
+    // 不能改变函数demofunction的入参类型，而入参又不是接口。
     // 这种情况下，为了支持多态，只能采用继承来实现。
     public void demofunction(FeignClient feignClient) {
         //...

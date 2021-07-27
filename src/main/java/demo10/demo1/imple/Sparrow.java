@@ -1,5 +1,6 @@
 package demo10.demo1.imple;
 
+import demo10.demo1.ability.FlyAbility;
 import demo10.demo1.interface1.EggLayable;
 import demo10.demo1.interface1.Flyable;
 import demo10.demo1.interface1.Tweetable;
@@ -13,20 +14,29 @@ import demo10.demo1.interface1.Tweetable;
  * </pre>
  */
 public class Sparrow implements Flyable, Tweetable, EggLayable {
+
+    // 组合。 会飞的能力
+    private FlyAbility flyAbility = new FlyAbility();
+
     //... 省略其他属性和方法...
     @Override
     public void fly() {
         //...
+
+        // 委托给组合类去实现
+        flyAbility.fly();
     }
 
     @Override
     public void tweet() {
         // ...
+        System.out.println("叫(麻雀实现)");
     }
 
     @Override
     public void layEgg() {
         // ...
+        System.out.println("下蛋(麻雀实现)");
     }
 }
 
