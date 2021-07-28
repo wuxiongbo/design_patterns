@@ -1,0 +1,20 @@
+package chapter44.v5.factory_method;
+
+import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.dependence.impl.rule.YamlRuleConfigParser;
+import chapter44.v5.IRuleConfigParserFactory;
+
+/**
+ * <p>描述类的信息</p>
+ *
+ * <pre>
+ * @author wuxiongbo
+ * @date 2021/7/28
+ * </pre>
+ */
+public class YamlRuleConfigParserFactory  implements IRuleConfigParserFactory {
+    @Override
+    public IRuleConfigParser createParser() {
+        return new YamlRuleConfigParser();
+    }
+}
