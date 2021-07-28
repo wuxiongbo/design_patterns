@@ -15,6 +15,8 @@ import java.util.Collections;
 import java.util.Map;
 
 /**
+ * 单一职责。 反例
+ *
  * Protocol format: identifier-string;{gson string}
  * For example: UEUEUE;{"a":"A","b":"B"}
  */

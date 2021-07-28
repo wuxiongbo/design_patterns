@@ -6,7 +6,8 @@ import java.util.Collections;
 import java.util.Map;
 
 /**
- * <p>描述类的信息</p>
+ * <p>单一职责。 反例</p>
+ *
  * 虽然经过拆分之后，Serializer 类和 Deserializer 类的职责更加单一了，但也随之带来了新的问题。
  *
  * 1.如果，我们修改了协议的格式，数据标识从“UEUEUE”改为“DFDFDF”，或者序列化方式从 JSON 改为了 XML，

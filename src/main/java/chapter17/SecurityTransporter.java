@@ -2,7 +2,7 @@ package chapter17;
 
 import chapter17.other.Request;
 import chapter17.other.Response;
-import chapter17.other.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.net.http.HttpClient;
 

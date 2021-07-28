@@ -1,9 +1,8 @@
 package chapter22.demo1.v1;
 
-import chapter22.demo1.v1.util.HtmlRequest;
-
 /**
- * <p>描述类的信息</p>
+ * <p>网络通讯器</p>
+ *
  *  作为一个底层网络通信类，我们希望它的功能尽可能通用，而不只是服务于下载 HTML，
  *  所以，我们不应该直接依赖太具体的发送对象 HtmlRequest。
  *
@@ -15,13 +14,15 @@ import chapter22.demo1.v1.util.HtmlRequest;
  */
 public class NetworkTransporter {
     // 省略属性和其他方法...
+
+
+
 //    public Byte[] send(HtmlRequest htmlRequest) {
 //        //...
 //        return null;
 //    }
 
-
-    // 省略属性和其他方法...
+    // 改造后。
     public Byte[] send(String address, Byte[] data) {
         //...
         return null;

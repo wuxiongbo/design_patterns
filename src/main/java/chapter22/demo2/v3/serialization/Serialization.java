@@ -11,7 +11,7 @@ import chapter22.demo2.v3.serialization.interface1.Serializable;
  * 实际上，通过引入两个接口就能轻松解决这个问题
  *
  *
- * 功能通过两个接口进行拆分。
+ * 功能通过两个接口进行拆分。  实现放在一个类当中，实现 “高内聚”。
  *
  * <pre>
  * @author wuxiongbo
