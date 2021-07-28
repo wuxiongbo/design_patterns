@@ -2,7 +2,9 @@ package chapter44.v7;
 
 import chapter44.dependence.InvalidRuleConfigException;
 import chapter44.dependence.RuleConfig;
+import chapter44.dependence.SystemConfig;
 import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.dependence.interface1.ISystemConfigParser;
 
 /**
  * <p> 工厂方法（Factory Method） 的改进 </p>
@@ -17,20 +19,20 @@ import chapter44.dependence.interface1.IRuleConfigParser;
  * @date 2021/7/28
  * </pre>
  */
-public class RuleConfigSource {
-    public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
-        String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
+public class SystemConfigSource {
+    public SystemConfig load(String systemConfigFilePath) throws InvalidRuleConfigException {
+        String systemConfigFileExtension = getFileExtension(systemConfigFilePath);
 
-        IConfigParserFactory parserFactory = ConfigParserFactoryMap.getParserFactory(ruleConfigFileExtension);
+        IConfigParserFactory parserFactory = ConfigParserFactoryMap.getParserFactory(systemConfigFileExtension);
         if (parserFactory == null) {
-            throw new InvalidRuleConfigException("Rule config file format is not supported: " + ruleConfigFilePath);
+            throw new InvalidRuleConfigException("Rule config file format is not supported: " + systemConfigFilePath);
         }
-        IRuleConfigParser parser = parserFactory.createRuleParser();
+        ISystemConfigParser parser = parserFactory.createSystemParser();
 
         String configText = "";
         //从ruleConfigFilePath文件中读取配置文本到configText中
-        RuleConfig ruleConfig = parser.parse(configText);
-        return ruleConfig;
+        SystemConfig systemConfig = parser.parse(configText);
+        return systemConfig;
     }
 
     private String getFileExtension(String filePath) {

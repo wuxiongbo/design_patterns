@@ -17,7 +17,7 @@ import java.util.Map;
  * @date 2021/7/28
  * </pre>
  */
-public class RuleConfigParserFactoryMap { //工厂的工厂
+public class ConfigParserFactoryMap { //工厂的工厂
 
     private static final Map<String, IConfigParserFactory> cachedFactories = new HashMap<>();
 

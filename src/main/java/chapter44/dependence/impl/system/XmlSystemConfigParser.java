@@ -1,5 +1,6 @@
 package chapter44.dependence.impl.system;
 
+import chapter44.dependence.SystemConfig;
 import chapter44.dependence.interface1.ISystemConfigParser;
 
 /**
@@ -11,4 +12,8 @@ import chapter44.dependence.interface1.ISystemConfigParser;
  * </pre>
  */
 public class XmlSystemConfigParser implements ISystemConfigParser {
+    @Override
+    public SystemConfig parse(String configText) {
+        return null;
+    }
 }
