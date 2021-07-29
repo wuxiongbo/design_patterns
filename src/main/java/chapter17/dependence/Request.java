@@ -1,4 +1,4 @@
-package chapter17.other;
+package chapter17.dependence;
 
 /**
  * <p>描述类的信息</p>

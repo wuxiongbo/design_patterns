@@ -11,6 +11,8 @@ import chapter44.v5.factory_method.YamlRuleConfigParserFactory;
 /**
  * <p> 工厂方法（Factory Method） </p>
  *
+ * 通过不同的工厂，创建不同的 parser类
+ *
  * 本示例，基于v3版本。
  *
  * 优点：

@@ -1,12 +1,12 @@
-package chapter17.other;
+package chapter17.dependence;
 
 /**
  * <p>描述类的信息</p>
  *
  * <pre>
  * @author wuxiongbo
- * @date 2021/7/27
+ * @date 2021/7/29
  * </pre>
  */
-public class Response {
+public class HttpClient {
 }

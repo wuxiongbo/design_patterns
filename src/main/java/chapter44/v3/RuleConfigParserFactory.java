@@ -8,6 +8,8 @@ import chapter44.dependence.interface1.IRuleConfigParser;
 
 /**
  * <p> 简单工厂模式类  的第一种实现方法</p>
+ *  第一种实现方法  每次都返回新创建的对象
+ *
  *
  * 每次调用 RuleConfigParserFactory 的 createParser() 的时候，都要创建一个新的 parser。
  *

@@ -1,7 +1,7 @@
 package chapter17;
 
-import chapter17.other.Request;
-import chapter17.other.Response;
+import chapter17.dependence.Request;
+import chapter17.dependence.Response;
 
 /**
  * <p>描述类的信息</p>
