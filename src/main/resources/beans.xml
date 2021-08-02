@@ -1,10 +1,10 @@
 <beans>
-    <bean id="rateLimiter" class="com.xzg.RateLimiter">
-        <!-- 构造器的入参为 引用类型。 引用的类的别名为 redisCounter -->
+    <bean id="rateLimiter" class="chapter45.bean.RateLimiter">
+        <!-- 构造器的入参为 引用类型。 引用的类，别名为 redisCounter -->
         <constructor-arg ref="redisCounter"/>
     </bean>
 
-    <bean id="redisCounter" class="com.xzg.redisCounter">
+    <bean id="redisCounter" class="chapter45.bean.RedisCounter">
         <constructor-arg type="String" value="127.0.0.1"/>
         <constructor-arg type="int" value="1234"/>
     </bean>

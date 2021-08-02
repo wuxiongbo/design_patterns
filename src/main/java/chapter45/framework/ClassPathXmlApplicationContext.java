@@ -44,6 +44,8 @@ public class ClassPathXmlApplicationContext  implements ApplicationContext {
                 throw new RuntimeException("Can not find config file: " + configLocation);
             }
             List<BeanDefinition> beanDefinitions = beanConfigParser.parse(in);
+
+            // 在这里面判断是否在添加bean定义后实例化。
             beansFactory.addBeanDefinitions(beanDefinitions);
         } finally {
             if (in != null) {

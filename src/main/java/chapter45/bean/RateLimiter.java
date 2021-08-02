@@ -1,5 +1,7 @@
 package chapter45.bean;
 
+import lombok.Data;
+
 /**
  * <p>描述类的信息</p>
  *
@@ -8,8 +10,13 @@ package chapter45.bean;
  * @date 2021/7/29
  * </pre>
  */
+@Data
 public class RateLimiter {
     private RedisCounter redisCounter;
+
+    public RateLimiter() {
+    }
+
     public RateLimiter(RedisCounter redisCounter) {
         this.redisCounter = redisCounter;
     }

@@ -26,15 +26,19 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class BeansFactory {
     private ConcurrentHashMap<String, Object> singletonObjects = new ConcurrentHashMap<>();
+    // k：BeanDefinition.id， v：BeanDefinition
     private ConcurrentHashMap<String, BeanDefinition> beanDefinitions = new ConcurrentHashMap<>();
 
     public void addBeanDefinitions(List<BeanDefinition> beanDefinitionList)  {
+
         for (BeanDefinition beanDefinition : beanDefinitionList) {
             this.beanDefinitions.putIfAbsent(beanDefinition.getId(), beanDefinition);
         }
+
         // 非懒加载，则在添加完bean定义后，立即创建对象。
         // 懒加载，则在  getBean 的时候 再创建
         for (BeanDefinition beanDefinition : beanDefinitionList) {
+            // 非懒加载 且 单例
             if (beanDefinition.isLazyInit() == false && beanDefinition.isSingleton()) {
                 try {
                     createBean(beanDefinition);
@@ -66,7 +70,7 @@ public class BeansFactory {
         try {
             // bean的class类型
             Class beanClass = Class.forName(beanDefinition.getClassName());
-            // bean 的 构造方法。
+            // bean 的 构造方法 的多个参数。
             List<BeanDefinition.ConstructorArg> args = beanDefinition.getConstructorArgs();
 
             // 无参构造
@@ -75,20 +79,22 @@ public class BeansFactory {
             }
             // 有参构造
             else {
-                // 构造器 入参的类型
+                // 构造方法 入参的 类型
                 Class[] argClasses = new Class[args.size()];
-                // 构造器 入参的值
+                // 构造方法 入参的 值
                 Object[] argObjects = new Object[args.size()];
-
+                //
                 for (int i = 0; i < args.size(); ++i) {
                     // bean的构造器参数
                     BeanDefinition.ConstructorArg arg = args.get(i);
 
-                    // 是否为 引用类型
+                    // 入参 不是引用类型
                     if (!arg.getIsRef()) {
                         argClasses[i] = arg.getType();
                         argObjects[i] = arg.getArg();
-                    } else {
+                    }
+                    // 入参 是引用类型
+                    else {
                         BeanDefinition refBeanDefinition = beanDefinitions.get(arg.getArg());
                         if (refBeanDefinition == null) {
                             throw new NoSuchBeanDefinitionException("Bean is not defined: " + arg.getArg());
@@ -100,7 +106,7 @@ public class BeansFactory {
                     }
                 }
 
-                // 根据入参类型 获得构造器对象，并创建对象
+                // 根据入参类型 获得构造器对象，输入 构造器 入参的值  构造对象
                 bean = beanClass.getConstructor(argClasses).newInstance(argObjects);
             }
 
@@ -109,7 +115,7 @@ public class BeansFactory {
             throw new BeanCreationFailureException("", e);
         }
 
-        // 如果是单例，则需要缓存
+        // 如果是单例，则需要缓存。
         if (bean != null && beanDefinition.isSingleton()) {
             singletonObjects.putIfAbsent(beanDefinition.getId(), bean);
 

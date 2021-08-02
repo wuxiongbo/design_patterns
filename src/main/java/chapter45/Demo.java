@@ -1,6 +1,7 @@
 package chapter45;
 
 import chapter45.bean.RateLimiter;
+import chapter45.bean.RedisCounter;
 import chapter45.framework.ApplicationContext;
 import chapter45.framework.ClassPathXmlApplicationContext;
 import chapter45.framework.exception.BeanCreationFailureException;
@@ -19,12 +20,13 @@ import chapter45.framework.exception.NoSuchBeanDefinitionException;
  * Demo、xml
  *
  * 2. 提供执行入口
+ * 1）接口  2）实现
  * ApplicationContext、 ClassPathXmlApplicationContext
  *
- * 3.配置文件解析
+ * 3. 配置文件解析
  * BeanConfigParser、 XmlBeanConfigParser
  *
- * 4.核心工厂类设计
+ * 4. 核心工厂类设计
  * BeansFactory
  *
  * <pre>
@@ -34,11 +36,15 @@ import chapter45.framework.exception.NoSuchBeanDefinitionException;
  */
 public class Demo {
     public static void main(String[] args) throws NoSuchBeanDefinitionException, BeanCreationFailureException {
-
+        // 非懒加载  初始化的时候 实例化bean
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+        // 懒加载  getBean 的时候再初始化
         RateLimiter rateLimiter = (RateLimiter) applicationContext.getBean("rateLimiter");
-
         rateLimiter.test();
+        RedisCounter redisCounter = rateLimiter.getRedisCounter();
+        System.out.println(redisCounter);
+
         //...
+
     }
 }
