@@ -1,6 +1,7 @@
 package chapter21.demo3.v1;
 
-import chapter21.demo3.v1.util.User;
+
+import chapter21.demo3.dependence.User;
 
 /**
  * <p> 代码执行重复 </p>

@@ -1,8 +1,9 @@
 package chapter21.demo3.v1;
 
-import chapter21.demo3.v1.util.EmailValidation;
-import chapter21.demo3.v1.util.PasswordValidation;
-import chapter21.demo3.v1.util.User;
+
+import chapter21.demo3.dependence.EmailValidation;
+import chapter21.demo3.dependence.PasswordValidation;
+import chapter21.demo3.dependence.User;
 
 /**
  * <p> 代码执行重复 </p>

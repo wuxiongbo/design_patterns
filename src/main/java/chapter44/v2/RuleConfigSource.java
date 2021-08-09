@@ -24,7 +24,10 @@ public class RuleConfigSource {
 
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
+
+        // 解析 逻辑，抽象出来
         IRuleConfigParser parser = createParser(ruleConfigFileExtension);
+
         if (parser == null) {
             throw new InvalidRuleConfigException(
                     "Rule config file format is not supported: " + ruleConfigFilePath);
@@ -35,6 +38,12 @@ public class RuleConfigSource {
         RuleConfig ruleConfig = parser.parse(configText);
         return ruleConfig;
     }
+
+
+
+
+
+
 
     private String getFileExtension(String filePath) {
         //...解析文件名获取扩展名，比如rule.json，返回json

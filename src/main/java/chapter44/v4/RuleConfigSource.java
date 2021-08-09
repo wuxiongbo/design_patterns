@@ -17,6 +17,7 @@ public class RuleConfigSource {
 
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
+
         IRuleConfigParser parser = RuleConfigParserFactory.createParser(ruleConfigFileExtension);
         if (parser == null) {
             throw new InvalidRuleConfigException(

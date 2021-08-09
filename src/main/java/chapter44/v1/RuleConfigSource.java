@@ -19,6 +19,7 @@ import chapter44.dependence.interface1.IRuleConfigParser;
 public class RuleConfigSource {
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
+
         IRuleConfigParser parser = null;
         if ("json".equalsIgnoreCase(ruleConfigFileExtension)) {
             parser = new JsonRuleConfigParser();
