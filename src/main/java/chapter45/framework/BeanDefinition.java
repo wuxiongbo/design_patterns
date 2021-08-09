@@ -46,6 +46,12 @@ public class BeanDefinition {
         PROTOTYPE
     }
 
+
+
+    //在下面的 ConstructorArg 类中，
+    // 当 isRef 为 true 的时候，arg 表示 String 类型的 refBeanId，type 不需要设置；
+    // 当 isRef 为 false 的时候，arg、type 都需要设置。
+    // 请根据这个需求，完善 ConstructorArg 类。
     @Data
     public static class ConstructorArg {
         // 是否为引用类型
@@ -64,4 +70,63 @@ public class BeanDefinition {
         }
         // 省略必要的getter/setter/constructors
     }
+
+/*    public static class ConstructorArg {
+        private boolean isRef;
+        private Class type;
+        private Object arg;
+        // TODO: 待完善...
+
+        private ConstructorArg(Builder builder) {
+            this.isRef = builder.isRef;
+            this.type = builder.type;
+            this.arg = builder.arg;
+        }
+
+        public static class Builder {
+            private boolean isRef;
+            private Class type;
+            private Object arg;
+
+            public ConstructorArg build() {
+                if (arg == null){
+                        throw new IllegalArgumentException("arg must be set");
+                }
+
+                if (!isRef) {
+                    if (type == null){
+                        throw new IllegalArgumentException("type must be set when isRef is false");
+                    }
+
+                    // 参数类型 与参数值类型要一致。
+                    if (type != arg.getClass()) {
+                        throw new IllegalArgumentException("...");
+                    }
+
+                } else {
+                    if (!(arg instanceof String)) {
+                        throw new IllegalArgumentException("arg must be a String instance when isRef is true");
+                    }
+                }
+                return new ConstructorArg(this);
+            }
+
+            public Builder setIsRef(boolean isRef){
+                this.isRef = isRef;
+                return this;
+            }
+
+            public Builder setType(Class type) {
+                this.type = type;
+                return this;
+            }
+
+            public Builder setObject(Object arg) {
+                this.arg = arg;
+                return this;
+            }
+        }
+    }*/
+
+
 }

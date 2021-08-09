@@ -8,7 +8,7 @@ import chapter44.dependence.impl.rule.YamlRuleConfigParser;
 import chapter44.dependence.interface1.IRuleConfigParser;
 
 /**
- * <p>描述类的信息</p>
+ * <p>工厂模式</p>
  *
  * <pre>
  * @author wuxiongbo

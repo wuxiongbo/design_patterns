@@ -4,7 +4,7 @@ import chapter44.dependence.*;
 import chapter44.dependence.interface1.IRuleConfigParser;
 
 /**
- * <p>描述类的信息</p>
+ * <p>工厂模式</p>
  *
  * 为了让类的职责更加单一、代码更加清晰，我们进一步将 createParser() 函数剥离到一个独立的类中，让这个类只负责对象的创建。
  *

@@ -6,7 +6,7 @@ import chapter44.dependence.RuleConfig;
 import chapter44.v3.RuleConfigParserFactory;
 
 /**
- * <p>描述类的信息</p>
+ * <p>工厂模式</p>
  *
  * @author wuxiongbo
  * @date 2021/7/28

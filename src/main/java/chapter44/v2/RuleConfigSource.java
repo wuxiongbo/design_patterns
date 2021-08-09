@@ -8,7 +8,7 @@ import chapter44.dependence.impl.rule.YamlRuleConfigParser;
 import chapter44.dependence.interface1.IRuleConfigParser;
 
 /**
- * <p>描述类的信息</p>
+ * <p>工厂模式</p>
  *
  * 基于“规范和重构”，为了让代码逻辑更加清晰，可读性更好，我们要善于将功能独立的代码块封装成函数。
  *

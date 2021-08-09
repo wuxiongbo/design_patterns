@@ -38,6 +38,7 @@ public class Demo {
     public static void main(String[] args) throws NoSuchBeanDefinitionException, BeanCreationFailureException {
         // 非懒加载  初始化的时候 实例化bean
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+
         // 懒加载  getBean 的时候再初始化
         RateLimiter rateLimiter = (RateLimiter) applicationContext.getBean("rateLimiter");
         rateLimiter.test();
@@ -45,6 +46,7 @@ public class Demo {
         System.out.println(redisCounter);
 
         //...
+
 
     }
 }
