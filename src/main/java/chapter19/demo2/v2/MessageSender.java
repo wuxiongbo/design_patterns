@@ -1,7 +1,7 @@
 package chapter19.demo2.v2;
 
 /**
- * <p>描述类的信息</p>
+ * <p>Message实现</p>
  *
  * MessageSender 类实现推送商品促销、验证码等消息给用户
  *

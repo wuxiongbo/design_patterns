@@ -1,10 +1,8 @@
 package chapter19.demo2.v1;
 
 /**
- * <p>Notification 普通实现方式</p>
- *
- * Notification 类负责消息推送，依赖 MessageSender 类实现推送商品促销、验证码等消息给用户。
- *
+ * <p>Notification 非依赖注入实现方式</p>
+ *  Notification 类负责消息推送，依赖 MessageSender 类实现推送商品促销、验证码等消息给用户。
  * <pre>
  * @author wuxiongbo
  * @date 2021/7/28

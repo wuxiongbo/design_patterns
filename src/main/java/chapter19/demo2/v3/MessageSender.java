@@ -1,7 +1,7 @@
 package chapter19.demo2.v3;
 
 /**
- * <p>描述类的信息</p>
+ * <p>Message抽象成接口</p>
  *
  * <pre>
  * @author wuxiongbo

@@ -11,6 +11,7 @@ package chapter19.demo2.v3;
  */
 
 public class Notification {
+
     private MessageSender messageSender;
 
     // 通过构造函数将messageSender传递进来。而非在构造方法里面 new。 这就是依赖注入的体现。

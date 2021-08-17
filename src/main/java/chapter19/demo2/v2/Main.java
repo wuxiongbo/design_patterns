@@ -14,9 +14,12 @@ package chapter19.demo2.v2;
 public class Main {
     public static void main(String[] args){
         //使用Notification
-        // 在外部 将 MessageSender new出来
+
+        // 1. 在外部 将 MessageSender new出来
         MessageSender messageSender = new MessageSender();
-        // 通过构造方法 将 messageSender 传递给 Notification。  对于 Notification 而言，就实现了 "依赖注入"
+
+
+        // 2. 通过构造方法 将 messageSender 传递给 Notification。  对于 Notification 而言，就实现了 "依赖注入"
         Notification notification = new Notification(messageSender);
     }
 }
