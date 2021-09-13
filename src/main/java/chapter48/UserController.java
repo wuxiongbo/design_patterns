@@ -1,6 +1,5 @@
 package chapter48;
 
-import chapter48.dependence.MetricsCollector;
 import chapter48.dependence.RequestInfo;
 import chapter48.dependence.UserVo;
 

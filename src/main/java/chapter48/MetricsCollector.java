@@ -1,4 +1,6 @@
-package chapter48.dependence;
+package chapter48;
+
+import chapter48.dependence.RequestInfo;
 
 /**
  * <p>描述类的信息</p>
