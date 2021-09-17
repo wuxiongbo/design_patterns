@@ -1,11 +1,9 @@
 package chapter44.v7.factory_method;
 
-import chapter44.dependence.impl.rule.PropertiesRuleConfigParser;
 import chapter44.dependence.impl.rule.YamlRuleConfigParser;
 import chapter44.dependence.impl.system.YamlSystemConfigParser;
 import chapter44.dependence.interface1.IRuleConfigParser;
 import chapter44.dependence.interface1.ISystemConfigParser;
-import chapter44.v7.IConfigParserFactory;
 
 /**
  * <p>描述类的信息</p>

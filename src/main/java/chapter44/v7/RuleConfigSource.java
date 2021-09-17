@@ -3,6 +3,9 @@ package chapter44.v7;
 import chapter44.dependence.InvalidRuleConfigException;
 import chapter44.dependence.RuleConfig;
 import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.v7.factory.ConfigParserFactoryMap;
+import chapter44.v7.factory.ConfigParserFactoryMapJDK8;
+import chapter44.v7.factory_method.IConfigParserFactory;
 
 /**
  * <p> 工厂方法（Factory Method） 的改进 </p>
@@ -27,14 +30,16 @@ public class RuleConfigSource {
         }
         IRuleConfigParser parser = parserFactory.createRuleParser();
 
-        String configText = "";
-        //从ruleConfigFilePath文件中读取配置文本到configText中
+        //从 ruleConfigFilePath 文件中读取配置文本到configText中
+        String configText = "content...";
+
+        // 文本内容 解析 为配置对象
         RuleConfig ruleConfig = parser.parse(configText);
         return ruleConfig;
     }
 
     private String getFileExtension(String filePath) {
-        //...解析文件名获取扩展名，比如rule.json，返回json
+        //...解析文件名获取扩展名，比如rule.json，返回json。application.properties,返回properties
         return "json";
     }
 

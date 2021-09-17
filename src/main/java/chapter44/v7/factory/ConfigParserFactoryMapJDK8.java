@@ -1,9 +1,6 @@
-package chapter44.v7;
+package chapter44.v7.factory;
 
-import chapter44.v7.factory_method.JsonConfigParserFactory;
-import chapter44.v7.factory_method.PropertiesConfigParserFactory;
-import chapter44.v7.factory_method.XmlConfigParserFactory;
-import chapter44.v7.factory_method.YamlConfigParserFactory;
+import chapter44.v7.factory_method.*;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -4,7 +4,6 @@ import chapter44.dependence.impl.rule.PropertiesRuleConfigParser;
 import chapter44.dependence.impl.system.PropertiesSystemConfigParser;
 import chapter44.dependence.interface1.IRuleConfigParser;
 import chapter44.dependence.interface1.ISystemConfigParser;
-import chapter44.v7.IConfigParserFactory;
 
 /**
  * <p>描述类的信息</p>

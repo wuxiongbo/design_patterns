@@ -1,10 +1,10 @@
 package chapter44.v7;
 
 import chapter44.dependence.InvalidRuleConfigException;
-import chapter44.dependence.RuleConfig;
 import chapter44.dependence.SystemConfig;
-import chapter44.dependence.interface1.IRuleConfigParser;
 import chapter44.dependence.interface1.ISystemConfigParser;
+import chapter44.v7.factory.ConfigParserFactoryMap;
+import chapter44.v7.factory_method.IConfigParserFactory;
 
 /**
  * <p> 工厂方法（Factory Method） 的改进 </p>
@@ -20,7 +20,9 @@ import chapter44.dependence.interface1.ISystemConfigParser;
  * </pre>
  */
 public class SystemConfigSource {
+
     public SystemConfig load(String systemConfigFilePath) throws InvalidRuleConfigException {
+        // 获取系统配置文件扩展名
         String systemConfigFileExtension = getFileExtension(systemConfigFilePath);
 
         IConfigParserFactory parserFactory = ConfigParserFactoryMap.getParserFactory(systemConfigFileExtension);
@@ -29,14 +31,16 @@ public class SystemConfigSource {
         }
         ISystemConfigParser parser = parserFactory.createSystemParser();
 
-        String configText = "";
-        //从ruleConfigFilePath文件中读取配置文本到configText中
+        //从 systemConfigFilePath 文件中读取配置文本到configText中
+        String configText = "content...";
+
+        // 文本内容 解析 为配置对象
         SystemConfig systemConfig = parser.parse(configText);
         return systemConfig;
     }
 
     private String getFileExtension(String filePath) {
-        //...解析文件名获取扩展名，比如rule.json，返回json
+        //...解析文件名获取扩展名，比如rule.json，返回json。application.properties,返回properties
         return "json";
     }
 }
