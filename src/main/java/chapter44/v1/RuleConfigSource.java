@@ -1,14 +1,15 @@
 package chapter44.v1;
 
-import chapter44.dependence.*;
-import chapter44.dependence.impl.rule.JsonRuleConfigParser;
-import chapter44.dependence.impl.rule.PropertiesRuleConfigParser;
-import chapter44.dependence.impl.rule.XmlRuleConfigParser;
-import chapter44.dependence.impl.rule.YamlRuleConfigParser;
-import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.dependence.exception.InvalidRuleConfigException;
+import chapter44.dependence.config_parser.rule.JsonRuleConfigParser;
+import chapter44.dependence.config_parser.rule.PropertiesRuleConfigParser;
+import chapter44.dependence.config_parser.rule.XmlRuleConfigParser;
+import chapter44.dependence.config_parser.rule.YamlRuleConfigParser;
+import chapter44.dependence.config_parser.IRuleConfigParser;
+import chapter44.dependence.model.RuleConfig;
 
 /**
- * <p>工厂模式</p>
+ * <p>示例代码</p>
  *
  * 待优化代码
  *

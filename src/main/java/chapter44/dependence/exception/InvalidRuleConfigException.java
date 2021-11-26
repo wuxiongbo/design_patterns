@@ -1,4 +1,4 @@
-package chapter44.dependence;
+package chapter44.dependence.exception;
 
 /**
  * <p>描述类的信息</p>

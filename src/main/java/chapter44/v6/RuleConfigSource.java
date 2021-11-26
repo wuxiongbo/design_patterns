@@ -1,8 +1,8 @@
 package chapter44.v6;
 
-import chapter44.dependence.interface1.IRuleConfigParser;
-import chapter44.dependence.InvalidRuleConfigException;
-import chapter44.dependence.RuleConfig;
+import chapter44.dependence.config_parser.IRuleConfigParser;
+import chapter44.dependence.exception.InvalidRuleConfigException;
+import chapter44.dependence.model.RuleConfig;
 import chapter44.v6.factory.RuleConfigParserFactoryMap;
 import chapter44.v6.factory_method.IRuleConfigParserFactory;
 

@@ -1,10 +1,10 @@
 package chapter44.v3.factory;
 
-import chapter44.dependence.impl.rule.JsonRuleConfigParser;
-import chapter44.dependence.impl.rule.PropertiesRuleConfigParser;
-import chapter44.dependence.impl.rule.XmlRuleConfigParser;
-import chapter44.dependence.impl.rule.YamlRuleConfigParser;
-import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.dependence.config_parser.rule.JsonRuleConfigParser;
+import chapter44.dependence.config_parser.rule.PropertiesRuleConfigParser;
+import chapter44.dependence.config_parser.rule.XmlRuleConfigParser;
+import chapter44.dependence.config_parser.rule.YamlRuleConfigParser;
+import chapter44.dependence.config_parser.IRuleConfigParser;
 
 /**
  * <p> 简单工厂模式类  的第一种实现方法</p>

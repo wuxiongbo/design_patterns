@@ -1,8 +1,8 @@
 package chapter44.v7;
 
-import chapter44.dependence.InvalidRuleConfigException;
-import chapter44.dependence.RuleConfig;
-import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.dependence.exception.InvalidRuleConfigException;
+import chapter44.dependence.model.RuleConfig;
+import chapter44.dependence.config_parser.IRuleConfigParser;
 import chapter44.v7.factory.ConfigParserFactoryMap;
 import chapter44.v7.factory.ConfigParserFactoryMapJDK8;
 import chapter44.v7.factory_method.IConfigParserFactory;

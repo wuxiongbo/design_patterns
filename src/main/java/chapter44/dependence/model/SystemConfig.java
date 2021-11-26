@@ -1,7 +1,7 @@
-package chapter44.dependence;
+package chapter44.dependence.model;
 
 /**
- * <p>描述类的信息</p>
+ * <p>系统配置</p>
  *
  * <pre>
  * @author wuxiongbo

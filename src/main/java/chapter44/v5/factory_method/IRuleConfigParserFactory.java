@@ -1,6 +1,6 @@
 package chapter44.v5.factory_method;
 
-import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.dependence.config_parser.IRuleConfigParser;
 
 /**
  * <p>描述类的信息</p>

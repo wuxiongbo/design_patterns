@@ -1,7 +1,8 @@
 package chapter44.v3;
 
-import chapter44.dependence.*;
-import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.dependence.exception.InvalidRuleConfigException;
+import chapter44.dependence.config_parser.IRuleConfigParser;
+import chapter44.dependence.model.RuleConfig;
 import chapter44.v3.factory.RuleConfigParserFactory;
 
 /**
@@ -22,7 +23,6 @@ import chapter44.v3.factory.RuleConfigParserFactory;
  * @date 2021/7/28
  * </pre>
  */
-
 public class RuleConfigSource {
 
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {

@@ -1,7 +1,7 @@
-package chapter44.dependence;
+package chapter44.dependence.model;
 
 /**
- * <p>返回的配置文件数据</p>
+ * <p>角色配置</p>
  *
  * <pre>
  * @author wuxiongbo

@@ -1,7 +1,7 @@
 package chapter44.v7.factory_method;
 
-import chapter44.dependence.interface1.IRuleConfigParser;
-import chapter44.dependence.interface1.ISystemConfigParser;
+import chapter44.dependence.config_parser.IRuleConfigParser;
+import chapter44.dependence.config_parser.ISystemConfigParser;
 
 /**
  * <p>描述类的信息</p>

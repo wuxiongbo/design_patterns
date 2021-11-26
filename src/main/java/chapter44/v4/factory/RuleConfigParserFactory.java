@@ -1,10 +1,10 @@
 package chapter44.v4.factory;
 
-import chapter44.dependence.impl.rule.JsonRuleConfigParser;
-import chapter44.dependence.impl.rule.PropertiesRuleConfigParser;
-import chapter44.dependence.impl.rule.XmlRuleConfigParser;
-import chapter44.dependence.impl.rule.YamlRuleConfigParser;
-import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.dependence.config_parser.rule.JsonRuleConfigParser;
+import chapter44.dependence.config_parser.rule.PropertiesRuleConfigParser;
+import chapter44.dependence.config_parser.rule.XmlRuleConfigParser;
+import chapter44.dependence.config_parser.rule.YamlRuleConfigParser;
+import chapter44.dependence.config_parser.IRuleConfigParser;
 
 import java.util.HashMap;
 import java.util.Map;

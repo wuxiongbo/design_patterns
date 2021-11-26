@@ -1,7 +1,7 @@
-package chapter44.dependence.impl.system;
+package chapter44.dependence.config_parser.system;
 
-import chapter44.dependence.SystemConfig;
-import chapter44.dependence.interface1.ISystemConfigParser;
+import chapter44.dependence.model.SystemConfig;
+import chapter44.dependence.config_parser.ISystemConfigParser;
 
 /**
  * <p>描述类的信息</p>

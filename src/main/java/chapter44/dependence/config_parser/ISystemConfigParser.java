@@ -1,6 +1,6 @@
-package chapter44.dependence.interface1;
+package chapter44.dependence.config_parser;
 
-import chapter44.dependence.SystemConfig;
+import chapter44.dependence.model.SystemConfig;
 
 /**
  * <p>描述类的信息</p>

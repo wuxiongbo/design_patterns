@@ -1,7 +1,7 @@
 package chapter44.v6.factory_method.impl;
 
-import chapter44.dependence.interface1.IRuleConfigParser;
-import chapter44.dependence.impl.rule.PropertiesRuleConfigParser;
+import chapter44.dependence.config_parser.IRuleConfigParser;
+import chapter44.dependence.config_parser.rule.PropertiesRuleConfigParser;
 import chapter44.v6.factory_method.IRuleConfigParserFactory;
 
 /**

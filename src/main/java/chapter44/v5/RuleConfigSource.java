@@ -1,8 +1,8 @@
 package chapter44.v5;
 
-import chapter44.dependence.interface1.IRuleConfigParser;
-import chapter44.dependence.InvalidRuleConfigException;
-import chapter44.dependence.RuleConfig;
+import chapter44.dependence.config_parser.IRuleConfigParser;
+import chapter44.dependence.exception.InvalidRuleConfigException;
+import chapter44.dependence.model.RuleConfig;
 import chapter44.v5.factory_method.*;
 import chapter44.v5.factory_method.impl.JsonRuleConfigParserFactory;
 import chapter44.v5.factory_method.impl.PropertiesRuleConfigParserFactory;
@@ -42,8 +42,6 @@ import chapter44.v5.factory_method.impl.YamlRuleConfigParserFactory;
  * @date 2021/7/28
  * </pre>
  */
-
-
 public class RuleConfigSource {
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
 

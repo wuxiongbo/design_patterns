@@ -1,8 +1,8 @@
 package chapter44.v7;
 
-import chapter44.dependence.InvalidRuleConfigException;
-import chapter44.dependence.SystemConfig;
-import chapter44.dependence.interface1.ISystemConfigParser;
+import chapter44.dependence.exception.InvalidRuleConfigException;
+import chapter44.dependence.model.SystemConfig;
+import chapter44.dependence.config_parser.ISystemConfigParser;
 import chapter44.v7.factory.ConfigParserFactoryMap;
 import chapter44.v7.factory_method.IConfigParserFactory;
 
