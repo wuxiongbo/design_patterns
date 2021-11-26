@@ -34,7 +34,7 @@ public class RuleConfigSource {
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
-        // 解析 逻辑，抽象成方法，封装起来
+        // 将 “创建解析类” 的逻辑 抽象成 独立的‘方法’ 封装起来
         IRuleConfigParser parser = createParser(ruleConfigFileExtension);
 
         if (parser == null) {

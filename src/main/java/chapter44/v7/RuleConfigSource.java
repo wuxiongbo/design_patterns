@@ -4,7 +4,6 @@ import chapter44.dependence.exception.InvalidRuleConfigException;
 import chapter44.dependence.model.RuleConfig;
 import chapter44.dependence.config_parser.IRuleConfigParser;
 import chapter44.v7.factory.ConfigParserFactoryMap;
-import chapter44.v7.factory.ConfigParserFactoryMapJDK8;
 import chapter44.v7.factory_method.IConfigParserFactory;
 
 /**
@@ -25,6 +24,7 @@ public class RuleConfigSource {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
 
+        // 将  不同“工厂类的创建”逻辑， 进一步抽象到 一个独立的类。
         IConfigParserFactory parserFactory = ConfigParserFactoryMap.getParserFactory(ruleConfigFileExtension);
 
 
@@ -44,17 +44,6 @@ public class RuleConfigSource {
     private String getFileExtension(String filePath) {
         //...解析文件名获取扩展名，比如rule.json，返回json。application.properties,返回properties
         return "json";
-    }
-
-    public static void main(String[] args){
-        RuleConfigSource ruleConfigSource = new RuleConfigSource();
-        String ruleConfigFileExtension = ruleConfigSource.getFileExtension("89899");
-
-        IConfigParserFactory parserFactory = ConfigParserFactoryMapJDK8.getParserFactory(ruleConfigFileExtension);
-        IConfigParserFactory parserFactory1 = ConfigParserFactoryMapJDK8.getParserFactory(ruleConfigFileExtension);
-
-        System.out.println(parserFactory.hashCode());
-        System.out.println(parserFactory1.hashCode());
     }
 
 }

@@ -47,6 +47,8 @@ public class RuleConfigSource {
 
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
+
+        // 将  不同“解析类的创建” 逻辑 抽象成不同的‘创建方法’，不同的创建方法 封装到 不同的独立的类中。 各个 工厂类 统称 工厂方法
         IRuleConfigParserFactory parserFactory = null;
         if ("json".equalsIgnoreCase(ruleConfigFileExtension)) {
             parserFactory = new JsonRuleConfigParserFactory();

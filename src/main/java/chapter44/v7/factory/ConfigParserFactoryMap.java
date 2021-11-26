@@ -1,5 +1,6 @@
 package chapter44.v7.factory;
 
+import chapter44.v7.RuleConfigSource;
 import chapter44.v7.factory_method.impl.JsonConfigParserFactory;
 import chapter44.v7.factory_method.impl.PropertiesConfigParserFactory;
 import chapter44.v7.factory_method.impl.XmlConfigParserFactory;
@@ -89,5 +90,23 @@ class ConfigParserFactoryMapJDK8 { //工厂的工厂
         }
 
         throw new IllegalArgumentException("No such shape " + type);
+    }
+
+
+    public static void main(String[] args){
+        RuleConfigSource ruleConfigSource = new RuleConfigSource();
+        String ruleConfigFileExtension = getFileExtension("89899");
+
+        IConfigParserFactory parserFactory = ConfigParserFactoryMapJDK8.getParserFactory(ruleConfigFileExtension);
+        IConfigParserFactory parserFactory1 = ConfigParserFactoryMapJDK8.getParserFactory(ruleConfigFileExtension);
+
+        // 每次拿的都是不同的实例。
+        System.out.println(parserFactory.hashCode());
+        System.out.println(parserFactory1.hashCode());
+
+    }
+    private static String getFileExtension(String filePath) {
+        //...解析文件名获取扩展名，比如rule.json，返回json。application.properties,返回properties
+        return "json";
     }
 }

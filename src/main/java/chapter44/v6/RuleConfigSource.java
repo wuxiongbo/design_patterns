@@ -27,7 +27,10 @@ public class RuleConfigSource {
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
+        //将  不同“工厂类的创建”逻辑， 进一步抽象到 一个独立的类。  工厂类的工厂类
         IRuleConfigParserFactory parserFactory = RuleConfigParserFactoryMap.getParserFactory(ruleConfigFileExtension);
+
+
         if (parserFactory == null) {
             throw new InvalidRuleConfigException("Rule config file format is not supported: " + ruleConfigFilePath);
         }
