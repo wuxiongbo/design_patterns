@@ -10,6 +10,8 @@ import chapter44.dependence.interface1.IRuleConfigParser;
 /**
  * <p>工厂模式</p>
  *
+ * 待优化代码
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/7/28

@@ -12,6 +12,9 @@ import chapter44.v5.factory_method.impl.YamlRuleConfigParserFactory;
 /**
  * <p> 工厂方法（Factory Method） </p>
  *
+ * 优化方案四：工厂方法
+ *
+ *
  * 通过不同的工厂，创建不同的 parser类
  *
  * 本示例，基于v3版本。
@@ -29,7 +32,10 @@ import chapter44.v5.factory_method.impl.YamlRuleConfigParserFactory;
  * 这 跟我们最初的代码版本非常相似，可见，此时，引入工厂方法非但没有解决问题，反倒让设计变得更加复杂了。
  *
  * 解决方案：
- * 为工厂类再创建一个简单工厂。 工厂(JsonRuleConfigParserFactory)的工厂(RuleConfigParserFactoryMap)，用来创建工厂类对象。
+ * 为 ‘工厂类’ 再创建一个 ‘简单工厂’ 。
+ * 工厂类(JsonRuleConfigParserFactory 等)的 简单工厂(RuleConfigParserFactoryMap)，简单工厂 用来创建 工厂类 对象。
+ *
+ * 即，工厂的工厂
  *
  * <pre>
  * @author wuxiongbo

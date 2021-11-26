@@ -10,6 +10,8 @@ import chapter44.dependence.interface1.IRuleConfigParser;
 /**
  * <p>工厂模式</p>
  *
+ * 优化方案一：抽象成函数
+ *
  * 基于“规范和重构”，为了让代码逻辑更加清晰，可读性更好，我们要善于将功能独立的代码块封装成函数。
  *
  * parser 创建的部分逻辑剥离出来，抽象成 createParser() 函数。

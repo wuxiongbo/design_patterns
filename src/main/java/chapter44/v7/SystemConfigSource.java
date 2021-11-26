@@ -25,7 +25,10 @@ public class SystemConfigSource {
         // 获取系统配置文件扩展名
         String systemConfigFileExtension = getFileExtension(systemConfigFilePath);
 
+
         IConfigParserFactory parserFactory = ConfigParserFactoryMap.getParserFactory(systemConfigFileExtension);
+
+
         if (parserFactory == null) {
             throw new InvalidRuleConfigException("Rule config file format is not supported: " + systemConfigFilePath);
         }

@@ -1,4 +1,4 @@
-package chapter44.v6;
+package chapter44.v6.factory;
 
 import chapter44.v6.factory_method.*;
 import chapter44.v6.factory_method.impl.JsonRuleConfigParserFactory;
@@ -11,8 +11,7 @@ import java.util.Map;
 
 /**
  * <p>描述类的信息</p>
- * 因为工厂类只包含方法，不包含成员变量，完全可以复用，
- *
+ * 因为 工厂方法类 只包含 ‘方法’，不包含 ‘成员变量’，所以，工厂方法类 的 实例，完全可以复用，
  * 不需要每次都创建新的工厂类对象(缓存)，所以，简单工厂模式的第二种实现思路（v4  将类提前创建好，并缓存）更加合适。
  *
  * 简单工厂模式 vs 工厂方法模式:

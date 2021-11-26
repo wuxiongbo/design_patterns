@@ -3,10 +3,12 @@ package chapter44.v4;
 import chapter44.dependence.interface1.IRuleConfigParser;
 import chapter44.dependence.InvalidRuleConfigException;
 import chapter44.dependence.RuleConfig;
-import chapter44.v3.RuleConfigParserFactory;
+import chapter44.v3.factory.RuleConfigParserFactory;
 
 /**
  * <p>工厂模式</p>
+ *
+ * 优化方案三：工厂模式(改进版)，提前实例化。 也可使用jdk8 新特性懒加载。
  *
  * @author wuxiongbo
  * @date 2021/7/28
@@ -18,7 +20,11 @@ public class RuleConfigSource {
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
+
+
         IRuleConfigParser parser = RuleConfigParserFactory.createParser(ruleConfigFileExtension);
+
+
         if (parser == null) {
             throw new InvalidRuleConfigException(
                     "Rule config file format is not supported: " + ruleConfigFilePath);

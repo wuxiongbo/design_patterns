@@ -3,10 +3,15 @@ package chapter44.v6;
 import chapter44.dependence.interface1.IRuleConfigParser;
 import chapter44.dependence.InvalidRuleConfigException;
 import chapter44.dependence.RuleConfig;
+import chapter44.v6.factory.RuleConfigParserFactoryMap;
 import chapter44.v6.factory_method.IRuleConfigParserFactory;
 
 /**
  * <p> 工厂方法（Factory Method） 的改进 </p>
+ *
+ *
+ * 优化方案五：工厂方法 + 工厂模式(v4改进版)
+ *
  *
  * 简单工厂模式 vs 工厂方法模式:
  * 实际上，对于 "规则配置文件解析" 这个应用场景来说，工厂模式需要额外创建诸多 Factory 类，也会增加代码的复杂性，

@@ -24,7 +24,10 @@ public class RuleConfigSource {
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
+
         IConfigParserFactory parserFactory = ConfigParserFactoryMap.getParserFactory(ruleConfigFileExtension);
+
+
         if (parserFactory == null) {
             throw new InvalidRuleConfigException("Rule config file format is not supported: " + ruleConfigFilePath);
         }

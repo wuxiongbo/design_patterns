@@ -2,9 +2,14 @@ package chapter44.v3;
 
 import chapter44.dependence.*;
 import chapter44.dependence.interface1.IRuleConfigParser;
+import chapter44.v3.factory.RuleConfigParserFactory;
 
 /**
  * <p>工厂模式</p>
+ *
+ *
+ * 优化方案二：工厂模式
+ *
  *
  * 为了让类的职责更加单一、代码更加清晰，我们进一步将 createParser() 函数剥离到一个独立的类中，让这个类只负责对象的创建。
  *

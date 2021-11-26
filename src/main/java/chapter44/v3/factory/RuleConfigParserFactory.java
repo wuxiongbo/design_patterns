@@ -1,4 +1,4 @@
-package chapter44.v3;
+package chapter44.v3.factory;
 
 import chapter44.dependence.impl.rule.JsonRuleConfigParser;
 import chapter44.dependence.impl.rule.PropertiesRuleConfigParser;
