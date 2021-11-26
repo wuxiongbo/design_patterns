@@ -22,10 +22,16 @@ import chapter44.dependence.interface1.IRuleConfigParser;
 
 public class RuleConfigSource {
 
+    private String getFileExtension(String filePath) {
+        //...解析文件名获取扩展名，比如rule.json，返回json
+        return "json";
+    }
+
+
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
-        // 解析 逻辑，抽象出来
+        // 解析 逻辑，抽象成方法，封装起来
         IRuleConfigParser parser = createParser(ruleConfigFileExtension);
 
         if (parser == null) {
@@ -39,16 +45,6 @@ public class RuleConfigSource {
         return ruleConfig;
     }
 
-
-
-
-
-
-
-    private String getFileExtension(String filePath) {
-        //...解析文件名获取扩展名，比如rule.json，返回json
-        return "json";
-    }
 
     private IRuleConfigParser createParser(String configFormat) {
         IRuleConfigParser parser = null;

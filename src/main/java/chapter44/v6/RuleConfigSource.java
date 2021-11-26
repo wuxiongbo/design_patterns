@@ -3,6 +3,7 @@ package chapter44.v6;
 import chapter44.dependence.interface1.IRuleConfigParser;
 import chapter44.dependence.InvalidRuleConfigException;
 import chapter44.dependence.RuleConfig;
+import chapter44.v6.factory_method.IRuleConfigParserFactory;
 
 /**
  * <p> 工厂方法（Factory Method） 的改进 </p>

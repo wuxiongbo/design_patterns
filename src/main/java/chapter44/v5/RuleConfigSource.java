@@ -3,10 +3,11 @@ package chapter44.v5;
 import chapter44.dependence.interface1.IRuleConfigParser;
 import chapter44.dependence.InvalidRuleConfigException;
 import chapter44.dependence.RuleConfig;
-import chapter44.v5.factory_method.JsonRuleConfigParserFactory;
-import chapter44.v5.factory_method.PropertiesRuleConfigParserFactory;
-import chapter44.v5.factory_method.XmlRuleConfigParserFactory;
-import chapter44.v5.factory_method.YamlRuleConfigParserFactory;
+import chapter44.v5.factory_method.*;
+import chapter44.v5.factory_method.impl.JsonRuleConfigParserFactory;
+import chapter44.v5.factory_method.impl.PropertiesRuleConfigParserFactory;
+import chapter44.v5.factory_method.impl.XmlRuleConfigParserFactory;
+import chapter44.v5.factory_method.impl.YamlRuleConfigParserFactory;
 
 /**
  * <p> 工厂方法（Factory Method） </p>

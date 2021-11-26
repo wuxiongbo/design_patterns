@@ -1,4 +1,4 @@
-package chapter44.v5;
+package chapter44.v5.factory_method;
 
 import chapter44.dependence.interface1.IRuleConfigParser;
 

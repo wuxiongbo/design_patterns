@@ -1,9 +1,10 @@
 package chapter44.v6;
 
-import chapter44.v6.factory_method.JsonRuleConfigParserFactory;
-import chapter44.v6.factory_method.PropertiesRuleConfigParserFactory;
-import chapter44.v6.factory_method.XmlRuleConfigParserFactory;
-import chapter44.v6.factory_method.YamlRuleConfigParserFactory;
+import chapter44.v6.factory_method.*;
+import chapter44.v6.factory_method.impl.JsonRuleConfigParserFactory;
+import chapter44.v6.factory_method.impl.PropertiesRuleConfigParserFactory;
+import chapter44.v6.factory_method.impl.XmlRuleConfigParserFactory;
+import chapter44.v6.factory_method.impl.YamlRuleConfigParserFactory;
 
 import java.util.HashMap;
 import java.util.Map;
