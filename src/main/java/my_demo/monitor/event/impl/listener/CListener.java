@@ -16,8 +16,8 @@ public class CListener  implements IListener {
     @Override
     public void handleEvent(IEvent event) {
         String eventType = event.getEventType();
-        if (IEvent.Create_EVENT.equals(eventType)){
-            System.out.println("执行>>>>>>>添加操作");
+        if (IEvent.CREATE_EVENT.equals(eventType)){
+            System.out.println(" CListener 监听到并执行>>>>>>>'添加'操作");
         }
     }
 }

@@ -20,8 +20,8 @@ public class RListener implements IListener {
     public void handleEvent(IEvent event) {
         String eventType = event.getEventType();
 
-        if (IEvent.Retrieve_EVENT.equals(eventType)){
-            System.out.println("执行>>>>>>>查找操作");
+        if (IEvent.RETRIEVE_EVENT.equals(eventType)){
+            System.out.println(" RListener 监听到并执行>>>>>>>'查找'操作");
         }
 
     }

@@ -20,8 +20,8 @@ public class DListener implements IListener {
     public void handleEvent(IEvent event) {
         String eventType = event.getEventType();
 
-        if (IEvent.Delete_EVENT.equals(eventType)){
-            System.out.println("执行>>>>>>>删除操作");
+        if (IEvent.DELETE_EVENT.equals(eventType)){
+            System.out.println(" DListener 监听到并执行>>>>>>> '删除'操作");
         }
 
     }

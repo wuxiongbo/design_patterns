@@ -10,18 +10,13 @@ package my_demo.monitor.event.interfaces;
  */
 public interface IEvent {
     //声明事件类型。
-
-    //增
-    String Create_EVENT = "create event";
-    //改
-    String Update_EVENT = "update event";
-    //查
-    String Retrieve_EVENT = "retrieve event";
-    //删
-    String Delete_EVENT = "delete event";
+    String CREATE_EVENT = "create event";
+    String UPDATE_EVENT = "update event";
+    String RETRIEVE_EVENT = "retrieve event";
+    String DELETE_EVENT = "delete event";
 
     //获取事件源对象
-    IListenerable getEventSource();
+    IEventSource getEventSource();
 
     //获取事件类型
     String getEventType();

@@ -19,8 +19,8 @@ public class UListener implements IListener {
     public void handleEvent(IEvent event) {
         String eventType = event.getEventType();
 
-        if (IEvent.Update_EVENT.equals(eventType)){
-            System.out.println("执行>>>>>>>修改操作");
+        if (IEvent.UPDATE_EVENT.equals(eventType)){
+            System.out.println(" UListener 监听到并执行>>>>>>>'修改'操作");
         }
 
     }
