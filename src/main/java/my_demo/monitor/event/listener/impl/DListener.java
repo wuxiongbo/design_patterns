@@ -1,8 +1,8 @@
-package my_demo.monitor.event.impl.listener;
+package my_demo.monitor.event.listener.impl;
 
 
-import my_demo.monitor.event.interfaces.IEvent;
-import my_demo.monitor.event.interfaces.IListener;
+import my_demo.monitor.event.listener.IListener;
+import my_demo.monitor.event.event.IEvent;
 
 /**
  * <p>监听器实现类(观察者)</p>
@@ -12,7 +12,7 @@ import my_demo.monitor.event.interfaces.IListener;
  * @date 2021/6/16
  * </pre>
  */
-public class RListener implements IListener {
+public class DListener implements IListener {
 
     // 监听器将监听自己感兴趣的事件，这里只包含CRUD事件，其他事件不感兴趣。
     // 一旦感兴趣的事件在‘事件源’被触发或改变，‘监听器’ 立即得到 ‘事件源’ 的通知，做出响应
@@ -20,8 +20,8 @@ public class RListener implements IListener {
     public void handleEvent(IEvent event) {
         String eventType = event.getEventType();
 
-        if (IEvent.RETRIEVE_EVENT.equals(eventType)){
-            System.out.println(" RListener 监听到并执行>>>>>>>'查找'操作");
+        if (IEvent.DELETE_EVENT.equals(eventType)){
+            System.out.println(" DListener 监听到并执行>>>>>>> '删除'操作");
         }
 
     }

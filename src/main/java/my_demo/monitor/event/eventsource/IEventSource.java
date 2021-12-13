@@ -1,4 +1,7 @@
-package my_demo.monitor.event.interfaces;
+package my_demo.monitor.event.eventsource;
+
+import my_demo.monitor.event.listener.IListener;
+import my_demo.monitor.event.event.IEvent;
 
 /**
  * <p>事件源接口（被观察者，新闻发布者）</p>

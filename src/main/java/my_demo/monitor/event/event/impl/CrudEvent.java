@@ -1,7 +1,7 @@
-package my_demo.monitor.event.impl;
+package my_demo.monitor.event.event.impl;
 
-import my_demo.monitor.event.interfaces.IEvent;
-import my_demo.monitor.event.interfaces.IEventSource;
+import my_demo.monitor.event.event.IEvent;
+import my_demo.monitor.event.eventsource.IEventSource;
 
 /**
  * <p>事件。 某种类型的新闻内容</p>
@@ -11,11 +11,11 @@ import my_demo.monitor.event.interfaces.IEventSource;
  * @date 2021/6/16
  * </pre>
  */
-public class Event implements IEvent {
+public class CrudEvent implements IEvent {
     private IEventSource eventSource;   //事件源(被观察者)
     private String methodName;          //事件源所执行的方法名称
 
-    public Event(IEventSource eventSource, String methodName){
+    public CrudEvent(IEventSource eventSource, String methodName){
         super();
         this.eventSource = eventSource;
         this.methodName = methodName;

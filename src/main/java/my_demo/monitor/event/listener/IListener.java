@@ -1,4 +1,6 @@
-package my_demo.monitor.event.interfaces;
+package my_demo.monitor.event.listener;
+
+import my_demo.monitor.event.event.IEvent;
 
 /**
  * <p>监听器接口（观察者）</p>

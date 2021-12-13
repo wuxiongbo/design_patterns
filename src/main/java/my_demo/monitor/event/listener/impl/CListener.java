@@ -1,8 +1,8 @@
-package my_demo.monitor.event.impl.listener;
+package my_demo.monitor.event.listener.impl;
 
 
-import my_demo.monitor.event.interfaces.IEvent;
-import my_demo.monitor.event.interfaces.IListener;
+import my_demo.monitor.event.listener.IListener;
+import my_demo.monitor.event.event.IEvent;
 
 /**
  * <p>描述类的信息</p>

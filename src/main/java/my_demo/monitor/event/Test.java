@@ -1,12 +1,12 @@
 package my_demo.monitor.event;
 
-import my_demo.monitor.event.impl.CrudEventSource;
-import my_demo.monitor.event.impl.listener.CRUDListener;
-import my_demo.monitor.event.impl.listener.CListener;
-import my_demo.monitor.event.impl.listener.DListener;
-import my_demo.monitor.event.impl.listener.RListener;
-import my_demo.monitor.event.impl.listener.UListener;
-import my_demo.monitor.event.interfaces.IListener;
+import my_demo.monitor.event.eventsource.impl.CrudEventSource;
+import my_demo.monitor.event.listener.impl.CrudListener;
+import my_demo.monitor.event.listener.impl.CListener;
+import my_demo.monitor.event.listener.impl.DListener;
+import my_demo.monitor.event.listener.impl.RListener;
+import my_demo.monitor.event.listener.impl.UListener;
+import my_demo.monitor.event.listener.IListener;
 
 /**
  * <p> 监听器 的 简单实现</p>
@@ -21,7 +21,7 @@ public class Test {
         // 事件源 (被观察者，‘事件’ 由 ‘事件源’ 发出)
         CrudEventSource eventSource = new CrudEventSource();
         // 监听者 (观察者)
-        IListener crudListener = new CRUDListener();
+        IListener crudListener = new CrudListener();
 
 
         // 给 ‘事件源’ 注册 ‘监听器’
@@ -36,7 +36,11 @@ public class Test {
         eventSource.find();
 
 
-        System.out.println("================");
+
+
+        System.out.println("======================================================");
+
+
 
         // 给‘事件源’注册其他‘监听器’
         eventSource.addListener(new RListener());

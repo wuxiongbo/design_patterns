@@ -1,4 +1,6 @@
-package my_demo.monitor.event.interfaces;
+package my_demo.monitor.event.event;
+
+import my_demo.monitor.event.eventsource.IEventSource;
 
 /**
  * <p>事件接口</p>

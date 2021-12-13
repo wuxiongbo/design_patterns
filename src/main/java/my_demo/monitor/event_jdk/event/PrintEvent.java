@@ -1,4 +1,4 @@
-package my_demo.monitor.event_jdk;
+package my_demo.monitor.event_jdk.event;
 
 /**
  * <p>事件</p>
@@ -17,25 +17,37 @@ package my_demo.monitor.event_jdk;
  * @date 2021/6/16
  * </pre>
  */
+import my_demo.monitor.event_jdk.eventsource.WindowsEventSource;
+
 import java.util.EventObject;
 
 public class PrintEvent extends EventObject {
     private static final long serialVersionUID = 1L;
 
+    private String eventName;
+
     /**
      * @param source 事件源
      */
-    public PrintEvent(Object source) {
+    public PrintEvent(Object source,String eventName) {
         // 保存 事件源
         super(source);
+        this.eventName = eventName;
     }
 
     public void doEvent() {
         // getSource(),The object on which the Event initially occurred.
-        // 获取事件源
-        Object source = this.getSource();
+        // 获取 事件源
+        WindowsEventSource source = (WindowsEventSource) this.getSource();
 
-        System.out.println("准备通知一个事件源 source: " + source);
+        System.out.println("当前事件的 事件源:" + source.getClass().getName());
+
+        System.out.println(eventName);
     }
 
+
+    @Override
+    public String toString(){
+        return eventName;
+    }
 }
