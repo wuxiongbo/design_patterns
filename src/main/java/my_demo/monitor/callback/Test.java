@@ -1,6 +1,7 @@
 package my_demo.monitor.callback;
 
-import my_demo.monitor.callback.callback.Caller;
+import my_demo.monitor.callback.callback.impl.CallBack;
+import my_demo.monitor.callback.caller.Caller;
 import my_demo.monitor.callback.callback.ICallBack;
 
 /**
@@ -21,28 +22,22 @@ public class Test {
 
 
 
-        // 第一种写法。匿名内部类
+        // 第一种写法。lambda
         call.call(() -> System.out.println("回调函数调用成功!"));
 
 
 
-
         // 第二种写法。匿名内部类
-        ICallBack callBack = () -> System.out.println("回调函数回调成功!");
-        call.call(callBack);
-
-
-
-
-        // 第三种写法。定义类，然后将类实例化 实现这个ICallBack接口类
-        class CallBackImpl implements ICallBack {
+        call.call(new ICallBack(){
             @Override
             public void callBack() {
                 System.out.println("回调函数回调成功!");
             }
-        }
-        call.call(new CallBackImpl());
+        });
 
+
+        // 第三种写法。定义 回调函数的实现类
+        call.call(new CallBack());
 
     }
 

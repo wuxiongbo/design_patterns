@@ -1,11 +1,10 @@
 package my_demo.monitor.event_jdk.listener.impl;
 
-
 import my_demo.monitor.event_jdk.event.PrintEvent;
 import my_demo.monitor.event_jdk.listener.IListener;
 
 /**
- * <p>描述类的信息</p>
+ * <p> 关窗 监听器 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -19,7 +18,7 @@ public class CloseWindowsListener implements IListener {
 
         // 处理感兴趣的事件。
         if (CLOSEWINDOWS.equals(event.toString())) {
-            System.out.println("侦听到closeWindows事件，do close");
+            System.out.println("CloseWindowsListener 监听到closeWindows事件，do close");
             event.doEvent();
         }
 

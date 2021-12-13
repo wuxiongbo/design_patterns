@@ -27,20 +27,20 @@ public class PrintEvent extends EventObject {
     private String eventName;
 
     /**
-     * @param source 事件源
+     * @param eventSource 事件源
      */
-    public PrintEvent(Object source,String eventName) {
+    public PrintEvent(Object eventSource,String eventName) {
         // 保存 事件源
-        super(source);
+        super(eventSource);
         this.eventName = eventName;
     }
 
     public void doEvent() {
         // getSource(),The object on which the Event initially occurred.
         // 获取 事件源
-        WindowsEventSource source = (WindowsEventSource) this.getSource();
+        WindowsEventSource eventSource = (WindowsEventSource) this.getSource();
 
-        System.out.println("当前事件的 事件源:" + source.getClass().getName());
+        System.out.println("当前事件的 事件源:" + eventSource.getClass().getName());
 
         System.out.println(eventName);
     }

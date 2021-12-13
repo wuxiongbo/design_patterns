@@ -9,7 +9,7 @@ import my_demo.monitor.event.listener.impl.UListener;
 import my_demo.monitor.event.listener.IListener;
 
 /**
- * <p> 监听器 的 简单实现</p>
+ * <p> 观察者模式的变种---监听器 的 简单实现</p>
  *
  * <pre>
  * @author wuxiongbo

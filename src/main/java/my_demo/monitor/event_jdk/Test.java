@@ -32,25 +32,22 @@ public class Test {
         //定义 监听器（观察者）
         EventListener windowsListener = new WindowsListener();
 
-        //注册 监听器 到 事件源
+        // 为 事件源 注册 监听器。 以监听各个事件
         windows.addListener(windowsListener);
 
 
-        /*
-         * 事件源，触发事件：
-         *   传入openWindows事件，通知所有的事件监听器
-         *   对open事件感兴趣的listener将会执行
-         */
+        // 由 事件源 触发事件：
+        //    1. 产生 openWindows事件
         PrintEvent openWindowsEvent = new PrintEvent(windows, "openWindows");
-
+        //    2. 对 openWindows事件 感兴趣的listener将会监听到 该事件，然后执行相关操作
         windows.notifyListenerEvents(openWindowsEvent);
 
     }
 
 
     /**
-     *  对特定的事件提供特定的关注方法和事件触发
-     *  关注关闭事件，实现回调接口
+     *  对 特定的事件 提供  特定的关注方法 和 特定的事件触发
+     *  关注 关闭事件，实现 回调接口
      */
     private static void test2(){
         // 事件源（被观察者）

@@ -1,5 +1,6 @@
-package my_demo.monitor.observe.observable;
+package my_demo.monitor.observe.observable.impl;
 
+import my_demo.monitor.observe.observable.IObservable;
 import my_demo.monitor.observe.observe.IObserve;
 
 import java.util.ArrayList;
@@ -8,12 +9,15 @@ import java.util.List;
 /**
  * <p>被观察者实现类</p>
  *
+ *  维护观察者
+ *  通知观察者
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/6/16
  * </pre>
  */
-public class Observable implements IObservable{
+public class Observable implements IObservable {
     // 由于一个被观察者可以被多个观察者所观察，所以要设置一个观察者链表里
     private List<IObserve> observes;
 

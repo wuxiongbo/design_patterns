@@ -40,7 +40,7 @@ public class CrudEventSource implements IEventSource {
     @Override
     public void triggerListener(IEvent event) {
         for (IListener listener : listeners) {
-            listener.handleEvent(event);
+            listener.handleEvent(event);       // 回调 监听器
         }
     }
 

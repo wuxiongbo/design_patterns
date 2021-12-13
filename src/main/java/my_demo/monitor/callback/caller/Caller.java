@@ -1,4 +1,6 @@
-package my_demo.monitor.callback.callback;
+package my_demo.monitor.callback.caller;
+
+import my_demo.monitor.callback.callback.ICallBack;
 
 /**
  * <p>回调者(即，用于‘调用回调函数’ 的类)</p>

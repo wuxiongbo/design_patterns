@@ -1,4 +1,6 @@
-package my_demo.monitor.observe.observe;
+package my_demo.monitor.observe.observe.impl;
+
+import my_demo.monitor.observe.observe.IObserve;
 
 /**
  * <p>第二个观察者</p>
