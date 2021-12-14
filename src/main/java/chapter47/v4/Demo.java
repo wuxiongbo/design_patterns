@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * <p> 深拷贝 </p>
+ * <p>  原型模式的实现方式： 深拷贝 </p>
  *
  * 原型模式有两种实现方法，深拷贝和浅拷贝。
  *
@@ -28,6 +28,7 @@ import java.util.List;
  */
 
 public class Demo {
+
     private HashMap<String, SearchWord> currentKeywords=new HashMap<>();
     private long lastUpdateTime = -1;
 
@@ -35,14 +36,13 @@ public class Demo {
 
         // Deep copy
         HashMap<String, SearchWord> newKeywords = new HashMap<>();
-        for (HashMap.Entry<String, SearchWord> e : currentKeywords.entrySet()) {
-            SearchWord searchWord = e.getValue();
-
+        for (HashMap.Entry<String, SearchWord> entry : currentKeywords.entrySet()) {
+            SearchWord searchWord = entry.getValue();
 
             SearchWord newSearchWord = new SearchWord(
                     searchWord.getKeyword(), searchWord.getCount(), searchWord.getLastUpdateTime());
 
-            newKeywords.put(e.getKey(), newSearchWord);
+            newKeywords.put(entry.getKey(), newSearchWord);
         }
 
 
@@ -51,13 +51,11 @@ public class Demo {
         long maxNewUpdatedTime = lastUpdateTime;
         for (SearchWord searchWord : toBeUpdatedSearchWords) {
 
-
             if (searchWord.getLastUpdateTime() > maxNewUpdatedTime) {
                 maxNewUpdatedTime = searchWord.getLastUpdateTime();
             }
 
-
-            // 更新深拷贝map
+            // 更新深拷贝map （newKeywords）
             if (newKeywords.containsKey(searchWord.getKeyword())) {
                 SearchWord oldSearchWord = newKeywords.get(searchWord.getKeyword());
                 oldSearchWord.setCount(searchWord.getCount());
@@ -66,16 +64,17 @@ public class Demo {
                 newKeywords.put(searchWord.getKeyword(), searchWord);
             }
 
-
         }
 
         lastUpdateTime = maxNewUpdatedTime;
+
+        // 版本切换
         currentKeywords = newKeywords;
     }
 
 
     private List<SearchWord> getSearchWords(long lastUpdateTime) {
-        // TODO: 从数据库中取出更新时间>lastUpdateTime的数据
+        // ...从数据库中取出更新时间>lastUpdateTime的数据
         return null;
     }
 

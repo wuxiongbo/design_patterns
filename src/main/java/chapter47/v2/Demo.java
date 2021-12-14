@@ -9,23 +9,25 @@ import java.util.List;
 /**
  * <p>描述类的信息</p>
  *
- * 我们有一个特殊的要求：
- *    任何时刻，系统 A 中的所有数据都必须是同一个版本的，
- *    要么都是版本 a，
- *    要么都是版本 b，
- *    不能有的是版本 a，有的是版本 b。
- * 那刚刚的更新方式就不能满足这个要求了。
- *
- * 除此之外，我们还要求：
- *    在更新内存数据的时候，系统 A 不能处于不可用状态，也就是不能停机更新数据。
+ * 要求1，
+ *    对于前面那个需求，我们有一个特殊的要求， 任何时刻，系统 A 中的所有数据都必须是同一个版本的，即：
+ *      要么都是版本 a，
+ *      要么都是版本 b，
+ *      不能有的是版本 a，有的是版本 b。
  *
  *
+ *    v1 的更新方式，就不能满足这个要求了。
  *
- * 把正在使用的数据的版本定义为“服务版本”，
- * 当我们要更新内存中的数据的时候，我们并不是直接在服务版本（假设是版本 a 数据）上更新，而是重新创建另一个版本数据（假设是版本 b 数据），
- * 等新的版本数据建好之后，再一次性地将服务版本从版本 a 切换到版本 b。
  *
- * 这样既保证了数据一直可用，又避免了中间状态的存在。
+ * 要求2，
+ *    除此之外，我们还要求，在更新内存数据的时候，系统 A 不能处于  不可用状态，也就是  不能 停机更新数据。
+ *
+ *
+ * 把 ‘正在使用’的数据的版本  定义为“服务版本”，当我们要更新内存中的数据的时候，
+ * 我们并不是直接在 ‘服务版本’（假设是 版本 a 数据）上更新，而是  重新创建另一个版本数据（假设是 版本 b 数据），
+ * 等 新的版本数据 建好之后，再一次性地将 服务版本 从  ‘版本 a’ 切换到 ‘版本 b’。
+ *
+ * 这样，既保证了数据一直可用，又避免了中间状态的存在。
  *
  * <pre>
  * @author wuxiongbo
@@ -33,20 +35,24 @@ import java.util.List;
  * </pre>
  */
 public class Demo {
+    //  服务版本数据
     private HashMap<String, SearchWord> currentKeywords=new HashMap<>();
 
     public void refresh() {
 
+        // 新创建版本数据
         HashMap<String, SearchWord> newKeywords = new LinkedHashMap<>();
 
-        // 从数据库中取出 “所有的数据” ，放入到newKeywords中
+        // 从  数据库  中取出 “所有的新数据” ，放入到newKeywords中
         List<SearchWord> toBeUpdatedSearchWords = getSearchWords();
 
         for (SearchWord searchWord : toBeUpdatedSearchWords) {
             newKeywords.put(searchWord.getKeyword(), searchWord);
         }
 
-        // 获取全部数据后，再切换版本
+
+
+        // 获取全部最新数据后，再切换 内存数据 版本
         currentKeywords = newKeywords;
 
 
@@ -57,7 +63,7 @@ public class Demo {
     }
 
     private List<SearchWord> getSearchWords() {
-        // TODO: 从数据库中取出所有的数据
+        // .... 从数据库中取出所有的数据
         return null;
     }
 }

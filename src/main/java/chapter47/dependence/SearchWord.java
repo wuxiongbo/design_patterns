@@ -9,7 +9,14 @@ package chapter47.dependence;
  * </pre>
  */
 public class SearchWord {
-    public SearchWord(String keyword, Object count, long lastUpdateTime) {
+    // 关键字
+    private String keyword;
+    // 出现次数
+    private int count;
+    // 最后更新时间
+    private long lastUpdateTime;
+
+    public SearchWord(String keyword, int count, long lastUpdateTime) {
 
     }
 
@@ -17,15 +24,16 @@ public class SearchWord {
         return 0;
     }
 
+
     public String getKeyword() {
         return null;
     }
 
-    public Object getCount() {
-        return null;
+    public int getCount() {
+        return 0;
     }
 
-    public void setCount(Object count) {
+    public void setCount(int count) {
 
     }
 
