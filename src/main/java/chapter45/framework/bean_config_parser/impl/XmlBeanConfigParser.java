@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p> 配置文件解析类 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -48,11 +48,16 @@ public class XmlBeanConfigParser implements BeanConfigParser {
         try {
 
             Document document = DocumentHelper.parseText(configContent);
+
+            //第一层标签
             Element root = document.getRootElement();
+
+            //第二层标签
             List<Element> elements = root.elements("bean");
             for (Element element : elements) {
                 BeanDefinition beanDefinition = new BeanDefinition();
 
+                // 标签属性
                 Attribute idAttr = element.attribute("id");
                 String id = idAttr.getText();
                 Attribute classAttr = element.attribute("class");
@@ -61,12 +66,15 @@ public class XmlBeanConfigParser implements BeanConfigParser {
                 beanDefinition.setClassName(className);
                 beanDefinition.setId(id);
 
+
                 List<BeanDefinition.ConstructorArg> args = beanDefinition.getConstructorArgs();
+                //第三层标签
                 List<Element> elementList = element.elements("constructor-arg");
                 for (Element element1 : elementList) {
 
                     BeanDefinition.ConstructorArg constructorArg = new BeanDefinition.ConstructorArg();
 
+                    // 标签属性
                     Attribute typeAttr = element1.attribute("type");
                     String type = null;
                     if(typeAttr!=null){
@@ -151,15 +159,7 @@ public class XmlBeanConfigParser implements BeanConfigParser {
             Object o = aClass.getConstructor().newInstance();
             RateLimiter r =  (RateLimiter)o;
             r.test();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (ClassNotFoundException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             e.printStackTrace();
         }
 

@@ -42,6 +42,7 @@ public class Demo {
         // 懒加载  getBean 的时候再初始化
         RateLimiter rateLimiter = (RateLimiter) applicationContext.getBean("rateLimiter");
         rateLimiter.test();
+
         RedisCounter redisCounter = rateLimiter.getRedisCounter();
         System.out.println(redisCounter);
 
