@@ -1,7 +1,5 @@
 package chapter18.scheduled;
 
-import chapter18.config.RedisConfig;
-
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +7,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * <p>描述类的信息</p>
  *
- * ScheduledUpdater 只依赖 Updater 这个跟热更新相关的接口，不需要被强迫去依赖不需要的 Viewer 接口，满足接口隔离原则。
+ * ScheduledUpdater 只依赖 Updater 这个跟热更新相关的接口，不需要被强迫去依赖不需要的 Viewer 接口，
+ * 满足 "接口隔离原则"
  * 
  * <pre>
  * @author wuxiongbo

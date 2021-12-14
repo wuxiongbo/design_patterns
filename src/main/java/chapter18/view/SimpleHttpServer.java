@@ -8,7 +8,8 @@ import java.util.Map;
 /**
  * <p>描述类的信息</p>
  *
- * SimpleHttpServer 只依赖跟查看信息相关的 Viewer 接口，不依赖不需要的 Updater 接口，也满足接口隔离原则。
+ * SimpleHttpServer 只依赖跟查看信息相关的 Viewer 接口，不依赖不需要的 Updater 接口，
+ * 也满足"接口隔离原则"
  *
  * <pre>
  * @author wuxiongbo
@@ -34,8 +35,7 @@ public class SimpleHttpServer {
     }
 
     public void run() {
-
-        //...
-
+        //.....
     }
+
 }
