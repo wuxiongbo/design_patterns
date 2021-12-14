@@ -1,4 +1,4 @@
-package chapter45.framework;
+package chapter45.framework.application_context;
 
 import chapter45.framework.exception.BeanCreationFailureException;
 import chapter45.framework.exception.NoSuchBeanDefinitionException;
@@ -12,5 +12,7 @@ import chapter45.framework.exception.NoSuchBeanDefinitionException;
  * </pre>
  */
 public interface ApplicationContext {
+
     Object getBean(String beanId) throws BeanCreationFailureException, NoSuchBeanDefinitionException;
+
 }

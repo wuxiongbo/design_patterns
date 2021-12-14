@@ -2,8 +2,8 @@ package chapter45;
 
 import chapter45.bean.RateLimiter;
 import chapter45.bean.RedisCounter;
-import chapter45.framework.ApplicationContext;
-import chapter45.framework.ClassPathXmlApplicationContext;
+import chapter45.framework.application_context.ApplicationContext;
+import chapter45.framework.application_context.impl.ClassPathXmlApplicationContext;
 import chapter45.framework.exception.BeanCreationFailureException;
 import chapter45.framework.exception.NoSuchBeanDefinitionException;
 

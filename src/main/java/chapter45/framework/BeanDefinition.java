@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p> bean定义 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -33,15 +33,12 @@ public class BeanDefinition {
     // 如果 lazy-init=false，对象在应用启动的时候就事先创建好。
     private boolean lazyInit = false;
 
-
-    // 省略必要的getter/setter/constructors
-
     public boolean isSingleton() {
         return scope.equals(Scope.SINGLETON);
     }
 
 
-    public static enum Scope {
+    public enum Scope {
         SINGLETON,
         PROTOTYPE
     }
@@ -68,7 +65,6 @@ public class BeanDefinition {
         public boolean setIsRef(boolean isRef) {
             return this.isRef = isRef;
         }
-        // 省略必要的getter/setter/constructors
     }
 
 /*    public static class ConstructorArg {

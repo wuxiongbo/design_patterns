@@ -1,3 +1,4 @@
+<!-- chapter45 -->
 <beans>
     <bean id="rateLimiter" class="chapter45.bean.RateLimiter">
         <!-- 构造器的入参为 引用类型。 引用的类，别名为 redisCounter -->

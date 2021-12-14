@@ -1,4 +1,6 @@
-package chapter45.framework;
+package chapter45.framework.bean_config_parser;
+
+import chapter45.framework.BeanDefinition;
 
 import java.io.InputStream;
 import java.util.List;

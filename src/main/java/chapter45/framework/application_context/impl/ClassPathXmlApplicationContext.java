@@ -1,5 +1,10 @@
-package chapter45.framework;
+package chapter45.framework.application_context.impl;
 
+import chapter45.framework.BeanDefinition;
+import chapter45.framework.beans_factory.BeansFactory;
+import chapter45.framework.application_context.ApplicationContext;
+import chapter45.framework.bean_config_parser.BeanConfigParser;
+import chapter45.framework.bean_config_parser.impl.XmlBeanConfigParser;
 import chapter45.framework.exception.BeanCreationFailureException;
 import chapter45.framework.exception.NoSuchBeanDefinitionException;
 
@@ -23,11 +28,11 @@ import java.util.List;
  * @date 2021/7/29
  * </pre>
  */
-public class ClassPathXmlApplicationContext  implements ApplicationContext {
-    // 创建对象。 保存 BeanDefinition
+public class ClassPathXmlApplicationContext implements ApplicationContext {
+    // 用于 创建对象、 保存 BeanDefinition
     private BeansFactory beansFactory;
 
-    // 解析  配置文件  成 BeanDefinition
+    // 用于 将配置文件 解析为 BeanDefinition
     private BeanConfigParser beanConfigParser;
 
     public ClassPathXmlApplicationContext(String configLocation)  {
@@ -36,6 +41,7 @@ public class ClassPathXmlApplicationContext  implements ApplicationContext {
         loadBeanDefinitions(configLocation);
     }
 
+    // 加载配置文件，并交给配置解析类，去解析
     private void loadBeanDefinitions(String configLocation)  {
         InputStream in = null;
         try {
