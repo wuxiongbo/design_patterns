@@ -13,14 +13,14 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * <p>入口</p>
+ * <p> 入口 </p>
  *
- * ClassPathXmlApplicationContext 负责组装 BeansFactory 和 BeanConfigParser 两个类，
+ * ClassPathXmlApplicationContext 负责组装 BeansFactory 和 BeanConfigParser 两个功能类，
  *
- * 执行流程：
+ * ApplicationContext 的 执行流程：
  * 1. 从 classpath 中加载 XML 格式的配置文件，
- * 2. 通过 BeanConfigParser 解析为统一的 BeanDefinition 格式，
- * 3. 然后，BeansFactory 根据 BeanDefinition 来创建对象。
+ * 2. 使用 BeanConfigParser 解析配置文件为统一的 BeanDefinition 格式，
+ * 3. 然后，使用 BeansFactory ， 根据 BeanDefinition 来创建对象。
  *
  *
  * <pre>

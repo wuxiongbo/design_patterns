@@ -8,7 +8,7 @@ import chapter45.framework.exception.BeanCreationFailureException;
 import chapter45.framework.exception.NoSuchBeanDefinitionException;
 
 /**
- * <p>工厂模式的应用-- 简单的个DI容器</p>
+ * <p> “工厂模式” 的应用-- 简单的个DI容器</p>
  *
  * 一个简单的 DI 容器的核心功能一般有三个：
  *      配置解析、

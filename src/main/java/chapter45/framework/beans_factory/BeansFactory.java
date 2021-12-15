@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * <p> 核心 工厂类 </p>
+ * <p> 核心——“工厂类” </p>
  *
  *  BeansFactory 创建对象用到的主要技术点就是 Java 中的反射语法：一种动态加载类和创建对象的机制。
  *

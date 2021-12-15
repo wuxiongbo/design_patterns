@@ -7,12 +7,7 @@ import chapter44.v7.factory.ConfigParserFactoryMap;
 import chapter44.v7.factory_method.IConfigParserFactory;
 
 /**
- * <p> 工厂方法（Factory Method） 的改进 </p>
- *
- * 简单工厂模式 vs 工厂方法模式:
- * 实际上，对于 "规则配置文件解析" 这个应用场景来说，工厂模式需要额外创建诸多 Factory 类，也会增加代码的复杂性，
- * 而且，每个 Factory 类只是做简单的 new 操作，功能非常单薄（只有一行代码），也没必要设计成独立的类，
- * 所以，在这个应用场景下，简单工厂模式简单好用，比工厂方法模式更加合适。
+ * <p> 抽象工厂 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -32,13 +27,12 @@ public class SystemConfigSource {
         if (parserFactory == null) {
             throw new InvalidRuleConfigException("Rule config file format is not supported: " + systemConfigFilePath);
         }
+
+        // 函数隔离
         ISystemConfigParser parser = parserFactory.createSystemParser();
 
-        //从 systemConfigFilePath 文件中读取配置文本到configText中
-        String configText = "content...";
-
-        // 文本内容 解析 为配置对象
-        SystemConfig systemConfig = parser.parse(configText);
+        String configText = "content..."; //从 systemConfigFilePath 文件中读取配置文本到configText中
+        SystemConfig systemConfig = parser.parse(configText); // 文本内容 解析 为配置对象
         return systemConfig;
     }
 

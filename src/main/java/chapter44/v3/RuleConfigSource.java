@@ -28,20 +28,19 @@ public class RuleConfigSource {
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
+
+
         // 将 “创建解析类” 的 逻辑 抽象成 独立的‘方法’，将 独立的‘方法’ 进一步封装到一个 独立的类 中。 这个独立类只负责创建，称为工厂类
         IRuleConfigParser parser = RuleConfigParserFactory.createParser(ruleConfigFileExtension);
 
 
+
         if (parser == null) {
-            throw new InvalidRuleConfigException(
-                    "Rule config file format is not supported: " + ruleConfigFilePath);
+            throw new InvalidRuleConfigException("Rule config file format is not supported: " + ruleConfigFilePath);
         }
-
         String configText = "";
-
         //从ruleConfigFilePath文件中读取配置文本到configText中
         RuleConfig ruleConfig = parser.parse(configText);
-
         return ruleConfig;
     }
 

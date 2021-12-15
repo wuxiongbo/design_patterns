@@ -31,6 +31,8 @@ public class ResourcePoolConfig {
 
 
     // 将 构造方法 私有
+    // 这样，我们就只能通过 Builder 来创建 ResourcePoolConfig 类对象。
+    // 并且，ResourcePoolConfig 没有提供任何 set() 方法，这样我们创建出来的对象就是不可变对象了。
     private ResourcePoolConfig(Builder builder) {
         this.name = builder.name;
         this.maxTotal = builder.maxTotal;
@@ -53,7 +55,7 @@ public class ResourcePoolConfig {
         private int minIdle = DEFAULT_MIN_IDLE;
 
 
-        // 构建对象。
+        // 在使用 build() 方法真正创建对象之前，做集中的校验，校验通过之后才会创建对象
         public ResourcePoolConfig build() {
             // 校验逻辑放到这里来做，包括 必填项校验、依赖关系校验、约束条件校验 等
 
@@ -124,6 +126,32 @@ public class ResourcePoolConfig {
     }
 
 
+    /**
+     * 实际上，使用建造者模式创建对象，还能避免对象存在无效状态。
+     * 我再举个例子解释一下。
+     * 比如我们定义了一个长方形类，如果不使用建造者模式，采用先创建后 set 的方式，那就会导致在第一个 set 之后，对象处于无效状态。
+     *
+     * 为了避免这种无效状态的存在，我们就需要使用构造函数一次性初始化好所有的成员变量。
+     * 如果构造函数参数过多，我们就需要考虑使用建造者模式，先设置建造者的变量，然后再一次性地创建对象，让对象一直处于有效状态。
+     *
+     * 实际上，如果我们并不是很关心对象是否有短暂的无效状态，也不是太在意对象是否是可变的。
+     * 比如，对象只是用来映射数据库读出来的数据，那我们直接暴露 set() 方法来设置类的成员变量值是完全没问题的。
+     * 而且，使用建造者模式来构建对象，代码实际上是有点重复的，ResourcePoolConfig 类中的成员变量，要在 Builder 类中重新再定义一遍。
+     *
+     * 具体代码如下所示：
+     */
+    public void test(){
+        Rectangle r = new Rectangle(); // r is invalid
+        r.setWidth(2); // r is invalid
+        r.setHeight(3); // r is valid
+    }
+    
+    private class Rectangle{
+        public void setWidth(int i) {
+        }
+        public void setHeight(int i) {
+        }
+    }
 }
 
 

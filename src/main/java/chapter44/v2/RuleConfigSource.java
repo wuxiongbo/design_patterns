@@ -38,13 +38,11 @@ public class RuleConfigSource {
         IRuleConfigParser parser = createParser(ruleConfigFileExtension);
 
         if (parser == null) {
-            throw new InvalidRuleConfigException(
-                    "Rule config file format is not supported: " + ruleConfigFilePath);
+            throw new InvalidRuleConfigException("Rule config file format is not supported: " + ruleConfigFilePath);
         }
 
         String configText = "";
-        //从ruleConfigFilePath文件中读取配置文本到configText中
-        RuleConfig ruleConfig = parser.parse(configText);
+        RuleConfig ruleConfig = parser.parse(configText); //从ruleConfigFilePath文件中读取配置文本到configText中
         return ruleConfig;
     }
 
