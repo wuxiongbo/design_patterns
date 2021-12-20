@@ -1,7 +1,7 @@
 package chapter22.demo1.v1;
 
-import chapter22.demo1.v1.util.Html;
-import chapter22.demo1.v1.util.HtmlRequest;
+import chapter22.demo1.dependence.Html;
+import chapter22.demo1.dependence.HtmlRequest;
 
 /**
  * <p>网页下载器</p>
@@ -26,11 +26,15 @@ public class HtmlDownloader {
         //      返回的请求结果
 //        Byte[] rawHtml = transporter.send(new HtmlRequest(url));
 
+
         // 改造后。
         HtmlRequest htmlRequest = new HtmlRequest(url);
+        String address = htmlRequest.getAddress();
+        Byte[] content = htmlRequest.getContent().getBytes();
+
+        // NetworkTransporter网络通讯器  不应该依赖 HtmlRequest， 应该尽可能通用，而不只是html下载
         //      返回的请求结果
-        Byte[] rawHtml = transporter.send(
-                htmlRequest.getAddress(), htmlRequest.getContent().getBytes());
+        Byte[] rawHtml = transporter.send( address, content);
 
         return new Html(rawHtml);
     }

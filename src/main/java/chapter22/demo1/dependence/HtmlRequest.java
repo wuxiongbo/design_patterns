@@ -1,4 +1,4 @@
-package chapter22.demo1.v1.util;
+package chapter22.demo1.dependence;
 
 /**
  * <p>页面下载器请求体</p>

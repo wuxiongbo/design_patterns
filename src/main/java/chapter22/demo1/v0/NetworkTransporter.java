@@ -1,4 +1,6 @@
-package chapter22.demo1.v1;
+package chapter22.demo1.v0;
+
+import chapter22.demo1.dependence.HtmlRequest;
 
 /**
  * <p>网络通讯器</p>
@@ -16,17 +18,8 @@ package chapter22.demo1.v1;
 public class NetworkTransporter {
     // 省略属性和其他方法...
 
-
-
-    // 改造前。
     // 违背 迪米特法则，因为 依赖了不该有直接依赖关系的 HtmlRequest 类。
-//    public Byte[] send(HtmlRequest htmlRequest) {
-//        //...
-//        return null;
-//    }
-
-    // 改造后。
-    public Byte[] send(String address, Byte[] data) {
+    public Byte[] send(HtmlRequest htmlRequest) {
         //...
         return null;
     }

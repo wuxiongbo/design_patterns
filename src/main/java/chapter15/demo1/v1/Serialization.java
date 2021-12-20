@@ -15,7 +15,9 @@ import java.util.Collections;
 import java.util.Map;
 
 /**
- * 单一职责。 反例
+ * 单一职责。
+ * 类的职责 是否设计得 越 "单一" 越 "好"?
+ * 反例
  *
  * Protocol format: identifier-string;{gson string}
  * For example: UEUEUE;{"a":"A","b":"B"}

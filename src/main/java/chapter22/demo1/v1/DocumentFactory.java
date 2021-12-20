@@ -1,13 +1,14 @@
 package chapter22.demo1.v1;
 
-import chapter22.demo1.v1.util.Html;
+import chapter22.demo1.dependence.Html;
 
 /**
  * <p> Document工厂类 </p>
  *
  * Document工厂类 依赖 网页下载器
  *
- * 通过一个工厂方法来创建 Document
+ * 新增一个 工厂方法类，
+ * 用 工厂方法 来创建 Document
  * 解决  原Document类 中存在的三个问题
  *
  * <pre>
@@ -24,7 +25,11 @@ public class DocumentFactory {
     }
 
     public Document createDocument(String url) {
+
+        // 下载器的构建逻辑放在本工厂类
         Html html = downloader.downloadHtml(url);
+
+        //  不用依赖注入 下载器，实现业务解耦
         return new Document(url, html);
     }
 }
