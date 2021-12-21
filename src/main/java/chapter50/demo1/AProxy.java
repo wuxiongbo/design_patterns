@@ -3,7 +3,7 @@ package chapter50.demo1;
 import chapter50.demo1.dependence.IA;
 
 /**
- * <p>代理模式</p>
+ * <p> 代理模式 </p>
  *
  * 代理模式中，代理类附加的是跟原始类无关的功能
  *
@@ -20,8 +20,8 @@ public class AProxy implements IA {
 
     @Override
     public void f() {
-        // 新添加的代理逻辑
+        // 新添加的代理逻辑， 与 原始类 无关
         a.f();
-        // 新添加的代理逻辑
+        // 新添加的代理逻辑， 与 原始类 无关
     }
 }

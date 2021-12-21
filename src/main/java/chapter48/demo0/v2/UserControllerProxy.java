@@ -1,63 +1,58 @@
-package chapter48;
+package chapter48.demo0.v2;
 
+import chapter48.demo0.v1.MetricsCollector;
 import chapter48.dependence.RequestInfo;
 import chapter48.dependence.UserVo;
 
 /**
- * <p>描述类的信息</p>
- *
- * 系统的 需求分析、设计和实现。  案例汇总。
- *
- * 业务系统的开发。 业务开发中的  设计原则和思想
- *    积分系统：
- *      涉及章节：
- *        23、24;
- *
- * 非业务系统(通用框架)的开发。
- *    计数系统：
- *      涉及章节：
- *        25、26;
- *        39、40;
+ * <p>静态代理</p>
  *
  * <pre>
  * @author wuxiongbo
- * @date 2021/8/9
+ * @date 2021/12/21
  * </pre>
- *
  */
-public class UserController {
-    //...省略其他属性和方法...
-    private MetricsCollector metricsCollector; // 依赖注入
+public class UserControllerProxy implements IUserController {
 
+    // 增强业务
+    private MetricsCollector metricsCollector;
+
+    // 委托对象(被代理对象)
+    private UserController userController;
+
+
+    public UserControllerProxy(UserController userController) {
+        this.userController = userController;
+        this.metricsCollector = new MetricsCollector();
+    }
+
+    @Override
     public UserVo login(String telephone, String password) {
         long startTimestamp = System.currentTimeMillis();
 
-        // ... 省略login逻辑 ...
+        // 委托
+        UserVo userVo = userController.login(telephone, password);
 
         long endTimeStamp = System.currentTimeMillis();
         long responseTime = endTimeStamp - startTimestamp;
         RequestInfo requestInfo = new RequestInfo("login", responseTime, startTimestamp);
         metricsCollector.recordRequest(requestInfo);
 
-        //... 返回UserVo数据 ...
-
-        return null;
+        return userVo;
     }
 
-
+    @Override
     public UserVo register(String telephone, String password) {
         long startTimestamp = System.currentTimeMillis();
 
-        // ... 省略register逻辑...
+        // 委托
+        UserVo userVo = userController.register(telephone, password);
 
         long endTimeStamp = System.currentTimeMillis();
         long responseTime = endTimeStamp - startTimestamp;
         RequestInfo requestInfo = new RequestInfo("register", responseTime, startTimestamp);
         metricsCollector.recordRequest(requestInfo);
 
-        //...返回UserVo数据...
-        return null;
+        return userVo;
     }
-
-
 }

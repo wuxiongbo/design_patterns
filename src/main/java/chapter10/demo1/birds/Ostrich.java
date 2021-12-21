@@ -16,7 +16,7 @@ import chapter10.demo1.ability.Tweetable;
  * @date 2021/6/30
  * </pre>
  */
-public class Ostrich  implements Tweetable, EggLayable {
+public class Ostrich implements Tweetable, EggLayable {
 
     //组合。 会叫的能力
     private TweetAbility tweetAbility = new TweetAbility();

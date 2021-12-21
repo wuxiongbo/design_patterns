@@ -6,6 +6,17 @@ import chapter10.demo1.birds.Sparrow;
 /**
  * <p>组合关系</p>
  *
+ *  如果持续增加能力，组合爆炸，类的 继承层次 会越来越深、继承关系会越来越复杂
+ *
+ *                      AbstractBird
+ *                      /          \
+ *       AbstractFlyableBird     AbstractUnFlyableBird
+ *         /              |          |              \
+ *     Sparrow          Crow      Penguin          Ostrich
+ *
+ *
+ *
+ *
  * Ability     能力的实现
  * interfaces  能力的接口
  *
