@@ -1,8 +1,8 @@
 package chapter16.demo1;
 
 
-import chapter16.demo1.bo.ApiStatInfo;
-import chapter16.demo1.bo.ApplicationContext;
+import chapter16.demo1.framework.ApiStatInfo;
+import chapter16.demo1.framework.ApplicationContext;
 
 /**
  * 开闭原则：

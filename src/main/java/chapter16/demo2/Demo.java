@@ -1,6 +1,6 @@
 package chapter16.demo2;
 
-import chapter16.demo1.bo.Notification;
+import chapter16.demo1.module.notify.v0.Notification;
 import chapter16.demo2.interfaces.MessageFormatter;
 import chapter16.demo2.interfaces.MessageQueue;
 
