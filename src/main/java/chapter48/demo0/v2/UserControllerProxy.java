@@ -5,7 +5,7 @@ import chapter48.dependence.RequestInfo;
 import chapter48.dependence.UserVo;
 
 /**
- * <p>静态代理</p>
+ * <p>静态代理： 接口</p>
  *
  * <pre>
  * @author wuxiongbo
