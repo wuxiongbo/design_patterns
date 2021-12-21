@@ -1,6 +1,6 @@
-package chapter10.demo1.ability;
+package chapter10.demo1.ability.impl;
 
-import chapter10.demo1.interface1.EggLayable;
+import chapter10.demo1.ability.EggLayable;
 
 /**
  * <p>实现会下蛋的能力</p>

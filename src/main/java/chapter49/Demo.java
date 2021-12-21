@@ -9,22 +9,37 @@ import java.sql.Statement;
 
 /**
  * <p>桥接模式</p>
+ * 桥接模式，也叫作 桥梁模式    Bridge Design Pattern
  *
+ * 理解方式1 ：
+ *      将 “抽象” 和 “实现” 解耦，让它们可以独立变化
+ * 理解方式2 ：
+ *      一个类存在两个（或多个）独立变化的维度，我们通过 “组合” 的方式，让这两个（或多个）维度可以独立进行扩展。
+ *
+ *      通过 “组合关系” 来替代 “继承关系”，避免继承层次的指数级爆炸。
+ *      这种理解方式非常类似于，“组合 优于 继承” 设计原则
+ *
+ *
+ * JDBC 驱动是 “桥接模式” 的经典应用。
+ *
+ * 下面开始解析：
  *
  *
  * 执行 Class.forName(“com.mysql.jdbc.Driver”) 这条语句的时候，实际上做了两件事情：
- *      第一件事情是：要求 JVM 查找并加载指定的 Driver 类，
- *      第二件事情是：执行 Driver类 的静态代码，也就是将 MySQL Driver 注册到 DriverManager 类 中。
+ *      第一件事情：要求 JVM ‘查找’ 并 ‘加载’ 指定的 Driver 类
+ *      第二件事情：执行 Driver类 的静态代码，也就是将 MySQL Driver 注册到 DriverManager 类 中
  *
  *
- * Driver 类。 “实现”
  *
+ * 业务的“实现”
+ *
+ * Driver 类。
  * public class Driver extends NonRegisteringDriver implements java.sql.Driver {
  *
  *     // Register ourselves with the DriverManager
  *     static {
  *         try {
- *             // 桥接
+ *             // 依赖注入 Driver。 为接下来的 "桥接"  作准备
  *             java.sql.DriverManager.registerDriver(new Driver());
  *         } catch (SQLException E) {
  *             throw new RuntimeException("Can't register driver!");
@@ -45,12 +60,12 @@ import java.sql.Statement;
  * 而 Driver 实现类都实现了相同的接口（java.sql.Driver ），这也是可以灵活切换 Driver 的原因。
  *
  *
+ * 业务的 “抽象”
  *
- * DriverManager 类。 “抽象”
- *
+ * DriverManager 类
  * public class DriverManager {
  *
- *     // 通过 对象的 “组合”关系 ，进行 “桥接”
+ *     // 利用 对象的 “组合”关系 ，作为 交互的“桥梁”
  *     // List of registered JDBC drivers
  *     private final static CopyOnWriteArrayList<DriverInfo> registeredDrivers = new CopyOnWriteArrayList<>();
  *
@@ -76,7 +91,7 @@ import java.sql.Statement;
  *
  *             if(isDriverAllowed(aDriver.driver, callerCL)) {
  *                 try {
- *                     // 委派
+ *                     // 委托 ，实现 “桥接”
  *                     Connection con = aDriver.driver.connect(url, info);
  *                     if (con != null) {
  *                         return (con);
@@ -95,6 +110,8 @@ import java.sql.Statement;
  *     }
  * }
  *
+ *
+ * @see chapter16.demo1.Main
  * <pre>
  * @author wuxiongbo
  * @date 2021/12/21

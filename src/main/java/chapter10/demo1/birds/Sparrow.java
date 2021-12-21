@@ -1,12 +1,15 @@
-package chapter10.demo1.imple;
+package chapter10.demo1.birds;
 
-import chapter10.demo1.ability.FlyAbility;
-import chapter10.demo1.interface1.EggLayable;
-import chapter10.demo1.interface1.Flyable;
-import chapter10.demo1.interface1.Tweetable;
+import chapter10.demo1.ability.impl.FlyAbility;
+import chapter10.demo1.ability.EggLayable;
+import chapter10.demo1.ability.Flyable;
+import chapter10.demo1.ability.Tweetable;
 
 /**
  * <p>麻雀</p>
+ *
+ * 具备的能力：
+ *    会飞、会叫、会下蛋
  *
  * <pre>
  * @author wuxiongbo
@@ -23,19 +26,23 @@ public class Sparrow implements Flyable, Tweetable, EggLayable {
     public void fly() {
         //...
 
-        // 委托给组合类去实现
+        // 委托 给 组合类 去实现
         flyAbility.fly();
     }
 
     @Override
     public void tweet() {
         // ...
+
+        // 自己实现
         System.out.println("叫(麻雀实现)");
     }
 
     @Override
     public void layEgg() {
         // ...
+
+        // 自己实现
         System.out.println("下蛋(麻雀实现)");
     }
 }

@@ -1,13 +1,13 @@
 package chapter10.demo1;
 
-import chapter10.demo1.imple.Ostrich;
-import chapter10.demo1.imple.Sparrow;
+import chapter10.demo1.birds.Ostrich;
+import chapter10.demo1.birds.Sparrow;
 
 /**
  * <p>组合关系</p>
  *
  * Ability     能力的实现
- * interface1  能力的接口
+ * interfaces  能力的接口
  *
  * impl        具体业务实现类
  *

@@ -1,6 +1,6 @@
-package chapter10.demo1.ability;
+package chapter10.demo1.ability.impl;
 
-import chapter10.demo1.interface1.Flyable;
+import chapter10.demo1.ability.Flyable;
 
 /**
  * <p>实现会飞的能力</p>

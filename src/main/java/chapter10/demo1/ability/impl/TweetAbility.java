@@ -1,6 +1,6 @@
-package chapter10.demo1.ability;
+package chapter10.demo1.ability.impl;
 
-import chapter10.demo1.interface1.Tweetable;
+import chapter10.demo1.ability.Tweetable;
 
 /**
  * <p>实现会叫的能力</p>

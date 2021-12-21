@@ -1,13 +1,16 @@
-package chapter10.demo1.imple;
+package chapter10.demo1.birds;
 
-import chapter10.demo1.ability.EggLayAbility;
-import chapter10.demo1.ability.TweetAbility;
-import chapter10.demo1.interface1.EggLayable;
-import chapter10.demo1.interface1.Tweetable;
+import chapter10.demo1.ability.impl.EggLayAbility;
+import chapter10.demo1.ability.impl.TweetAbility;
+import chapter10.demo1.ability.EggLayable;
+import chapter10.demo1.ability.Tweetable;
 
 /**
  * <p>鸵鸟</p>
- * 会叫、会下蛋
+ *
+ * 具备的能力：
+ *    会叫、会下蛋
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/6/30

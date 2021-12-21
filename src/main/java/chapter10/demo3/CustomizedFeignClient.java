@@ -1,4 +1,4 @@
-package chapter10.demo2;
+package chapter10.demo3;
 
 /**
  * <p>描述类的信息</p>

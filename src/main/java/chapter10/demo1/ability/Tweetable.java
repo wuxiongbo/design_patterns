@@ -1,4 +1,4 @@
-package chapter10.demo1.interface1;
+package chapter10.demo1.ability;
 
 /**
  * <p>会叫</p>
