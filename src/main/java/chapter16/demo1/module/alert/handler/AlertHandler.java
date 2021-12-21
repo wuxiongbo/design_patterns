@@ -7,7 +7,7 @@ import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
 import chapter16.demo1.module.notify.v1.notification.factory.factorymethod.INotificationFactory;
 import chapter16.demo1.module.notify.v1.notification.NotificationEmergencyLevel;
 import chapter16.demo1.module.notify.v1.notification.Notification;
-import chapter16.demo1.module.notify.v1.notification.factory.NotificationFactoryMap;
+import chapter16.demo1.module.notify.v1.notification.factory.NotificationFactoryCreator;
 
 //import Notification;
 
@@ -28,7 +28,7 @@ public abstract class AlertHandler {
         this.rule = rule;
 
         // 告警级别
-        INotificationFactory notificationFactory = NotificationFactoryMap
+        INotificationFactory notificationFactory = NotificationFactoryCreator
                 .getNotificationFactory(notificationEmergencyLevel);
 
         // 通知渠道

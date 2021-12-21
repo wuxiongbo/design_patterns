@@ -17,7 +17,7 @@ import java.util.Map;
  * @date 2021/12/21
  * </pre>
  */
-public class NotificationFactoryMap {
+public class NotificationFactoryCreator {
 
     private static final Map<NotificationEmergencyLevel, INotificationFactory> NOTIFICATIONS = new HashMap<>();
 

@@ -4,7 +4,7 @@ import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
 import chapter16.demo1.module.notify.v1.notification.Notification;
 
 /**
- * <p>描述类的信息</p>
+ * <p>不同紧急程度的告警 实现</p>
  *
  * <pre>
  * @author wuxiongbo

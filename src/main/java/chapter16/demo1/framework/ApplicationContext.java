@@ -11,7 +11,6 @@ import chapter16.demo1.module.notify.v1.notification.NotificationEmergencyLevel;
 
 /**
  * ApplicationContext 是一个单例类，
- *
  * 负责  Alert 的创建、组装（alertRule 和 notification 的依赖注入）、初始化（添加 handlers）工作。
  *
  */
@@ -29,11 +28,11 @@ public class ApplicationContext {
 //        notification = new Notification(/*.省略参数.*/); //省略一些初始化代码
 
         alert = new Alert();
-
-        alert.addAlertHandler(new TpsAlertHandler(alertRule, NotificationEmergencyLevel.URGENCY,new WechatMsgSender()));
-        alert.addAlertHandler(new ErrorAlertHandler(alertRule,NotificationEmergencyLevel.SEVERE,new WechatMsgSender()));
+        WechatMsgSender wechatMsgSender = new WechatMsgSender();
         // 改动三：注册handler
-        alert.addAlertHandler(new TimeoutAlertHandler(alertRule,NotificationEmergencyLevel.SEVERE,new WechatMsgSender()));
+        alert.addAlertHandler(new TpsAlertHandler(alertRule, NotificationEmergencyLevel.URGENCY,wechatMsgSender));
+        alert.addAlertHandler(new ErrorAlertHandler(alertRule,NotificationEmergencyLevel.SEVERE,wechatMsgSender));
+        alert.addAlertHandler(new TimeoutAlertHandler(alertRule,NotificationEmergencyLevel.NORMAL,wechatMsgSender));
 
     }
 

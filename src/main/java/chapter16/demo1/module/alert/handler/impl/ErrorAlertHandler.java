@@ -29,7 +29,6 @@ public class ErrorAlertHandler extends AlertHandler {
         if (apiStatInfo.getErrorCount() > rule.getMatchedRule(apiStatInfo.getApi()).getMaxErrorCount()) {
             // 通知接口的相关负责人或者团队
             notification.notify("超过最大错误请求数");
-
         }
     }
 }

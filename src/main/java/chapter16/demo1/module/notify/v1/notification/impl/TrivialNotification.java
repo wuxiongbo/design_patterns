@@ -4,7 +4,7 @@ import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
 import chapter16.demo1.module.notify.v1.notification.Notification;
 
 /**
- * <p>描述类的信息</p>
+ * <p>不同紧急程度的告警 实现</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -19,7 +19,7 @@ public class TrivialNotification extends Notification {
 
     @Override
     public void notify(String message) {
-        // 3. 具体的通知操作，委托(桥接)给 MsgSender 来执行
+        // 3. 将 具体的通知操作，委托(桥接)给 MsgSender 来执行
         super.msgSender.send(message);
     }
 }
