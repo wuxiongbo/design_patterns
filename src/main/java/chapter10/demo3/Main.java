@@ -1,7 +1,7 @@
 package chapter10.demo3;
 
 /**
- * <p> 必须使用继承的场景 </p>
+ * <p> 必须使用 “继承” 的场景 </p>
  *
  *  “继承” 主要有以下三个作用：
  *     1. 表示 is-a 关系
@@ -20,20 +20,21 @@ package chapter10.demo3;
  */
 public class Main {
     public static void main(String[] args){
-        // 调用 我们重写后的类。
+        // 创建 重写了encode方法 的 “子类”。
         FeignClient client = new CustomizedFeignClient();
 
-        // 传入我们重写后的子类
-        new Main().demofunction(client);
+        // 传入 我们重写后的子类
+        demofunction(client);
     }
 
-    // 不能改变函数demofunction的入参类型，而入参又不是接口。
-    // 这种情况下，为了支持多态，只能采用继承来实现。
-    public void demofunction(FeignClient feignClient) {
+    // 假设：不能改变 demofunction()函数 的 入参类型，而入参又不是接口。
+    //      这种情况下，只能采用 "继承" 来实现。
+    private static void demofunction(FeignClient feignClient) {
         //...
 
         String url = "url";
 
+        // 这里，利用了多态特性，调用的是我们重写后的子类
         feignClient.encode(url);
 
         // ...
