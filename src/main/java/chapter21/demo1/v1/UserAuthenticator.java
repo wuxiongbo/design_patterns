@@ -10,7 +10,8 @@ import org.apache.commons.lang.StringUtils;
  * “不要写重复的代码”
  *
  * 在代码中，有两处非常明显的重复的代码片段：isValidUserName() 函数和 isValidPassword() 函数。
- * 重复的代码被敲了两遍，或者简单 copy-paste 了一下，看起来明显违反 DRY 原则。
+ *
+ * 重复的代码被敲了两遍，或者简单 copy-paste 了一下，看起来明显违反 DRY 原则。 实际上并不违反，具体后面解释
  *
  *
  * <pre>

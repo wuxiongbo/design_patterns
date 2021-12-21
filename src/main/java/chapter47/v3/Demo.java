@@ -57,7 +57,8 @@ public class Demo {
 
             // 方案二：同样，操作 克隆的map。
             // 对 newKeywords中 已存在的进行移除。
-            // currentKeywords中，依然存在。 这样，就不会修改到 currentKeywords 中的数据
+            // currentKeywords中，依然存在。
+            // 这种方式即利用了 浅拷贝 节省时间、空间的优点，又能保证 currentKeywords 中的中数据都是老版本的数据。
             if (newKeywords.containsKey(searchWord.getKeyword())) {
                 newKeywords.remove(searchWord.getKeyword());
             }

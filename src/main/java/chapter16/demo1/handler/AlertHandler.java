@@ -3,7 +3,9 @@ package chapter16.demo1.handler;
 
 import chapter16.demo1.bo.AlertRule;
 import chapter16.demo1.bo.ApiStatInfo;
-import chapter16.demo1.bo.Notification;
+
+import chapter16.demo1.bo.v1.notification.Notification;
+//import chapter16.demo1.bo.Notification;
 
 /**
  * 告警处理器

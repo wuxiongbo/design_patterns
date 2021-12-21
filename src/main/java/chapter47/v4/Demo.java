@@ -29,21 +29,21 @@ import java.util.List;
 
 public class Demo {
 
-    private HashMap<String, SearchWord> currentKeywords=new HashMap<>();
+    private HashMap<String, SearchWord> currentKeywords = new HashMap<>();
     private long lastUpdateTime = -1;
 
     public void refresh() {
 
-        // Deep copy
+        // 深拷贝
         HashMap<String, SearchWord> newKeywords = new HashMap<>();
         for (HashMap.Entry<String, SearchWord> entry : currentKeywords.entrySet()) {
             SearchWord searchWord = entry.getValue();
 
-            SearchWord newSearchWord = new SearchWord(
-                    searchWord.getKeyword(), searchWord.getCount(), searchWord.getLastUpdateTime());
+            SearchWord newSearchWord = new SearchWord(searchWord.getKeyword(), searchWord.getCount(), searchWord.getLastUpdateTime());
 
             newKeywords.put(entry.getKey(), newSearchWord);
         }
+
 
 
         // 从数据库中取出更新时间>lastUpdateTime的数据，放入到newKeywords中
@@ -55,7 +55,7 @@ public class Demo {
                 maxNewUpdatedTime = searchWord.getLastUpdateTime();
             }
 
-            // 更新深拷贝map （newKeywords）
+            // 更新 深拷贝map （newKeywords）
             if (newKeywords.containsKey(searchWord.getKeyword())) {
                 SearchWord oldSearchWord = newKeywords.get(searchWord.getKeyword());
                 oldSearchWord.setCount(searchWord.getCount());

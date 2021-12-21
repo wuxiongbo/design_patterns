@@ -1,8 +1,8 @@
 package chapter16.demo2;
 
 import chapter16.demo1.bo.Notification;
-import chapter16.demo2.interface1.MessageFormatter;
-import chapter16.demo2.interface1.MessageQueue;
+import chapter16.demo2.interfaces.MessageFormatter;
+import chapter16.demo2.interfaces.MessageQueue;
 
 /**
  * <p>描述类的信息</p>

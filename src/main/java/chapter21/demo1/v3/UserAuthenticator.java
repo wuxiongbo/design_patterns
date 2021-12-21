@@ -41,7 +41,7 @@ public class UserAuthenticator {
         return onlyContains(password);
     }
 
-    // 重复逻辑抽象成函数
+    // 重复逻辑抽象成 更细粒度的 函数
     private boolean onlyContains(String password) {
         // check not null, not empty
         if (StringUtils.isBlank(password)) {

@@ -1,6 +1,6 @@
 package chapter16.demo2.message;
 
-import chapter16.demo2.interface1.MessageQueue;
+import chapter16.demo2.interfaces.MessageQueue;
 
 /**
  * <p>描述类的信息</p>

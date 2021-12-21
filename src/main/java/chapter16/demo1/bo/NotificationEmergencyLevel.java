@@ -10,5 +10,7 @@ package chapter16.demo1.bo;
  */
 public enum NotificationEmergencyLevel {
     URGENCY, // 紧急
-    SEVERE   // 严重
+    SEVERE ,   // 严重
+    NORMAL,
+    TRIVIAL
 }
