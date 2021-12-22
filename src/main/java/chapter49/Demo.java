@@ -15,12 +15,23 @@ import java.sql.Statement;
  * 桥接模式，也叫作 桥梁模式    Bridge Design Pattern
  *
  * // “抽象”
- * Abstraction：抽象接口，拥有一个Implementor类型的对象引用       没有抽象
- * RefinedAbstraction：扩展Abstraction中的接口定义             java.sql.DriverManager
+ * Abstraction：抽象化角色                          没有抽象
+ * RefinedAbstraction：扩展抽象化角色                java.sql.DriverManager
  *
  * // “实现”
- * Implementor：实现的接口                                    java.sql.Driver
- * ConcreteImplementor：具体实现                              com.mysql.jdbc.Driver
+ * Implementor：实现化角色                          java.sql.Driver
+ * ConcreteImplementor：具体实现化角色               com.mysql.jdbc.Driver
+ *
+ *
+ *          抽象                                         实现
+ *
+ *       Abstraction   <>——————聚合——————    Implementor
+ *           |                                       /         \
+ *          泛化                                   泛化         泛化
+ *           |                                    /              \
+ *    RefinedAbstraction                ConcreteImplementorA    ConcreteImplementorB
+ *
+ *
  *
  *
  *
