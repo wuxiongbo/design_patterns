@@ -1,5 +1,9 @@
 package chapter48.demo0.v2;
 
+import chapter48.demo0.v2.controller.IUserController;
+import chapter48.demo0.v2.controller.UserController;
+import chapter48.demo0.v2.proxy.UserControllerProxy;
+
 /**
  * <p> UserControllerProxy使用举例 </p>
  *

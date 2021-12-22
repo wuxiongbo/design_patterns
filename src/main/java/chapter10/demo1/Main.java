@@ -14,7 +14,7 @@ import chapter10.demo1.birds.Sparrow;
  *         /              |          |              \
  *     Sparrow          Crow      Penguin          Ostrich
  *
- *
+ * 可变化的维度有： 是否会“下蛋”，是否会“飞”，是否会“叫”
  *
  *
  * Ability     能力的实现

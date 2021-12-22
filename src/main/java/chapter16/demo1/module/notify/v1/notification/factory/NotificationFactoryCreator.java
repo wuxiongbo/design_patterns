@@ -2,7 +2,7 @@ package chapter16.demo1.module.notify.v1.notification.factory;
 
 import chapter16.demo1.module.notify.v1.notification.factory.factorymethod.INotificationFactory;
 import chapter16.demo1.module.notify.v1.notification.factory.factorymethod.impl.UrgencyNotificationFactory;
-import chapter16.demo1.module.notify.v1.notification.NotificationEmergencyLevel;
+import chapter16.dependence.NotificationEmergencyLevel;
 import chapter16.demo1.module.notify.v1.notification.factory.factorymethod.impl.NormalNotificationFactory;
 import chapter16.demo1.module.notify.v1.notification.factory.factorymethod.impl.TrivialNotificationFactory;
 

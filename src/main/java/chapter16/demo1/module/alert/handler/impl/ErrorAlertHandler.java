@@ -4,7 +4,7 @@ package chapter16.demo1.module.alert.handler.impl;
 import chapter16.demo1.module.alert.AlertRule;
 import chapter16.demo1.framework.ApiStatInfo;
 import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
-import chapter16.demo1.module.notify.v1.notification.NotificationEmergencyLevel;
+import chapter16.dependence.NotificationEmergencyLevel;
 
 //import Notification;
 import chapter16.demo1.module.alert.handler.AlertHandler;
@@ -15,12 +15,12 @@ import chapter16.demo1.module.alert.handler.AlertHandler;
  */
 public class ErrorAlertHandler extends AlertHandler {
 
-    public ErrorAlertHandler(
-            AlertRule rule,
-            NotificationEmergencyLevel notificationEmergencyLevel,
-            MsgSender msgSender
-            /*, Notification notification*/) {
-        super(rule,notificationEmergencyLevel,msgSender /*, notification*/);
+    public ErrorAlertHandler(AlertRule rule,
+                             NotificationEmergencyLevel notificationEmergencyLevel,
+                             MsgSender msgSender) {
+
+        super(rule,notificationEmergencyLevel,msgSender);
+
     }
 
     @Override

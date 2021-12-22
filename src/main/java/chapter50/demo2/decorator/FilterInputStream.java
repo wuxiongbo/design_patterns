@@ -1,6 +1,6 @@
 package chapter50.demo2.decorator;
 
-import chapter50.demo2.InputStream;
+import chapter50.demo2.component.InputStream;
 
 import java.io.IOException;
 
@@ -17,14 +17,18 @@ import java.io.IOException;
  */
 public class FilterInputStream extends InputStream {
 
+    // 原始类
     protected volatile InputStream in;
 
+    // 依赖注入 原始类
     protected FilterInputStream(InputStream in) {
         this.in = in;
     }
 
     @Override
     public int read() throws IOException {
+        // 调用  原始类的 read()方法，而不是 父类的 read()方法
+//        return super.read();
         return in.read();
     }
 

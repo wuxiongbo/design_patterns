@@ -1,7 +1,9 @@
 package chapter50.demo2.decorator.impl;
 
-import chapter50.demo2.InputStream;
+import chapter50.demo2.component.InputStream;
 import chapter50.demo2.decorator.FilterInputStream;
+
+import java.io.IOException;
 
 /**
  * <p> 装饰器： 缓存增强 </p>
@@ -39,20 +41,31 @@ import chapter50.demo2.decorator.FilterInputStream;
  */
 public class BufferedInputStream extends FilterInputStream {
 
-//    protected volatile InputStream in;
-
-    protected BufferedInputStream(InputStream in) {
+    public BufferedInputStream(InputStream in) {
         super(in);
-//        this.in = in;
     }
+
 
     //...实现基于缓存的读数据接口...
 
 
-    // f()函数不需要增强，只是重新调用一下InputStream in对象的f()
-    public void f() {
-//        in.f();
+    // read()函数 不需要增强，只是重新调用一下InputStream in对象的 read()函数
+    @Override
+    public int read() throws IOException {
+        return super.read();
     }
 
+
+    @Override
+    public int read(byte b[]) throws IOException {
+
+        //....增强操作
+
+        int read = super.read();
+
+        //....增强操作
+
+        return 0;
+    }
 
 }

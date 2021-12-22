@@ -1,5 +1,6 @@
 package chapter49;
 
+import chapter10.demo1.Main;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.Connection;
@@ -13,23 +14,30 @@ import java.sql.Statement;
  * <p>桥接模式</p>
  * 桥接模式，也叫作 桥梁模式    Bridge Design Pattern
  *
+ * // “抽象”
+ * Abstraction：抽象接口，拥有一个Implementor类型的对象引用       没有抽象
+ * RefinedAbstraction：扩展Abstraction中的接口定义             java.sql.DriverManager
  *
- * 理解方式1 ：
- *      将 “抽象” 和 “实现” 解耦，让它们可以独立变化
+ * // “实现”
+ * Implementor：实现的接口                                    java.sql.Driver
+ * ConcreteImplementor：具体实现                              com.mysql.jdbc.Driver
  *
+ *
+ *
+ * 理解方式1 ：将 “抽象” 和 “实现” 解耦，让它们可以独立变化。
+ *          (注意：这里的 抽象、实现 并非指的 类或接口的 抽象、实现，而是业务侧的抽象、实现)
  *      这种理解方式比较特别，应用场景也不多。
  *
- * 理解方式2 ：
- *      一个类存在两个（或多个）独立变化的维度，我们通过 “组合” 的方式，让这两个（或多个）维度可以独立进行扩展。
- *
+ * 理解方式2 ：一个类 存在 两个或多个独立变化的维度，我们通过 “组合” 的方式，让这 两个或多个维度可以独立进行扩展。
  *      通过 “组合关系” 来替代 “继承关系”，避免继承层次的指数级爆炸。非常类似于，“组合 优于 继承” 设计原则。
- *      这种理解方式更加通用，应用场景比较多。
+ *      这种 理解方式 更加 通用，应用场景比较多。
+ *      ( 对于 “维度”的理解，可以看示例 {@link Main})
  *
  *
  * 不管是哪种理解方式，它们的代码结构都是相同的，都是一种 类之间的“组合关系”。
  *
  *
- * JDBC 驱动是 “桥接模式” 的经典应用。
+ * JDBC 驱动是 “桥接模式” 的经典应用。 此案例更偏向于 理解方式1
  * 下面开始解析：
  *
  *
@@ -88,7 +96,7 @@ import java.sql.Statement;
  *
  *             if(isDriverAllowed(aDriver.driver, callerCL)) {
  *                 try {
- *                     // 具体实现 委托 给 Driver实现类
+ *                     // 具体实现 委托 给 Driver实现类，Driver实现类 统一实现都是 Driver接口
  *                     // 至此，达到了 “桥接” 目的
  *                     Connection con = aDriver.driver.connect(url, info);
  *                     if (con != null) {
@@ -109,8 +117,9 @@ import java.sql.Statement;
  *     //...
  * }
  *
- *
+ * 更多示例： 告警案例
  * @see chapter16.demo1.Main
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/12/21

@@ -9,8 +9,10 @@ package chapter50.demo1.dependence;
  * </pre>
  */
 public class A implements IA {
+
     @Override
     public void f() {
         //...
     }
+
 }

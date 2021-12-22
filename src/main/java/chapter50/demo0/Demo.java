@@ -90,7 +90,7 @@ public class Demo {
     }
 
     /**
-     * 继承存在的问题：
+     * 假想的设计： “继承” 存在的问题
      *
      * 如果 InputStream 只有一个子类 FileInputStream 的话，
      * 那我们在 FileInputStream 基础之上，再设计一个孙子类 BufferedFileInputStream，也算是可以接受的，毕竟继承结构还算简单。

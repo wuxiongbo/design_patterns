@@ -5,11 +5,9 @@ import chapter16.demo1.module.alert.AlertRule;
 import chapter16.demo1.framework.ApiStatInfo;
 import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
 import chapter16.demo1.module.notify.v1.notification.factory.factorymethod.INotificationFactory;
-import chapter16.demo1.module.notify.v1.notification.NotificationEmergencyLevel;
+import chapter16.dependence.NotificationEmergencyLevel;
 import chapter16.demo1.module.notify.v1.notification.Notification;
 import chapter16.demo1.module.notify.v1.notification.factory.NotificationFactoryCreator;
-
-//import Notification;
 
 /**
  * 告警处理器
@@ -23,15 +21,15 @@ public abstract class AlertHandler {
 
     public AlertHandler(AlertRule rule,
                         NotificationEmergencyLevel notificationEmergencyLevel,
-                        MsgSender msgSender /*, Notification notification*/) {
+                        MsgSender msgSender) {
 
         this.rule = rule;
 
-        // 告警级别
+        // 变化维度一：告警级别
         INotificationFactory notificationFactory = NotificationFactoryCreator
                 .getNotificationFactory(notificationEmergencyLevel);
 
-        // 通知渠道
+        // 变化维度二：通知渠道
         this.notification = notificationFactory.createNotification(msgSender);
 
     }

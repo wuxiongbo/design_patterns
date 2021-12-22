@@ -7,7 +7,7 @@ import chapter16.demo1.module.notify.v1.msgsender.impl.WechatMsgSender;
 import chapter16.demo1.module.alert.handler.impl.ErrorAlertHandler;
 import chapter16.demo1.module.alert.handler.impl.TimeoutAlertHandler;
 import chapter16.demo1.module.alert.handler.impl.TpsAlertHandler;
-import chapter16.demo1.module.notify.v1.notification.NotificationEmergencyLevel;
+import chapter16.dependence.NotificationEmergencyLevel;
 
 /**
  * ApplicationContext 是一个单例类，

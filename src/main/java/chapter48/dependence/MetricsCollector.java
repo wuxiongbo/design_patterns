@@ -1,4 +1,4 @@
-package chapter48.demo0.v1;
+package chapter48.dependence;
 
 import chapter48.dependence.RequestInfo;
 

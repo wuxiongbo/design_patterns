@@ -1,11 +1,22 @@
-package chapter48.demo0.v2;
+package chapter48.demo0.v2.proxy;
 
-import chapter48.demo0.v1.MetricsCollector;
+import chapter48.dependence.MetricsCollector;
+import chapter48.demo0.v2.controller.IUserController;
+import chapter48.demo0.v2.controller.UserController;
 import chapter48.dependence.RequestInfo;
 import chapter48.dependence.UserVo;
 
 /**
  * <p>静态代理： 接口</p>
+ *
+ * 静态代理存在的问题：
+ *   一: 我们需要在代理类中，将原始类中的所有的方法，都重新实现一遍，并且为每个方法都附加相似的代码逻辑。
+ *   二: 如果要添加的附加功能的类有不止一个，我们需要针对每个类都创建一个代理类。
+ *       如果有 50 个要添加附加功能的原始类，那我们就要创建 50 个对应的代理类。
+ *       这会导致项目中类的个数成倍增加，增加了代码维护成本。
+ *       并且，每个代理类中的代码都有点像模板式的“重复”代码，也增加了不必要的开发成本。
+ *
+ * 那这个问题怎么解决呢？   动态代理
  *
  * <pre>
  * @author wuxiongbo
@@ -28,10 +39,15 @@ public class UserControllerProxy implements IUserController {
 
     @Override
     public UserVo login(String telephone, String password) {
+
         long startTimestamp = System.currentTimeMillis();
+
+
 
         // 委托
         UserVo userVo = userController.login(telephone, password);
+
+
 
         long endTimeStamp = System.currentTimeMillis();
         long responseTime = endTimeStamp - startTimestamp;

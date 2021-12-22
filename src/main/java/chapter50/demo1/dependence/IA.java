@@ -9,5 +9,7 @@ package chapter50.demo1.dependence;
  * </pre>
  */
 public interface IA {
+
     void f();
+
 }

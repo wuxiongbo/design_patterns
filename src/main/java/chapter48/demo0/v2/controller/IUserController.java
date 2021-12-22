@@ -1,4 +1,4 @@
-package chapter48.demo0.v2;
+package chapter48.demo0.v2.controller;
 
 import chapter48.dependence.UserVo;
 

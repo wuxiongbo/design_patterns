@@ -1,16 +1,18 @@
-package chapter50.demo2;
+package chapter50.demo2.component;
 
 import chapter50.demo0.Demo;
 
 import java.io.IOException;
 
 /**
- * <p> 基于装饰器模式的设计方案 </p>
+ * <p> 装饰器模式 </p>
+ *
+ * 本示例的 InputStream 类 是 原始类
+ *
  *
  * 装饰器模式两要素：
- *   1）装饰器类 和 被装饰类 继承同样的 父类
+ *   1）装饰器类 和 被装饰类(原始类) 继承同样的 父类。      （从而可多次嵌套）
  *   2）装饰器类 是对 被装饰类 相关功能的增强，而不是新增其他不相关功能
- *
  *
  *
  *

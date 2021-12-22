@@ -1,4 +1,4 @@
-package chapter16.demo1.module.notify.v0;
+package chapter16.dependence;
 
 /**
  * <p>描述类的信息</p>

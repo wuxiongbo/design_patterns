@@ -1,6 +1,6 @@
 package chapter50.demo2.decorator.impl;
 
-import chapter50.demo2.InputStream;
+import chapter50.demo2.component.InputStream;
 import chapter50.demo2.decorator.FilterInputStream;
 
 
@@ -14,13 +14,10 @@ import chapter50.demo2.decorator.FilterInputStream;
  */
 public class DataInputStream extends FilterInputStream {
 
-//    protected volatile InputStream in;
-
     protected DataInputStream(InputStream in) {
         super(in);
-//        this.in = in;
     }
 
-
     //...实现读取基本类型数据的接口
+
 }

@@ -1,6 +1,6 @@
 package chapter16.demo1.module.notify.v0;
 
-import chapter16.demo1.module.notify.v1.notification.NotificationEmergencyLevel;
+import chapter16.dependence.NotificationEmergencyLevel;
 
 import java.util.List;
 
