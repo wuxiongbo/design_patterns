@@ -1,10 +1,10 @@
-package my_demo.decorator.decorator.impl;
+package my_demo.decorator.demo1.decorator.impl;
 
-import my_demo.decorator.component.Component;
-import my_demo.decorator.decorator.Decorator;
+import my_demo.decorator.demo1.component.Component;
+import my_demo.decorator.demo1.decorator.Decorator;
 
 /**
- * <p>具体装饰器</p>
+ * <p> 具体装饰器 </p>
  *
  * <pre>
  * @author wuxiongbo

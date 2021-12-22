@@ -1,9 +1,9 @@
-package my_demo.decorator.component.impl;
+package my_demo.decorator.demo1.component.impl;
 
-import my_demo.decorator.component.Component;
+import my_demo.decorator.demo1.component.Component;
 
 /**
- * <p>具体组件</p>
+ * <p> 具体组件： 被装饰类对象</p>
  *
  * <pre>
  * @author wuxiongbo

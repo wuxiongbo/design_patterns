@@ -1,7 +1,7 @@
-package my_demo.decorator.component;
+package my_demo.decorator.demo1.component;
 
 /**
- * <p>抽象组件</p>
+ * <p> 抽象组件 </p>
  *
  * <pre>
  * @author wuxiongbo
