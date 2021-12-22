@@ -18,6 +18,8 @@ import java.io.IOException;
  *
  *     这是这两种模式最大的场景使用区别
  *
+ * @see my_demo.decorator.demo1.Client
+ * @see my_demo.decorator.demo2.Main
  * <pre>
  * @author wuxiongbo
  * @date 2021/12/22

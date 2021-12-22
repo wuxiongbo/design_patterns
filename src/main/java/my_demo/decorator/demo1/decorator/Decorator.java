@@ -10,15 +10,18 @@ import my_demo.decorator.demo1.component.Component;
  * @date 2021/12/22
  * </pre>
  */
-public abstract class Decorator extends Component {  // Decorator 继承 Component  ，与此同时
+public abstract class Decorator extends Component {  // 抽象装饰类  继承 抽象组件 是可嵌套包装的关键
+
 
     // 将被装饰的 原始类
     protected Component component;
-    // 同时，Decorator 与 Component  还是 聚合关系
+    // Decorator 继承 Component ，同时，Decorator 与 Component  还是 聚合关系
+
     // Component 聚合 成 Decorator
     // Decorator 关联 Component
 
 
+    // 依赖注入 原始类
     public Decorator(Component component) {
         this.component = component;
     }

@@ -14,6 +14,7 @@ import my_demo.decorator.dependence.item.LibraryItem;
  * </pre>
  */
 public class CountingLibrary extends LibraryDecorator {
+
     private int counter = 0;
 
     public CountingLibrary(Library lib){
