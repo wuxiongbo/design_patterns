@@ -1,8 +1,8 @@
 package chapter51.demo3.v1;
 
-import chapter51.demo3.component.ASensitiveWordsFilter;
-import chapter51.demo3.component.BSensitiveWordsFilter;
-import chapter51.demo3.component.CSensitiveWordsFilter;
+import chapter51.demo3.common.ASensitiveWordsFilter;
+import chapter51.demo3.common.BSensitiveWordsFilter;
+import chapter51.demo3.common.CSensitiveWordsFilter;
 
 /**
  * <p>统一多个类的接口设计</p>

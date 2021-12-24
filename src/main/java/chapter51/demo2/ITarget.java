@@ -23,4 +23,24 @@ public interface ITarget {
 
     //...
 
+
+    /**
+     *
+     * 将有缺陷的外部系统进行二次封装。规范化接口
+     *
+     * @param args
+     */
+    static void main(String[] args){
+        // 原始对象。  外部系统，不可修改
+        CD cd = new CD();
+
+        // “类”适配器。
+        ITarget target = new CDAdaptor();
+
+        // 调用目标方法
+        target.function1();
+        target.function2();
+        target.fucntion3(new ParamsWrapperDefinition());
+        target.function4();
+    }
 }

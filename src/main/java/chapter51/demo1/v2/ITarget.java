@@ -17,6 +17,7 @@ public interface ITarget {
 
     void fc();
 
+
     //  "对象"适配器: 基于 '组合'
     static void main(String[] args){
         // 原始对象
@@ -28,6 +29,8 @@ public interface ITarget {
         target.f2();
         target.fc();
     }
+
+
 }
 /*
 fa()

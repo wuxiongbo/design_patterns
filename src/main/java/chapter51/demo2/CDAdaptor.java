@@ -32,5 +32,6 @@ public class CDAdaptor extends CD implements ITarget {
     @Override
     public void function4() {
         //...reemployment it...
+        super.lowPerformanceFunction4();
     }
 }

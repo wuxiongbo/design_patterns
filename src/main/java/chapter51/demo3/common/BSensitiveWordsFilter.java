@@ -1,4 +1,4 @@
-package chapter51.demo3.component;
+package chapter51.demo3.common;
 
 /**
  * <p> B敏感词过滤系统提供的接口 </p>

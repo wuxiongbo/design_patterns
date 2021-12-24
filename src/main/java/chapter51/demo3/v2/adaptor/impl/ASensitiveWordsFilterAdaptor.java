@@ -1,7 +1,7 @@
-package chapter51.demo3.v2.adaptor;
+package chapter51.demo3.v2.adaptor.impl;
 
-import chapter51.demo3.component.ASensitiveWordsFilter;
-import chapter51.demo3.v2.ISensitiveWordsFilter;
+import chapter51.demo3.common.ASensitiveWordsFilter;
+import chapter51.demo3.v2.adaptor.ISensitiveWordsFilter;
 
 /**
  * <p> A适配器</p>

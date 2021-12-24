@@ -2,7 +2,7 @@ package chapter51.demo1.v1;
 
 /**
  * <p> 适配器 </p>
- *
+ * <p>
  * "类"适配器: 基于 '继承'
  *
  * <pre>
@@ -10,7 +10,10 @@ package chapter51.demo1.v1;
  * @date 2021/12/22
  * </pre>
  */
-public class Adaptor extends Adaptee implements ITarget {
+public class Adaptor
+        extends Adaptee // 采用 “继承” 的方式
+        implements ITarget {
+
 
     // 原始方法fa() 转 f1()
     @Override

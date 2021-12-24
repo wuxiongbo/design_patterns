@@ -5,6 +5,9 @@ import lombok.Data;
 /**
  * <p>享元类</p>
  *
+ * 享元：共享单元
+ *
+ *
  * 将棋子的 id、text、color 属性拆分出来，设计成独立的类，并且作为享元
  *
  * <pre>

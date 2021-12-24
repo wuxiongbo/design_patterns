@@ -1,8 +1,8 @@
-package chapter51.demo3.v2.adaptor;
+package chapter51.demo3.v2.adaptor.impl;
 
-import chapter51.demo3.component.ASensitiveWordsFilter;
-import chapter51.demo3.component.BSensitiveWordsFilter;
-import chapter51.demo3.v2.ISensitiveWordsFilter;
+import chapter51.demo3.common.ASensitiveWordsFilter;
+import chapter51.demo3.common.BSensitiveWordsFilter;
+import chapter51.demo3.v2.adaptor.ISensitiveWordsFilter;
 
 /**
  * <p> B适配器</p>
@@ -16,7 +16,7 @@ public class BSensitiveWordsFilterAdaptor implements ISensitiveWordsFilter {
 
     private BSensitiveWordsFilter bFilter;
 
-    public BSensitiveWordsFilterAdaptor(ASensitiveWordsFilter aFilter) {
+    public BSensitiveWordsFilterAdaptor(BSensitiveWordsFilter bFilter) {
         this.bFilter = bFilter;
     }
 

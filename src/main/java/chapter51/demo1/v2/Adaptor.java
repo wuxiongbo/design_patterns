@@ -10,7 +10,9 @@ package chapter51.demo1.v2;
  * @date 2021/12/22
  * </pre>
  */
-public class Adaptor implements ITarget {
+public class Adaptor
+        // 这里少了“继承” 改用组合
+        implements ITarget {
 
     // 聚合
     private Adaptee adaptee;
