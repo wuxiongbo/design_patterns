@@ -1,7 +1,7 @@
 package chapter50.demo1.dependence;
 
 /**
- * <p>描述类的信息</p>
+ * <p> Component </p>
  *
  * <pre>
  * @author wuxiongbo

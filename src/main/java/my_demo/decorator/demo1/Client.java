@@ -50,14 +50,14 @@ public class Client {
         Component c1 = new ConcreteComponent();
 
         // 第一次装饰
-        Decorator decoratorA = new ConcreteDecoratorA(c1);
-        decoratorA .operation();
+        Decorator objDecoratorA = new ConcreteDecoratorA(c1);
+        objDecoratorA .operation();
 
         System.out.println("------------------------------------------------");
 
         // 第二次装饰
-        Decorator decoratorBandA = new ConcreteDecoratorA(decoratorA);
-        decoratorBandA.operation();
+        Decorator objDecoratorADecoratorA = new ConcreteDecoratorA(objDecoratorA);
+        objDecoratorADecoratorA.operation();
 
     }
 }

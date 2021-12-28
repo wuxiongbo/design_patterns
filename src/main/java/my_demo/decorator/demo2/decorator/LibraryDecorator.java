@@ -12,7 +12,7 @@ import my_demo.decorator.dependence.item.LibraryItem;
  * @date 2021/12/22
  * </pre>
  */
-public abstract class LibraryDecorator extends Library {   // 抽象装饰类  继承 抽象组件 是可嵌套包装的关键
+public abstract class LibraryDecorator extends Library {   // “抽象装饰类”  继承 “抽象组件” ，这是可嵌套包装的关键
 
     // 将被装饰的 原始类
     protected Library lib;

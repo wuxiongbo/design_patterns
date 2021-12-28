@@ -51,28 +51,28 @@ import my_demo.decorator.dependence.item.LibraryItem;
 public class Main {
     public static void main(String[] args){
         // 借阅者
-        Borrower borrower = new Borrower("Lindz");
+        Borrower person = new Borrower("Lindz");
 
         // 借阅书籍
         LibraryItem book = new Book("Harry potter");
         LibraryItem journal = new Journal("Day night");
 
         // 实例化图书馆
-        Library lib = new ConcreteLibrary();
-        lib.borrowItem(book, borrower); // 借阅
-        lib.returnItem(journal); // 归还
+        Library lib = new ConcreteLibrary();  // 原始的具体组件
+        lib.borrowItem(book, person); // 借阅 书本
+        lib.returnItem(journal); // 归还 杂志
 
 
         System.out.println("--------------------------");
 
-        // 使用 装饰器 包装 图书馆
-        CountingLibrary clib = new CountingLibrary(lib);
-        clib.borrowItem(book, borrower); // 借阅
-        clib.returnItem(journal); // 归还
+        // 使用 装饰器 包装 图书馆。 增加计数功能
+        CountingLibrary clib = new CountingLibrary(lib); // 修饰器
+        clib.borrowItem(book, person); // 加强 借阅 功能
+        clib.returnItem(journal); //  加强 归还 功能
 
-        // 使用 装饰器 再次包装 图书馆
-        SellingLibrary slib = new SellingLibrary(clib);
-        slib.sellItem(journal); // 出售
+        // 使用 装饰器 再次包装 图书馆。 增加售卖功能
+        SellingLibrary slib = new SellingLibrary(clib);  // 修饰器
+        slib.sellItem(journal); // 新增 原始组件 不存在的 业务功能“出售”
 
     }
 }

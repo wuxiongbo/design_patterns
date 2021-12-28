@@ -13,7 +13,7 @@ import my_demo.decorator.demo1.component.Component;
 public abstract class Decorator extends Component {  // 抽象装饰类  继承 抽象组件 是可嵌套包装的关键
 
 
-    // 将被装饰的 原始类
+    // 聚合 将被装饰的 原始类
     protected Component component;
     // Decorator 继承 Component ，同时，Decorator 与 Component  还是 聚合关系
 
@@ -27,7 +27,7 @@ public abstract class Decorator extends Component {  // 抽象装饰类  继承 
     }
 
 
-    // 将操作 委托给 原始类
+    // 将实际操作 委托给 原始类
     @Override
     public void operation(){
         component.operation();
