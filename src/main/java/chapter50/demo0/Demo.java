@@ -31,7 +31,7 @@ public class Demo {
      *
      *
      *
-     * InputStream
+     * InputStream  是一个抽象类
      *      |
      *     继承
      *      |
