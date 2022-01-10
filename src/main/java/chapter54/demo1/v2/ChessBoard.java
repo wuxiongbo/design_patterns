@@ -16,7 +16,7 @@ import java.util.Map;
  * </pre>
  */
 public class ChessBoard {
-
+    // chessPieceId
     private Map<Integer, ChessPiece> chessPieces = new HashMap<>();
 
     public ChessBoard() {
@@ -24,10 +24,8 @@ public class ChessBoard {
     }
 
     private void init() {
-        chessPieces.put(1, new ChessPiece(
-                ChessPieceUnitFactory.getChessPiece(1), 0,0));
-        chessPieces.put(1, new ChessPiece(
-                ChessPieceUnitFactory.getChessPiece(2), 1,0));
+        chessPieces.put(1, new ChessPiece(ChessPieceUnitFactory.getChessPiece(1), 0,0));
+        chessPieces.put(2, new ChessPiece(ChessPieceUnitFactory.getChessPiece(2), 1,0));
         //...省略摆放其他棋子的代码...
     }
 

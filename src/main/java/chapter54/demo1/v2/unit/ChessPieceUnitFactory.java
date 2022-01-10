@@ -19,7 +19,8 @@ import java.util.Map;
  *      我们只需要创建 30 个 享元对象 供所有棋局共享使用即可，
  *
  * 总结一下享元模式的结构：
- *      它的代码实现非常简单，主要是通过 工厂模式 ，在 工厂类 中，通过一个 Map 来缓存已经创建过的享元对象，来达到复用的目的。
+ *      它的代码实现非常简单，主要是通过 "工厂模式" ，
+ *      在 工厂类 中，通过一个 Map 来缓存已经创建过的享元对象，来达到复用的目的。
  *
  * <pre>
  * @author wuxiongbo
@@ -27,11 +28,18 @@ import java.util.Map;
  * </pre>
  */
 public class ChessPieceUnitFactory {
+
     private static final Map<Integer, ChessPieceUnit> pieces = new HashMap<>();
 
     static {
         pieces.put(1, new ChessPieceUnit(1, "車", ChessPieceUnit.Color.BLACK));
         pieces.put(2, new ChessPieceUnit(2,"馬", ChessPieceUnit.Color.BLACK));
+
+        //...省略摆放其他棋子的代码...
+
+        pieces.put(1, new ChessPieceUnit(7, "車", ChessPieceUnit.Color.RED));
+        pieces.put(2, new ChessPieceUnit(8,"馬", ChessPieceUnit.Color.RED));
+
         //...省略摆放其他棋子的代码...
     }
 
