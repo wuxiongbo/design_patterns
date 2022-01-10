@@ -104,6 +104,13 @@
             <version>31.0.1-jre</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>9.0.56</version>
+        </dependency>
+
 
     </dependencies>
 
