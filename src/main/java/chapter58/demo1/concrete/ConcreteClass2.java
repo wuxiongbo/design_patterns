@@ -1,15 +1,16 @@
-package chapter58.demo1;
+package chapter58.demo1.concrete;
+
+import chapter58.demo1.framework.AbstractClass;
 
 /**
- * <p>描述类的信息</p>
+ * <p>  子类实现 算法骨架  </p>
  *
  * <pre>
  * @author wuxiongbo
  * @date 2022/1/10
  * </pre>
  */
-public class ConcreteClass1  extends AbstractClass {
-
+public class ConcreteClass2  extends AbstractClass {
     @Override
     protected void method1() {
         //...

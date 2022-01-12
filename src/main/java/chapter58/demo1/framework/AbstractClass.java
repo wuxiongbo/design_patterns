@@ -1,4 +1,4 @@
-package chapter58.demo1;
+package chapter58.demo1.framework;
 
 /**
  * <p>描述类的信息</p>
@@ -10,8 +10,8 @@ package chapter58.demo1;
  */
 public abstract class AbstractClass {
 
-    // 模板方法
-    // 包含 “算法骨架” 的方法，就是 “模板方法”
+    // 模板方法：
+    //     包含 “算法骨架”(模板) 的方法，就是 “模板方法”
     public final void templateMethod() {
         //...
         method1();
@@ -20,8 +20,9 @@ public abstract class AbstractClass {
         //...
     }
 
-    // 算法骨架
-    // 推迟到子类中实现
+    // 算法骨架(模板)：
+    //    这里的“算法骨架” 就是“模板”。
+    //    这部分逻辑，推迟到子类中实现
     protected abstract void method1();
     protected abstract void method2();
 
