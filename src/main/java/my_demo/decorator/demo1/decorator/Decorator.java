@@ -10,7 +10,7 @@ import my_demo.decorator.demo1.component.Component;
  * @date 2021/12/22
  * </pre>
  */
-public abstract class Decorator extends Component {  // 抽象装饰类  继承 抽象组件 是可嵌套包装的关键
+public abstract class Decorator extends Component {  // 抽象装饰类  继承了  抽象组件。  这是可嵌套包装的关键
 
 
     // 聚合 将被装饰的 原始类

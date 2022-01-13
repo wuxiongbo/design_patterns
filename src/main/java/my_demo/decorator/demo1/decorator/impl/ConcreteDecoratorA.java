@@ -11,7 +11,7 @@ import my_demo.decorator.demo1.decorator.Decorator;
  * @date 2021/12/22
  * </pre>
  */
-public class ConcreteDecoratorA extends Decorator {
+public class ConcreteDecoratorA extends Decorator {  // 装饰器 继承了 抽象装饰类
 
 
     public ConcreteDecoratorA(Component component){

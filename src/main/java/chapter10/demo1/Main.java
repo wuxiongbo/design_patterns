@@ -20,7 +20,7 @@ import chapter10.demo1.birds.Sparrow;
  * Ability     能力的实现
  * interfaces  能力的接口
  *
- * impl        具体业务实现类
+ * concrete        具体业务实现类
  *
  * <pre>
  * @author wuxiongbo

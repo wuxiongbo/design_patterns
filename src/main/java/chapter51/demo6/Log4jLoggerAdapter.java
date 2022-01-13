@@ -10,7 +10,7 @@ import org.slf4j.spi.LocationAwareLogger;
 import java.io.Serializable;
 
 /**
- * <p>描述类的信息</p>
+ * <p>装饰器模式</p>
  *
  * 代理、桥接、装饰器、适配器，这 4 种模式是比较常用的结构型设计模式。它们的代码结构非常相似。
  * 笼统来说，它们都可以称为 Wrapper 模式，也就是通过 Wrapper类  二次封装 原始类。
