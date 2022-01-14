@@ -1,7 +1,7 @@
 package chapter51.demo4.external_system.targets;
 
 /**
- * <p>描述类的信息</p>
+ * <p>外部系统A</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -13,5 +13,6 @@ public class A implements IA {
     @Override
     public void fa() {
         //...
+        System.out.println("A.fa()");
     }
 }

@@ -18,13 +18,7 @@ public interface ITarget {
     void fc();
 
 
-    // "类"适配器: 基于 '继承'
-    static void main(String[] args){
-        ITarget target = new Adaptor();
-        target.f1();
-        target.f2();
-        target.fc();
-    }
+
 }
 /*
 fa()

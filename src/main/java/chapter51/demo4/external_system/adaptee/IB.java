@@ -1,8 +1,8 @@
 package chapter51.demo4.external_system.adaptee;
 
 /**
- * <p>描述类的信息</p>
- *
+ * <p>被适配者</p>
+ * 外部系统
  * <pre>
  * @author wuxiongbo
  * @date 2021/12/23
