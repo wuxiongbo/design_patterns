@@ -25,7 +25,7 @@ public class Application {
 
         HandlerChain chain = new HandlerChain();
 
-        // 扩展点
+        // 扩展点。 处理器的创建 交给客户端
         chain.addHandler(new HandlerA());
         chain.addHandler(new HandlerB());
 

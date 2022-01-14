@@ -7,7 +7,7 @@ import chapter62.demo2.handlerchain.SensitiveWordFilterChain;
 import chapter62.depencence.Content;
 
 /**
- * <p>描述类的信息</p>
+ * <p>客户端</p>
  *
  * 对于支持 UGC（User Generated Content，用户生成内容）的应用（比如论坛）来说，
  * 用户生成的内容（比如，在论坛中发表的帖子）可能会包含一些敏感词（比如涉黄、广告、反动等词汇）。
@@ -35,7 +35,7 @@ public class ApplicationDemo {
 
         SensitiveWordFilterChain filterChain = new SensitiveWordFilterChain();
 
-        // 扩展点
+        // 扩展点。 处理器的创建 交给客户端
         filterChain.addFilter(new AdsWordFilter());
         filterChain.addFilter(new SexyWordFilter());
         filterChain.addFilter(new PoliticalWordFilter());
