@@ -26,9 +26,11 @@ public class Broker {
     }
 
     public void placeOrders(){
+
         for (Order order : orderList) {
             order.execute();
         }
+
         orderList.clear();
     }
 }

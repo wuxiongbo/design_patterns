@@ -15,6 +15,7 @@ import my_demo.command.demo1.receiver.Stock;
  */
 
 public class SellStock implements Order {
+
     // 委托人
     private Stock abcStock;
 
