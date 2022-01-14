@@ -5,9 +5,10 @@ import chapter51.demo3.common.BSensitiveWordsFilter;
 import chapter51.demo3.common.CSensitiveWordsFilter;
 
 /**
- * <p>统一多个类的接口设计</p>
+ * <p>统一接口设计</p>
  *
- * 未使用适配器模式之前的代码：代码的可测试性、扩展性不好
+ * 未使用适配器模式之前的代码：
+ *      代码的可测试性、扩展性不好
  *
  * <pre>
  * @author wuxiongbo

@@ -12,6 +12,7 @@ import chapter62.depencence.Content;
  * </pre>
  */
 public class SexyWordFilter  implements SensitiveWordFilter {
+
     @Override
     public boolean doFilter(Content content) {
 
@@ -22,4 +23,5 @@ public class SexyWordFilter  implements SensitiveWordFilter {
 
         return legal;
     }
+
 }

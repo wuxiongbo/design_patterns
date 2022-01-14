@@ -14,13 +14,9 @@ import chapter62.demo1.v4.handler.Handler;
 public class HandlerB extends Handler {
 
     @Override
-    protected boolean doHandle() {
-
-        boolean handled = false;
+    protected void doHandle() {
 
         //...
-
-        return handled;
 
     }
 

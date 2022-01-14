@@ -27,10 +27,11 @@ public class SensitiveWordFilterChain {
 
         for (SensitiveWordFilter filter : filters) {
 
+            // 判断内容是否合法
             if (!filter.doFilter(content)) {
                 return false;
-
             }
+
         }
 
         return true;

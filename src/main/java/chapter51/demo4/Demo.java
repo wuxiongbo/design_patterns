@@ -5,7 +5,7 @@ import chapter51.demo4.external_system.targets.A;
 import chapter51.demo4.external_system.targets.IA;
 
 /**
- * <p>描述类的信息</p>
+ * <p>系统切换</p>
  *
  * <pre>
  * @author wuxiongbo
