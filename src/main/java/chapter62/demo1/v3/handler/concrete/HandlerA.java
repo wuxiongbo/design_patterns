@@ -1,6 +1,6 @@
-package chapter62.demo1.v4.handlerchain.handler.concrete;
+package chapter62.demo1.v3.handler.concrete;
 
-import chapter62.demo1.v4.handlerchain.handler.Handler;
+import chapter62.demo1.v3.handler.IHandler;
 
 /**
  * <p> 具体的 处理器类 </p>
@@ -11,17 +11,13 @@ import chapter62.demo1.v4.handlerchain.handler.Handler;
  * @date 2022/1/13
  * </pre>
  */
-public class HandlerB extends Handler {
+public class HandlerA implements IHandler {
 
     @Override
-    protected boolean doHandle() {
-
+    public boolean handle() {
         boolean handled = false;
-
         //...
-
         return handled;
-
     }
 
 }

@@ -1,8 +1,8 @@
 package chapter62.demo1.v2;
 
 import chapter62.demo1.v2.handlerchain.HandlerChain;
-import chapter62.demo1.v2.handlerchain.handler.concrete.HandlerA;
-import chapter62.demo1.v2.handlerchain.handler.concrete.HandlerB;
+import chapter62.demo1.v2.handler.concrete.HandlerA;
+import chapter62.demo1.v2.handler.concrete.HandlerB;
 
 /**
  * <p>使用模板模式重构</p>
@@ -24,6 +24,8 @@ public class Application {
     public static void main(String[] args) {
 
         HandlerChain chain = new HandlerChain();
+
+        // 扩展点
         chain.addHandler(new HandlerA());
         chain.addHandler(new HandlerB());
 

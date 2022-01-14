@@ -1,4 +1,4 @@
-package chapter62.demo1.v1.handlerchain.handler;
+package chapter62.demo1.v1.handler;
 
 /**
  * <p>  处理器抽象类 </p>

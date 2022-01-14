@@ -1,6 +1,6 @@
 package chapter62.demo1.v1.handlerchain;
 
-import chapter62.demo1.v1.handlerchain.handler.Handler;
+import chapter62.demo1.v1.handler.Handler;
 
 /**
  * <p> 处理器链 </p>

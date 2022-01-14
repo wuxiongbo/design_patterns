@@ -1,6 +1,6 @@
 package chapter62.demo1.v3.handlerchain;
 
-import chapter62.demo1.v3.handlerchain.handler.IHandler;
+import chapter62.demo1.v3.handler.IHandler;
 
 import java.util.ArrayList;
 import java.util.List;
