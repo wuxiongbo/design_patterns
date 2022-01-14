@@ -6,6 +6,8 @@ import my_demo.command.demo1.receiver.Stock;
 /**
  * <p> ConcreteCommand </p>
  *
+ * 售货命令
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2022/1/10
@@ -13,6 +15,7 @@ import my_demo.command.demo1.receiver.Stock;
  */
 
 public class SellStock implements Order {
+    // 委托人
     private Stock abcStock;
 
     public SellStock(Stock abcStock){

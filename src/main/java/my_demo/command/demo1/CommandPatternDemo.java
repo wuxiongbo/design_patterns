@@ -47,7 +47,10 @@ import my_demo.command.demo1.receiver.Stock;
  *  调用者                Invoker
  *
  *
- *  客户端                Invoker     ConcreteCommand    Receiver
+ *  客户端                CommandPattern (Invoker     ConcreteCommand    Receiver)
+ *
+ *
+ *  Receiver 只是 Command(命令) 的函数实现 委托。
  *
  * <pre>
  * @author wuxiongbo
@@ -58,20 +61,22 @@ public class CommandPatternDemo {
 
     public static void main(String[] args) {
 
+
         // Receiver
         Stock abcStock = new Stock();
-
-        // ConcreteCommand
+        // ConcreteCommand  命令
         BuyStock buyStockOrder = new BuyStock(abcStock);
         SellStock sellStockOrder = new SellStock(abcStock);
 
+
+        // 将 请求命令Command 传递给 Invoker。
         // Invoker ——<> Command(Order)
         Broker broker = new Broker();
         broker.takeOrder(buyStockOrder);
         broker.takeOrder(sellStockOrder);
 
 
-        // 提交命令请求
+        // 使用 Invoker  执行 命令Command
         broker.placeOrders();
     }
 }

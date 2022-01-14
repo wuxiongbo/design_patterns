@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * <p>Invoker</p>
  *
- *
+ * 命令执行者
  *
  * <pre>
  * @author wuxiongbo
@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class Broker {
 
+    // 保存命令
     // 可以是 List，可以是一个 Order引用。 总之，就是 聚合关系
     private List<Order> orderList = new ArrayList<Order>();
 

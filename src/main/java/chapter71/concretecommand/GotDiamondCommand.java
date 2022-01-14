@@ -1,6 +1,6 @@
 package chapter71.concretecommand;
 
-import chapter71.Command;
+import chapter71.command.Command;
 
 /**
  * <p>ConcreteCommand</p>

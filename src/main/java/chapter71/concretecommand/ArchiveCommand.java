@@ -1,6 +1,6 @@
 package chapter71.concretecommand;
 
-import chapter71.Command;
+import chapter71.command.Command;
 
 /**
  * <p>ConcreteCommand</p>
@@ -20,6 +20,8 @@ public class ArchiveCommand implements Command {
 
     @Override
     public void execute() {
-        // 执行相应的逻辑
+
+        // 委托给 receiver 。执行相应的逻辑
+
     }
 }

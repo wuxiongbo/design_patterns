@@ -1,5 +1,6 @@
-package chapter71;
+package chapter71.Invoker;
 
+import chapter71.command.Command;
 import chapter71.concretecommand.ArchiveCommand;
 import chapter71.concretecommand.GotDiamondCommand;
 import chapter71.concretecommand.GotStartCommand;
@@ -21,6 +22,7 @@ import java.util.Queue;
  * </pre>
  */
 public class GameApplication {
+
     private static final int MAX_HANDLED_REQ_COUNT_PER_LOOP = 100;
 
     // Invoker 持有 命令对象
@@ -51,14 +53,15 @@ public class GameApplication {
         for (Request request : requests) {
             Event event = request.getEvent();
             Command command = null;
+
             if (event.equals(Event.GOT_DIAMOND)) {
-                command = new GotDiamondCommand(/*数据*/);
+                command = new GotDiamondCommand(/*receiver 数据*/);
             } else if (event.equals(Event.GOT_STAR)) {
-                command = new GotStartCommand(/*数据*/);
+                command = new GotStartCommand(/*receiver 数据*/);
             } else if (event.equals(Event.HIT_OBSTACLE)) {
-                command = new HitObstacleCommand(/*数据*/);
+                command = new HitObstacleCommand(/*receiver 数据*/);
             } else if (event.equals(Event.ARCHIVE)) {
-                command = new ArchiveCommand(/*数据*/);
+                command = new ArchiveCommand(/*receiver 数据*/);
             } // ...一堆else if...
 
             queue.add(command);
@@ -67,18 +70,20 @@ public class GameApplication {
 
 
     private void call(){
-        int handledCount = 0;
-        while (handledCount < MAX_HANDLED_REQ_COUNT_PER_LOOP) {
+
+        for (int handledCount = 0; handledCount < MAX_HANDLED_REQ_COUNT_PER_LOOP; handledCount++) {
+
             if (queue.isEmpty()) {
                 break;
             }
+
             Command command = queue.poll();
 
             // 执行指令
             command.execute();
 
-            handledCount++;
         }
+
     }
 
 

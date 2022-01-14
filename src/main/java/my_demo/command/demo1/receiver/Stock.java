@@ -3,9 +3,9 @@ package my_demo.command.demo1.receiver;
 /**
  * <p>Receiver</p>
  *
+ * 命令执行 委托人
+ *
  * Receiver 中实现所有的指令动作
- *
- *
  * 任何类都可能成为一个接收者，只要它能够实现命令要求实现的相应功能。
  *
  *

@@ -1,4 +1,4 @@
-package chapter71;
+package chapter71.command;
 
 /**
  * <p>Command</p>
