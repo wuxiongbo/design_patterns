@@ -24,10 +24,11 @@ public abstract class Handler {
      *
      * 注意，这里用 Final 修饰方法
      *
-     * final来修饰  '类'、 '方法' 、'属性'  都表示其值不可变，也就是说  类 不可继承，方法 不可重写，属性 不可覆盖。
+     * final来修饰  '类'、 '方法' 、'属性'  都表示其不可变，也就是说  类 不可继承，方法 不可重写，属性 不可覆盖。
      *
      * 如果使用final来修饰方法，那么表示该方法不能被重写，
-     * 如果在父类中使用final 来修饰方法，那么该方法就 不可 被子类 重写
+     *
+     * 也就是说，在父类中 final 修饰的方法 不可被 子类 重写
      */
     public final void handle() {
         boolean handled = doHandle();
