@@ -26,8 +26,8 @@ import java.io.IOException;
  *    处理器链（HandlerChain）。
  *
  * 对应到 Servlet Filter，
- *    javax.servlet.Filter 就是 处理器接口，
- *    FilterChain 就是 处理器链。
+ *    处理器接口  javax.servlet.Filter
+ *    处理器链    FilterChain
  *
  * <pre>
  * @author wuxiongbo

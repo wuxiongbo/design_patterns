@@ -2,7 +2,7 @@
 
     <filter>
         <filter-name>logFilter</filter-name>
-        <filter-class>com.xzg.cd.LogFilter</filter-class>
+        <filter-class>chapter63.demo1.LogFilter</filter-class>
     </filter>
 
     <filter-mapping>
