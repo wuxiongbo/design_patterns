@@ -34,8 +34,13 @@ public class RuleConfigSource {
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
+
+
         // 将 “创建解析类” 的逻辑 抽象成 独立的‘方法’ 封装起来
         IRuleConfigParser parser = createParser(ruleConfigFileExtension);
+
+
+
 
         if (parser == null) {
             throw new InvalidRuleConfigException("Rule config file format is not supported: " + ruleConfigFilePath);
@@ -47,6 +52,7 @@ public class RuleConfigSource {
     }
 
 
+    // 函数 隔离  创建逻辑
     private IRuleConfigParser createParser(String configFormat) {
         IRuleConfigParser parser = null;
         if ("json".equalsIgnoreCase(configFormat)) {
