@@ -16,11 +16,13 @@ import chapter44.v7.factory_method.IConfigParserFactory;
  */
 public class YamlConfigParserFactory  implements IConfigParserFactory {
 
+    // 规则配置
     @Override
     public IRuleConfigParser createRuleParser() {
         return new YamlRuleConfigParser();
     }
 
+    // 系统配置
     @Override
     public ISystemConfigParser createSystemParser() {
         return new YamlSystemConfigParser();

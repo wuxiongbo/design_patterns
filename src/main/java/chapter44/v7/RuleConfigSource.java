@@ -9,6 +9,8 @@ import chapter44.v7.factory_method.IConfigParserFactory;
 /**
  * <p> 抽象工厂 </p>
  *
+ * 规则配置
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/7/28

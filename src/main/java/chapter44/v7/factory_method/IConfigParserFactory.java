@@ -15,13 +15,13 @@ import chapter44.dependence.config_parser.ISystemConfigParser;
  *      也可以 按照解析的对象（Rule 规则配置还是 System 系统配置） 来分类，
  * 那就会对应下面这 8 个 parser 类。
  *
- *   针对规则配置的解析器：基于接口IRuleConfigParser
+ *   针对 规则配置 的解析器：基于接口IRuleConfigParser
  *   JsonRuleConfigParser
  *   XmlRuleConfigParser
  *   YamlRuleConfigParser
  *   PropertiesRuleConfigParser
  *
- *   针对系统配置的解析器：基于接口ISystemConfigParser
+ *   针对 系统配置 的解析器：基于接口ISystemConfigParser
  *   JsonSystemConfigParser
  *   XmlSystemConfigParser
  *   YamlSystemConfigParser

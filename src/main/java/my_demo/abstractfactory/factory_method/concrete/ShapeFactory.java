@@ -34,13 +34,6 @@ public class ShapeFactory extends AbstractFactory {
 
     @Override
     public Color getColor(String color) {
-
-
-        /*.....
-        * 实现省略
-        * */
-
-
         return null;
     }
 }
