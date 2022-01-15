@@ -24,12 +24,14 @@ public class SystemConfigSource {
         IConfigParserFactory parserFactory = ConfigParserFactoryMap.getParserFactory(systemConfigFileExtension);
 
 
-        if (parserFactory == null) {
-            throw new InvalidRuleConfigException("Rule config file format is not supported: " + systemConfigFilePath);
-        }
+        check(systemConfigFilePath,parserFactory);
 
-        // 函数隔离
+
+
+        // 函数隔离。 什么场景，调用什么函数
         ISystemConfigParser parser = parserFactory.createSystemParser();
+
+
 
         String configText = "content..."; //从 systemConfigFilePath 文件中读取配置文本到configText中
         SystemConfig systemConfig = parser.parse(configText); // 文本内容 解析 为配置对象
@@ -39,5 +41,11 @@ public class SystemConfigSource {
     private String getFileExtension(String filePath) {
         //...解析文件名获取扩展名，比如rule.json，返回json。application.properties,返回properties
         return "json";
+    }
+
+    private void check(String systemConfigFilePath,IConfigParserFactory parserFactory) throws InvalidRuleConfigException {
+        if (parserFactory == null) {
+            throw new InvalidRuleConfigException("Rule config file format is not supported: " + systemConfigFilePath);
+        }
     }
 }

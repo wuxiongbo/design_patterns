@@ -15,6 +15,7 @@ import chapter44.v7.factory_method.IConfigParserFactory;
  * </pre>
  */
 public class RuleConfigSource {
+
     public RuleConfig load(String ruleConfigFilePath) throws InvalidRuleConfigException {
         String ruleConfigFileExtension = getFileExtension(ruleConfigFilePath);
 
@@ -23,12 +24,14 @@ public class RuleConfigSource {
         IConfigParserFactory parserFactory = ConfigParserFactoryMap.getParserFactory(ruleConfigFileExtension);
 
 
-        if (parserFactory == null) {
-            throw new InvalidRuleConfigException("Rule config file format is not supported: " + ruleConfigFilePath);
-        }
+        check(ruleConfigFilePath,parserFactory);
 
-        // 函数隔离
+
+
+        // 函数隔离。 什么场景，调用什么函数
         IRuleConfigParser parser = parserFactory.createRuleParser();
+
+
 
         String configText = "content...";//从 ruleConfigFilePath 文件中读取配置文本到configText中
         RuleConfig ruleConfig = parser.parse(configText);// 文本内容 解析 为配置对象
@@ -38,6 +41,12 @@ public class RuleConfigSource {
     private String getFileExtension(String filePath) {
         //...解析文件名获取扩展名，比如rule.json，返回json。application.properties,返回properties
         return "json";
+    }
+
+    private void check(String systemConfigFilePath,IConfigParserFactory parserFactory) throws InvalidRuleConfigException {
+        if (parserFactory == null) {
+            throw new InvalidRuleConfigException("Rule config file format is not supported: " + systemConfigFilePath);
+        }
     }
 
 }

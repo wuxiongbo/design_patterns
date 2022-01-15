@@ -46,7 +46,11 @@ import chapter44.dependence.config_parser.ISystemConfigParser;
  */
 public interface IConfigParserFactory {
 
+    // 将工厂类的命名 更加 抽象化，
+    // 然后，将不同场景的业务逻辑，通过 函数 隔离。
+
     IRuleConfigParser createRuleParser();
+
 
     ISystemConfigParser createSystemParser();
 

@@ -1,0 +1,88 @@
+package chapter63.demo1;
+
+import org.apache.catalina.core.ApplicationFilterConfig;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+import java.io.IOException;
+
+import static org.apache.catalina.core.ApplicationFilterChain.INCREMENT;
+
+/**
+ * <p>描述类的信息</p>
+ *
+ * ApplicationFilterChain 中的 doFilter() 函数的代码实现比较有技巧，实际上是一个递归调用。
+ *
+ * 你可以用每个 Filter（比如 LogFilter）的 doFilter() 的代码实现，直接替换 ApplicationFilterChain 的第 12 行代码，一眼就能看出是递归调用了。
+ * 替换后，如下所示。
+ *
+ * https://www.edrawmax.cn/online/share.html?code=014e2d0c75cd11ec81ccd9ad3e6d60f3
+ *
+ * <pre>
+ * @author wuxiongbo
+ * @date 2022/1/15
+ * </pre>
+ */
+public class ApplicationFilterChain implements FilterChain {
+
+    private int pos = 0; //当前执行到了哪个filter
+    private int n; //filter的个数
+
+    private ApplicationFilterConfig[] filters;
+
+    private Servlet servlet;
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+
+        if (pos < n) {
+
+            ApplicationFilterConfig filterConfig = filters[pos++];
+
+
+
+//            Filter filter = filterConfig.getFilter();
+//            filter.doFilter(request, response, this);
+
+
+            //把filter.doFilter的代码实现展开替换到这里
+
+            System.out.println("拦截客户端发送来的请求.");
+            this.doFilter(request, response); // this 就是 chain
+            System.out.println("拦截发送给客户端的响应.");
+
+
+
+        } else {
+            // filter都处理完毕后，执行servlet
+            servlet.service(request, response);
+        }
+
+    }
+
+
+    public void addFilter(ApplicationFilterConfig filterConfig) {
+
+        // 防止重复添加
+        for (ApplicationFilterConfig filter:filters)
+            if (filter==filterConfig)
+                return;
+
+        // 扩容
+        if (n == filters.length) {
+            ApplicationFilterConfig[] newFilters = new ApplicationFilterConfig[n + INCREMENT];
+            System.arraycopy(filters, 0, newFilters, 0, n);
+            filters = newFilters;
+        }
+
+        // 添加新过滤器。 计数+1
+        filters[n++] = filterConfig;
+
+    }
+
+}

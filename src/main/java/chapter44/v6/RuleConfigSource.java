@@ -5,6 +5,7 @@ import chapter44.dependence.exception.InvalidRuleConfigException;
 import chapter44.dependence.model.RuleConfig;
 import chapter44.v6.factory.RuleConfigParserFactoryMap;
 import chapter44.v6.factory_method.IRuleConfigParserFactory;
+import chapter44.v7.factory_method.IConfigParserFactory;
 
 /**
  * <p> 工厂方法（Factory Method） 的改进 </p>
@@ -43,10 +44,12 @@ public class RuleConfigSource {
         IRuleConfigParserFactory parserFactory = RuleConfigParserFactoryMap.getParserFactory(ruleConfigFileExtension);
 
 
-        if (parserFactory == null) {
-            throw new InvalidRuleConfigException("Rule config file format is not supported: " + ruleConfigFilePath);
-        }
+        check(ruleConfigFilePath,parserFactory);
+
+
         IRuleConfigParser parser = parserFactory.createParser();
+
+
 
         String configText = "";
         //从ruleConfigFilePath文件中读取配置文本到configText中
@@ -54,8 +57,17 @@ public class RuleConfigSource {
         return ruleConfig;
     }
 
+
     private String getFileExtension(String filePath) {
         //...解析文件名获取扩展名，比如rule.json，返回json
         return "json";
     }
+
+
+    private void check(String ruleConfigFilePath, IRuleConfigParserFactory parserFactory) throws InvalidRuleConfigException {
+        if (parserFactory == null) {
+            throw new InvalidRuleConfigException("Rule config file format is not supported: " + ruleConfigFilePath);
+        }
+    }
+
 }
