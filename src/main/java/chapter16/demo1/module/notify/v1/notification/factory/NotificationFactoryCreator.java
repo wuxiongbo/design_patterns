@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * <p>简单工厂</p>
+ * <p>工厂的工厂</p>
  *
  * <pre>
  * @author wuxiongbo

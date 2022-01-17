@@ -3,7 +3,11 @@ package chapter16.demo1.module.notify.v1.notification;
 import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
 
 /**
- * <p>描述类的信息</p>
+ * <p>通知类</p>
+ *
+ * 使用了
+ *    “工厂方法模式”
+ *    “桥接模式”
  *
  * <pre>
  * @author wuxiongbo
@@ -12,7 +16,7 @@ import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
  */
 public abstract class Notification {
 
-    // 2. 利用 “组合” 关系，作为 “桥梁”
+    // 2. 利用 “组合” 关系，把 成员变量 作为 “桥梁”
     protected MsgSender msgSender;
 
     // 1. 通过构造方法，依赖注入  业务的"实现"

@@ -26,7 +26,14 @@ public class TimeoutAlertHandler extends AlertHandler {
 
         //省略代码...
         // 接口请求时间超过 最大超时时间，触发告警
-        if (apiStatInfo.getTimeoutCount() > rule.getMatchedRule(apiStatInfo.getApi()).getMaxTime()) {
+        if (
+                // 超时时间
+                apiStatInfo.getTimeoutCount() >
+
+                // 查表法，根据 API 查找 告警规则
+                rule.getMatchedRule(apiStatInfo.getApi())
+                        .getMaxTime()) {
+
             // 通知接口的相关负责人或者团队
             notification.notify("接口请求超时");
 

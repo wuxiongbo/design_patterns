@@ -33,6 +33,13 @@ import chapter16.demo1.framework.ApplicationContext;
  *       类 需要创建、组装、并且做一些初始化操作，才能构建成可运行的的程序，这部分代码的修改是在所难免的。
  *       我们要做的是，尽量让修改操作 更集中、更少、更上层，尽量让 “最核心、最复杂的那部分逻辑代码” 满足 开闭原则。
  *
+ *
+ * 使用到的设计模式：
+ * 工厂模式
+ * 桥接模式
+ * 职责链模式
+ *
+ *
  */
 public class Main {
     public static void main(String[] args) {
@@ -45,14 +52,18 @@ public class Main {
 
 
         ApplicationContext
-                //单例模式 初始化对象
+                // 单例模式 初始化应用
                 .getInstance()
+                // 获取 告警链
                 .getAlert()
+                // 触发检测
                 .check(apiStatInfo);
 
-        // 以后维护 只需新增 AlertHandler 实现，修改 ApiStatInfo，修改 ApplicationContext
 
-
+        // 以后维护 只需
+        //      新增 AlertHandler 实现，
+        //      修改 ApiStatInfo，
+        //      修改 ApplicationContext
 
     }
 }

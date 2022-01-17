@@ -11,9 +11,11 @@ public class AlertRule {
     // k: api，v: 对应的规则
     Map<String,MatchedRule> matchedRules = new HashMap<>();
 
+    // 查表法
     public MatchedRule getMatchedRule(String api) {
         return matchedRules.get(api);
     }
+
 
 
     // 规则匹配逻辑，写在内部类就行。
@@ -32,6 +34,7 @@ public class AlertRule {
             return 0;
         }
     }
+
 
 
 }

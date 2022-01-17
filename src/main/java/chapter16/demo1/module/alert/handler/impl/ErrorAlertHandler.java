@@ -26,9 +26,17 @@ public class ErrorAlertHandler extends AlertHandler {
     @Override
     public void check(ApiStatInfo apiStatInfo) {
         // 接口请求出错数大于某个最大允许值时，触发告警
-        if (apiStatInfo.getErrorCount() > rule.getMatchedRule(apiStatInfo.getApi()).getMaxErrorCount()) {
+        if (
+                // 累计错误次数
+                apiStatInfo.getErrorCount() >
+
+                // 查表法，根据 API 查找 告警规则
+                rule.getMatchedRule(apiStatInfo.getApi())
+                        .getMaxErrorCount()) {
+
             // 通知接口的相关负责人或者团队
             notification.notify("超过最大错误请求数");
+
         }
     }
 }

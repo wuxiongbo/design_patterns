@@ -35,6 +35,7 @@ import java.io.IOException;
  * </pre>
  */
 public class LogFilter implements Filter {
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         // 在创建Filter时自动调用，

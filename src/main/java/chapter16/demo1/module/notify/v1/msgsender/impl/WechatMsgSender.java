@@ -2,6 +2,8 @@ package chapter16.demo1.module.notify.v1.msgsender.impl;
 
 import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
 
+import java.util.List;
+
 /**
  * <p>描述类的信息</p>
  *
@@ -11,6 +13,13 @@ import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
  * </pre>
  */
 public class WechatMsgSender implements MsgSender {
+
+    private List<String> wechatIds;
+
+    public WechatMsgSender(List<String> wechatIds) {
+        this.wechatIds = wechatIds;
+    }
+
     @Override
     public void send(String message) {
 

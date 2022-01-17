@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * <p>描述类的信息</p>
+ * <p>职责链模式</p>
  *
+ *
+ * 一、Interceptor 与 Filter区别：
  *
  * LogInterceptor 实现的功能跟刚才的 LogFilter 完全相同，只是实现方式上稍有区别。
  *
@@ -19,13 +21,19 @@ import javax.servlet.http.HttpServletResponse;
  *      对‘响应’的拦截 在 postHandle() 中实现。
  *
  *
- *
  * Spring Interceptor 底层也是基于 职责链模式 实现的。
  * 其中，HandlerExecutionChain 类是职责链模式中的处理器链。
  * 它的实现相较于 Tomcat 中的 ApplicationFilterChain 来说，逻辑更加清晰，不需要使用递归来实现，
  *
  * 主要是因为它将‘请求’和‘响应’的拦截工作，
  * ‘拆分’ 到了两个函数中实现。
+ *
+ *
+ * 我们通过 Servlet Filter、Spring Interceptor 两个实际的例子，展示了在框架开发中职责链模式具体是怎么应用的。
+ * 从源码中，我们还可以发现，尽管上一节课中我们有给出 职责链模式 的  经典代码实现，
+ *
+ * 但在实际的开发中，我们还是要“具体问题，具体对待”，
+ * 代码实现 会根据不同的需求有所变化。实际上，这一点对于所有的设计模式都适用。
  *
  *
  * <pre>

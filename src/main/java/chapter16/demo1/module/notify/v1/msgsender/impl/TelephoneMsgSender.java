@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class TelephoneMsgSender  implements MsgSender {
 
+    // 待通知的手机号
     private List<String> telephones;
 
     public TelephoneMsgSender(List<String> telephones) {

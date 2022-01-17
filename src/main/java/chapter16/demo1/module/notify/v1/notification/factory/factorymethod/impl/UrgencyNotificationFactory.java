@@ -6,7 +6,7 @@ import chapter16.demo1.module.notify.v1.notification.Notification;
 import chapter16.demo1.module.notify.v1.notification.impl.UrgencyNotification;
 
 /**
- * <p>描述类的信息</p>
+ * <p>工厂方法</p>
  *
  * <pre>
  * @author wuxiongbo
