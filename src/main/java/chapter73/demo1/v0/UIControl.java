@@ -8,7 +8,7 @@ import chapter73.dependence.Text;
 import org.springframework.expression.spel.ast.Selection;
 
 /**
- * <p>UI 控件</p>
+ * <p> UI 控件  </p>
  *
  * 这个例子与 UI 控件有关，算是中介模式比较经典的应用，很多书籍在讲到中介模式的时候，都会拿它来举例。
  *
