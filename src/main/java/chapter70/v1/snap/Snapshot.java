@@ -1,4 +1,4 @@
-package chapter70.v1;
+package chapter70.v1.snap;
 
 /**
  * <p>描述类的信息</p>
@@ -9,6 +9,7 @@ package chapter70.v1;
  * </pre>
  */
 public class Snapshot {
+
     private String text;
 
     public Snapshot(String text) {

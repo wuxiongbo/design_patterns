@@ -1,4 +1,4 @@
-package chapter70.v1;
+package chapter70.v1.snap;
 
 import java.util.Stack;
 
@@ -11,13 +11,19 @@ import java.util.Stack;
  * </pre>
  */
 public class SnapshotHolder {
+
+//    private Stack<InputText> snapshots = new Stack<>();
+
     private Stack<Snapshot> snapshots = new Stack<>();
+
 
     public Snapshot popSnapshot() {
         return snapshots.pop();
     }
 
+
     public void pushSnapshot(Snapshot snapshot) {
         snapshots.push(snapshot);
     }
+
 }

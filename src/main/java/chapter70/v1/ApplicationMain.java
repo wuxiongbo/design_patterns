@@ -1,5 +1,8 @@
 package chapter70.v1;
 
+import chapter70.v1.snap.Snapshot;
+import chapter70.v1.snap.SnapshotHolder;
+
 import java.util.Scanner;
 
 /**
