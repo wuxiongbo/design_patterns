@@ -1,5 +1,8 @@
 package chapter59.dependence;
 
+
+import chapter73.dependence.Component;
+
 /**
  * <p>描述类的信息</p>
  *
@@ -8,5 +11,5 @@ package chapter59.dependence;
  * @date 2022/1/11
  * </pre>
  */
-public class View {
+public interface View extends Component {
 }

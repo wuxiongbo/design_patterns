@@ -24,11 +24,12 @@ public enum State {
 
     private int value;
 
-    private State(int value) {
+    State(int value) {
         this.value = value;
     }
 
     public int getValue() {
         return this.value;
     }
+
 }
