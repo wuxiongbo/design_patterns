@@ -3,7 +3,7 @@ package chapter58.demo1.concrete;
 import chapter58.demo1.framework.AbstractClass;
 
 /**
- * <p>  子类实现 算法骨架  </p>
+ * <p> 模板模式： 子类实现 算法骨架  </p>
  *
  * <pre>
  * @author wuxiongbo

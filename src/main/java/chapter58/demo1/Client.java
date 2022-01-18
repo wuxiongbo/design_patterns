@@ -14,9 +14,12 @@ import java.util.AbstractList;
  *      Define the skeleton of an algorithm in an operation, deferring some steps to subclasses.
  *      Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm’s structure.
  *
+ * skeleton 骨骼
+ * deferring 推迟
+ *
  * 翻译成中文就是：
- *      模板方法模式 在一个方法中 定义一个 ‘算法骨架’ ，并将某些步骤推迟到子类中实现。
- *      模板方法模式 可以让子类在不改变算法整体结构的情况下，重新定义算法中的某些步骤。
+ *      模板方法模式 在一个方法中 定义一个 ‘算法骨架’ ，并将某些步骤推迟到 ‘子类’ 中实现。
+ *      模板方法模式 可以让 ‘子类’ 在不改变算法整体结构的情况下，重新定义算法中的某些步骤。
  *
  * 这里的“算法”，我们可以理解为广义上的“业务逻辑”，并不特指数据结构和算法中的“算法”。
  * 这里的“算法骨架” 就是“模板”，包含 “算法骨架” 的方法就是“模板方法”，这也是 模板方法模式 名字的由来。

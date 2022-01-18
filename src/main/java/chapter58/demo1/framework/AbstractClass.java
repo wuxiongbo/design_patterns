@@ -1,7 +1,7 @@
 package chapter58.demo1.framework;
 
 /**
- * <p>描述类的信息</p>
+ * <p>模板模式</p>
  *
  * <pre>
  * @author wuxiongbo
