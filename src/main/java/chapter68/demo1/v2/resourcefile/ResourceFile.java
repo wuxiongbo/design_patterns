@@ -3,7 +3,7 @@ package chapter68.demo1.v2.resourcefile;
 import chapter68.demo1.v2.Extractor;
 
 /**
- * <p>描述类的信息</p>
+ * <p>资源文件</p>
  *
  * <pre>
  * @author wuxiongbo

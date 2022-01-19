@@ -3,7 +3,7 @@ package chapter68.demo1.v1;
 import chapter68.demo1.v1.resourcefile.concrete.*;
 
 /**
- * <p>描述类的信息</p>
+ * <p>提取器</p>
  *
  * <pre>
  * @author wuxiongbo

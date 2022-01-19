@@ -1,7 +1,7 @@
 package chapter68.demo1.v1.resourcefile;
 
 /**
- * <p>描述类的信息</p>
+ * <p>资源文件</p>
  *
  * <pre>
  * @author wuxiongbo

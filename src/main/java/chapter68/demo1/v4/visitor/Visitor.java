@@ -3,7 +3,7 @@ package chapter68.demo1.v4.visitor;
 import chapter68.demo1.v4.resourcefile.concrete.*;
 
 /**
- * <p>描述类的信息</p>
+ * <p>访问者</p>
  *
  * <pre>
  * @author wuxiongbo

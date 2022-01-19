@@ -6,7 +6,7 @@ import chapter68.demo1.v4.resourcefile.concrete.WordFile;
 import chapter68.demo1.v4.visitor.Visitor;
 
 /**
- * <p>描述类的信息</p>
+ * <p>提取器</p>
  *
  * <pre>
  * @author wuxiongbo

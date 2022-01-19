@@ -4,7 +4,7 @@ import chapter68.demo1.v3.Compressor;
 import chapter68.demo1.v3.Extractor;
 
 /**
- * <p>描述类的信息</p>
+ * <p>资源文件</p>
  *
  * <pre>
  * @author wuxiongbo

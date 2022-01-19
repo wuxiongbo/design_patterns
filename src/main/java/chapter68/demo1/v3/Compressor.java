@@ -5,7 +5,7 @@ import chapter68.demo1.v3.resourcefile.concrete.PdfFile;
 import chapter68.demo1.v3.resourcefile.concrete.WordFile;
 
 /**
- * <p>描述类的信息</p>
+ * <p>压缩器</p>
  *
  *
  * compress  压缩
