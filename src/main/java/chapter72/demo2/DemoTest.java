@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * <p>描述类的信息</p>
+ * <p>告警规则</p>
  *
  * <pre>
  * @author wuxiongbo

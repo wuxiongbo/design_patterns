@@ -1,4 +1,4 @@
-package chapter66.demo1.v0;
+package chapter66;
 
 
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class Demo {
         Iterator<String> iterator = names.iterator();
         iterator.next();
         iterator.remove();
-        iterator.remove(); //报错，抛出IllegalStateException异常
+        iterator.remove(); // 报错，抛出IllegalStateException异常
     }
 
     static void test3(){
@@ -61,10 +61,13 @@ public class Demo {
         ArrayList<String> names = initList();
 
         Iterator<String> iterator = names.iterator();
+
+        // 正常运行
         while(iterator.hasNext()){
             iterator.next();
             iterator.remove();
         }
+
     }
 
 
