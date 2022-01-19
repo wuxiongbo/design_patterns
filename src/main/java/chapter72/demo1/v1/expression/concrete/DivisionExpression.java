@@ -1,4 +1,6 @@
-package chapter72.demo1.v1.expression;
+package chapter72.demo1.v1.expression.concrete;
+
+import chapter72.demo1.v1.expression.Expression;
 
 /**
  * <p>描述类的信息</p>
