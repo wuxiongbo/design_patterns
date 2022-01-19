@@ -21,10 +21,11 @@ public class Demo {
         list.add("a");
         list.add("b");
         list.add("c");
+        list.add("d");
         Thread.sleep(1000L);
 
 
-        Iterator<String> iter1 = list.iterator();   // 快照: a, b, c
+        Iterator<String> iter1 = list.iterator();   // 快照: a, b, c, d
 
 
         Thread.sleep(1000L);
@@ -32,7 +33,7 @@ public class Demo {
         Thread.sleep(1000L);
 
 
-        Iterator<String> iter2 = list.iterator();  // 快照: a, b
+        Iterator<String> iter2 = list.iterator();  // 快照: a, b, d
 
 
         Thread.sleep(1000L);
@@ -40,11 +41,11 @@ public class Demo {
         Thread.sleep(1000L);
 
 
-        Iterator<String> iter3 = list.iterator();  // 快照: b
+        Iterator<String> iter3 = list.iterator();  // 快照: b, d
 
 
 
-        // 输出结果：a, b, c
+        // 输出结果：a, b, c, d
         while (iter1.hasNext()) {
             System.out.print(iter1.next() + " ");
         }
@@ -55,7 +56,7 @@ public class Demo {
 
 
 
-        // 输出结果：a, b
+        // 输出结果：a, b, d
         while (iter2.hasNext()) {
             System.out.print(iter2.next() + " ");
         }
@@ -66,7 +67,7 @@ public class Demo {
 
 
 
-        // 输出结果：b
+        // 输出结果：b, d
         while (iter3.hasNext()) {
             System.out.print(iter3.next() + " ");
         }

@@ -21,15 +21,12 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
 
     private final MyArrayList<E> arrayList;
 
-    private boolean concurrentElementIsSnapshot;
-
     public SnapshotArrayIterator(MyArrayList<E> arrayList) {
         this.snapshotTimestamp = System.currentTimeMillis();
         this.cursorInAll = 0;
         this.countdown = arrayList.actualSize();   // 没被删除标记的元素个数
         this.arrayList = arrayList;
 
-        concurrentElementIsSnapshot = justNext(); // 先查找  迭代器快照的第一个元素
     }
 
     @Override
@@ -41,9 +38,11 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
 
     @Override
     public E next() {
-        E currentItem = arrayList.get(cursorInAll);
-        concurrentElementIsSnapshot = justNext();
+        boolean concurrentElementIsSnapshot = justNext();
 
+        E currentItem = arrayList.get(cursorInAll);
+
+        // 快照 元素
         if(concurrentElementIsSnapshot){
             cursorInAll++;
         }

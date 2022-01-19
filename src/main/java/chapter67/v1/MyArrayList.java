@@ -16,11 +16,11 @@ public class MyArrayList<E> extends ArrayList<E> {
 
     private static final int DEFAULT_CAPACITY = 100;
 
-    private int actualSize; // 没被删除标记的元素个数。 actual 真实的
+    private int actualSize; // 真实元素个数。 actual 真实的
 
-    // 添加时间戳
+    // 添加元素的 时间戳
     private long[] addTimestamps;
-    // 删除时间戳
+    // 删除元素的 时间戳
     private long[] delTimestamps;
 
     public MyArrayList() {
@@ -43,13 +43,18 @@ public class MyArrayList<E> extends ArrayList<E> {
         return super.add(obj);
     }
 
-    // 当元素被删除时，我们将 delTimestamp 更新为当前时间，表示已经被删除。 这里只是标记删除，而非真正将它从容器中删除。
+    // 当元素被删除时，我们将 delTimestamp 更新为当前时间，表示已经被删除。
+    // 这里只是标记删除，而非真正将它从容器中删除。
     @Override
     public boolean remove(Object obj) {
         for (int i = 0; i < size(); ++i) {
-            if (super.get(i).equals(obj)) {
+            if (super.get(i).equals(obj)
+                    // 防重复删除
+                    && delTimestamps[i] == Long.MAX_VALUE) {
+
                 delTimestamps[i] = System.currentTimeMillis();
-                actualSize--;  // 没被删除标记的元素个数
+                actualSize--;  // 真实元素个数 -1
+
             }
         }
         return true;
