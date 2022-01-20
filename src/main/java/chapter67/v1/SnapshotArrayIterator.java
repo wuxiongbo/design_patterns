@@ -34,7 +34,7 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
     public boolean hasNext() {
         return
                 this.countdown >= 0
-                && cursorInAll< arrayList.size();
+                && cursorInAll< arrayList.size(); // 防止越界
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
 
         E currentItem = arrayList.get(cursorInAll);
 
-        // 快照 元素
+        // 快照 元素。 补偿游标位移
         if(concurrentElementIsSnapshot){
             cursorInAll++;
         }
@@ -63,14 +63,14 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
 
             // 元素属于  快照迭代器：
             //    addTimestamp < snapshotTimestamp < delTimestamp
-            //    在快照 前新增 且 在快照 后 删除/未删除
+            //    在快照 之前 新增 且 在快照 之后 删除/未删除
 
             // 元素不属于  快照迭代器：
             //    addTimestamp > snapshotTimestamp
-            //    在快照 后 新增
+            //    在快照 之后 新增
 
             //    delTimestamp < snapshotTimestamp
-            //    在快照 前 删除
+            //    在快照 之前 删除
 
             // 如果当前元素属于当前迭代器
             if (snapshotTimestamp > addTimestamp && snapshotTimestamp < delTimestamp) {
@@ -81,7 +81,7 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
 
             }
 
-            // 容器游标
+            // 容器游标 下移
             cursorInAll++;
 
         }

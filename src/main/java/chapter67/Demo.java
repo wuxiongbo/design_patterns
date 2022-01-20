@@ -26,6 +26,10 @@ public class Demo {
         Thread.sleep(200L);
 
 
+        int arrayListCapacity = ((MyArrayList)list).getArrayListCapacity();
+        System.out.println(arrayListCapacity);
+
+
         Iterator<String> iter1 = list.iterator();   // 快照: a, b, c, d
 
 

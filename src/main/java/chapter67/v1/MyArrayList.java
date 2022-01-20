@@ -1,6 +1,7 @@
 package chapter67.v1;
 
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,7 +17,7 @@ public class MyArrayList<E> extends ArrayList<E> {
 
     private static final int DEFAULT_CAPACITY = 100;
 
-    private int actualSize; // 真实元素个数。 actual 真实的
+    private int actualSize; // 真实元素个数。   actual 真实的
 
     // 添加元素的 时间戳
     private long[] addTimestamps;
@@ -90,6 +91,24 @@ public class MyArrayList<E> extends ArrayList<E> {
     @Override
     public Iterator<E> iterator() {
         return new SnapshotArrayIterator<>(this);
+    }
+
+
+    public int getArrayListCapacity() {
+        try {
+
+            Class<?> superclass = this.getClass().getSuperclass();
+
+            //获取 elementData 字段
+            Field field = superclass.getDeclaredField("elementData");
+            field.setAccessible(true);
+            //把示例传入get，获取实例字段elementData的值
+            Object[] objects = (Object[])field.get(this);
+            return objects.length;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
 }
