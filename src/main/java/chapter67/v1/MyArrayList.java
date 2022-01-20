@@ -96,7 +96,7 @@ public class MyArrayList<E> extends ArrayList<E> {
 
     public int getArrayListCapacity() {
         try {
-
+            // 注意，不能通过  super.getClass() 获取
             Class<?> superclass = this.getClass().getSuperclass();
 
             //获取 elementData 字段
