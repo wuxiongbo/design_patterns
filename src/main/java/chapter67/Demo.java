@@ -15,6 +15,7 @@ import java.util.List;
  * </pre>
  */
 public class Demo {
+
     public static void main(String[] args) throws InterruptedException {
 
         List<String> list = new MyArrayList<>();
@@ -22,23 +23,23 @@ public class Demo {
         list.add("b");
         list.add("c");
         list.add("d");
-        Thread.sleep(1000L);
+        Thread.sleep(200L);
 
 
         Iterator<String> iter1 = list.iterator();   // 快照: a, b, c, d
 
 
-        Thread.sleep(1000L);
+        Thread.sleep(200L);
         list.remove("c");
-        Thread.sleep(1000L);
+        Thread.sleep(200L);
 
 
         Iterator<String> iter2 = list.iterator();  // 快照: a, b, d
 
 
-        Thread.sleep(1000L);
+        Thread.sleep(200L);
         list.remove("a");
-        Thread.sleep(1000L);
+        Thread.sleep(200L);
 
 
         Iterator<String> iter3 = list.iterator();  // 快照: b, d
@@ -73,4 +74,5 @@ public class Demo {
         }
 
     }
+
 }

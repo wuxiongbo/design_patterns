@@ -18,7 +18,10 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
     private ArrayList<E> snapshot;
 
     public SnapshotArrayIterator(ArrayList<E> arrayList) {
+
         this.cursor = 0;
+
+        // 浅拷贝
         this.snapshot = new ArrayList<>();
         this.snapshot.addAll(arrayList);
     }

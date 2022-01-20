@@ -21,6 +21,7 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
 
     private final MyArrayList<E> arrayList;
 
+    // 依赖注入  待迭代对象
     public SnapshotArrayIterator(MyArrayList<E> arrayList) {
         this.snapshotTimestamp = System.currentTimeMillis();
         this.cursorInAll = 0;
