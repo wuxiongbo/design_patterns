@@ -94,7 +94,7 @@ public class MyArrayList<E> extends ArrayList<E> {
     }
 
 
-    public int getArrayListCapacity() {
+    public int getCapacity() {
         try {
             // 注意，不能通过  super.getClass() 获取
             Class<?> superclass = this.getClass().getSuperclass();

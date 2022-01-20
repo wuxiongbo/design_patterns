@@ -26,7 +26,7 @@ public class Demo {
         Thread.sleep(200L);
 
 
-        int arrayListCapacity = ((MyArrayList)list).getArrayListCapacity();
+        int arrayListCapacity = ((MyArrayList)list).getCapacity();
         System.out.println(arrayListCapacity);
 
 
