@@ -10,8 +10,7 @@ import java.sql.SQLException;
 /**
  * <p>同步回调</p>
  *
- * 原始代码：
- * {@link JdbcDemo#queryUser(long)}
+ * 原始代码：{@link JdbcDemo#queryUser(long)}
  * queryUser() 函数包含很多流程性质的代码，跟业务无关，
  *      比如，
  *          加载驱动、
@@ -34,12 +33,16 @@ import java.sql.SQLException;
  *
  *
  * 那 JdbcTemplate 底层具体是如何实现的呢？
- * 我们来看一下它的关键源码。{@link JdbcTemplate#execute(org.springframework.jdbc.core.StatementCallback, boolean)}
+ * 我们来看一下它的关键源码。
+ * {@link JdbcTemplate#query(java.lang.String, org.springframework.jdbc.core.ResultSetExtractor)}
+ * {@link JdbcTemplate#execute(org.springframework.jdbc.core.StatementCallback, boolean)}
  *
- * 可以发现，JdbcTemplate 通过回调的机制，将不变的执行流程抽离出来，放到 模板方法 execute() 中，
+ * 可以发现，JdbcTemplate 通过 “回调机制”  ，将不变的执行流程抽离出来，放到 模板方法 execute() 中，
  * 将可变的部分(SQL、映射关系) 设计成 回调(StatementCallback接口对象)，这部分由用户来定制。
  *
  * query() 函数，是对 execute() 函数的二次封装，让接口用起来更加方便。
+ *
+ *
  *
  *
  *
@@ -54,7 +57,7 @@ public class JdbcTemplateDemo {
 
     public User queryUser(long id) {
 
-        // 可变因素一：
+        // 可变因素一：SQL
         String sql = "select * from user where id="+id;
 
 
@@ -66,7 +69,7 @@ public class JdbcTemplateDemo {
 
     }
 
-    // 可变因素二：
+    // 可变因素二：映射关系
     //   "查询结果" 与 "User对象" 之间的映射关系
     class UserRowMapper implements RowMapper<User> {
         @Override
