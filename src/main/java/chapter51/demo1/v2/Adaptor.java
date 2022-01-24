@@ -1,7 +1,7 @@
 package chapter51.demo1.v2;
 
 /**
- * <p> 适配器 </p>
+ * <p> 对象 适配器 </p>
  *
  * "对象"适配器: 基于 '组合'
  *
@@ -11,7 +11,7 @@ package chapter51.demo1.v2;
  * </pre>
  */
 public class Adaptor
-        // 这里少了“继承” 改用组合
+        // 这里少了“继承” 改用组合。  适配器， 使用 “组合” 的方式， 获取 被适配者的 能力
         implements ITarget {
 
     // 聚合

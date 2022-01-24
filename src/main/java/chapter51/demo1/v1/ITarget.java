@@ -1,7 +1,7 @@
 package chapter51.demo1.v1;
 
 /**
- * <p> 适配目标 </p>
+ * <p> 适配目标：统一接口 </p>
  *
  *
  * <pre>

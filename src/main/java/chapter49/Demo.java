@@ -15,12 +15,12 @@ import java.sql.Statement;
  * 桥接模式，也叫作 桥梁模式    Bridge Design Pattern
  *
  * // “抽象”
- * Abstraction：抽象化角色                          没有抽象
- * RefinedAbstraction：扩展抽象化角色                java.sql.DriverManager
+ * Abstraction：委托者的抽象                        没有抽象
+ * RefinedAbstraction：委托者的具体实现              java.sql.DriverManager。  依赖注入 java.sql.Driver 的实现
  *
  * // “实现”
- * Implementor：实现化角色                          java.sql.Driver
- * ConcreteImplementor：具体实现化角色               com.mysql.jdbc.Driver
+ * Implementor：被委托者的接口                       接口：java.sql.Driver
+ * ConcreteImplementor：被委托者的具体实现            实现：com.mysql.jdbc.Driver
  *
  *
  *          抽象                                         实现
@@ -31,7 +31,7 @@ import java.sql.Statement;
  *           |                                    /              \
  *    RefinedAbstraction                ConcreteImplementorA    ConcreteImplementorB
  *
- *
+ *         委托者                                         被委托者
  *
  *
  *
@@ -88,10 +88,11 @@ import java.sql.Statement;
  * DriverManager 类。  业务的 “抽象”
  * public class DriverManager {
  *
- *     // 利用 对象的 “组合”关系，作为 交互的“桥梁”，起 ‘过桥’ 的作用
+ *     // 利用 对象的 “组合”关系，作为 交互的“桥梁”，起 ‘过桥’ 的作用。
  *     private final static CopyOnWriteArrayList<DriverInfo> registeredDrivers = new CopyOnWriteArrayList<>();
  *
- *     //...
+ *
+ *     // 依赖注入 com.mysql.jdbc.Driver
  *     public static synchronized void registerDriver(java.sql.Driver driver) throws SQLException {
  *         if (driver != null) {
  *             registeredDrivers.addIfAbsent(new DriverInfo(driver));
@@ -101,6 +102,7 @@ import java.sql.Statement;
  *     }
  *
  *
+ *     // 具体实现 过桥给 com.mysql.jdbc.Driver
  *     private static Connection getConnection(String url, java.util.Properties info, Class<?> caller) throws SQLException {
  *         //...
  *         for(DriverInfo aDriver : registeredDrivers) {

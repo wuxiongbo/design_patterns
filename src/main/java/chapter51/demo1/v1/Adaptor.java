@@ -1,7 +1,7 @@
 package chapter51.demo1.v1;
 
 /**
- * <p> 适配器 </p>
+ * <p> 类 适配器 </p>
  * <p>
  * "类"适配器: 基于 '继承'
  *
@@ -11,7 +11,7 @@ package chapter51.demo1.v1;
  * </pre>
  */
 public class Adaptor
-        extends Adaptee // 采用 “继承” 的方式
+        extends Adaptee  // 适配器， 采用 “继承” 的方式， 获取 被适配者的能力
         implements ITarget {
 
 

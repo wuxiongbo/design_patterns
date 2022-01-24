@@ -4,16 +4,13 @@ import chapter59.callback.framework.BClass;
 import chapter59.callback.framework.ICallback;
 
 /**
- * <p>回调函数、回调机制、回调对象</p>
+ * <p>  回调机制（包括：回调函数、回调对象） </p>
  *
  *
- * 相对于普通的函数调用来说，回调是一种双向调用关系。
- *
- * A 类 事先 将 ‘函数 F()’  ----注册---->   到 B 类，
- *
- * A 类 在调用 B 类 的 函数P() 的时候，
- *
- * B 类 的 函数P()  -----反过来调用---->  A 类 注册给 B类 的 ‘函数 F()’ 。
+ * 相对于 “普通的函数调用” 来说，“回调” 是一种  ‘双向调用’  关系。
+ * 1） A 类 事先 将 ‘函数 F()’  ----注册---->   到 B 类，
+ * 2） 当 A 类 在未来某个时刻，调用 B 类 的 函数P() 时，
+ *     B 类 的 函数P() 内部  -------反过来调用------>  A 类（注册给B类）的 ‘函数 F()’ 。
  *
  * 这里的 ‘函数F()’ 就是 “回调函数”。
  *
@@ -21,8 +18,9 @@ import chapter59.callback.framework.ICallback;
  *
  *
  *
+ *
  * A 类 如何将 ‘回调函数’ 传递 给 B 类 呢？ 不同的编程语言，有不同的实现方法。
- *   C 语言     可以使用函数指针，
+ *   C 语言     可以使用 函数指针，
  *   Java 语言  则需要使用 包裹了‘回调函数’的“类对象” ，我们简称为 “回调对象” 。
  *
  *
@@ -48,10 +46,11 @@ public class AClass {
 
         BClass b = new BClass();
 
-        // 由AClass 调用 B类的函数
+        // 由 AClass 调用 B类 的 process函数
         b.process(
 
-                // 由A类构建 回调对象 并 传递给 B类，回调对象 是用来包裹回调函数的。
+                // A类 构建  匿名回调对象(‘回调对象’ 是专门用来 包裹 ‘回调函数’ 的。)
+                // 将 ‘回调函数’ 传递 给 B类，
                 new ICallback() {
                     @Override
                     public void methodToCallback() {
