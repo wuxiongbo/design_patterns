@@ -8,7 +8,7 @@ import chapter59.callback.framework.ICallback;
  *
  *
  * 相对于 “普通的函数调用” 来说，“回调” 是一种  ‘双向调用’  关系。
- * 1） A 类 事先 将 ‘函数 F()’  ----注册---->   到 B 类，
+ * 1） A 类 事先 将 ‘函数 f()’  ----注册---->   到 B 类，
  * 2） 当 A 类 在未来某个时刻，调用 B 类 的 函数P() 时，
  *     B 类 的 函数P() 内部  -------反过来调用------>  A 类（注册给B类）的 ‘函数 F()’ 。
  *
@@ -42,27 +42,38 @@ import chapter59.callback.framework.ICallback;
 public class AClass {
 
 
-    public static void main(String[] args) {
+
+    public void method(){
 
         BClass b = new BClass();
 
-        // 由 AClass 调用 B类 的 process函数
+        // 由 AClass 调用 B类 的 process()函数
         b.process(
 
                 // A类 构建  匿名回调对象(‘回调对象’ 是专门用来 包裹 ‘回调函数’ 的。)
-                // 将 ‘回调函数’ 传递 给 B类，
+                // 将 ‘回调函数’ f()  传递 给 B类，
+                // 本质上，是利用 内部类的语法机制实现的。
                 new ICallback() {
                     @Override
                     public void methodToCallback() {
-                        System.out.println("Call back me.");
+                        AClass.this.f();
                     }
                 }
 
         );
+    }
 
-
+    public void f() {
+        System.out.println("Call back me.");
     }
 
 
+
+    public static void main(String[] args) {
+
+        AClass aClass = new AClass();
+        aClass.method();
+
+    }
 
 }
