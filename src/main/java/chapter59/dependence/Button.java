@@ -1,7 +1,5 @@
 package chapter59.dependence;
 
-import chapter59.callback_demo2.OnClickListener;
-
 /**
  * <p>描述类的信息</p>
  *

@@ -39,7 +39,7 @@ import chapter59.callback.framework.ICallback;
  * @date 2022/1/11
  * </pre>
  */
-public class AClass {
+public class AClass2 {
 
 
     public void f() {
@@ -51,27 +51,9 @@ public class AClass {
 
         BClass b = new BClass();
 
-        // 由 AClass 调用 B类 的 process()函数
-        b.process(
-
-                // A类 构建  匿名的回调对象  (回调对象是专门用来 包裹 ‘回调函数’ 的。)
-                // 将 ‘回调函数’ f()  传递 给 B类，
-                // 本质上，是利用 ‘内部类’的语法机制实现的。
-                new ICallback() {
-
-                    @Override
-                    // 回调函数，起‘过桥’作用。  类似“桥接模式” 的思想
-                    public void methodToCallback() {
-                        AClass.this.f();  // 使用“桥接模式”， 将回调实现，委托给了 AClass的 f() 函数。
-                    }
-                }
-
-        );
-
-
-        // 要等待回调函数执行完，才能走到这里。 所以是  “同步回调”
-        System.out.println("方法结束");
-
+        // 在 Java 8 之前，“内部类” 是实现 “闭包” 的唯一方式。
+        // 在 Java 8 之后，我们可以使用 lambda表达式  来实现 “闭包” 行为，并且语法更加优雅和简洁，
+        b.process(AClass2.this::f);
     }
 
 
@@ -80,7 +62,7 @@ public class AClass {
 
     public static void main(String[] args) {
 
-        AClass aClass = new AClass();
+        AClass2 aClass = new AClass2();
         aClass.callbackDemo();
 
     }

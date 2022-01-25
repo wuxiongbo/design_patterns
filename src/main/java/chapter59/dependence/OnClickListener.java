@@ -1,4 +1,4 @@
-package chapter59.callback_demo2;
+package chapter59.dependence;
 
 import chapter59.dependence.View;
 

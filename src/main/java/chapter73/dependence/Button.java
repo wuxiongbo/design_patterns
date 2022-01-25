@@ -1,6 +1,6 @@
 package chapter73.dependence;
 
-import chapter59.callback_demo2.OnClickListener;
+import chapter59.dependence.OnClickListener;
 import chapter59.dependence.View;
 
 /**
