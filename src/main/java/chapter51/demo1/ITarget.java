@@ -1,8 +1,8 @@
-package chapter51.demo1.v1;
+package chapter51.demo1;
+
 
 /**
  * <p> 适配目标：统一接口 </p>
- *
  *
  * <pre>
  * @author wuxiongbo
@@ -16,8 +16,6 @@ public interface ITarget {
     void f2();
 
     void fc();
-
-
 
 }
 /*

@@ -1,5 +1,7 @@
 package chapter51.demo5;
 
+import com.mysql.jdbc.Driver;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -7,13 +9,18 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p>适配器模式 应用场景</p>
  *
  * 适配器模式 应用场景1： 过渡
- *    在做版本升级的时候，对于一些要废弃的接口，我们不直接将其删除，而是暂时保留，并且标注为 deprecated，并将内部实现逻辑 "委托" 为新的接口实现。
- *    这样做的好处是，让使用它的项目有个过渡期，而不是强制进行代码修改。
+ *    在做版本升级的时候，对于一些要 废弃的 ‘旧接口’，我们不直接将其删除，而是暂时保留，并且标注为 deprecated，
+ *    然后，将 ‘旧接口’ 的内部实现逻辑 "委托" 给 ‘新接口’的实现。
+ *    达到修改为 新接口的同时，‘适配’ 旧接口的目的。
+ *    ‘适配’的好处是，让使用它的项目有个过渡期，可以继续使用已作适配的旧接口，而不是强制进行代码修改 替换为新接口。
  *
  *    这也可以粗略地看作适配器模式的一个应用场景。
+ *
+ *    案例： com.mysql.jdbc.Driver extends com.mysql.cj.jdbc.Driver  {@link Driver}
+ *    旧的类的功能实现， 通过‘继承’的方式  委托给新的类。
  *
  *
  * 适配器模式 应用场景2： 兼容

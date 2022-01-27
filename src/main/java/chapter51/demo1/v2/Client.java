@@ -1,5 +1,8 @@
 package chapter51.demo1.v2;
 
+import chapter51.demo1.Adaptee;
+import chapter51.demo1.ITarget;
+
 /**
  * <p> 对象 适配器 </p>
  *
@@ -29,10 +32,11 @@ public class Client {
 
     //  "对象"适配器: 基于 '组合'
     public static void main(String[] args){
+
         // 被适配对象
         Adaptee adaptee = new Adaptee();
 
-        // 构造适配器的时候，依赖注入 被适配对象
+        // 构造 "对象"适配器 的时候，需要依赖注入 被适配对象
         ITarget target = new Adaptor(adaptee);
         target.f1();
         target.f2();

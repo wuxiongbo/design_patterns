@@ -1,7 +1,8 @@
 package chapter51.demo4.external_system.targets;
 
 /**
- * <p>外部系统A</p>
+ * <p>适配目标</p>
+ * 外部系统A
  *
  * <pre>
  * @author wuxiongbo

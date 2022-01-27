@@ -1,5 +1,8 @@
 package chapter51.demo1.v1;
 
+import chapter51.demo1.Adaptee;
+import chapter51.demo1.ITarget;
+
 /**
  * <p> 类 适配器 </p>
  * <p>
@@ -11,7 +14,9 @@ package chapter51.demo1.v1;
  * </pre>
  */
 public class Adaptor
-        extends Adaptee  // 适配器， 采用 “继承” 的方式， 获取 被适配者的能力
+
+        extends Adaptee  // “类” 适配器 ， 采用 “继承” 的方式， 获取 被适配者的能力。  从而避免 大量同名接口 需要实现。
+
         implements ITarget {
 
 

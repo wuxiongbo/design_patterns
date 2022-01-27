@@ -1,5 +1,8 @@
 package chapter51.demo1.v2;
 
+import chapter51.demo1.Adaptee;
+import chapter51.demo1.ITarget;
+
 /**
  * <p> 对象 适配器 </p>
  *
@@ -11,8 +14,11 @@ package chapter51.demo1.v2;
  * </pre>
  */
 public class Adaptor
-        // 这里少了“继承” 改用组合。  适配器， 使用 “组合” 的方式， 获取 被适配者的 能力
+
+        // 这里少了“继承” ，改用 ‘组合’ 。  “对象” 适配器， 使用 “组合” 的方式， 获取 被适配者的 能力。缺点是，不管是否同名，全部接口都要适配一遍
+
         implements ITarget {
+
 
     // 聚合
     private Adaptee adaptee;
@@ -36,10 +42,10 @@ public class Adaptor
     }
 
 
-    // 复用 原始方法fc()
+    // 无法复用 原始方法fc()，需要再实现一遍
     @Override
     public void fc() {
-        adaptee.fc(); // 复用，同样需要再实现一遍。 实现 委托给 Adaptee
+        adaptee.fc(); // 将实现 委托给 Adaptee
     }
 
 }

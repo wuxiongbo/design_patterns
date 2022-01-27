@@ -1,4 +1,4 @@
-package chapter51.demo1.v2;
+package chapter51.demo1;
 
 /**
  * <p> 被适配者 </p>
