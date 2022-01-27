@@ -32,15 +32,19 @@ public abstract class Handler {
      */
     public final void handle() {
 
-
+        // 责任链模式 的典型
 //        boolean handled = doHandle();
 //        if (successor != null && !handled) {
-//            successor.handle();  // 向下传递调用动作
+//            successor.handle(); // 向下传递
 //        }
 
 
+        // 算法骨架
         doHandle();
-        // 责任链模式，变体。无论成功与否，均将请求向下传递。
+
+
+        // 责任链模式 的变体。
+        // 无论成功与否，均将请求向下传递。 不再判断当前处理器是否成功处理
         if (next != null ) {
             next.handle();  // 向下传递
         }

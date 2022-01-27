@@ -28,9 +28,10 @@ public class RiskManagement {
 
     // 调用适配器，统一进行过滤操作
     public String filterSensitiveWords(String text) {
+
         String maskedText = text;
 
-        // 责任链模式 变体，请求 会被  所有的处理器  都处理一遍， 不存在中途终止的情况。
+        // 职责链模式 变体。  请求 会轮流被  所有的处理器  都处理一遍， 不存在中途终止的情况。
         for (ISensitiveWordsFilter filter : filters) {
             maskedText = filter.filter(maskedText);
         }

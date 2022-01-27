@@ -1,11 +1,13 @@
-package chapter62.demo1.v4;
+package chapter62.demo1.v5;
 
-import chapter62.demo1.v4.handlerchain.HandlerChain;
-import chapter62.demo1.v4.handler.concrete.HandlerA;
-import chapter62.demo1.v4.handler.concrete.HandlerB;
+import chapter62.demo1.v5.handler.concrete.HandlerA;
+import chapter62.demo1.v5.handler.concrete.HandlerB;
+import chapter62.demo1.v5.handlerchain.HandlerChain;
 
 /**
- * <p> 职责链模式 变体</p>
+ * <p> 责任链 变体 </p>
+ *
+ * 责任链 第二种实现方式   ‘数组’ 结构
  *
  * 在 GoF 给出的定义中，如果处理器链上的某个处理器能够处理这个请求，那就 “不会” 继续往下传递 请求。
  *
@@ -16,11 +18,8 @@ import chapter62.demo1.v4.handler.concrete.HandlerB;
  * 这种变体也有两种实现方式：
  *      用 链表 存储处理器 和 用 数组 存储处理器，
  *
- * 职责链模式 变体，跟之前的两种实现方式类似，只需要 稍微修改 即可。
  *
- *
- * 这里给出基于 链表结构 的实现
- *
+ * 这里给出基于 数组结构 的实现
  *
  * <pre>
  * @author wuxiongbo
@@ -38,6 +37,5 @@ public class Application {
         chain.addHandler(new HandlerB());
 
         chain.handle();
-
     }
 }

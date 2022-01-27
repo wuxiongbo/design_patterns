@@ -31,11 +31,12 @@ public class HandlerA extends Handler {
         //...业务逻辑
 
 
-        // 不能处理，则交给 下一个处理器 处理
+        // 在处理器中判断  是否将调用动作 传递 给下一个处理器
         if (!handled && successor != null) {
             successor.handle();
         }
 
+        // 不用返回判断结果
     }
 
 }

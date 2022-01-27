@@ -1,6 +1,6 @@
-package chapter62.demo1.v3.handlerchain;
+package chapter62.demo1.v5.handlerchain;
 
-import chapter62.demo1.v3.handler.IHandler;
+import chapter62.demo1.v5.handler.IHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +25,10 @@ public class HandlerChain {
 
     public void handle() {
 
-        // 依次 轮询调用，
-        // 不再交由 处理器传递
+        // 依次 轮询调用。 不再判断成功与否，均向下传递
         for (IHandler handler : handlers) {
 
-            // 返回处理结果
-            boolean handled = handler.handle();
-
-
-            // 处理成功，则停止轮询
-            if (handled) {
-                break;
-            }
+            handler.handle();
 
         }
     }

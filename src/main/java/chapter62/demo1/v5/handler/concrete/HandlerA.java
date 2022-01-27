@@ -1,6 +1,6 @@
-package chapter62.demo1.v3.handler.concrete;
+package chapter62.demo1.v5.handler.concrete;
 
-import chapter62.demo1.v3.handler.IHandler;
+import chapter62.demo1.v5.handler.IHandler;
 
 /**
  * <p> 具体的 处理器类 </p>
@@ -14,13 +14,10 @@ import chapter62.demo1.v3.handler.IHandler;
 public class HandlerA implements IHandler {
 
     @Override
-    public boolean handle() {
-
-        boolean handled = false;
+    public void handle() {
 
         //...
-
-        return handled;
+        System.out.println("HandlerA.handle()");
 
     }
 

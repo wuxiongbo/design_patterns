@@ -16,6 +16,8 @@ public class HandlerA extends Handler {
     protected void doHandle() {
 
         //...
+        System.out.println("HandlerA.handle()");
+
     }
 
 }

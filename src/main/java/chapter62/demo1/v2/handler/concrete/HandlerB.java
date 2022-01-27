@@ -14,12 +14,20 @@ import chapter62.demo1.v2.handler.Handler;
  */
 public class HandlerB extends Handler {
 
+    // 子类只需要实现 算法骨架
     @Override
     protected boolean doHandle() {
 
         boolean handled = false;
 
-        //...
+        //...省略一堆业务处理...
+
+
+        // 抽离 请求的传递逻辑。
+//        if (!handled && successor != null) {
+//            successor.handle();
+//        }
+
 
         return handled;
 

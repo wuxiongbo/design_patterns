@@ -14,8 +14,11 @@ import chapter62.demo1.v3.handler.IHandler;
 public class HandlerB implements IHandler {
     @Override
     public boolean handle() {
+
         boolean handled = false;
+
         //...
+
         return handled;
     }
 }

@@ -1,6 +1,6 @@
-package chapter62.demo1.v4.handler.concrete;
+package chapter62.demo1.v5.handler.concrete;
 
-import chapter62.demo1.v4.handler.Handler;
+import chapter62.demo1.v5.handler.IHandler;
 
 /**
  * <p> 具体的 处理器类 </p>
@@ -11,10 +11,10 @@ import chapter62.demo1.v4.handler.Handler;
  * @date 2022/1/13
  * </pre>
  */
-public class HandlerB extends Handler {
+public class HandlerB implements IHandler {
 
     @Override
-    protected void doHandle() {
+    public void handle() {
 
         //...
         System.out.println("HandlerB.handle()");

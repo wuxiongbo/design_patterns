@@ -29,6 +29,7 @@ public class Application {
         chain.addHandler(new HandlerA());
         chain.addHandler(new HandlerB());
 
+        // 提交请求
         chain.handle();
     }
 }
