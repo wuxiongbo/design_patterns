@@ -42,7 +42,7 @@ public class ApplicationDemo {
         filterChain.addFilter(new PoliticalWordFilter());
 
 
-        //
+        //返回过滤结果。
         boolean legal = filterChain.filter(new Content());
 
 
@@ -51,6 +51,7 @@ public class ApplicationDemo {
         } else {
             // 发表
         }
+
 
     }
 }

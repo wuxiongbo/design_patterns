@@ -16,9 +16,11 @@ import static org.apache.catalina.core.ApplicationFilterChain.INCREMENT;
 /**
  * <p>描述类的信息</p>
  *
+ * 观察这部分关键代码：
  * @see org.apache.catalina.core.ApplicationFilterChain#internalDoFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse)
  *
  * ApplicationFilterChain 中的 doFilter() 函数的代码实现比较有技巧，实际上是一个递归调用。
+ *
  *
  * 你可以用每个 Filter（比如 LogFilter）的 doFilter() 的代码实现，直接替换 ApplicationFilterChain 的第 12 行代码，一眼就能看出是递归调用了。
  * 替换后，如下所示。
@@ -28,11 +30,11 @@ import static org.apache.catalina.core.ApplicationFilterChain.INCREMENT;
  *
  *
  * 这样实现主要目的是：
- *     为了在一个 doFilter() 方法中，支持双向拦截，
- *     既能 拦截 ‘客户端’发送来的 请求，
- *     也能 拦截 发送给‘客户端’的 响应，
+ *     为了在一个 doFilter() 方法中，支持 “双向拦截” ，
+ *     既能 拦截 ‘客户端’   发送给‘web容器’ 的  请求，
+ *     也能 拦截 ‘web容器’ 发送给‘客户端’   的  响应，
  *
- * 可以结合着 LogFilter 的例子，理解一下。
+ * 可以结合着 {@link LogFilter} 的例子，理解一下。
  *
  * 而我们上一节课给出的两种实现方式，都没法做到 在 业务逻辑 执行的 前、后，同时添加 处理代码。
  *
@@ -43,8 +45,8 @@ import static org.apache.catalina.core.ApplicationFilterChain.INCREMENT;
  */
 public class ApplicationFilterChain implements FilterChain {
 
-    private int pos = 0; //当前执行到了哪个filter
-    private int n; //filter的个数
+    private int pos = 0;  //当前执行到了哪个filter
+    private int n;        //filter的个数
 
     private ApplicationFilterConfig[] filters;
 
@@ -58,17 +60,14 @@ public class ApplicationFilterChain implements FilterChain {
             ApplicationFilterConfig filterConfig = filters[pos++];
 
 
-
 //            Filter filter = filterConfig.getFilter();
 //            filter.doFilter(request, response, this);
 
 
-
             //把filter.doFilter的代码实现展开替换到这里
             System.out.println("拦截客户端发送来的请求.");
-            this.doFilter(request, response); // this 就是 chain
+            this.doFilter(request, response); // 这里的 this ，就是 LogFilter的 chain
             System.out.println("拦截发送给客户端的响应.");
-
 
 
         } else {

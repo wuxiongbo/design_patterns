@@ -35,6 +35,7 @@ public class HandlerExecutionChain {
     // 请求
     boolean applyPreHandle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+        // 顺向遍历，传递
         for (int i = 0; i < this.interceptorList.size(); i++) {
 
             HandlerInterceptor interceptor = this.interceptorList.get(i);
@@ -56,6 +57,7 @@ public class HandlerExecutionChain {
     // 响应
     void applyPostHandle(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) throws Exception {
 
+        // 反向遍历，传递
         for (int i = this.interceptorList.size() - 1; i >= 0; i--) {
 
             HandlerInterceptor interceptor = this.interceptorList.get(i);

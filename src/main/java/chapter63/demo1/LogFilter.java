@@ -9,25 +9,24 @@ import javax.servlet.ServletResponse;
 import java.io.IOException;
 
 /**
- * <p> Servlet Filter </p>
+ * <p> Handler </p>
  *
- * 添加一个过滤器，我们只需要定义一个实现 javax.servlet.Filter 接口的过滤器类，并且将它配置在 web.xml 配置文件中。
- * Web 容器启动的时候，会读取 web.xml 中的配置，创建过滤器对象。
+ * 添加一个过滤器，我们只需要定义一个实现 javax.servlet.Filter 接口的过滤器类，并且将它配置在 web.xml 配置文件中 即可。
+ * Web 容器  在启动的时候，会加载并读取 web.xml 中的配置，创建过滤器对象。
  *
- * 当有请求到来的时候，会先经过  过滤器，然后才由 Servlet 来处理。
+ * 当有请求到来的时候，会先经过  一系列的 过滤器，然后才由 Servlet 来处理。
  *
  *
- * 我们发现，添加过滤器非常方便，不需要修改任何代码，定义一个实现 javax.servlet.Filter 的类，再改改配置就搞定了，完全符合开闭原则。
- * 那 Servlet Filter 是如何做到如此好的扩展性的呢？
+ * 我们发现，添加过滤器非常方便，不需要修改任何代码，定义一个实现 javax.servlet.Filter 的类，再改改 web.xml配置 就搞定了，完全符合 开闭原则。
+ *
+ * Servlet Filter 是如何做到如此好的扩展性的呢？
  * 我想你应该已经猜到了，它利用的就是  职责链模式 。
  *
- * 职责链模式 的 实现包含
- *    处理器接口（IHandler） 或  抽象类（Handler），
- *    处理器链（HandlerChain）。
  *
- * 对应到 Servlet Filter，
- *    处理器接口  javax.servlet.Filter
- *    处理器链    FilterChain
+ * 职责链模式 的
+ *    处理器接口（IHandler） 或  抽象类（Handler）。 对应到 Servlet Filter  的 处理器接口  javax.servlet.Filter
+ *    处理器链（HandlerChain）。                   对应到 Servlet Filter  的 处理器链    FilterChain
+ *
  *
  * <pre>
  * @author wuxiongbo
