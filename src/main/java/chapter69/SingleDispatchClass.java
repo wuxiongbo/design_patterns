@@ -1,7 +1,7 @@
 package chapter69;
 
 /**
- * <p>描述类的信息</p>
+ * <p>调度器</p>
  *
  * <pre>
  * @author wuxiongbo
