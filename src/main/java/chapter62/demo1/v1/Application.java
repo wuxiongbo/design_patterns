@@ -44,6 +44,9 @@ import chapter62.demo1.v1.handler.concrete.HandlerB;
  *     其中，记录 链尾 是为了 方便添加 处理器。
  *
  *
+ *
+ * 搜索定位关键字：责任链   责任链模式
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2022/1/13

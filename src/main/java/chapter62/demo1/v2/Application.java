@@ -5,7 +5,7 @@ import chapter62.demo1.v2.handler.concrete.HandlerA;
 import chapter62.demo1.v2.handler.concrete.HandlerB;
 
 /**
- * <p>使用模板模式重构</p>
+ * <p>  职责链模式——使用模板模式重构</p>
  *
  * 针对上个版本存在的问题，我们对代码进行重构，
  *
