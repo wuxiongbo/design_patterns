@@ -1,4 +1,4 @@
-package chapter51.demo1;
+package chapter51.demo1.itarget;
 
 
 /**

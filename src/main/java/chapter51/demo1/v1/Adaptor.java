@@ -1,7 +1,7 @@
 package chapter51.demo1.v1;
 
-import chapter51.demo1.Adaptee;
-import chapter51.demo1.ITarget;
+import chapter51.demo1.adaptee.Adaptee;
+import chapter51.demo1.itarget.ITarget;
 
 /**
  * <p> 类 适配器 </p>
