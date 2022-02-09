@@ -13,6 +13,9 @@ import chapter68.v4.resourcefile.concrete.WordFile;
  * </pre>
  */
 public interface Visitor {
+
+    // visit 访问
+
     void visit(PdfFile pdfFile);
     void visit(PPTFile pdfFile);
     void visit(WordFile pdfFile);

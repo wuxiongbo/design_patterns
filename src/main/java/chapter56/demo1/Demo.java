@@ -20,11 +20,12 @@ import chapter56.dependence.Message;
  * 一般情况下，被依赖的对象叫作被观察者（Observable），依赖的对象叫作观察者（Observer）。
  * 不过，在实际的项目开发中，这两种对象的称呼是比较灵活的，有各种不同的叫法，
  * 比如：
- *   Subject-Observer、
- *   Publisher-Subscriber、
+ *   Subject-Observer、             Subject 主题      Observer 观察者
+ *   Publisher-Subscriber、         Publisher 出版者   Subscriber 订阅者
  *   Producer-Consumer、
- *   EventEmitter-EventListener、
- *   Dispatcher-Listener。
+ *   EventEmitter-EventListener、   emitter 发射器
+ *   Dispatcher-Listener。          Dispatcher  调度器、分配器
+ *
  * 不管怎么称呼，只要应用场景符合刚刚给出的定义，都可以看作观察者模式。
  *
  *

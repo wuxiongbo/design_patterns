@@ -33,12 +33,13 @@ public class ToolApplication {
         List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
 
 
+        // 提取器
         Extractor extractor = new Extractor();
         for (ResourceFile resourceFile : resourceFiles) {
             resourceFile.accept(extractor);
         }
 
-
+        // 压缩器
         Compressor compressor = new Compressor();
         for(ResourceFile resourceFile : resourceFiles) {
             resourceFile.accept(compressor);

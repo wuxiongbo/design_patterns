@@ -5,7 +5,7 @@ import chapter68.v3.Extractor;
 import chapter68.v3.resourcefile.ResourceFile;
 
 /**
- * <p>描述类的信息</p>
+ * <p>资源文件</p>
  *
  * <pre>
  * @author wuxiongbo

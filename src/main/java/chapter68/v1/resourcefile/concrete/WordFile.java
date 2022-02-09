@@ -3,7 +3,7 @@ package chapter68.v1.resourcefile.concrete;
 import chapter68.v1.resourcefile.ResourceFile;
 
 /**
- * <p>描述类的信息</p>
+ * <p>资源文件</p>
  *
  * <pre>
  * @author wuxiongbo

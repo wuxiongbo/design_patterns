@@ -35,6 +35,7 @@ public class ToolApplication {
 
         List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
 
+        // 转换思路， 将  提取器  注入给  资源文件。 而不再是 直接向 提取器 传入  资源文件
         for (ResourceFile resourceFile : resourceFiles) {
             resourceFile.accept(extractor);
         }

@@ -4,7 +4,7 @@ import chapter68.v4.visitor.Visitor;
 import chapter68.v4.resourcefile.ResourceFile;
 
 /**
- * <p>描述类的信息</p>
+ * <p>资源文件</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -18,6 +18,8 @@ public class WordFile extends ResourceFile {
 
     @Override
     public void accept(Visitor vistor) {
+        // 具体的 visit() 方法 进行的什么业务操作，由传入的 接口实现而定。
+        // 利用多态的特性，避免了原本的accept方法重载
         vistor.visit(this);
     }
 
