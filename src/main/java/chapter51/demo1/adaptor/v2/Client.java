@@ -1,4 +1,4 @@
-package chapter51.demo1.v2;
+package chapter51.demo1.adaptor.v2;
 
 import chapter51.demo1.adaptee.Adaptee;
 import chapter51.demo1.itarget.ITarget;

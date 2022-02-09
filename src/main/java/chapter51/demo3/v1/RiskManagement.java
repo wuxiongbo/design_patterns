@@ -21,8 +21,10 @@ public class RiskManagement {
     private BSensitiveWordsFilter bFilter = new BSensitiveWordsFilter();
     private CSensitiveWordsFilter cFilter = new CSensitiveWordsFilter();
 
+    //  代码的 可测试性、扩展性  不好
     public String filterSensitiveWords(String text) {
 
+        // 接口不统一
         String maskedText = aFilter.filterSexyWords(text);
         maskedText = aFilter.filterPoliticalWords(maskedText);
         maskedText = bFilter.filter(maskedText);

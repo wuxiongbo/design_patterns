@@ -1,4 +1,5 @@
-package chapter51.demo3.v2;
+package chapter51.demo3.v1;
+
 
 import chapter51.demo3.common.ASensitiveWordsFilter;
 import chapter51.demo3.common.BSensitiveWordsFilter;
@@ -30,18 +31,11 @@ public class Client {
 
         RiskManagement riskManagement = new RiskManagement();
 
-        // 添加 handle
-        riskManagement.addSensitiveWordsFilter(new ASensitiveWordsFilterAdaptor(new ASensitiveWordsFilter()));
-        riskManagement.addSensitiveWordsFilter(new BSensitiveWordsFilterAdaptor(new BSensitiveWordsFilter()));
-        riskManagement.addSensitiveWordsFilter(new CSensitiveWordsFilterAdaptor(new CSensitiveWordsFilter()));
-
-
         // 和谐前的文本
         String text = "这是待和谐文本这是待和谐文本这是待和谐文本";
 
         // 和谐后的文本
         String maskedText = "";
-
 
         maskedText= riskManagement.filterSensitiveWords(text);
 

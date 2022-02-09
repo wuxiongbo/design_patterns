@@ -31,10 +31,13 @@ public class RiskManagement {
 
         String maskedText = text;
 
-        // 职责链模式 变体。  请求 会轮流被  所有的处理器  都处理一遍， 不存在中途终止的情况。
+
+        // 使用 职责链模式的变体 对代码进行重构。
+        // 此处，请求 会轮流被  所有的处理器  处理一遍， 不存在中途终止的情况。
         for (ISensitiveWordsFilter filter : filters) {
             maskedText = filter.filter(maskedText);
         }
+
 
         return maskedText;
     }
