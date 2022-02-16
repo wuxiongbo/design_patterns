@@ -35,9 +35,9 @@ import chapter16.demo1.framework.ApplicationContext;
  *
  *
  * 使用到的设计模式：
- * 工厂模式
- * 桥接模式
- * 职责链模式
+ * 工厂模式           {@link chapter16.demo1.module.alert.handler.AlertHandler}
+ * 桥接模式           {@link chapter16.demo1.module.notify.v1.notification.Notification}
+ * 职责链模式         {@link chapter16.demo1.module.alert.Alert}
  *
  *
  */

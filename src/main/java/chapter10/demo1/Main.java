@@ -6,7 +6,7 @@ import chapter10.demo1.birds.Sparrow;
 /**
  * <p>组合关系</p>
  *
- *  如果持续增加能力，组合爆炸，类的 继承层次 会越来越深、继承关系会越来越复杂
+ *  如果持续增加 能力，组合爆炸，类的 继承层次 会越来越深、继承关系会越来越复杂
  *
  *                      AbstractBird
  *                      /          \
@@ -14,7 +14,7 @@ import chapter10.demo1.birds.Sparrow;
  *         /              |          |              \
  *     Sparrow          Crow      Penguin          Ostrich
  *
- * 可变化的维度有： 是否会“下蛋”，是否会“飞”，是否会“叫”
+ * 可变化的 维度 有： 是否会“下蛋”，是否会“飞”，是否会“叫”
  *
  *
  * Ability     能力的实现
