@@ -1,11 +1,7 @@
 package my_demo.monitor.callback.demo1;
 
-import my_demo.monitor.callback.demo1.callback.Callee1;
-import my_demo.monitor.callback.demo1.caller.Caller;
-import my_demo.monitor.callback.demo1.callback.ICallBack;
-
 /**
- * <p> 回调 </p>
+ * <p> 回调对象 </p>
  * 本示例的目的是 理解 “回调” 的概念
  *
  * <pre>
@@ -14,7 +10,7 @@ import my_demo.monitor.callback.demo1.callback.ICallBack;
  * </pre>
  */
 public class Callee
-        // 第四种写法。在本类中 定义 回调函数实现。
+        // 第三种写法。在本类中 定义 回调函数实现。
         implements ICallBack{
 
 
@@ -46,17 +42,7 @@ public class Callee
         });
 
 
-
-        // 第三种写法。在外部 定义 回调函数的实现类
-        // 回调函数:
-        //     Callee1.callBack();
-        // 回调对象:
-        //     Callee1
-        caller.call(new Callee1());
-
-
-
-        // 第四种写法。在本类中 定义 回调函数实现。
+        // 第三种写法。在本类中 定义 回调函数实现。
         // 回调函数:
         //     Callee.callBack();
         // 回调对象:
@@ -65,7 +51,7 @@ public class Callee
     }
 
 
-    // 第四种写法。在本类中 定义 回调函数实现。
+    // 第三种写法。在本类中 定义 回调函数实现。
     @Override
     public void callBack() {
         System.out.println("回调对象"+this+"的回调函数回调成功!");
@@ -88,9 +74,6 @@ Start...
 End...
 Start...
 回调对象my_demo.monitor.callback.demo1.Callee$1@4b9af9a9的回调函数回调成功!
-End...
-Start...
-回调对象my_demo.monitor.callback.demo1.callback.Callee1@5387f9e0的回调函数回调成功!
 End...
 Start...
 回调对象my_demo.monitor.callback.demo1.Callee@41906a77的回调函数回调成功!
