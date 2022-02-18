@@ -1,8 +1,8 @@
-package my_demo.monitor.callback;
+package my_demo.monitor.callback.demo1;
 
-import my_demo.monitor.callback.callback.impl.CallBack;
-import my_demo.monitor.callback.caller.Caller;
-import my_demo.monitor.callback.callback.ICallBack;
+import my_demo.monitor.callback.demo1.callee.CallBack;
+import my_demo.monitor.callback.demo1.caller.Caller;
+import my_demo.monitor.callback.demo1.callee.ICallBack;
 
 /**
  * <p> 回调 </p>
@@ -14,21 +14,21 @@ import my_demo.monitor.callback.callback.ICallBack;
  * </pre>
  */
 public class Test {
+
     public static void main(String args[]) {
         // 回调者
-        Caller call = new Caller();
-
+        Caller caller = new Caller();
 
 
 
 
         // 第一种写法。lambda
-        call.call(() -> System.out.println("回调函数调用成功!"));
+        caller.call(() -> System.out.println("回调函数调用成功!"));
 
 
 
         // 第二种写法。匿名内部类
-        call.call(new ICallBack(){
+        caller.call(new ICallBack(){
             @Override
             public void callBack() {
                 System.out.println("回调函数回调成功!");
@@ -37,7 +37,7 @@ public class Test {
 
 
         // 第三种写法。定义 回调函数的实现类
-        call.call(new CallBack());
+        caller.call(new CallBack());
 
     }
 

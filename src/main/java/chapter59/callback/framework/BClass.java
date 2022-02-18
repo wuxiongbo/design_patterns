@@ -11,6 +11,8 @@ package chapter59.callback.framework;
 public class BClass {
 
     /**
+     * 方法入参 为 一个 回调对象
+     *
      * @param callback 回调对象
      */
     public void process(ICallback callback) {

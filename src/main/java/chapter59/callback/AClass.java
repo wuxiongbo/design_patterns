@@ -4,8 +4,16 @@ import chapter59.callback.framework.BClass;
 import chapter59.callback.framework.ICallback;
 
 /**
- * <p>  回调机制（包括：回调函数、回调对象） </p>
+ * <p>  回调函数 由 被回调方 实现，但借用‘内部类’包裹并传递。‘内部类’ 起过桥作用</p>
  *
+ *
+ * 回调函数：
+ *     AClass.$匿名类.methodToCallback();
+ *     methodToCallback() 的实现，委托给了 AClass.f();
+ *
+ *
+ *
+ * 回调机制（包括：回调函数、回调对象）
  *
  * 相对于 “普通的函数调用” 来说，“回调” 是一种  ‘双向调用’  关系。
  * 1） A 类 事先 将 ‘函数 f()’ -------注册-------->   到 B 类，
@@ -42,27 +50,30 @@ import chapter59.callback.framework.ICallback;
 public class AClass {
 
 
+    //  回调函数的实现
     public void f() {
         System.out.println("Call back me.");
     }
 
 
-    public void callbackDemo(){
+    public void processA(){
 
         BClass b = new BClass();
 
         // 由 AClass 调用 B类 的 process()函数
         b.process(
 
-                // A类 构建  匿名的回调对象  (回调对象是专门用来 包裹 ‘回调函数’ 的。)
+                // A类 构建  匿名的 ‘回调对象’  (回调对象 是 专门用来 包裹 ‘回调函数’ 的。)
                 // 将 ‘回调函数’ f()  传递 给 B类，
-                // 本质上，是利用 ‘内部类’的语法机制实现的。
+                // 本质上，是利用了 ‘内部类’的语法机制 实现的（即，内部类拥有外部类所有的成员属性与方法，包括私有的）
                 new ICallback() {
 
+                    // jvm编译后，会隐性的在这里添加一个属性，指向外部类。
+
+                    // 这就是所谓的 “回调函数”。  这里的匿名类，起‘过桥’作用。 类似“桥接模式” 的思想
                     @Override
-                    // 回调函数，起‘过桥’作用。  类似“桥接模式” 的思想
                     public void methodToCallback() {
-                        AClass.this.f();  // 使用“桥接模式”， 将回调实现，委托给了 AClass的 f() 函数。
+                        AClass.this.f();  // 使用“桥接模式”，将 回调方法的实现，委托给了 AClass的 f() 函数。
                     }
                 }
 
@@ -81,7 +92,7 @@ public class AClass {
     public static void main(String[] args) {
 
         AClass aClass = new AClass();
-        aClass.callbackDemo();
+        aClass.processA();
 
     }
 

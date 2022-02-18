@@ -1,6 +1,4 @@
-package my_demo.monitor.callback.callback.impl;
-
-import my_demo.monitor.callback.callback.ICallBack;
+package my_demo.monitor.callback.demo1.callee;
 
 /**
  * <p>描述类的信息</p>

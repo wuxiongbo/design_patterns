@@ -1,4 +1,4 @@
-package my_demo.monitor.callback.callback;
+package my_demo.monitor.callback.demo1.callee;
 
 /**
  * <p>回调接口</p>
