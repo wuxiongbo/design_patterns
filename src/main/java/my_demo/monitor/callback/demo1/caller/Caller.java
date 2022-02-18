@@ -1,6 +1,6 @@
 package my_demo.monitor.callback.demo1.caller;
 
-import my_demo.monitor.callback.demo1.callee.ICallBack;
+import my_demo.monitor.callback.demo1.callback.ICallBack;
 
 /**
  * <p>回调者(即，用于‘调用回调函数’ 的类)</p>
@@ -12,8 +12,7 @@ import my_demo.monitor.callback.demo1.callee.ICallBack;
  */
 public class Caller {
     /**
-     *
-      * @param callBack 回调接口
+     * @param callBack 回调对象
      */
     public void call(ICallBack callBack) {
         System.out.println("Start...");
