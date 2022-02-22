@@ -38,11 +38,11 @@ public class GameApplication {
             List<Request> requests = new ArrayList<>();
 
 
-            // 设置指令对象
+            // 根据 请求的事件 设置 相应的 命令对象
             setCommand(requests);
 
 
-            // 调用指令对象
+            // 执行命令
             call();
 
         }
@@ -71,6 +71,7 @@ public class GameApplication {
 
     private void call(){
 
+        // 遍历 执行命令
         for (int handledCount = 0; handledCount < MAX_HANDLED_REQ_COUNT_PER_LOOP; handledCount++) {
 
             if (queue.isEmpty()) {

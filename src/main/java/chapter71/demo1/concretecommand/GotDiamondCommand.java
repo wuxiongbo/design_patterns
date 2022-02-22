@@ -29,4 +29,5 @@ public class GotDiamondCommand implements Command {
         // receiver.xxxMethod(/*parameters*/);
 
     }
+
 }
