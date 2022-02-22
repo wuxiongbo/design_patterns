@@ -6,7 +6,7 @@ import my_demo.command.demo1.invoker.Broker;
 import my_demo.command.demo1.receiver.Stock;
 
 /**
- * <p>指令模式</p>
+ * <p>指令模式  命令模式</p>
  *
  *
  * Command：

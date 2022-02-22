@@ -13,17 +13,18 @@ import my_demo.command.demo2.receiver.Receiver;
  */
 public class ConcreteCommandB implements Command {
 
-    // 任何类都可能成为一个接收者，只要它能够实现 命令(ConcreteCommand)的相应功能就行。
+    // 任何类都可能成为一个接收者。
+    // 只要它能够实现 命令(ConcreteCommand)的相应功能就行。
     private Receiver receiver;
 
     public ConcreteCommandB() {
         receiver = new Receiver();
-        System.out.println("构建指令B");
+        System.out.println("构建 指令B");
     }
 
     @Override
     public void execute() {
-        // 委托给 接受者
-        receiver.actionA();
+        // 具体实现 委托给 接受者
+        receiver.actionB();
     }
 }

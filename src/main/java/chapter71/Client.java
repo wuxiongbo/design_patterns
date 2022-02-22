@@ -3,7 +3,7 @@ package chapter71;
 import chapter71.Invoker.GameApplication;
 
 /**
- * <p>描述类的信息</p>
+ * <p> 命令模式、指令模式 </p>
  *
  * <pre>
  * @author wuxiongbo

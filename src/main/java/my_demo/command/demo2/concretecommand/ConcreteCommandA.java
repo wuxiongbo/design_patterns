@@ -18,12 +18,12 @@ public class ConcreteCommandA implements Command {
 
     public ConcreteCommandA() {
         receiver = new Receiver();
-        System.out.println("构建指令A");
+        System.out.println("构建 指令A");
     }
 
     @Override
     public void execute() {
         // 委托给 接受者
-        receiver.actionB();
+        receiver.actionA();
     }
 }
