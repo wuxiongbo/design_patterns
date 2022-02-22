@@ -1,4 +1,4 @@
-package chapter71.command;
+package chapter71.demo1.command;
 
 /**
  * <p>Command</p>
@@ -9,5 +9,8 @@ package chapter71.command;
  * </pre>
  */
 public interface Command {
+    /**
+     * 执行命令
+     */
     void execute();
 }

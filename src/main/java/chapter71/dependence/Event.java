@@ -1,7 +1,7 @@
 package chapter71.dependence;
 
 /**
- * <p>描述类的信息</p>
+ * <p>事件类型</p>
  *
  * <pre>
  * @author wuxiongbo

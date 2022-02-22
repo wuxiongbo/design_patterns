@@ -1,10 +1,10 @@
-package chapter71.Invoker;
+package chapter71.demo1.Invoker;
 
-import chapter71.command.Command;
-import chapter71.concretecommand.ArchiveCommand;
-import chapter71.concretecommand.GotDiamondCommand;
-import chapter71.concretecommand.GotStartCommand;
-import chapter71.concretecommand.HitObstacleCommand;
+import chapter71.demo1.command.Command;
+import chapter71.demo1.concretecommand.ArchiveCommand;
+import chapter71.demo1.concretecommand.GotDiamondCommand;
+import chapter71.demo1.concretecommand.GotStartCommand;
+import chapter71.demo1.concretecommand.HitObstacleCommand;
 import chapter71.dependence.Event;
 import chapter71.dependence.Request;
 

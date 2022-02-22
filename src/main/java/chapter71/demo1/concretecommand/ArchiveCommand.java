@@ -1,6 +1,6 @@
-package chapter71.concretecommand;
+package chapter71.demo1.concretecommand;
 
-import chapter71.command.Command;
+import chapter71.demo1.command.Command;
 
 /**
  * <p>ConcreteCommand</p>
@@ -13,15 +13,23 @@ import chapter71.command.Command;
 public class ArchiveCommand implements Command {
 
     // 省略成员变量. receiver
+    // Private Receiver receiver；
 
-    public ArchiveCommand(/*数据, receiver */) {
+    public ArchiveCommand(/*依赖注入 receiver */) {
         //...
     }
 
+
+    /**
+     * 关键业务是，这个函数里面的逻辑
+     */
     @Override
     public void execute() {
 
         // 委托给 receiver 。执行相应的逻辑
+        // receiver.xxxMethod(/*parameters*/);
 
     }
+
+
 }
