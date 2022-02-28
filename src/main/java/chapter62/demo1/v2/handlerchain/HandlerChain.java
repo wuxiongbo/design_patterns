@@ -20,6 +20,7 @@ public class HandlerChain {
 
 
 
+    // 添加 处理器
     public void addHandler(Handler handler) {
 
         handler.setSuccessor(null);
@@ -39,7 +40,7 @@ public class HandlerChain {
     }
 
 
-    // 触发 链表的调用动作
+    // 触发 一连串的 链表的调用动作，从头结点开始
     public void handle() {
         if (head != null) {
             head.handle();

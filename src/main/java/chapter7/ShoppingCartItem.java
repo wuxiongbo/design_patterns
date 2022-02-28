@@ -3,7 +3,7 @@ package chapter7;
 import lombok.Data;
 
 /**
- * <p>描述类的信息</p>
+ * <p>购物车条目</p>
  *
  * <pre>
  * @author wuxiongbo

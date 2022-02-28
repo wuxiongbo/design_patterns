@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p>原型模式</p>
  *
  * 要求1，
  *    对于前面那个需求，我们有一个特殊的要求， 任何时刻，系统 A 中的所有数据都必须是同一个版本的，即：

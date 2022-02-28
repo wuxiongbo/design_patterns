@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * <p>  原型模式的实现方式： 深拷贝 </p>
+ * <p>  原型模式 的实现方式： 深拷贝 </p>
  *
  * 原型模式有两种实现方法，深拷贝和浅拷贝。
  *
@@ -56,11 +56,15 @@ public class Demo {
             }
 
             // 更新 深拷贝map （newKeywords）
+
+            // 对 内存中 已存在的进行更新。（这样会同时修改到，newKeywords、currentKeywords 中的数据）
             if (newKeywords.containsKey(searchWord.getKeyword())) {
                 SearchWord oldSearchWord = newKeywords.get(searchWord.getKeyword());
                 oldSearchWord.setCount(searchWord.getCount());
                 oldSearchWord.setLastUpdateTime(searchWord.getLastUpdateTime());
-            } else {
+            }
+            // 对 内存中 不存在的，进行插入。
+            else {
                 newKeywords.put(searchWord.getKeyword(), searchWord);
             }
 

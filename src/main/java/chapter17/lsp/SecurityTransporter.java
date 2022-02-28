@@ -8,9 +8,11 @@ import org.apache.commons.lang.StringUtils;
 
 
 /**
- * <p> 里式替换原则 </p>
- *  父类 Transporter 使用 org.apache.http 库中的 HttpClient 类来传输网络数据。
+ * <p> 传输器 </p>
  *
+ * 违背  里式替换原则  示例：
+ *
+ *  父类 Transporter 使用 org.apache.http 库中的 HttpClient 类来传输网络数据。
  *  子类 SecurityTransporter 继承父类 Transporter，增加了额外的功能，支持传输 appId 和 appToken  安全认证信息。
  *
  * <pre>
@@ -43,7 +45,7 @@ public class SecurityTransporter extends Transporter {
 //    }
 
 
-    // 改造后
+    // 改造后，违背LSP
     @Override
     public Response sendRequest(Request request) {
 

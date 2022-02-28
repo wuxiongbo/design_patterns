@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * <p> 原型模式的实现方式： 浅拷贝 </p>
+ * <p> 原型模式 的实现方式： 浅拷贝 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -41,14 +41,13 @@ public class Demo {
 
             // 方案一：对 克隆的map 进行更新、插入操作。
 
-            // 对 内存中 已存在的进行更新。
-            // 这样会同时修改到，newKeywords、currentKeywords 中的数据
+            // 对 内存中 已存在的进行更新。（这样会同时修改到，newKeywords、currentKeywords 中的数据）
 //            if (newKeywords.containsKey(searchWord.getKeyword())) {
 //                SearchWord oldSearchWord = newKeywords.get(searchWord.getKeyword());
 //                oldSearchWord.setCount(searchWord.getCount());
 //                oldSearchWord.setLastUpdateTime(searchWord.getLastUpdateTime());
 //            }
-            //对 内存中 不存在的，进行插入。
+            // 对 内存中 不存在的，进行插入。
 //            else {
 //                newKeywords.put(searchWord.getKeyword(), searchWord);
 //            }
@@ -56,14 +55,14 @@ public class Demo {
 
 
             // 方案二：同样，操作 克隆的map。
-            // 对 newKeywords中 已存在的进行移除。
-            // currentKeywords中，依然存在。
-            // 这种方式即利用了 浅拷贝 节省时间、空间的优点，又能保证 currentKeywords 中的中数据都是老版本的数据。
+            // 1）对 新缓存  newKeywords中 已存在的 旧数据 进行移除。（该 旧数据 在 旧缓存 currentKeywords中 依然存在）
             if (newKeywords.containsKey(searchWord.getKeyword())) {
                 newKeywords.remove(searchWord.getKeyword());
             }
-            // 然后，对 newKeywords 进行插入。 从而避免了 更新造成  currentKeywords的 中间态。
+            // 2）然后，对 新缓存 newKeywords 进行插入。 从而避免了 更新 造成  currentKeywords 处于新旧数据共存的 中间态。
             newKeywords.put(searchWord.getKeyword(), searchWord);
+
+            // 这种方式即利用了 浅拷贝 节省时间、空间的优点，又能保证 currentKeywords 中的中数据都是老版本的数据。
 
         }
 

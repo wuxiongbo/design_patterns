@@ -5,7 +5,7 @@ import chapter48.demo0.v2.controller.UserController;
 import chapter48.demo0.v2.proxy.UserControllerProxy;
 
 /**
- * <p> UserControllerProxy使用举例 </p>
+ * <p> 代理模式   UserControllerProxy使用举例 </p>
  *
  * <pre>
  * @author wuxiongbo

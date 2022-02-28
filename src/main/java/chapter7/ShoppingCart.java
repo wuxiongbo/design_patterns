@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p>购物车</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -74,14 +74,18 @@ public class ShoppingCart {
     /**
      * 虽然我们没法修改容器中的数据，但我们仍然可以修改容器中每个对象（ShoppingCartItem）的数据。
      *
-     * 通过原型模式 解决这个问题
+     * 通过 原型模式 解决这个问题
      * @param args
      */
     public static void main(String[] args){
+
         ShoppingCart cart = new ShoppingCart();
         cart.addItem(new ShoppingCartItem());
+
+
         List<ShoppingCartItem> items = cart.getItems();
         ShoppingCartItem item = items.get(0);
         item.setPrice(19.0); // 这里修改了item的价格属性
+
     }
 }

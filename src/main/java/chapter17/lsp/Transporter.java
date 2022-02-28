@@ -6,7 +6,7 @@ import chapter17.dependence.Response;
 
 
 /**
- * <p>描述类的信息</p>
+ * <p>传输器</p>
  *
  * <pre>
  * @author wuxiongbo

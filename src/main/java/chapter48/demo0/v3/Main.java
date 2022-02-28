@@ -4,7 +4,7 @@ import chapter48.demo0.v2.controller.IUserController;
 import chapter48.demo0.v2.controller.UserController;
 
 /**
- * <p>描述类的信息</p>
+ * <p>代理模式 </p>
  *
  * <pre>
  * @author wuxiongbo

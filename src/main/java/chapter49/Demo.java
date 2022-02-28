@@ -12,6 +12,7 @@ import java.sql.Statement;
 
 /**
  * <p>桥接模式</p>
+ *
  * 桥接模式，也叫作 桥梁模式    Bridge Design Pattern
  *
  * // “抽象”

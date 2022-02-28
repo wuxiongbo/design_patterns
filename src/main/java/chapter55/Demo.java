@@ -1,7 +1,7 @@
 package chapter55;
 
 /**
- * <p>享元模式</p>
+ * <p>享元模式 在Integer中的应用</p>
  *
  *
  * Integer i = 59；底层执行了：Integer i = Integer.valueOf(59);

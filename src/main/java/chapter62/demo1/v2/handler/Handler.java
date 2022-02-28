@@ -22,7 +22,7 @@ public abstract class Handler {
     /**
      * 模板方法
      *
-     * 注意，这里用 Final 修饰方法
+     * 注意，这里用 Final 修饰方法。
      *
      * final来修饰  '类'、 '方法' 、'属性'  都表示其不可变，也就是说  类 不可继承，方法 不可重写，属性 不可覆盖。
      *
@@ -34,9 +34,9 @@ public abstract class Handler {
 
         boolean handled = doHandle();
 
+        // 在 ‘当前处理器’ 判断 是否将调用动作 传递 给 ‘下一个处理器’
         if (successor != null && !handled) {
 
-            // 在处理器中判断  是否将调用动作 传递 给下一个处理器
             successor.handle();
 
         }

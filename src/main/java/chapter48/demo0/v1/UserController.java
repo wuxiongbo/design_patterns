@@ -5,7 +5,7 @@ import chapter48.dependence.RequestInfo;
 import chapter48.dependence.UserVo;
 
 /**
- * <p>描述类的信息</p>
+ * <p>代理模式</p>
  *
  * 系统的 需求分析、设计和实现。  案例汇总。
  *
