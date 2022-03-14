@@ -4,7 +4,7 @@ import lombok.Data;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * <p>描述类的信息</p>
+ * <p> 建造者模式 </p>
  *
  * 用 set()函数  来给 成员变量 赋值，以替代冗长的构造函数。
  *

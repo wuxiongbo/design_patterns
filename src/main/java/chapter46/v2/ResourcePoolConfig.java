@@ -1,5 +1,7 @@
 package chapter46.v2;
 
+import lombok.Data;
+import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -7,36 +9,37 @@ import org.apache.commons.lang.StringUtils;
  *
  * Builder 模式，中文翻译为  建造者模式  或者  构建者模式，也有人叫它  生成器模式。
  *
- * 建造者模式的原理和代码实现非常简单，掌握起来并不难，难点在于应用场景。
+ * 建造者模式的原理和代码实现非常简单，掌握起来并不难，难点在于 “应用场景”。
  *
  * 比如，你有没有考虑过这样几个问题：
  *      直接使用 构造函数 或者 配合set方法 就能创建对象，为什么还需要 '建造者模式' 来创建呢？
  *      建造者模式 和 工厂模式 都可以创建对象，那它们两个的区别在哪里呢？
  *
+ * 优点：
+ * 1）可以分散校验逻辑
+ *   我们可以把校验逻辑放置到 Builder 类中，先创建建造者，并且通过 set() 方法设置建造者的变量值，
+ *   然后在使用 build() 方法真正创建对象之前，做集中的校验，校验通过之后才会创建对象。
  *
- * 我们可以把校验逻辑放置到 Builder 类中，先创建建造者，并且通过 set() 方法设置建造者的变量值，
- * 然后在使用 build() 方法真正创建对象之前，做集中的校验，校验通过之后才会创建对象。
+ * 2）可以创建不可变对象
+ *   除此之外，我们把 ResourcePoolConfig 的构造函数改为 private 私有权限。
+ *   这样我们就只能通过建造者来创建 ResourcePoolConfig 类对象。
+ *   并且，ResourcePoolConfig 没有提供任何 set() 方法，这样我们创建出来的对象就是不可变对象了。
  *
- *
- * 除此之外，我们把 ResourcePoolConfig 的构造函数改为 private 私有权限。
- * 这样我们就只能通过建造者来创建 ResourcePoolConfig 类对象。
- * 并且，ResourcePoolConfig 没有提供任何 set() 方法，这样我们创建出来的对象就是不可变对象了。
- *
+ * 3）避免 对象存在 “无效状态”
  *
  * <pre>
  * @author wuxiongbo
  * @date 2021/8/9
  * </pre>
  */
-
+@Getter
 public class ResourcePoolConfig {
 
-    // 属性仅在构造方法复制。 构建完成后，不可变，数据安全。
+    // 属性仅在构造方法复制。 构建完成后不可变，数据安全。
     private String name;
     private int maxTotal;
     private int maxIdle;
     private int minIdle;
-    //...省略getter方法...
 
 
     // 将 构造方法 私有
@@ -122,47 +125,37 @@ public class ResourcePoolConfig {
 
 
 
-
-    public static void main(String[] args){
-        // 这段代码会抛出IllegalArgumentException，因为  minIdle > maxIdle
-        ResourcePoolConfig config = new ResourcePoolConfig.Builder()
-                .setName("dbconnectionpool")
-                .setMaxTotal(16)
-                .setMaxIdle(10)
-                .setMinIdle(12)
-                // 触发校验
-                .build();
-    }
-
-
     /**
-     * 实际上，使用建造者模式创建对象，还能避免 对象存在无效状态。
-     * 我再举个例子解释一下。
-     * 比如，我们定义了一个长方形类，如果不使用建造者模式，采用先创建后 set 的方式，那就会导致在第一个 set 之后，对象处于无效状态。
+     * 实际上，使用建造者模式创建对象，还能避免 对象存在 “无效状态”。
+     * 举个例子解释一下：
+     *     比如，
+     *       我们定义了一个 长方形类 Rectangle，如果不使用建造者模式，采用 先创建 后 set 的方式，
+     *       那就会导致在  set 宽width 之后，对象 处于“无效状态”。
      *
      * 为了避免这种无效状态的存在，我们就需要使用构造函数一次性初始化好所有的成员变量。
      * 如果构造函数参数过多，我们就需要考虑使用建造者模式，先设置建造者的变量，然后再一次性地创建对象，让对象一直处于有效状态。
      *
-     *
-     *
-     * 如果我们并不是很关心对象是否有短暂的无效状态，也不是太在意对象是否是可变的。
-     * 比如，对象只是用来映射数据库读出来的数据，那我们直接暴露 set() 方法来设置类的成员变量值是完全没问题的。
-     * 而且，使用建造者模式来构建对象，代码实际上是有点重复的，ResourcePoolConfig 类中的成员变量，要在 Builder 类中重新再定义一遍。
+     * 不使用建造者模式的场景：
+     *   1）如果我们并不是很关心对象是否有短暂的无效状态，也不是太在意对象是否是可变的。
+     *      那么，我们直接暴露 set() 方法，来设置类的成员变量值是完全没问题的。
+     *      比如，
+     *        对象只是用来映射数据库读出来的数据。
+     *   2）使用建造者模式来构建对象，代码实际上是有点重复的，
+     *      如本示例所示，ResourcePoolConfig 类中的成员变量，要在 Builder 类中重新再定义一遍。
      *
      */
     public void test(){
 
-        Rectangle r = new Rectangle(); // r is invalid
-        r.setWidth(2); // r is invalid
+        Rectangle r = new Rectangle(); // 无效
+        r.setWidth(2); // 无效
 
-        r.setHeight(3); // r is valid
+        r.setHeight(3); // 有效
     }
-    
+    // 长方形
+    @Data
     private class Rectangle{
-        public void setWidth(int i) {
-        }
-        public void setHeight(int i) {
-        }
+        private long width;  // 宽
+        private long height; // 高
     }
 }
 
