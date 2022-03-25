@@ -1,7 +1,7 @@
-package chapter56.demo2.v2.observer.impl;
+package chapter57.v1.observer.impl;
 
-import chapter56.demo2.v2.observer.RegObserver;
 import chapter56.dependence.NotificationService;
+import chapter57.v1.observer.RegObserver;
 
 /**
  * <p>注册成功，欢迎语</p>

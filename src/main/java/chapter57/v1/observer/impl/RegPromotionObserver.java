@@ -1,12 +1,15 @@
-package chapter57.v1;
+package chapter57.v1.observer.impl;
 
-import chapter56.demo2.v2.observer.RegObserver;
+
 import chapter56.dependence.PromotionService;
+import chapter57.v1.observer.RegObserver;
 
 /**
- * <p>异步第一种方式</p>
+ * <p>注册成功，发放优惠券</p>
  *
- * 频繁地创建和销毁线程比较耗时，并且并发线程数无法控制，创建过多的线程会导致堆栈溢出。
+ * 异步 第一种方式
+ *
+ * 频繁地  创建 和 销毁 线程 比较耗时，并且 并发线程数无法控制，创建过多的线程会导致堆栈溢出。
  *
  * <pre>
  * @author wuxiongbo
@@ -14,6 +17,7 @@ import chapter56.dependence.PromotionService;
  * </pre>
  */
 public class RegPromotionObserver implements RegObserver {
+
     private PromotionService promotionService; // 依赖注入
 
     @Override

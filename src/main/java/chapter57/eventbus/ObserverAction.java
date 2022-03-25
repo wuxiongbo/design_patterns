@@ -6,9 +6,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * <p>2.ObserverAction</p>
+ * <p> 2.ObserverAction </p>
  *
- * ObserverAction 类用来表示 @Subscribe 注解的方法，其中，itarget 表示观察者类，method 表示方法。
+ * ObserverAction 类用来表示 @Subscribe 注解的方法，
+ * 其中，
+ *      target 表示 观察者类，
+ *      method 表示 方法。
+ *
  * 它主要用在 ObserverRegistry 观察者注册表中。
  *
  * <pre>

@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
- * <p>3.ObserverRegistry</p>
+ * <p>  3.ObserverRegistry  </p>
  *
  * ObserverRegistry 类就是前面讲到的 Observer 注册表，是最复杂的一个类，框架中几乎所有的核心逻辑都在这个类中。
  *
@@ -36,6 +36,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
  */
 
 public class ObserverRegistry {
+
     private ConcurrentMap<Class<?>, CopyOnWriteArraySet<ObserverAction>> registry = new ConcurrentHashMap<>();
 
     public void register(Object observer) {

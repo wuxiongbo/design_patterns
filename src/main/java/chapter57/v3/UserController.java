@@ -10,10 +10,11 @@ import java.util.concurrent.Executors;
 /**
  * <p>描述类的信息</p>
  *
- * EventBus 翻译为“事件总线”，它提供了实现观察者模式的骨架代码。
+ * EventBus 翻译为“事件总线”，它提供了  实现 ‘观察者模式’ 的 骨架代码。
+ *
  * 我们可以基于此框架，非常容易地在自己的业务场景中实现观察者模式，不需要从零开始开发。
- * 其中，Google Guava EventBus 就是一个比较著名的 EventBus 框架，它不仅仅支持异步非阻塞模式，
- * 同时也支持同步阻塞模式
+ * 其中，Google Guava EventBus 就是一个比较著名的 EventBus 框架，它不仅仅支持  异步 非阻塞 模式，
+ * 同时也支持  同步 阻塞 模式
  *
  *
  * 现在，我们就通过例子来看一下，Guava EventBus 具有哪些功能。
@@ -43,6 +44,7 @@ import java.util.concurrent.Executors;
  * </pre>
  */
 public class UserController {
+
     private UserService userService; // 依赖注入
 
     private EventBus eventBus;

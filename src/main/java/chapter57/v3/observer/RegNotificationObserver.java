@@ -4,7 +4,7 @@ import chapter56.dependence.NotificationService;
 import com.google.common.eventbus.Subscribe;
 
 /**
- * <p>描述类的信息</p>
+ * <p>注册 通知， 服务实现</p>
  *
  * <pre>
  * @author wuxiongbo

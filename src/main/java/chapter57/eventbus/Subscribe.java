@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * <p>1.Subscribe</p>
  *
- * Subscribe 是一个注解，用于标明观察者中的哪个函数可以接收消息。
+ * Subscribe 是一个注解，用于标明 观察者中的 哪个函数 可以接收消息。
  *
  * <pre>
  * @author wuxiongbo

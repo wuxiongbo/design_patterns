@@ -1,7 +1,7 @@
 package chapter56.dependence;
 
 /**
- * <p>描述类的信息</p>
+ * <p>促销 服务接口 </p>
  *
  * <pre>
  * @author wuxiongbo

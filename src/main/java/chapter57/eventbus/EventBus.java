@@ -8,10 +8,12 @@ import java.util.concurrent.Executor;
 /**
  * <p>4.EventBus</p>
  *
- * EventBus 实现的是阻塞同步的观察者模式。
+ * EventBus 实现的是  阻塞同步的观察者模式。
+ *
+ *
  * 看代码你可能会有些疑问，这明明就用到了线程池 Executor 啊。
  * 实际上，MoreExecutors.directExecutor() 是 Google Guava 提供的工具类，看似是多线程，实际上是单线程。
- * 之所以要这么实现，主要还是为了跟 AsyncEventBus 统一代码逻辑，做到代码复用。
+ * 之所以要这么实现，主要还是为了跟 AsyncEventBus {@link AsyncEventBus}统一代码逻辑，做到代码复用。
  *
  * <pre>
  * @author wuxiongbo

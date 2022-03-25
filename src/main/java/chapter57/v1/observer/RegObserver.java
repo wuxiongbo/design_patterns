@@ -1,4 +1,4 @@
-package chapter56.demo2.v2.observer;
+package chapter57.v1.observer;
 
 /**
  * <p> 注册 产生的事件 </p>

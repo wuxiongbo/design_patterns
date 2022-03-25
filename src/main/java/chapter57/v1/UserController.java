@@ -1,7 +1,7 @@
-package chapter56.demo2.v2;
+package chapter57.v1;
 
-import chapter56.demo2.v2.observer.RegObserver;
 import chapter56.dependence.UserService;
+import chapter57.v1.observer.RegObserver;
 
 import java.util.ArrayList;
 import java.util.List;
