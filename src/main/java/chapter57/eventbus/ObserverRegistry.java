@@ -37,13 +37,22 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public class ObserverRegistry {
 
+    // k: 观察者中被  @Subscribe 注解修饰的 方法 的第一个参数的类型
+    // v: 观察者中被  @Subscribe 注解修饰的 方法
     private ConcurrentMap<Class<?>, CopyOnWriteArraySet<ObserverAction>> registry = new ConcurrentHashMap<>();
 
+    // 注册观察者
     public void register(Object observer) {
         Map<Class<?>, Collection<ObserverAction>> observerActions = findAllObserverActions(observer);
         for (Map.Entry<Class<?>, Collection<ObserverAction>> entry : observerActions.entrySet()) {
+
+            // 观察者中的事件的类型
             Class<?> eventType = entry.getKey();
+            // 当前 观察者 中 所有 被 @Subscribe注解修饰的方法。
             Collection<ObserverAction> eventActions = entry.getValue();
+
+
+            // 转为线程安全的数据结构。
             CopyOnWriteArraySet<ObserverAction> registeredEventActions = registry.get(eventType);
             if (registeredEventActions == null) {
                 registry.putIfAbsent(eventType, new CopyOnWriteArraySet<>());
@@ -53,24 +62,34 @@ public class ObserverRegistry {
         }
     }
 
+    // 查找 匹配的 事件类型：
+    // 获取所有被  @Subscribe注解修饰的方法中 ，第一个参数类型匹配的 方法。
     public List<ObserverAction> getMatchedObserverActions(Object event) {
         List<ObserverAction> matchedObservers = new ArrayList<>();
+
         Class<?> postedEventType = event.getClass();
         for (Map.Entry<Class<?>, CopyOnWriteArraySet<ObserverAction>> entry : registry.entrySet()) {
             Class<?> eventType = entry.getKey();
             Collection<ObserverAction> eventActions = entry.getValue();
-            if (postedEventType.isAssignableFrom(eventType)) {
+
+            // 判断 eventType(被观察者类型) 是否为 postedEventType(传入的事件类型)  的 父类
+            if (eventType.isAssignableFrom(postedEventType)) {
                 matchedObservers.addAll(eventActions);
             }
         }
         return matchedObservers;
     }
 
+    // 查找观察者中，所有被 @Subscribe 注解 修饰的方法。
     private Map<Class<?>, Collection<ObserverAction>> findAllObserverActions(Object observer) {
+
         Map<Class<?>, Collection<ObserverAction>> observerActions = new HashMap<>();
+
         Class<?> clazz = observer.getClass();
         for (Method method : getAnnotatedMethods(clazz)) {
+            // 方法的参数类型 数组
             Class<?>[] parameterTypes = method.getParameterTypes();
+            // 方法的第一个参数的类型
             Class<?> eventType = parameterTypes[0];
             if (!observerActions.containsKey(eventType)) {
                 observerActions.put(eventType, new ArrayList<>());
@@ -80,6 +99,7 @@ public class ObserverRegistry {
         return observerActions;
     }
 
+    // 查找类中 @Subscribe 注解的方法
     private List<Method> getAnnotatedMethods(Class<?> clazz) {
         List<Method> annotatedMethods = new ArrayList<>();
         for (Method method : clazz.getDeclaredMethods()) {

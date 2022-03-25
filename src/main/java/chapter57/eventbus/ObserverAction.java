@@ -31,7 +31,8 @@ public class ObserverAction {
         this.method.setAccessible(true);
     }
 
-    public void execute(Object event) { // event是method方法的参数
+    // event是 method所代表的方法的  方法参数
+    public void execute(Object event) {
         try {
             method.invoke(target, event);
         } catch (InvocationTargetException | IllegalAccessException e) {

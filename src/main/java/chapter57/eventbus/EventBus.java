@@ -35,12 +35,16 @@ public class EventBus {
         this.executor = executor;
     }
 
+    // 注册 观察者
     public void register(Object object) {
         registry.register(object);
     }
 
     public void post(Object event) {
+        // 查找匹配的事件
         List<ObserverAction> observerActions = registry.getMatchedObserverActions(event);
+
+        // 异步通知
         for (ObserverAction observerAction : observerActions) {
             executor.execute(new Runnable() {
                 @Override
@@ -49,5 +53,6 @@ public class EventBus {
                 }
             });
         }
+
     }
 }

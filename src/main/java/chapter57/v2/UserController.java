@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.concurrent.Executor;
 
 /**
- * <p>异步 第二种方式</p>
+ * <p> 改版 </p>
+ *
+ * 异步 第二种方式： 将异步放在 被观察者，即 本UserController
  *
  * 尽管利用了线程池解决了第一种实现方式的问题，但线程池、异步执行逻辑都耦合在了 register() 函数中，增加了这部分业务代码的维护成本。
  *
@@ -39,6 +41,7 @@ public class UserController {
         this.executor = executor;
     }
 
+    // 一次性设置好 ‘观察者’，之后也不可能动态的修改
     public void setRegObservers(List<RegObserver> observers) {
         regObservers.addAll(observers);
     }

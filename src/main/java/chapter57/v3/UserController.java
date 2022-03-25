@@ -1,14 +1,17 @@
 package chapter57.v3;
 
 import chapter56.dependence.UserService;
-import com.google.common.eventbus.AsyncEventBus;
-import com.google.common.eventbus.EventBus;
+
+import chapter57.eventbus.AsyncEventBus;
+import chapter57.eventbus.EventBus;
+//import com.google.common.eventbus.AsyncEventBus;
+//import com.google.common.eventbus.EventBus;
 
 import java.util.List;
 import java.util.concurrent.Executors;
 
 /**
- * <p>描述类的信息</p>
+ * <p> 使用 事件总线 </p>
  *
  * EventBus 翻译为“事件总线”，它提供了  实现 ‘观察者模式’ 的 骨架代码。
  *
@@ -53,18 +56,26 @@ public class UserController {
 
 
     public UserController() {
-        //eventBus = new EventBus(); // 同步阻塞模式
-        eventBus = new AsyncEventBus(Executors.newFixedThreadPool(DEFAULT_EVENTBUS_THREAD_POOL_SIZE)); // 异步非阻塞模式
+        // 同步阻塞模式
+        //eventBus = new EventBus();
+        // 异步非阻塞模式
+        eventBus = new AsyncEventBus(Executors.newFixedThreadPool(DEFAULT_EVENTBUS_THREAD_POOL_SIZE));
     }
 
 
     /**
-     * EventBus 类提供了 register() 函数用来注册观察者。具体的函数定义如下所示。
+     * 注册观察者
+     *
+     * EventBus 类提供了 register() 函数， 用来注册观察者。
+     * 具体的函数定义如下所示。
      * 它可以接受任何类型（Object）的观察者。
      *
-     * 而在经典的观察者模式的实现中，register() 函数必须接受  实现了同一Observer 接口的类对象。
+     * 在经典的 观察者模式 的实现中，register() 函数 必须接受 实现了 "同一Observer 接口"的类对象。
      *
-     * 相对于 register() 函数，unregister() 函数用来从 EventBus 中删除某个观察者。这里就不多解释了
+     * 而 EventBus 框架，则不要求，而是通过 “@注解” 识别。
+     *
+     * 相对于 register() 函数，
+     * unregister() 函数，则用来从 EventBus 中删除某个观察者。这里就不多解释了
      *
      * @param observers
      */
@@ -75,21 +86,28 @@ public class UserController {
     }
 
     /**
-     * EventBus 类提供了 post() 函数，用来给观察者发送消息。
+     * EventBus 类提供了 post() 函数，用来给 观察者 发送消息。
      *
-     * 跟经典的观察者模式的不同之处在于，当我们调用 post() 函数发送消息的时候，并非把消息发送给所有的观察者，而是发送给可匹配的观察者。
-     * 所谓可匹配指的是，能接收的消息类型 是 发送消息（post 函数定义中的 event）类型的父类。
+     * 跟经典的 观察者模式 的不同之处在于：
+     *   当我们调用 post() 函数，发送消息的时候，
+     *      并非 把消息发送给  “所有”的 观察者，
+     *      而是 发送给  “可匹配”的 观察者。
+     *
+     *   这里，所谓 “可匹配” 指的是 类型匹配。即，接收消息类型 是 发送消息类型（post 函数定义中的 event） 的 父类。
      *
      * @param telephone
      * @param password
      * @return
      */
     public Long register(String telephone, String password) {
+
+
         //省略输入参数的校验代码
         //省略userService.register()异常的try-catch代码
         long userId = userService.register(telephone, password);
 
 
+        // 事件总线  通知 “观察者” 。
         eventBus.post(userId);
 
         return userId;
