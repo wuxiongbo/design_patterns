@@ -14,7 +14,9 @@ import java.io.IOException;
 import static org.apache.catalina.core.ApplicationFilterChain.INCREMENT;
 
 /**
- * <p>描述类的信息</p>
+ * <p> 责任链模式： 递归实现</p>
+ *
+ *
  *
  * 观察这部分关键代码：
  * @see org.apache.catalina.core.ApplicationFilterChain#internalDoFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse)
@@ -59,16 +61,13 @@ public class ApplicationFilterChain implements FilterChain {
 
             ApplicationFilterConfig filterConfig = filters[pos++];
 
-
 //            Filter filter = filterConfig.getFilter();
 //            filter.doFilter(request, response, this);
 
-
-            //把filter.doFilter的代码实现展开替换到这里
+            //把filter.doFilter的代码实现，展开 替换到这里
             System.out.println("拦截客户端发送来的请求.");
-            this.doFilter(request, response); // 这里的 this ，就是 LogFilter的 chain
+            this.doFilter(request, response); // 这里的 this ，就是 LogFilter类 doFilter方法的 chain变量
             System.out.println("拦截发送给客户端的响应.");
-
 
         } else {
             // filter都处理完毕后，执行servlet
