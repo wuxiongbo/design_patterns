@@ -16,7 +16,18 @@ public interface Visitor {
 
     // visit 访问
 
+    /**
+     * @param pdfFile
+     */
     void visit(PdfFile pdfFile);
+
+    /**
+     * @param pdfFile
+     */
     void visit(PPTFile pdfFile);
+
+    /**
+     * @param pdfFile
+     */
     void visit(WordFile pdfFile);
 }

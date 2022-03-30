@@ -32,12 +32,12 @@ public class Test {
         observable.notifyObservers("111111111111");
 
 
-        System.out.println("====删除1号观察者=====");
+       /* System.out.println("====删除1号观察者=====");
         //删除观察者1
         observable.removeObserve(iObserve1);
 
         //再次发消息
-        observable.notifyObservers("222222222222");
+        observable.notifyObservers("222222222222");*/
     }
 
 }

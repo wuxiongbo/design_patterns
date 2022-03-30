@@ -4,6 +4,7 @@ import java.util.Stack;
 
 /**
  * <p> 备忘录 </p>
+ * 用来记录 文本的 历史快照
  *
  * <pre>
  * @author wuxiongbo

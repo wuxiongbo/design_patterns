@@ -20,9 +20,9 @@ public abstract class ResourceFile {
         this.filePath = filePath;
     }
 
-    abstract public void accept(Extractor extractor);
 
-    // 方法重载
+    abstract public void accept(Extractor extractor);
+    // accept方法，会方法重载
     abstract public void accept(Compressor compressor);
 
 }

@@ -8,7 +8,6 @@ import chapter68.v4.visitor.Visitor;
 /**
  * <p>压缩器</p>
  *
- *
  * compress  压缩
  *
  * <pre>

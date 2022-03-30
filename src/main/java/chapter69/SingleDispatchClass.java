@@ -1,7 +1,7 @@
 package chapter69;
 
 /**
- * <p>调度器</p>
+ * <p> 调度器 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -10,10 +10,13 @@ package chapter69;
  */
 public class SingleDispatchClass {
 
+    // 多态，“运行时” 实际的类型  决定
     public void polymorphismFunction(ParentClass p) {
         p.f();
     }
 
+
+    // 方法重载，“编译期” 代码中声明的类型  决定
     public void overloadFunction(ParentClass p) {
         System.out.println("I am overloadFunction(ParentClass p).");
 //        p.f();
@@ -23,4 +26,5 @@ public class SingleDispatchClass {
         System.out.println("I am overloadFunction(ChildClass c).");
 //        c.f();
     }
+
 }

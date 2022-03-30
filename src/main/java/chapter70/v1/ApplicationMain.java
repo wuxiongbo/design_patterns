@@ -17,9 +17,7 @@ public class ApplicationMain {
 
     public static void main(String[] args) {
 
-
         InputText inputText = new InputText();
-
 
         SnapshotHolder snapshotsHolder = new SnapshotHolder();
         Scanner scanner = new Scanner(System.in);
