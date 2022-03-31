@@ -7,28 +7,37 @@ import java.io.IOException;
 /**
  * <p> 装饰器父类 FilterInputStream </p>
  *
- * 为了避免代码重复，Java IO 抽象出了一个装饰器父类 FilterInputStream，代码实现如下所示。
- * InputStream 的所有的装饰器类（BufferedInputStream、DataInputStream）都继承自这个装饰器父类。
+ * 为了避免代码重复，
+ *      Java IO 在与InputStream之间 又抽象出了一个装饰器父类 FilterInputStream，
+ * 代码实现如下所示。
+ *
+ * InputStream 的所有的装饰器类（BufferedInputStream、DataInputStream）都继承自这个  装饰器父类。
  *
  * <pre>
  * @author wuxiongbo
  * @date 2021/12/21
  * </pre>
  */
-public class FilterInputStream extends InputStream {
+public class FilterInputStream  // Filter 过滤器
+        extends InputStream {   // 抽象装饰类  继承了  抽象组件。  这是可嵌套包装的关键
 
     // 原始类
-    protected volatile InputStream in;
+    protected volatile InputStream in;   // 组合关系
 
     // 依赖注入 原始类
     protected FilterInputStream(InputStream in) {
         this.in = in;
     }
 
+
+
     @Override
     public int read() throws IOException {
-        // 调用  原始类的 read()方法，而不是 父类的 read()方法
+
+        // 错误示例：不能调用 父类InputStream的 read()方法
 //        return super.read();
+
+        // 而是调用  原始类InputStream的  read()方法，而
         return in.read();
     }
 

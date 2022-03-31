@@ -6,7 +6,7 @@ import chapter50.demo2.component.InputStream;
 import java.io.IOException;
 
 /**
- * <p>描述类的信息</p>
+ * <p> 实现类 </p>
  *
  * <pre>
  * @author wuxiongbo

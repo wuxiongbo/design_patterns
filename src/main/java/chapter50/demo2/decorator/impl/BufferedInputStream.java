@@ -41,6 +41,10 @@ import java.io.IOException;
  */
 public class BufferedInputStream extends FilterInputStream {
 
+    /**
+     *
+     * @param in  依赖注入 被装饰的类
+     */
     public BufferedInputStream(InputStream in) {
         super(in);
     }
@@ -49,9 +53,9 @@ public class BufferedInputStream extends FilterInputStream {
     //...实现基于缓存的读数据接口...
 
 
-    // read()函数 不需要增强，只是重新调用一下InputStream in对象的 read()函数
     @Override
     public int read() throws IOException {
+        // read()函数 不需要增强，仅重新 调用一下InputStream in对象的 read()函数
         return super.read();
     }
 
@@ -59,13 +63,13 @@ public class BufferedInputStream extends FilterInputStream {
     @Override
     public int read(byte b[]) throws IOException {
 
-        //....增强操作
+        //....增强操作。。。。。
 
         int read = super.read();
 
-        //....增强操作
+        //....增强操作。。。。。
 
-        return 0;
+        return read;
     }
 
 }

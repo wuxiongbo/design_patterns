@@ -5,7 +5,7 @@ import chapter50.demo1.dependence.IA;
 /**
  * <p> 装饰器模式 与 代理模式 的区别： 装饰器模式 </p>
  *
- * 装饰器模式中，装饰器类附加的是跟原始类相关的增强功能。
+ * 装饰器模式中，装饰器类附加的是 跟原始类相关的增强功能。
  *
  * <pre>
  * @author wuxiongbo

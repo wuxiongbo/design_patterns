@@ -14,9 +14,14 @@ import chapter50.demo2.decorator.FilterInputStream;
  */
 public class DataInputStream extends FilterInputStream {
 
-    protected DataInputStream(InputStream in) {
+    /**
+     *
+     * @param in   依赖注入  被装饰的类
+     */
+    public DataInputStream(InputStream in) {
         super(in);
     }
+
 
     //...实现读取基本类型数据的接口
 

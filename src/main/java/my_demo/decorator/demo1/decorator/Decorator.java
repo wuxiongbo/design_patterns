@@ -17,14 +17,14 @@ public abstract class Decorator extends Component {  // 抽象装饰类  继承�
     protected Component component;
     // Decorator 继承 Component ，同时，Decorator 与 Component  还是 聚合关系
 
-    // Component 聚合 成 Decorator
-    // Decorator 关联 Component
-
+    // ConcreteComponent 聚合 组成 Decorator
+    // Decorator 关联 ConcreteComponent
 
     // 依赖注入 原始类
     public Decorator(Component component) {
         this.component = component;
     }
+
 
 
     // 将实际操作 委托给 原始类

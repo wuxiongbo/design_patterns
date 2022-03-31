@@ -3,6 +3,7 @@ package chapter50.demo2;
 import chapter50.demo2.component.InputStream;
 import chapter50.demo2.component.impl.FileInputStream;
 import chapter50.demo2.decorator.impl.BufferedInputStream;
+import chapter50.demo2.decorator.impl.DataInputStream;
 
 import java.io.IOException;
 
@@ -37,5 +38,10 @@ public class Client {
         while (bin.read(data) != -1) {
             //...
         }
+
+        // 再次功能增强
+        InputStream bin1 = new DataInputStream(in);
+
+
     }
 }
