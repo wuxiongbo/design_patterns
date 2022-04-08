@@ -1,18 +1,18 @@
-package chapter44.v7.factory;
+package chapter44.v7.factory_produce;
 
 import chapter44.v7.RuleConfigSource;
-import chapter44.v7.factory_method.impl.JsonConfigParserFactory;
-import chapter44.v7.factory_method.impl.PropertiesConfigParserFactory;
-import chapter44.v7.factory_method.impl.XmlConfigParserFactory;
-import chapter44.v7.factory_method.impl.YamlConfigParserFactory;
-import chapter44.v7.factory_method.IConfigParserFactory;
+import chapter44.v7.factory.impl.JsonConfigParserFactory;
+import chapter44.v7.factory.impl.PropertiesConfigParserFactory;
+import chapter44.v7.factory.impl.XmlConfigParserFactory;
+import chapter44.v7.factory.impl.YamlConfigParserFactory;
+import chapter44.v7.factory.IConfigParserFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * <p>描述类的信息</p>
+ * <p>工厂模式</p>
  *
  *
  * <pre>

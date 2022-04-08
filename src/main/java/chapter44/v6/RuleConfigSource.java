@@ -5,7 +5,6 @@ import chapter44.dependence.exception.InvalidRuleConfigException;
 import chapter44.dependence.model.RuleConfig;
 import chapter44.v6.factory.RuleConfigParserFactoryMap;
 import chapter44.v6.factory_method.IRuleConfigParserFactory;
-import chapter44.v7.factory_method.IConfigParserFactory;
 
 /**
  * <p> 工厂方法（Factory Method） 的改进 </p>
