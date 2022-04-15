@@ -1,7 +1,7 @@
 package my_demo.adapter;
 
 /**
- * <p>描述类的信息</p>
+ * <p>  接口适配器模式 / 缺省适配器模式  </p>
  *
  * <pre>
  * @author wuxiongbo
