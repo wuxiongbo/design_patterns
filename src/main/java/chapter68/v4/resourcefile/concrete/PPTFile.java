@@ -16,11 +16,11 @@ public class PPTFile extends ResourceFile {
         super(filePath);
     }
 
+    // 利用 多态特性，避免了原本的accept方法重载
     @Override
-    public void accept(Visitor vistor) {
-        // 具体的 visit() 方法 进行的什么业务操作，由传入的 接口实现而定。
-        // 利用多态的特性，避免了原本的accept方法重载
-        vistor.visit(this);
+    public void accept(Visitor visitor) {
+        // 具体的 visit() 方法 进行的什么业务操作，由传入的 访问者实现 而定。
+        visitor.visit(this);
     }
 
 }

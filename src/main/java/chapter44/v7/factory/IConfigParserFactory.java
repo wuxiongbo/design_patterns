@@ -1,4 +1,4 @@
-package chapter44.v7.factory_method;
+package chapter44.v7.factory;
 
 import chapter44.dependence.config_parser.IRuleConfigParser;
 import chapter44.dependence.config_parser.ISystemConfigParser;
@@ -46,14 +46,16 @@ import chapter44.dependence.config_parser.ISystemConfigParser;
  */
 public interface IConfigParserFactory {
 
-    // 将工厂类的命名 更加 抽象化，
-    // 然后，将不同场景的业务逻辑，通过 函数 隔离。
+    // 1）将工厂接口的 命名 更加 抽象化，
+    // 2）然后，将不同场景的业务逻辑，通过 函数 隔离。
 
     IRuleConfigParser createRuleParser();
 
 
     ISystemConfigParser createSystemParser();
 
-    //此处可以扩展新的parser类型，比如IBizConfigParser
+
+    // 3）通过添加新的 函数接口，实现扩展
+    // 此处可以扩展新的parser类型，比如IBizConfigParser
 
 }

@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p>迭代器模式</p>
  *
  * <pre>
  * @author wuxiongbo

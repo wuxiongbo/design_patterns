@@ -14,7 +14,7 @@ import chapter68.v3.resourcefile.concrete.WordFile;
  */
 public class Extractor {
 
-    // 方法重载
+    // extract2txt 方法  方法重载
     public void extract2txt(PPTFile pptFile) {
         //...
         System.out.println(pptFile.hashCode()+"Extract PPT.");

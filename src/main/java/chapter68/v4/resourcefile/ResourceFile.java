@@ -19,5 +19,8 @@ public abstract class ResourceFile {
         this.filePath = filePath;
     }
 
-    abstract public void accept(Visitor vistor);
+    /**
+     * @param visitor
+     */
+    abstract public void accept(Visitor visitor);
 }

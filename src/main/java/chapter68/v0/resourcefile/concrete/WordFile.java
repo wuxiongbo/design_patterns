@@ -11,10 +11,12 @@ import chapter68.v0.resourcefile.ResourceFile;
  * </pre>
  */
 public class WordFile extends ResourceFile {
+
     public WordFile(String filePath) {
         super(filePath);
     }
 
+    // 对数据的业务操作， 在资源文件中，这种设计 耦合性太强。
     @Override
     public void extract2txt() {
 

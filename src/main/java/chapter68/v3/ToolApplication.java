@@ -15,16 +15,19 @@ import java.util.List;
  * 这时，增加新的业务功能，如 压缩器，只需要增加 Compressor 类，并对 资源文件类 稍作修改即可
  *
  *
- * 但是，代码还是存在一些问题，
- * 每添加一个新的业务，都需要修改每个 资源文件类{@link ResourceFile}，这依然违反了 开闭原则。
+ * 但是，代码还是存在一些问题：
+ * 每添加一个新的业务，都需要修改  每个资源文件具体类{@link ResourceFile}，这依然违反了 ‘开闭原则’。
  *
  *
- * 针对这个问题，我们的解决方案是，抽象出来一个 Visitor 接口，包含的是，三个命名非常通用的 visit() 重载函数，分别处理三种不同类型的资源文件。
+ * 针对这个问题，我们的解决方案是，抽象出来一个 Visitor 接口，
+ * 包含的是，三个 命名通用的 visit() 重载函数，分别处理三种不同类型的资源文件。
+ *
  * 具体做什么业务处理，由实现这个 Visitor 接口的具体的类来决定，
  *    比如
  *       Extractor 负责抽取文本内容，
  *       Compressor 负责压缩。
- * 当我们新添加一个业务功能的时候，资源文件类{@link ResourceFile}不需要做任何修改，只需要修改 ToolApplication 的代码就可以了。
+ * 当我们新添加一个业务功能的时候，资源文件具体类 {@link ResourceFile} 不需要作任何修改，
+ * 只需要修改 ToolApplication 的代码就可以了。
  *
  *
  *
@@ -45,7 +48,6 @@ public class ToolApplication {
         for (ResourceFile resourceFile : resourceFiles) {
             resourceFile.accept(extractor);
         }
-
 
 
         Compressor compressor = new Compressor();

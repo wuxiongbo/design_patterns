@@ -1,10 +1,10 @@
-package chapter44.v7.factory_method.impl;
+package chapter44.v7.factory.impl;
 
 import chapter44.dependence.config_parser.rule.YamlRuleConfigParser;
 import chapter44.dependence.config_parser.system.YamlSystemConfigParser;
 import chapter44.dependence.config_parser.IRuleConfigParser;
 import chapter44.dependence.config_parser.ISystemConfigParser;
-import chapter44.v7.factory_method.IConfigParserFactory;
+import chapter44.v7.factory.IConfigParserFactory;
 
 /**
  * <p>描述类的信息</p>
@@ -16,13 +16,13 @@ import chapter44.v7.factory_method.IConfigParserFactory;
  */
 public class YamlConfigParserFactory  implements IConfigParserFactory {
 
-    // 规则配置
+    // 规则 配置
     @Override
     public IRuleConfigParser createRuleParser() {
         return new YamlRuleConfigParser();
     }
 
-    // 系统配置
+    // 系统 配置
     @Override
     public ISystemConfigParser createSystemParser() {
         return new YamlSystemConfigParser();

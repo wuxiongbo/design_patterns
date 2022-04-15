@@ -13,14 +13,6 @@ import java.util.List;
 /**
  * <p>访问者模式</p>
  *
- * 代码还存在一些问题，添加一个新的业务，还是需要修改每个资源文件类{@link ResourceFile}，违反了开闭原则。
- *
- * 针对这个问题，我们抽象出来一个 Visitor 接口，包含是三个命名非常通用的 visit() 重载函数，分别处理三种不同类型的资源文件。
- * 具体做什么业务处理，由实现这个 Visitor 接口的具体的类来决定，比如 Extractor 负责抽取文本内容，Compressor 负责压缩。
- * 当我们新添加一个业务功能的时候，资源文件类{@link ResourceFile}不需要做任何修改，只需要修改 ToolApplication 的代码就可以了。
- *
- *
- *
  * <pre>
  * @author wuxiongbo
  * @date 2022/1/18
@@ -33,18 +25,17 @@ public class ToolApplication {
         List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
 
 
-        // 提取器
-        Extractor extractor = new Extractor();
+        // 提取器 观察者
+        Extractor extractorVisitor = new Extractor();
         for (ResourceFile resourceFile : resourceFiles) {
-            resourceFile.accept(extractor);
+            resourceFile.accept(extractorVisitor);
         }
 
-        // 压缩器
-        Compressor compressor = new Compressor();
+        // 压缩器 观察者
+        Compressor compressorVisitor = new Compressor();
         for(ResourceFile resourceFile : resourceFiles) {
-            resourceFile.accept(compressor);
+            resourceFile.accept(compressorVisitor);
         }
-
 
     }
 

@@ -3,8 +3,8 @@ package chapter44.v7;
 import chapter44.dependence.exception.InvalidRuleConfigException;
 import chapter44.dependence.model.RuleConfig;
 import chapter44.dependence.config_parser.IRuleConfigParser;
-import chapter44.v7.factory.ConfigParserFactoryMap;
-import chapter44.v7.factory_method.IConfigParserFactory;
+import chapter44.v7.factory_produce.ConfigParserFactoryMap;
+import chapter44.v7.factory.IConfigParserFactory;
 
 /**
  * <p> 抽象工厂 </p>
@@ -32,7 +32,7 @@ public class RuleConfigSource {
 
         // 函数隔离。 什么场景，调用什么函数
         IRuleConfigParser parser = parserFactory.createRuleParser();
-
+//        ISystemConfigParser parser = parserFactory.createSystemParser();
 
 
         String configText = "content...";//从 ruleConfigFilePath 文件中读取配置文本到configText中

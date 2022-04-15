@@ -1,7 +1,7 @@
 package chapter68.v1.resourcefile;
 
 /**
- * <p>资源文件</p>
+ * <p>资源文件 的抽象</p>
  *
  * <pre>
  * @author wuxiongbo

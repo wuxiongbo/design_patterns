@@ -3,7 +3,7 @@ package chapter68.v1.resourcefile.concrete;
 import chapter68.v1.resourcefile.ResourceFile;
 
 /**
- * <p>资源文件</p>
+ * <p>具体的  资源文件</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -11,9 +11,9 @@ import chapter68.v1.resourcefile.ResourceFile;
  * </pre>
  */
 public class PdfFile extends ResourceFile {
+
     public PdfFile(String filePath) {
         super(filePath);
     }
-
 
 }

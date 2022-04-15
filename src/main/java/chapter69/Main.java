@@ -15,10 +15,9 @@ public class Main {
 
         ParentClass p = new ChildClass();
 
-        dispatch.polymorphismFunction(p);  // 执行 哪个对象的 f()方法，由 对象 “运行时” 的实际类型决定
+        dispatch.polymorphismFunction(p);  // 执行 哪个对象的 f()方法，由 参数对象 “运行时” 的 实际类型决定
 
-
-        dispatch.overloadFunction(p);      // 执行 dispatch对象 的哪个方法，由 参数对象 “编译时”的声明类型决定
+        dispatch.overloadFunction(p);      // 执行 dispatch对象 的哪个方法，由 参数对象 “编译时” 的 声明类型决定
 
     }
 }
