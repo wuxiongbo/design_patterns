@@ -37,14 +37,10 @@ public class Actress implements IPerformer {
 
     // 非阻塞
     private static void testNonblockingSend() throws InterruptedException{
-        Actress upper =new Actress();
 
-        Runnable r = ()->upper.call();
-        new Thread(r).start();
-
-
-
+        new Thread(new Actress()::call).start();
         Thread.sleep(1000);
+
         System.out.println("do something...");
 
     }

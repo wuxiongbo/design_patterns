@@ -10,7 +10,7 @@ package my_demo.monitor.callback.demo3.lower;
  */
 public class Director {
 
-    // 我不知道你具体是谁。通知你就对了
+    // 我不知道你具体是谁。但我知道你是call我的人。待会儿轮到我call回你啦
     private IPerformer whoCallMe;
 
     public Director(IPerformer listener) {//由构造器的参数获得引用，完成注册
