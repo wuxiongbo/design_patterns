@@ -1,7 +1,7 @@
 package chapter51.dependence;
 
 /**
- * <p>描述类的信息</p>
+ * <p>参数包装类</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -9,11 +9,14 @@ package chapter51.dependence;
  * </pre>
  */
 public class ParamsWrapperDefinition {
+    private int paramA;
+    private int paramB;
+
     public int getParamA() {
-        return 0;
+        return paramA;
     }
 
     public int getParamB() {
-        return 0;
+        return paramB;
     }
 }

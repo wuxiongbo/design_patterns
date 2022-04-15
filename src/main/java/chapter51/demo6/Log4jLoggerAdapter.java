@@ -36,9 +36,8 @@ import java.io.Serializable;
 // 将 log4j 适配为 slf4j
 //
 // log4j日志框架的适配器
-// Log4jLoggerAdapter实现了LocationAwareLogger接口，
-// 其中LocationAwareLogger继承自Logger接口，
-// 也就相当于Log4jLoggerAdapter实现了Logger接口。
+// Log4jLoggerAdapter实现了LocationAwareLogger接口，其中LocationAwareLogger继承自Logger接口，
+// 相当于Log4jLoggerAdapter实现了Logger接口。
 public final class Log4jLoggerAdapter extends MarkerIgnoringBase
         implements LocationAwareLogger, Serializable {
 

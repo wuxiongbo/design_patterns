@@ -26,12 +26,13 @@ public class CDAdaptor extends CD implements ITarget {
 
     @Override
     public void fucntion3(ParamsWrapperDefinition paramsWrapper) {
+
         super.tooManyParamsFunction3(paramsWrapper.getParamA(),paramsWrapper.getParamB() /* , ...*/);
     }
 
     @Override
     public void function4() {
-        //...reemployment it...
-        super.lowPerformanceFunction4();
+        // ...reemployment it...
+        // 重新实现
     }
 }

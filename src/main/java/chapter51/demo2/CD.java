@@ -15,22 +15,26 @@ package chapter51.demo2;
  */
 public class CD {
     //...
-    // 静态方法。是设计缺陷
+
+    // 情况1：静态方法。是设计缺陷
     public static void staticFunction1() {
         //...
         System.out.println("staticFunction1()");
     }
 
+    // 情况2：丑陋的方法名
     public void uglyNamingFunction2() {
         //...
         System.out.println("uglyNamingFunction2()");
     }
 
+    // 情况3：函数的参数太多
     public void tooManyParamsFunction3(int paramA, int paramB /*, ... */ ) {
         //...
         System.out.println("tooManyParamsFunction3()");
     }
 
+    // 情况4：函数性能太低
     public void lowPerformanceFunction4() {
         //...
         System.out.println("lowPerformanceFunction4()");

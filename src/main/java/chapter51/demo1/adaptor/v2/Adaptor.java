@@ -28,13 +28,13 @@ public class Adaptor
         this.adaptee = adaptee;
     }
 
-    // 原始方法fa() 转 f1()
+    // 情况1：原始方法fa() 转 f1()
     @Override
     public void f1() {
         adaptee.fa();  // 委托给 Adaptee
     }
 
-    // 原始方法fb()弃用，重新实现 f2()
+    // 情况2：原始方法fb()弃用，重新实现 f2()
     @Override
     public void f2() {
         //...重新实现f2()...
@@ -42,10 +42,10 @@ public class Adaptor
     }
 
 
-    // 无法复用 原始方法fc()，需要再实现一遍
+    // 情况3：无法复用 原始方法fc()，需要再实现一遍，虽然是委托实现
     @Override
     public void fc() {
-        adaptee.fc(); // 将实现 委托给 Adaptee
+        adaptee.fc(); // 将实现 委托给 Adaptee 被适配者
     }
 
 }
