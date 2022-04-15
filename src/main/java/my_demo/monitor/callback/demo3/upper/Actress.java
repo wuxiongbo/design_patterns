@@ -26,7 +26,7 @@ public class Actress implements IPerformer {
     }
 
 
-    // 阻塞
+    // 阻塞。  同步回调
     private static void testBlockingSend(){
         Actress upper =new Actress();
         upper.call();
@@ -35,7 +35,7 @@ public class Actress implements IPerformer {
     }
 
 
-    // 非阻塞
+    // 非阻塞。  异步回调
     private static void testNonblockingSend() throws InterruptedException{
 
         new Thread(new Actress()::call).start();
