@@ -27,6 +27,7 @@ public class UserController {
     }
 
 
+    // 对外api
     public Long register(String telephone, String password) {
 
         // ==============注册用户===================

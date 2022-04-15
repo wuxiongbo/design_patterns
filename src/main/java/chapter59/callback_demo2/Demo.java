@@ -35,6 +35,10 @@ public class Demo {
 
         Button button = (Button)findViewById(R.id.button);
 
+
+
+        // 不用等回调结束，继续后面的逻辑。
+        // 这里的 回调 算是 “异步回调” ，
         button.setOnClickListener(
                 // 传入 “回调对象”
                 new OnClickListener() {
@@ -47,10 +51,7 @@ public class Demo {
         );
 
 
-        // 不用等回调结束，继续后面的逻辑。
 
-
-        // 这里的 回调 算是 “异步回调” ，
 
 
         // 我们往 setOnClickListener() 函数中注册好回调函数之后，并不需要等待回调函数执行。

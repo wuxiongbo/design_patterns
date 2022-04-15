@@ -23,9 +23,10 @@ import java.util.Queue;
  */
 public class GameApplication {
 
+    // 最大处理请求指令数
     private static final int MAX_HANDLED_REQ_COUNT_PER_LOOP = 100;
 
-    // Invoker 持有 命令对象
+    // Invoker 持有 部分符合事件的 命令对象
     private Queue<Command> queue = new LinkedList<>();
 
 

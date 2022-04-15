@@ -12,7 +12,7 @@ import chapter71.demo1.command.Command;
  */
 public class GotStartCommand implements Command {
 
-    // 省略成员变量. receiver
+    // 省略成员变量——receiver
     // Private Receiver receiver；
 
     public GotStartCommand(/*依赖注入 receiver */) {
@@ -25,7 +25,7 @@ public class GotStartCommand implements Command {
     @Override
     public void execute() {
 
-        // 委托给 receiver 。执行相应的逻辑
+        // 将实现，委托给 receiver 。让其 执行相应的逻辑
         // receiver.xxxMethod(/*parameters*/);
 
     }
