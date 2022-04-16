@@ -3,7 +3,7 @@ package my_demo.friend.v1;
 import my_demo.friend.v1.friend.A;
 
 /**
- * <p>冒充A的朋友</p>
+ * <p> C冒充 A的朋友 ，抛异常</p>
  *
  * <pre>
  * @author wuxiongbo
