@@ -8,7 +8,7 @@ package my_demo.adapter;
  * @date 2022/4/15
  * </pre>
  */
-public abstract class ChargerAdapter implements ITarget{
+public abstract class ChargerAdapter implements ITarget {
     @Override
     public int Voltage220V() {
         return 0;

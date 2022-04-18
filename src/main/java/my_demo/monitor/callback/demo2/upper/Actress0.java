@@ -18,22 +18,20 @@ public class Actress0 {
         server.copy();
     }
 
-    public static void test() throws InterruptedException {
-        Actress0 upper = new Actress0();
-        Runnable r = () -> upper.call();
-
-        new Thread(r).start();
-
-
+    public void ask(){
         System.out.print("询问进度：");
 
         int x2 = 0;
         while (true) {
 
             // 主动 询问 导演
-            int x1 = upper.server.getX(); // 10
+            int x1 = this.server.getX(); // 10
 
-            Thread.sleep((int) (Math.random() * 100));
+            try {
+                Thread.sleep((int) (Math.random() * 100));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             if (x2 >= 100) {
                 System.out.println();
@@ -47,10 +45,17 @@ public class Actress0 {
             }
 
         }
+    }
 
+    public static void test() throws InterruptedException {
+        Actress0 upper = new Actress0();
+
+        new Thread(() -> upper.call()).start();
+
+        // 主动询问进度
+        upper.ask();
 
         System.out.println("do something...");
-
     }
 
     public static void main(String[] args) throws InterruptedException {
