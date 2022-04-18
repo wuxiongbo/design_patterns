@@ -44,13 +44,13 @@ public class Reactor implements Runnable {
          selector = p.openSelector();
          serverSocket = p.openServerSocketChannel();
          */
+        System.out.println("client: start select event...");
     }
 
     @Override
     public void run() {
         try {
             while (!Thread.interrupted()) {
-                System.out.println("start select event...");
                 selector.select(1000*60);
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
                 Iterator<SelectionKey> it = selectedKeys.iterator();

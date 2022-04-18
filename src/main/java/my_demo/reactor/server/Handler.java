@@ -55,25 +55,26 @@ public class Handler implements Runnable {
     private void read() throws IOException {
         // 将读到的数据，写到buffer
         socket.read(input);
-        if (inputIsComplete()) {
-            // 执行业务逻辑代码
-            process();
 
-            state = SENDING;
-            // Normally also do first write now
-            sk.interestOps(SelectionKey.OP_WRITE);
-        }
+        // 执行业务逻辑代码
+        process();
+
+        state = SENDING;
+        // Normally also do first write now
+        sk.interestOps(SelectionKey.OP_WRITE|SelectionKey.OP_READ);
+
     }
 
     private void send() throws IOException {
-        socket.write(output);
-        socket.close();
-        if (outputIsComplete()) sk.cancel();
+        if(output.hasRemaining()){
+            int count = socket.write(output);
+            System.out.println("write :"+count +"byte, remaining:"+output.hasRemaining());
+        }else{
+            sk.interestOps(SelectionKey.OP_READ);
+            state = READING;
+        }
     }
 
-    boolean inputIsComplete() { return true;}
-
-    boolean outputIsComplete() {return true;}
 
     // 处理非IO操作(业务逻辑代码)
     void process(){

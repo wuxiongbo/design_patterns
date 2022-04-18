@@ -46,7 +46,7 @@ public class Handler implements Runnable {
             if (sk.isReadable()) {
                 read();
             } else if (sk.isWritable()) {
-                write();
+                doWrite();
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -56,13 +56,13 @@ public class Handler implements Runnable {
     public void read() throws IOException {
         // 将读到的数据，写到buffer
         socket.read(input);
-        if (inputIsComplete()) {
-            // 执行业务逻辑代码
-            process();
-            state = SENDING;
-        }
+        // 执行业务逻辑代码
+        process();
+        state = SENDING;
+        sk.interestOps(SelectionKey.OP_WRITE|SelectionKey.OP_READ);
     }
 
+    // 预写入
     public void send(String text) throws IOException {
         output.put(text.getBytes());
         output.flip();
@@ -71,8 +71,10 @@ public class Handler implements Runnable {
         state = SENDING;
     }
 
-    private void write() throws IOException {
+    // 真正预写入
+    private void doWrite() throws IOException {
         SocketChannel sc = (SocketChannel) sk.channel();
+
         if(output.hasRemaining()){
             int count = sc.write(output);
             System.out.println("write :"+count +"byte, remaining:"+output.hasRemaining());
@@ -80,16 +82,13 @@ public class Handler implements Runnable {
         }else{
             /*取消对写的注册*/
             sk.interestOps(SelectionKey.OP_READ);
-
         }
     }
-
-    boolean inputIsComplete() { return true;}
-
 
     // 处理非IO操作(业务逻辑代码)
     void process(){
         // 处理buffer中的数据
+        input.flip();
         byte[] bytes = new byte[input.remaining()];
         input.get(bytes);
         String msg = new String(bytes);
