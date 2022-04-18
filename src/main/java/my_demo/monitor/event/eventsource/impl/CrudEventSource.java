@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class CrudEventSource implements IEventSource {
 
-    // 各个监听器（即，观察者）
+    // 此列表，用来维护 各个监听器（即，观察者）
     private List<IListener> listeners = new ArrayList<>();
 
 

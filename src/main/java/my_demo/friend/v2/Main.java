@@ -16,11 +16,9 @@ public class Main {
 
     public static void main(String[] args){
 
-        A a = new A();
-
         A.B b = new A.B();
 
-        b.call(a);
+        b.call(new A());
 
     }
 }
@@ -28,6 +26,5 @@ public class Main {
 * 输出：
 *
 * A.func()
-* Exception in thread "main" java.lang.UnsupportedOperationException
 *
 * */

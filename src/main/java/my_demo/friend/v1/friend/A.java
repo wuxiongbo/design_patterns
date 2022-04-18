@@ -23,6 +23,7 @@ public class A {
         System.out.println("A.func()");
     }
 
+    // 友元
     public static abstract class Friend{
 
         // 指定朋友
@@ -35,7 +36,7 @@ public class A {
             }
         }
 
-        // 朋友才可以直接 调用私有方法
+        // 指定的朋友， 才可以直接 调用私有方法
         protected void func(A a){
             a.func();
         }

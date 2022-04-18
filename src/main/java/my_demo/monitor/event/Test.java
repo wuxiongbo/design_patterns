@@ -18,9 +18,9 @@ import my_demo.monitor.event.listener.IListener;
  */
 public class Test {
     public static void main(String[] args) {
-        // 事件源 (被观察者，‘事件’ 由 ‘事件源’ 发出)
+        // 事件源 (充当 被观察者 的角色，‘事件’ 由 ‘事件源’ 发出)
         CrudEventSource eventSource = new CrudEventSource();
-        // 监听者 (观察者)
+        // 监听者 (充当 观察者 的角色)
         IListener crudListener = new CrudListener();
 
 
@@ -29,7 +29,7 @@ public class Test {
 
 
 
-        // 触发save事件。   被观察者 创建相应事件 并通知 观察者
+        // 触发 save事件。   被观察者(事件源)  触发并产生相应的事件  ，然后 通知 观察者(监听器)
         eventSource.save();
         eventSource.remove();
         eventSource.modify();
@@ -42,7 +42,7 @@ public class Test {
 
 
 
-        // 给‘事件源’注册其他‘监听器’
+        // 给 ‘事件源’ 注册其他 ‘监听器’
         eventSource.addListener(new RListener());
         eventSource.addListener(new CListener());
         eventSource.addListener(new UListener());

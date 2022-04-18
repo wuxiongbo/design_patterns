@@ -26,17 +26,17 @@ public class Test {
 
 
     private static void test1(){
-        //定义 事件源（被观察者）
+        //定义 ‘事件源’（被观察者）
         WindowsEventSource windows = new WindowsEventSource();
 
-        //定义 监听器（观察者）
+        //定义 ‘监听器’（观察者）
         EventListener windowsListener = new WindowsListener();
 
-        // 为 事件源 注册 监听器。 以监听各个事件
+        // 为 事件源 注册 ‘监听器’。 以监听各个事件
         windows.addListener(windowsListener);
 
 
-        // 由 事件源 触发事件：
+        // 由 ‘事件源’ 触发事件：
         //    1. 产生 openWindows事件
         PrintEvent openWindowsEvent = new PrintEvent(windows, "openWindows");
         //    2. 对 openWindows事件 感兴趣的listener将会监听到 该事件，然后执行相关操作
@@ -56,7 +56,8 @@ public class Test {
         // 监听器（观察者）    只对 关窗事件  感兴趣
         EventListener closeWindowsListener = new CloseWindowsListener();
 
-        //注册 监听器。 具体这里是 调用addCloseWindowListener方法。 关注 关闭窗口事件
+        // 注册 监听器。 具体这里是 调用事件源的 addCloseWindowListener方法。 事件，在事件源中产生，
+        // 刚注册的监听器 closeWindowsListener  ，只关注 关闭窗口事件
         windows.addCloseWindowListener(closeWindowsListener);
 
         //事件源 触发 窗口关闭动作。
