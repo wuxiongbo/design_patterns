@@ -17,13 +17,13 @@ import java.sql.Statement;
  *
  * // “抽象”
  * Abstraction：委托者的抽象                      没有抽象
- * RefinedAbstraction：委托者的具体实现            java.sql.DriverManager。依赖注入 接口 java.sql.Driver 的实现 com.mysql.jdbc.Driver
+ * RefinedAbstraction：委托者的具体实现            抽象：java.sql.DriverManager。依赖注入 接口 java.sql.Driver 的实现 com.mysql.jdbc.Driver
  *
  * // “实现”
- * Implementor：被委托者的接口                     接口：java.sql.Driver
- * ConcreteImplementor：被委托者的具体实现          实现：com.mysql.jdbc.Driver
+ * Implementor：被委托者的接口                    接口：java.sql.Driver
+ * ConcreteImplementor：被委托者的具体实现         实现：com.mysql.jdbc.Driver
  *
- *
+ *                                 委托
  *          抽象                                         实现
  *
  *       Abstraction   <>——————聚合——————    Implementor
@@ -96,7 +96,7 @@ import java.sql.Statement;
  * DriverManager 类。  业务的 “抽象”
  * public class DriverManager {
  *
- *     // 利用 对象的 “组合”关系，作为 交互的“桥梁”，起 ‘过桥’ 的作用。
+ *     // 利用 对象的 “组合”关系，将成员变量 作为  委托者 与 被委托者  交互的“桥梁”，起到了 ‘过桥’ 的作用。
  *     private final static CopyOnWriteArrayList<DriverInfo> registeredDrivers = new CopyOnWriteArrayList<>();
  *
  *
@@ -110,14 +110,16 @@ import java.sql.Statement;
  *     }
  *
  *
- *     // 具体实现 过桥给 com.mysql.jdbc.Driver
+ *     //  具体实现 过桥给  被委托者——com.mysql.jdbc.Driver
  *     private static Connection getConnection(String url, java.util.Properties info, Class<?> caller) throws SQLException {
- *         //...
+ *
+ *         //... 遍历 被委托者 列表
  *         for(DriverInfo aDriver : registeredDrivers) {
  *
  *             if(isDriverAllowed(aDriver.driver, callerCL)) {
  *                 try {
- *                     // 具体实现 委托 给 Driver实现类，Driver实现类  统一都是对 Driver接口 的实现
+ *                     // 具体实现 委托 给了 Driver实现类，
+ *                     // Driver实现类(aDriver.driver), 统一都是对 java.sql.Driver 接口 的实现
  *                     // 至此，达到了 “桥接” 目的
  *                     Connection con = aDriver.driver.connect(url, info);
  *                     if (con != null) {
