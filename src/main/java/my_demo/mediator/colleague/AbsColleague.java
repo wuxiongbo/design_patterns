@@ -1,6 +1,6 @@
 package my_demo.mediator.colleague;
 
-import my_demo.mediator.AbsMediator;
+import my_demo.mediator.mediator.AbsMediator;
 
 /**
  * @Author: Battle Bear

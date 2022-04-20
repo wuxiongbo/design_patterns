@@ -7,6 +7,8 @@ import my_demo.mediator.colleague.items.ITax;
 import my_demo.mediator.colleague.items.impl.Position;
 import my_demo.mediator.colleague.items.impl.Salary;
 import my_demo.mediator.colleague.items.impl.Tax;
+import my_demo.mediator.mediator.AbsMediator;
+import my_demo.mediator.mediator.Mediator;
 
 /**
  * @Author: Battle Bear
@@ -15,41 +17,7 @@ import my_demo.mediator.colleague.items.impl.Tax;
  */
 public class Client {
     public static void main(String[] args) {
-        AbsMediator mediator = new AbsMediator(){
-            @Override
-            public void up(IPosition position) {
-                System.out.println("职位上升");
-                salary.increaseSalary();
-                tax.raise();
-            }
-
-            @Override
-            public void down(IPosition position) {
-                System.out.println("职位下降");
-            }
-
-            @Override
-            public void up(ISalary salary) {
-                System.out.println("工资加倍");
-                System.out.println("税收增加");
-            }
-
-            @Override
-            public void down(ISalary salary) {
-                System.out.println("工资缩减");
-            }
-
-            @Override
-            public void up(ITax tax) {
-                System.out.println("税收增加");
-                System.out.println("工资缩减");
-            }
-
-            @Override
-            public void down(ITax tax) {
-                System.out.println("税收减少");
-            }
-        };
+        AbsMediator mediator = new Mediator();
 
         IPosition position = new Position(mediator);
         ISalary salary = new Salary(mediator);

@@ -1,4 +1,4 @@
-package my_demo.mediator;
+package my_demo.mediator.mediator;
 
 import my_demo.mediator.colleague.items.IPosition;
 import my_demo.mediator.colleague.items.ISalary;

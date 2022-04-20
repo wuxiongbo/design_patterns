@@ -1,7 +1,7 @@
 package my_demo.mediator.colleague.items.impl;
 
 import my_demo.mediator.colleague.AbsColleague;
-import my_demo.mediator.AbsMediator;
+import my_demo.mediator.mediator.AbsMediator;
 import my_demo.mediator.colleague.items.ISalary;
 
 /**
