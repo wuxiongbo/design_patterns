@@ -5,7 +5,7 @@ import chapter50.demo0.Demo;
 import java.io.IOException;
 
 /**
- * <p> 装饰器模式 </p>
+ * <p> 装饰器模式： 输入流 </p>
  *
  * 本示例的 InputStream 类 是 原始类
  *

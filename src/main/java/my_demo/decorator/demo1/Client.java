@@ -22,7 +22,7 @@ import my_demo.decorator.demo1.decorator.impl.ConcreteDecoratorB;
  *   4. 具体 装饰器 (ConcreteDecorator)：向 组件 添加 新的职责。    即，装饰增强功能
  *
  *
- *   抽象组件                 Component<—— 聚合
+ *   抽象组件                 Component<—— 关联、聚合
  *                           /      \       |
  *                        泛化      泛化     |
  *                        /           \    <>

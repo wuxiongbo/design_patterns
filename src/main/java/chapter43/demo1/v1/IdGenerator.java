@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * <p>描述类的信息</p>
+ * <p>单例模式</p>
  *
  * 我们通过一个 HashMap 来存储对象，其中 key 是线程 ID，value 是对象。
  * 这样我们就可以做到，不同的线程对应不同的对象，同一个线程只能对应一个对象。

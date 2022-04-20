@@ -6,7 +6,7 @@ import my_demo.decorator.dependence.Borrower;
 import my_demo.decorator.dependence.item.LibraryItem;
 
 /**
- * <p> 具体装饰器类：计数 </p>
+ * <p> 装饰器的具体实现类：计数 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -25,7 +25,7 @@ public class CountingLibrary extends LibraryDecorator {
     public void borrowItem(LibraryItem item, Borrower borrower){
 
         // 委托 给被装饰者
-        this.lib.borrowItem(item, borrower);
+        super.borrowItem(item, borrower);
 
         // 功能增强： 借阅书本，  计数+1
         counter++;
@@ -36,7 +36,7 @@ public class CountingLibrary extends LibraryDecorator {
     public void returnItem(LibraryItem item){
 
         // 委托 给被装饰者
-        this.lib.returnItem(item);
+        super.returnItem(item);
 
         // 功能增强： 归还书本， 计数-1
         counter--;

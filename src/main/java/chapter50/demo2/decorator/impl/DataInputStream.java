@@ -12,13 +12,15 @@ import chapter50.demo2.decorator.FilterInputStream;
  * @date 2021/9/13
  * </pre>
  */
-public class DataInputStream extends FilterInputStream {
+public class DataInputStream
+        extends FilterInputStream {  // 继承装饰器父类
 
     /**
      *
      * @param in   依赖注入  被装饰的类
      */
     public DataInputStream(InputStream in) {
+        // 依赖注入 原始类(被委托类)
         super(in);
     }
 

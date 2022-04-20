@@ -5,7 +5,7 @@ import my_demo.decorator.dependence.Borrower;
 import my_demo.decorator.dependence.item.LibraryItem;
 
 /**
- * <p> 抽象装饰类 </p>
+ * <p> 装饰器的抽象类 </p>
  *
  * <pre>
  * @author wuxiongbo

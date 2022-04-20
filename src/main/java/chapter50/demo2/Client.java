@@ -31,7 +31,7 @@ public class Client {
 
         InputStream in = new FileInputStream("/user/wangzheng/test.txt");
 
-        // 功能增强：缓存
+        // 装饰器1，功能增强：缓存
         InputStream bin = new BufferedInputStream(in);
 
         byte[] data = new byte[128];
@@ -39,7 +39,8 @@ public class Client {
             //...
         }
 
-        // 再次功能增强
+
+        // 装饰器2，再次功能增强
         InputStream bin1 = new DataInputStream(in);
 
 

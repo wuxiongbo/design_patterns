@@ -39,13 +39,15 @@ import java.io.IOException;
  * @date 2021/9/13
  * </pre>
  */
-public class BufferedInputStream extends FilterInputStream {
+public class BufferedInputStream
+        extends FilterInputStream {   // 继承装饰器父类
 
     /**
      *
      * @param in  依赖注入 被装饰的类
      */
     public BufferedInputStream(InputStream in) {
+        // 依赖注入 原始类(被委托类)
         super(in);
     }
 

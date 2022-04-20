@@ -5,7 +5,7 @@ import my_demo.decorator.demo2.decorator.LibraryDecorator;
 import my_demo.decorator.dependence.item.LibraryItem;
 
 /**
- * <p> 具体装饰器类：出售图书 </p>
+ * <p> 装饰器的具体实现类：出售图书 </p>
  *
  * <pre>
  * @author wuxiongbo
