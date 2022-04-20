@@ -12,7 +12,7 @@ import java.util.Set;
  * <p>Reactor</p>
  *
  *
- * from  https://developer.51cto.com/article/671346.html
+ * from, Netty源码之Reactor模式 https://www.toutiao.com/article/6982760949048476190/
  *
  * <pre>
  * @author wuxiongbo
@@ -34,6 +34,8 @@ public class Reactor implements Runnable {
         serverSocket.configureBlocking(false);
         // 创建selector对象
         selector = Selector.open();
+
+
 
         // serverSocket注册到selector上，帮忙监听 CONNECT 事件。
         SelectionKey sk = serverSocket.register(selector, 0);

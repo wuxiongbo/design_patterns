@@ -1,5 +1,7 @@
 package my_demo.reactor.server;
 
+import org.openjdk.jol.info.ClassLayout;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
@@ -12,7 +14,7 @@ import java.util.Set;
  * <p>Reactor</p>
  *
  *
- * from  https://developer.51cto.com/article/671346.html
+ * from, Netty源码之Reactor模式 https://www.toutiao.com/article/6982760949048476190/
  *
  * <pre>
  * @author wuxiongbo
@@ -79,6 +81,9 @@ public class Reactor implements Runnable {
         Thread thread = new Thread(new Reactor(2021));
         thread.start();
         synchronized (Reactor.class) {
+
+            System.out.println(ClassLayout.parseInstance(Reactor.class).toPrintable());
+
             Reactor.class.wait();
         }
     }

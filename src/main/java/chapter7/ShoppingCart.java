@@ -7,6 +7,8 @@ import java.util.List;
 /**
  * <p>购物车</p>
  *
+ * DDD
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/12/20
