@@ -3,7 +3,7 @@ package chapter73.demo1.v1;
 import chapter73.dependence.Component;
 
 /**
- * <p> 中介 </p>
+ * <p> 中介 抽象</p>
  *
  * Mediator
  *

@@ -8,7 +8,9 @@ import chapter73.dependence.Text;
 import lombok.Data;
 
 /**
- * <p>描述类的信息</p>
+ * <p>中介 实现</p>
+ *
+ * 中介模式
  *
  * <pre>
  * @author wuxiongbo
@@ -16,7 +18,7 @@ import lombok.Data;
  * </pre>
  */
 @Data
-public class LandingPageDialog  implements Mediator {
+public class LandingPageDialog implements Mediator {
     private Button loginButton;
     private Button regButton;
     private Selection selection;

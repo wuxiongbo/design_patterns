@@ -16,9 +16,9 @@ import java.util.List;
  *
  * 持续开发：
  * 如果本工具的功能不停地扩展，
- *      不仅要能 抽取文本内容，
- *      还要  支持压缩、
- *      提取文件元信息（文件名、大小、更新时间等等）构建索引
+ *      1.不仅要能 抽取文本内容，
+ *      2.还要  支持压缩、
+ *      3.提取文件元信息（文件名、大小、更新时间等等）构建索引
  * 等一系列的功能，
  *
  * 我们继续按照本例的实现思路，就会存在这样几个问题：
@@ -48,11 +48,13 @@ public class ToolApplication {
 
         // 尝试 通过 方法重载 实现扩展
         for (ResourceFile resourceFile : resourceFiles) {
-            // 编译不通过。
+            // 尝试用 Extractor处理业务， 发现编译不通过。
+            // 原因是，“多态” 无法编译时 识别，从而向下转型。
 //            extractor.extract2txt(resourceFile);
         }
 
     }
+
 
     // 资源文件列表
     private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {

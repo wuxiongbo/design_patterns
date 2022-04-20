@@ -8,7 +8,7 @@ import chapter73.dependence.Selection;
 import chapter73.dependence.Text;
 
 /**
- * <p>  UI 控件  </p>
+ * <p>  UI 控件  中介模式 </p>
  *
  * 从代码中我们可以看出，原本业务逻辑会分散在各个控件中，现在都集中到了中介类中。
  *

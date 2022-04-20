@@ -1,6 +1,6 @@
 package chapter68.v2.resourcefile;
 
-import chapter68.v2.Extractor;
+import chapter68.v2.function.Extractor;
 
 /**
  * <p>资源文件</p>

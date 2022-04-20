@@ -1,7 +1,7 @@
 package chapter68.v3.resourcefile.concrete;
 
-import chapter68.v3.Compressor;
-import chapter68.v3.Extractor;
+import chapter68.v3.function.Compressor;
+import chapter68.v3.function.Extractor;
 import chapter68.v3.resourcefile.ResourceFile;
 
 /**

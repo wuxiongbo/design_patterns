@@ -1,8 +1,8 @@
-package chapter68.v2;
+package chapter68.v3.function;
 
-import chapter68.v2.resourcefile.concrete.PPTFile;
-import chapter68.v2.resourcefile.concrete.PdfFile;
-import chapter68.v2.resourcefile.concrete.WordFile;
+import chapter68.v3.resourcefile.concrete.PPTFile;
+import chapter68.v3.resourcefile.concrete.PdfFile;
+import chapter68.v3.resourcefile.concrete.WordFile;
 
 /**
  * <p>提取器</p>
@@ -14,6 +14,7 @@ import chapter68.v2.resourcefile.concrete.WordFile;
  */
 public class Extractor {
 
+    // extract2txt 方法  方法重载
     public void extract2txt(PPTFile pptFile) {
         //...
         System.out.println(pptFile.hashCode()+"Extract PPT.");

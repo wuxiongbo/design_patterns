@@ -17,5 +17,6 @@ public abstract class ResourceFile {
         this.filePath = filePath;
     }
 
+    // 这部分业务逻辑，后续 可以与 数据解耦
     public abstract void extract2txt();
 }

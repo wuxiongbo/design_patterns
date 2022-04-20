@@ -1,6 +1,6 @@
 package chapter68.v2.resourcefile.concrete;
 
-import chapter68.v2.Extractor;
+import chapter68.v2.function.Extractor;
 import chapter68.v2.resourcefile.ResourceFile;
 
 /**
@@ -18,6 +18,7 @@ public class PPTFile extends ResourceFile {
 
     @Override
     public void accept(Extractor extractor) {
+        // 编译期，已经确认 this 是 PPTFile
         extractor.extract2txt(this);
     }
 }

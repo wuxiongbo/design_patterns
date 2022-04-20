@@ -1,5 +1,6 @@
 package chapter68.v2;
 
+import chapter68.v2.function.Extractor;
 import chapter68.v2.resourcefile.ResourceFile;
 import chapter68.v2.resourcefile.concrete.PPTFile;
 import chapter68.v2.resourcefile.concrete.PdfFile;
@@ -14,10 +15,11 @@ import java.util.List;
  *
  * 在执行  resourceFile.accept(extractor);  这一行代码的时候，
  * 根据 ‘多态特性’ ，程序会调用实际类型的 accept 函数，
- *
  * 比如 PdfFile 的 accept 函数，也就是 extractor.extract2txt(this); 这行代码
+ *
  * 而 这行代码中的 this类型是 PdfFile 的，这在编译的时候就已经确定了，
  * 所以，会调用 extractor 中的 extract2txt(PdfFile pdfFile)，这个重载函数。
+ *
  *
  * 这个实现思路是不是很有技巧？
  *

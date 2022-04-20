@@ -1,5 +1,7 @@
 package chapter68.v3;
 
+import chapter68.v3.function.Compressor;
+import chapter68.v3.function.Extractor;
 import chapter68.v3.resourcefile.ResourceFile;
 import chapter68.v3.resourcefile.concrete.PPTFile;
 import chapter68.v3.resourcefile.concrete.PdfFile;
@@ -44,10 +46,12 @@ public class ToolApplication {
         List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
 
 
+
         Extractor extractor = new Extractor();
         for (ResourceFile resourceFile : resourceFiles) {
             resourceFile.accept(extractor);
         }
+
 
 
         Compressor compressor = new Compressor();
@@ -57,6 +61,10 @@ public class ToolApplication {
 
 
     }
+
+
+
+
 
     private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {
 

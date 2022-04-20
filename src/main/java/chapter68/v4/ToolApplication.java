@@ -25,13 +25,15 @@ public class ToolApplication {
         List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
 
 
-        // 提取器 观察者
+
+        // 提取器 访问者
         Extractor extractorVisitor = new Extractor();
         for (ResourceFile resourceFile : resourceFiles) {
             resourceFile.accept(extractorVisitor);
         }
 
-        // 压缩器 观察者
+
+        // 压缩器 访问者
         Compressor compressorVisitor = new Compressor();
         for(ResourceFile resourceFile : resourceFiles) {
             resourceFile.accept(compressorVisitor);

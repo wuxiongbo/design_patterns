@@ -16,8 +16,8 @@ import my_demo.decorator.dependence.item.LibraryItem;
  * 你被要求开发一个简单图书馆管理系统，初步有以下的要求:
  *      1）实现书的 “借阅” 和 “归还”
  *      2）后期新需求。
- *         2.1) 可以记录 图书馆已经借出多少本书、
- *         2.2) 在原有功能的基础上添加，“出售” 图书的功能
+ *         2.1) 可以记录 图书馆已经借出多少本书。
+ *         2.2) 在原有功能的基础上，添加 “出售” 图书的功能
  *
  *
  * 如果不用装饰器，正常的思路可能是，写一个 管理系统类 提供两个方式：“出借” 跟 “归还”。
@@ -52,12 +52,11 @@ public class Main {
     public static void main(String[] args){
         // 借阅者
         Borrower person = new Borrower("Lindz");
-
-        // 借阅书籍
+        // 待借阅书刊
         LibraryItem book = new Book("Harry potter");
         LibraryItem journal = new Journal("Day night");
 
-        // 实例化图书馆
+        // 图书馆（被修饰者）
         Library lib = new ConcreteLibrary();  // 原始的具体组件
         lib.borrowItem(book, person); // 借阅 书本
         lib.returnItem(journal); // 归还 杂志
@@ -66,13 +65,13 @@ public class Main {
         System.out.println("--------------------------");
 
         // 使用 装饰器 包装 图书馆。 增加计数功能
-        CountingLibrary clib = new CountingLibrary(lib); // 修饰器
-        clib.borrowItem(book, person); // 加强 借阅 功能
-        clib.returnItem(journal); //  加强 归还 功能
+        CountingLibrary cLib = new CountingLibrary(lib); // 修饰器
+        cLib.borrowItem(book, person); // 加强 借阅 功能
+        cLib.returnItem(journal); //  加强 归还 功能
 
         // 使用 装饰器 再次包装 图书馆。 增加售卖功能
-        SellingLibrary slib = new SellingLibrary(clib);  // 修饰器
-        slib.sellItem(journal); // 新增 原始组件 不存在的 业务功能“出售”
+        SellingLibrary sLib = new SellingLibrary(cLib);  // 修饰器
+        sLib.sellItem(journal); // 新增 原始组件 不存在的 业务功能“出售”
 
     }
 }
