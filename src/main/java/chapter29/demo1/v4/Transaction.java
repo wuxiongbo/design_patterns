@@ -59,6 +59,8 @@ public class Transaction {
         return executionInvokedTimestamp - createTimestamp > 14*DAYS;
     }
 
+    // 抽取id生成逻辑
+    //
     // 构造函数中并非只包含简单赋值操作。
     // 交易 id 的赋值逻辑稍微复杂。
     // 我们最好也要测试一下，以保证这部分逻辑的正确性。
