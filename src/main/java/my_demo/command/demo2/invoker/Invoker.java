@@ -14,6 +14,7 @@ import my_demo.command.demo2.command.Command;
  */
 public class Invoker {
 
+    // TODO 这里可以是一个列表
     private Command command;
 
     public Invoker(Command command) {
