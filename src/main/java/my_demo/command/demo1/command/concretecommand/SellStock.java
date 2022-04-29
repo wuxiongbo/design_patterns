@@ -1,7 +1,7 @@
-package my_demo.command.demo1.concretecommand;
+package my_demo.command.demo1.command.concretecommand;
 
 import my_demo.command.demo1.command.Order;
-import my_demo.command.demo1.receiver.Stock;
+import my_demo.command.demo1.command.receiver.Stock;
 
 /**
  * <p> ConcreteCommand </p>

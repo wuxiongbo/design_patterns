@@ -1,9 +1,9 @@
 package my_demo.command.demo1;
 
-import my_demo.command.demo1.concretecommand.BuyStock;
-import my_demo.command.demo1.concretecommand.SellStock;
+import my_demo.command.demo1.command.concretecommand.BuyStock;
+import my_demo.command.demo1.command.concretecommand.SellStock;
 import my_demo.command.demo1.invoker.Broker;
-import my_demo.command.demo1.receiver.Stock;
+import my_demo.command.demo1.command.receiver.Stock;
 
 /**
  * <p>指令模式  命令模式</p>
@@ -42,9 +42,9 @@ import my_demo.command.demo1.receiver.Stock;
  *                         聚合    实现
  *                          |       \
  *  具体命令                 |       ConcreteCommand ———聚合———<> Receiver    接受者
- *                          |
- *                          |
- *  调用者                Invoker
+ *                         |
+ *                         |
+ *  调用者               Invoker
  *
  *
  *  客户端                CommandPattern (Invoker     ConcreteCommand    Receiver)

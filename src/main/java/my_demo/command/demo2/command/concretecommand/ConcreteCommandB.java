@@ -1,7 +1,7 @@
-package my_demo.command.demo2.concretecommand;
+package my_demo.command.demo2.command.concretecommand;
 
 import my_demo.command.demo2.command.Command;
-import my_demo.command.demo2.receiver.Receiver;
+import my_demo.command.demo2.command.Receiver;
 
 /**
  * <p>具体命令</p>

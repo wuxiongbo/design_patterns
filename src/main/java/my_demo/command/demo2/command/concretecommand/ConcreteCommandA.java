@@ -1,7 +1,7 @@
-package my_demo.command.demo2.concretecommand;
+package my_demo.command.demo2.command.concretecommand;
 
 import my_demo.command.demo2.command.Command;
-import my_demo.command.demo2.receiver.Receiver;
+import my_demo.command.demo2.command.Receiver;
 
 /**
  * <p>具体命令</p>
@@ -14,16 +14,16 @@ import my_demo.command.demo2.receiver.Receiver;
 public class ConcreteCommandA implements Command {
 
     // 任何类都可能成为一个接收者，只要它能够实现 命令(ConcreteCommand)的相应功能就行。
-    private Receiver receiver;
+    private Receiver delegate;
 
     public ConcreteCommandA() {
-        receiver = new Receiver();
+        delegate = new Receiver();
         System.out.println("构建 指令A");
     }
 
     @Override
     public void execute() {
         // 委托给 接受者
-        receiver.actionA();
+        delegate.actionA();
     }
 }

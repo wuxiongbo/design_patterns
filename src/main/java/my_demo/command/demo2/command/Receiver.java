@@ -1,4 +1,4 @@
-package my_demo.command.demo2.receiver;
+package my_demo.command.demo2.command;
 
 /**
  * <p>接收者</p>

@@ -1,4 +1,4 @@
-package my_demo.command.demo1.receiver;
+package my_demo.command.demo1.command.receiver;
 
 /**
  * <p>Receiver</p>
