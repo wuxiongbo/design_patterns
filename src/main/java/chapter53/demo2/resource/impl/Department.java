@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Department extends HumanResource {
 
-    // 存储 下属部门 和 本部门员工
+    // 存储 下属部门 或 本部门员工
     private List<HumanResource> subNodes = new ArrayList<>();
 
     public Department(long id) {

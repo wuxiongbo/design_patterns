@@ -53,15 +53,16 @@ public class GameApplication {
     private void setCommand(List<Request> requests){
         for (Request request : requests) {
             Event event = request.getEvent();
+
             Command command = null;
 
-            if (event.equals(Event.GOT_DIAMOND)) {
+            if (event==Event.GOT_DIAMOND) {
                 command = new GotDiamondCommand(/*receiver 数据*/);
-            } else if (event.equals(Event.GOT_STAR)) {
+            } else if (event==Event.GOT_STAR) {
                 command = new GotStartCommand(/*receiver 数据*/);
-            } else if (event.equals(Event.HIT_OBSTACLE)) {
+            } else if (event==Event.HIT_OBSTACLE) {
                 command = new HitObstacleCommand(/*receiver 数据*/);
-            } else if (event.equals(Event.ARCHIVE)) {
+            } else if (event==Event.ARCHIVE) {
                 command = new ArchiveCommand(/*receiver 数据*/);
             } // ...一堆else if...
 

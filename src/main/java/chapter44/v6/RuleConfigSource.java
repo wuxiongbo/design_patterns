@@ -3,7 +3,7 @@ package chapter44.v6;
 import chapter44.dependence.config_parser.IRuleConfigParser;
 import chapter44.dependence.exception.InvalidRuleConfigException;
 import chapter44.dependence.model.RuleConfig;
-import chapter44.v6.factory.RuleConfigParserFactoryMap;
+import chapter44.v6.factory_produce.RuleConfigParserFactoryMap;
 import chapter44.v6.factory_method.IRuleConfigParserFactory;
 
 /**
@@ -16,7 +16,7 @@ import chapter44.v6.factory_method.IRuleConfigParserFactory;
  * 此时，如果添加新的 规则配置解析器， 对 工厂类的改动也会比较大
  *
  *
- * 优化方案五：工厂方法 + 工厂模式(v4改进版)
+ * 优化方案五：工厂方法 + 工厂的工厂(v4改进版)
  *
  * 当我们需要添加新的  规则配置解析器  的时候，我们只需要
  *    1.创建 新的 "parser"类  和 "parser factory"类，

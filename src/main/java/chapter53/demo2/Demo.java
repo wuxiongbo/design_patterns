@@ -35,8 +35,8 @@ import java.util.List;
 public class Demo {
     private static final long ORGANIZATION_ROOT_ID = 1001;
 
-    private DepartmentDao departmentDao; // 依赖注入
-    private EmployeeDao employeeDao; // 依赖注入
+    private DepartmentDao departmentDao; // 依赖注入。 部门
+    private EmployeeDao employeeDao;     // 依赖注入。 员工
 
     public void buildOrganization() {
         Department rootDepartment = new Department(ORGANIZATION_ROOT_ID);

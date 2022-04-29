@@ -1,7 +1,7 @@
 package chapter53.demo2.resource;
 
 /**
- * <p>描述类的信息</p>
+ * <p>人力资源</p>
  *
  * <pre>
  * @author wuxiongbo

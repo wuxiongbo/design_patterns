@@ -3,7 +3,7 @@ package chapter53.demo1.v2.node.impl;
 import chapter53.demo1.v2.node.FileSystemNode;
 
 /**
- * <p>描述类的信息</p>
+ * <p>文件</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -11,6 +11,7 @@ import chapter53.demo1.v2.node.FileSystemNode;
  * </pre>
  */
 public class File extends FileSystemNode {
+
     public File(String path) {
         super(path);
     }

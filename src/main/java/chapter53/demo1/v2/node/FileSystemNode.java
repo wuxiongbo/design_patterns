@@ -1,7 +1,7 @@
 package chapter53.demo1.v2.node;
 
 /**
- * <p>描述类的信息</p>
+ * <p>文件系统抽象类</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -16,7 +16,16 @@ public abstract class FileSystemNode {
         this.path = path;
     }
 
+    /**
+     * 文件数
+     * @return
+     */
     public abstract int countNumOfFiles();
+
+    /**
+     * 文件大小
+     * @return
+     */
     public abstract long countSizeOfFiles();
 
     public String getPath() {

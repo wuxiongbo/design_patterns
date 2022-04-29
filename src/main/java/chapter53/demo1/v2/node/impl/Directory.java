@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p>文件夹</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class Directory extends FileSystemNode {
 
+    // 子节点
     private List<FileSystemNode> subNodes = new ArrayList<>();
 
     public Directory(String path) {
