@@ -17,7 +17,7 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
 
     private int cursorInAll; // 在整个容器中的 游标，而非快照中的下标
 
-    private int countdown;  // 快照中还有几个元素未被遍历
+    private int countdown;   // 快照中还有几个元素未被遍历
 
     private final MyArrayList<E> arrayList;
 
@@ -72,10 +72,10 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
             //    delTimestamp < snapshotTimestamp
             //    在快照 之前 删除
 
-            // 如果当前元素属于当前迭代器
+            // 如果，当前元素属于当前迭代器
             if (snapshotTimestamp > addTimestamp && snapshotTimestamp < delTimestamp) {
 
-                // 则将 快照迭代器 中， 未遍历元素的个数 -1。
+                // 则，将 快照迭代器 中 未遍历元素的个数 -1。
                 countdown--;
                 return true;
 

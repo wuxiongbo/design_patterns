@@ -9,5 +9,6 @@ package my_demo.monitor.callback.demo5.lower;
  * </pre>
  */
 public interface IPerformer {
+    // 回调
     public void update(int i);
 }

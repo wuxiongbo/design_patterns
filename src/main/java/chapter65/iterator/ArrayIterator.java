@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 /**
- * <p>描述类的信息</p>
+ * <p> 自定义迭代器实现 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -29,7 +29,7 @@ public class ArrayIterator<E> implements Iterator<E> {
 
     @Override
     public boolean hasNext() {
-        return cursor != arrayList.size(); //注意：这里，cursor在指向最后一个元素的时候，hasNext()仍旧返回true。
+        return cursor != arrayList.size(); //注意：这里的 游标cursor，在指向最后一个元素的时候，hasNext()仍旧返回true。
     }
 
     // 移动 游标

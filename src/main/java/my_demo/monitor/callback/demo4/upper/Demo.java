@@ -23,7 +23,7 @@ public class Demo {
         d.register(p1);
         d.register(p2);
 
-        d.copy(); //这里由上层模块触发事件的发生
+        d.copy();  //这里由上层模块，触发事件的发生
     }
 
     public static void main(String[] args){

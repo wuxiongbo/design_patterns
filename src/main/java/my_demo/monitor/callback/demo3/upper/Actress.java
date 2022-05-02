@@ -20,7 +20,7 @@ public class Actress implements IPerformer {
         // 其实，某种角度上来看，这已经是异步了。 因为 update方法，不是 我Actress 调用的。而是 导演Director 调用的。
         // 虽然，我Actress 会因为copy()的调用耗时而等待(或者说阻塞)。但是 update() 这件事不是我主动执行的，
         // 而是 导演Director 通知我执行的。
-        // 这就是一种异步思想。即，事情交给别人做，而不是自己做。
+        // 这就是一种异步思想。即，事情交给别人做，而不是自己做。  调用方不是主动获取结果
         // 所以说，单线程 也可以异步。
         director.copy();
 

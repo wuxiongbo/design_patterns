@@ -25,7 +25,9 @@ public class Director3 extends Observable {
 
             if (i%10 == 0) {
                 setChanged();
-                notifyObservers(i);
+
+                notifyObservers(i);// 通知观察者
+
             }
         }
 
