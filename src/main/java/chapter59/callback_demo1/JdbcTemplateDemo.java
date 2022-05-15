@@ -62,10 +62,11 @@ public class JdbcTemplateDemo {
 
 
         return jdbcTemplate.query(
-                // SQL 语句
-                sql,
-                // '查询结果' 与 '对象' 之间的 映射关系
-                new UserRowMapper()).get(0);
+                    // SQL 语句
+                    sql,
+                    // '查询结果' 与 '对象' 之间的 映射关系
+                    new UserRowMapper()
+        ).get(0);
 
     }
 

@@ -52,19 +52,25 @@ public class Reactor implements Runnable {
     @Override
     public void run() {
         try {
+
+            // EventLoop
             while (!Thread.interrupted()) {
                 selector.select(1000*60);
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
-                Iterator<SelectionKey> it = selectedKeys.iterator();
-                while (it.hasNext()) {
-                    dispatch(it.next());
+
+                for (SelectionKey selectedKey : selectedKeys) {
+                    // 分发器
+                    dispatch(selectedKey);
                 }
                 selectedKeys.clear();
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 
     private void dispatch(SelectionKey key) {
         if(key.isValid()){
@@ -80,11 +86,14 @@ public class Reactor implements Runnable {
     public static void main(String[] args) throws IOException, InterruptedException {
         Thread thread = new Thread(new Reactor(2021));
         thread.start();
-        synchronized (Reactor.class) {
 
-            System.out.println(ClassLayout.parseInstance(Reactor.class).toPrintable());
+        Reactor.class.wait();
 
-            Reactor.class.wait();
-        }
+//        synchronized (Reactor.class) {
+//
+//            System.out.println(ClassLayout.parseInstance(Reactor.class).toPrintable());
+//
+//            Reactor.class.wait();
+//        }
     }
 }

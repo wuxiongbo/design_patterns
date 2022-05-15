@@ -31,6 +31,7 @@ public class Handler implements Runnable {
         this.socket = socket;
         this.socket.configureBlocking(false);
 
+        // 用给定的选择器注册这个 channel通道。返回一个 SelectionKey。
         sk = this.socket.register(selector,SelectionKey.OP_READ);
 
         // 绑定附加对象

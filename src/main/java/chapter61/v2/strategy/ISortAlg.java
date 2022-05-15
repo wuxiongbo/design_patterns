@@ -1,7 +1,7 @@
 package chapter61.v2.strategy;
 
 /**
- * <p>描述类的信息</p>
+ * <p>策略模式</p>
  *
  * <pre>
  * @author wuxiongbo

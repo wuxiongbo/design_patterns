@@ -5,7 +5,7 @@ import chapter61.v2.strategy.ISortAlg;
 import java.io.File;
 
 /**
- * <p>描述类的信息</p>
+ * <p>策略模式</p>
  *
  * new操作交给 策略工厂 完成，使用 策略 的时候不用手动的new了
  *

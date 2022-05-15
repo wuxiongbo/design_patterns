@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p>策略模式</p>
  *
  *
  * 现在的代码实现就更加优美了。

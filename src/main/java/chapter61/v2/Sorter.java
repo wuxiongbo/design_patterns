@@ -9,7 +9,7 @@ import chapter61.v2.strategy.concrete.QuickSort;
 import java.io.File;
 
 /**
- * <p>描述类的信息</p>
+ * <p>策略模式</p>
  *
  * 重构思路：
  *  只要掌握了我们之前讲过的设计原则和思想，针对上面的问题，即便我们想不到该用什么 设计模式 来重构，也应该能知道该如何解决，
