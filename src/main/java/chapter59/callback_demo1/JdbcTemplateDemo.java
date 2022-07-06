@@ -70,7 +70,7 @@ public class JdbcTemplateDemo {
 
     }
 
-    // 可变因素二：映射关系
+    // 可变因素二： 表结构 与 对象实体 之间的 映射 关系
     //   "查询结果" 与 "User对象" 之间的映射关系
     class UserRowMapper implements RowMapper<User> {
         @Override

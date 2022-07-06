@@ -23,6 +23,8 @@ public class HandlerExecutionChain {
     private int interceptorIndex = -1;
 
     private final Object handler = null;
+
+    // 基于数组实现的 责任链
     private final List<HandlerInterceptor> interceptorList = new ArrayList<>();
 
 

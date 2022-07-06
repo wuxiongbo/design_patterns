@@ -50,6 +50,7 @@ public class ApplicationFilterChain implements FilterChain {
     private int pos = 0;  //当前执行到了哪个filter
     private int n;        //filter的个数
 
+    //基于 数组 实现的责任链
     private ApplicationFilterConfig[] filters;
 
     private Servlet servlet;
@@ -62,9 +63,11 @@ public class ApplicationFilterChain implements FilterChain {
             ApplicationFilterConfig filterConfig = filters[pos++];
 
 //            Filter filter = filterConfig.getFilter();
+
+
 //            filter.doFilter(request, response, this);
 
-            //把filter.doFilter的代码实现，展开 替换到这里
+            //  把filter.doFilter的代码实现，展开 替换到这里
             System.out.println("拦截客户端发送来的请求.");
             this.doFilter(request, response); // 这里的 this ，就是 LogFilter类 doFilter方法的 chain变量
             System.out.println("拦截发送给客户端的响应.");

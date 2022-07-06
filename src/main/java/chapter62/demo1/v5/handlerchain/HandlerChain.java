@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * <p> 处理器链 </p>
  *
- * 单向连表
+ * 基于 '数组' 的实现
  *
  * <pre>
  * @author wuxiongbo

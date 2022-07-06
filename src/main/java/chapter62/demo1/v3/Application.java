@@ -7,7 +7,7 @@ import chapter62.demo1.v3.handler.concrete.HandlerB;
 /**
  * <p> 责任链 </p>
  *
- * 责任链 第二种实现方式   ‘数组’ 结构
+ * 责任链 第二种实现方式  ‘数组’ 结构
  *
  * 代码如下所示。
  *
