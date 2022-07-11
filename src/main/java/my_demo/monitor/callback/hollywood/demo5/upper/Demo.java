@@ -1,12 +1,14 @@
-package my_demo.monitor.callback.demo5.upper;
+package my_demo.monitor.callback.hollywood.demo5.upper;
 
-import my_demo.monitor.callback.demo5.lower.Director3;
-import my_demo.monitor.callback.demo5.upper.Actress3;
+import my_demo.monitor.callback.hollywood.demo5.lower.Director3;
+import my_demo.monitor.callback.reactive_programming.FlowDemo;
 
 import java.util.Observer;
 
 /**
- * <p>描述类的信息</p>
+ * <p> Observable 已经过时 </p>
+ *
+ * 新写法，参考{@link FlowDemo}
  *
  * <pre>
  * @author wuxiongbo

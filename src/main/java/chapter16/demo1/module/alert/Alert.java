@@ -18,7 +18,7 @@ import java.util.List;
  * Alert 自己不处理告警，而是 “委托” 给 告警处理器 去处理
  *
  * */
-public class Alert { // AlertChain  告警链。
+public class Alert { // 相当于 AlertChain  告警 责任链。
 
     private List<AlertHandler> alertHandlers = new ArrayList<>();
 

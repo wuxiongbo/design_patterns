@@ -1,7 +1,7 @@
-package my_demo.monitor.callback.demo2.lower;
+package my_demo.monitor.callback.hollywood.demo2.lower;
 
 /**
- * <p>描述类的信息</p>
+ * <p>导演</p>
  *
  * <pre>
  * @author wuxiongbo

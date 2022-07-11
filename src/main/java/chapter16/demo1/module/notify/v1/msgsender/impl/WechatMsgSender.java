@@ -5,7 +5,7 @@ import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p>微信消息发送器</p>
  *
  * <pre>
  * @author wuxiongbo

@@ -3,7 +3,7 @@ package my_demo.handlerchain.v2;
 import io.vavr.Function1;
 
 /**
- * <p>描述类的信息</p>
+ * <p> 使用Vavr框架  改写责任链 </p>
  *
  * https://segmentfault.com/a/1190000019686060
  * https://juejin.cn/post/6844903876945002509

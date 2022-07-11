@@ -1,7 +1,6 @@
-package my_demo.monitor.callback.demo4.upper;
+package my_demo.monitor.callback.hollywood.demo4.upper;
 
-import my_demo.monitor.callback.demo4.lower.Director2;
-import my_demo.monitor.callback.demo4.lower.IPerformer;
+import my_demo.monitor.callback.hollywood.demo4.lower.IPerformer;
 
 /**
  * <p>女演员</p>

@@ -1,4 +1,4 @@
-package my_demo.monitor.callback.demo4.lower;
+package my_demo.monitor.callback.hollywood.demo4.lower;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class Director2 {
             }
 
             if (i%10 == 0) {
-                // 通知演员们
+                // 通知所有关注本导演的演员们
                 for(IPerformer performer: listeners) {
                     performer.update(i);
                 }

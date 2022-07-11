@@ -1,7 +1,7 @@
-package my_demo.monitor.callback.demo5.upper;
+package my_demo.monitor.callback.hollywood.demo5.upper;
 
-import my_demo.monitor.callback.demo5.lower.Director3;
-import my_demo.monitor.callback.demo5.lower.IPerformer;
+import my_demo.monitor.callback.hollywood.demo5.lower.Director3;
+import my_demo.monitor.callback.hollywood.demo5.lower.IPerformer;
 
 import java.util.Observable;
 import java.util.Observer;

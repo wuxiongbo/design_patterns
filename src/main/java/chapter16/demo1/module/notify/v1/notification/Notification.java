@@ -16,7 +16,7 @@ import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
  */
 public abstract class Notification {
 
-    // 2. 利用 “组合” 关系，把 成员变量 作为 “桥梁”。
+    // 2. 利用 “组合” 关系，把 成员变量(消息发送器接口) 作为 “桥梁”。
     // 说明：这么做的好处是，统一接口调用，这样就 可以随意切换 消息发送器的实现
     protected MsgSender msgSender;
 

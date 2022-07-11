@@ -44,9 +44,12 @@ public class ApplicationContext {
 
 
         // 改动三：注册handler
-        alert.addAlertHandler(new TpsAlertHandler(alertRule, NotificationEmergencyLevel.URGENCY,wechatMsgSender));
-        alert.addAlertHandler(new ErrorAlertHandler(alertRule,NotificationEmergencyLevel.SEVERE,telephoneMsgSender));
-        alert.addAlertHandler(new TimeoutAlertHandler(alertRule,NotificationEmergencyLevel.NORMAL,emailMsgSender));
+        alert.addAlertHandler(new TpsAlertHandler(
+                alertRule, NotificationEmergencyLevel.URGENCY,wechatMsgSender));
+        alert.addAlertHandler(new ErrorAlertHandler(
+                alertRule,NotificationEmergencyLevel.SEVERE,telephoneMsgSender));
+        alert.addAlertHandler(new TimeoutAlertHandler(
+                alertRule,NotificationEmergencyLevel.NORMAL,emailMsgSender));
 
     }
 

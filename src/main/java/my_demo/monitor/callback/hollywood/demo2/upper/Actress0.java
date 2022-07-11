@@ -1,9 +1,9 @@
-package my_demo.monitor.callback.demo2.upper;
+package my_demo.monitor.callback.hollywood.demo2.upper;
 
-import my_demo.monitor.callback.demo2.lower.Director0;
+import my_demo.monitor.callback.hollywood.demo2.lower.Director0;
 
 /**
- * <p>描述类的信息</p>
+ * <p>演员</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -46,6 +46,7 @@ public class Actress0 {
 
         }
     }
+
 
     public static void test() throws InterruptedException {
         Actress0 upper = new Actress0();

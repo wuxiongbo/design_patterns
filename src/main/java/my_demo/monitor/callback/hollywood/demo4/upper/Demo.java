@@ -1,10 +1,10 @@
-package my_demo.monitor.callback.demo4.upper;
+package my_demo.monitor.callback.hollywood.demo4.upper;
 
-import my_demo.monitor.callback.demo4.lower.Director2;
-import my_demo.monitor.callback.demo4.lower.IPerformer;
+import my_demo.monitor.callback.hollywood.demo4.lower.Director2;
+import my_demo.monitor.callback.hollywood.demo4.lower.IPerformer;
 
 /**
- * <p>描述类的信息</p>
+ * <p>回调 演变成 观察者模式</p>
  *
  * <pre>
  * @author wuxiongbo
@@ -17,7 +17,9 @@ public class Demo {
 
         Director2 d =new Director2();
 
+        // 演员1
         IPerformer p1 = new Actress();
+        // 演员2
         IPerformer p2= (i)-> System.out.println("p2收到:"+i+"%");
 
         d.register(p1);
