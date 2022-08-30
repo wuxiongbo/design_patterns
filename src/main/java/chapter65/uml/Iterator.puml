@@ -1,0 +1,18 @@
+@startuml
+
+/' 对象定义 '/
+interface Collection
+interface Iterator{
+    boolean hasNext()
+    void next()
+    E currentItem()
+}
+class ConcreteCollection
+class ConcreteIterator
+
+/' 关系定义 '/
+Collection  <|.. ConcreteCollection : 实现
+Iterator <|.. ConcreteIterator : 实现
+ConcreteCollection <--o ConcreteIterator : 聚合
+
+@enduml

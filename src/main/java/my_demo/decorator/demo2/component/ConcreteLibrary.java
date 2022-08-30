@@ -11,7 +11,7 @@ import my_demo.decorator.dependence.item.LibraryItem;
  * @date 2021/12/22
  * </pre>
  */
-public class ConcreteLibrary extends Library {
+public class ConcreteLibrary extends AbstractLibrary {
 
     @Override
     public void borrowItem(LibraryItem item, Borrower borrower) {

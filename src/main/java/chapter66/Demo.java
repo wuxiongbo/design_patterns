@@ -10,8 +10,8 @@ import java.util.List;
  *
  * 如何应对遍历时改变集合导致的未决行为？
  * 有两种比较干脆利索的解决方案：
- *      一种是    遍历的时候，不允许 增、删 元素，
- *      另一种是  增、删 元素之后，让遍历报错。
+ *      一种是     遍历的时候，不允许 增、删 元素，
+ *      另一种是   增、删 元素之后，让遍历报错。
  *
  * 第一种解决方案，比较难实现，
  *  我们要确定遍历开始和结束的时间点。
@@ -20,6 +20,8 @@ import java.util.List;
  * 第二种解决方法，更加合理。
  *  Java 语言就是采用的这种解决方案，增删元素之后，让遍历报错。
  *
+ *
+ * {@link ArrayList.Itr}
  *
  * <pre>
  * @author wuxiongbo
@@ -53,7 +55,9 @@ public class Demo {
         Iterator<String> iterator = names.iterator();
         iterator.next();
         iterator.remove();
+
         iterator.remove(); // 报错，抛出IllegalStateException异常
+
     }
 
     static void test3(){
@@ -69,8 +73,6 @@ public class Demo {
         }
 
     }
-
-
 
 
     static ArrayList<String> initList(){

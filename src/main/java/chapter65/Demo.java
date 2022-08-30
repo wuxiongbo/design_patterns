@@ -17,24 +17,7 @@ import java.util.ArrayList;
  *
  *
  * UML 图
- *
- * @startuml
- * interface Collection
- * interface Iterator{
- *     boolean hasNext()
- *     void next()
- *     E currentItem()
- * }
- * class ConcreteCollection
- * class ConcreteIterator
- *
- *
- * Collection  <|.. ConcreteCollection : 实现
- * Iterator <|.. ConcreteIterator : 实现
- * ConcreteCollection <--o ConcreteIterator : 聚合
- *
- * @enduml
- *
+ * Iterator.puml
  *
  *
  * 在示例代码实现中，我们需要将 ‘待遍历的容器对象’ ，通过  构造函数  传递给  迭代器类。
@@ -87,7 +70,9 @@ public class Demo {
 
         Iterator<String> iterator = new ArrayIterator<>(names);
         while (iterator.hasNext()) {
+
             System.out.println(iterator.currentItem());
+
             iterator.next();
         }
 

@@ -1,4 +1,4 @@
-package chapter69;
+package chapter69.polymorphism;
 
 /**
  * <p>子类</p>

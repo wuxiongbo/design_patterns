@@ -7,6 +7,8 @@ import chapter68.v4.resourcefile.concrete.WordFile;
 /**
  * <p>访问者</p>
  *
+ * visit()方法 重载
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2022/1/18

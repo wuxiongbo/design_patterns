@@ -1,7 +1,7 @@
 package my_demo.decorator.demo2.decorator.impl;
 
-import my_demo.decorator.demo2.component.Library;
-import my_demo.decorator.demo2.decorator.LibraryDecorator;
+import my_demo.decorator.demo2.component.AbstractLibrary;
+import my_demo.decorator.demo2.decorator.BaseLibraryDecorator;
 import my_demo.decorator.dependence.item.LibraryItem;
 
 /**
@@ -12,9 +12,10 @@ import my_demo.decorator.dependence.item.LibraryItem;
  * @date 2021/12/22
  * </pre>
  */
-public class SellingLibrary extends LibraryDecorator {
+public class SellingLibrary // 装饰 出售功能
+        extends BaseLibraryDecorator {
 
-    public SellingLibrary(Library lib) {
+    public SellingLibrary(AbstractLibrary lib) {
         super(lib);
     }
 

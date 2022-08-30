@@ -1,7 +1,7 @@
 package my_demo.decorator.demo2;
 
 import my_demo.decorator.demo2.component.ConcreteLibrary;
-import my_demo.decorator.demo2.component.Library;
+import my_demo.decorator.demo2.component.AbstractLibrary;
 import my_demo.decorator.demo2.decorator.impl.CountingLibrary;
 import my_demo.decorator.demo2.decorator.impl.SellingLibrary;
 import my_demo.decorator.dependence.item.Book;
@@ -57,9 +57,9 @@ public class Main {
         LibraryItem journal = new Journal("Day night");
 
         // 图书馆（被修饰者）
-        Library lib = new ConcreteLibrary();  // 原始的具体组件
-        lib.borrowItem(book, person); // 借阅 书本
-        lib.returnItem(journal); // 归还 杂志
+        AbstractLibrary lib = new ConcreteLibrary();  // 原始的具体组件
+        lib.borrowItem(book, person); // Lindz  '借阅' 书本
+        lib.returnItem(journal); // '归还' 杂志
 
 
         System.out.println("--------------------------");

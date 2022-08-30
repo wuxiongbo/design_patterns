@@ -12,5 +12,7 @@ import chapter16.demo1.module.notify.v1.notification.Notification;
  * </pre>
  */
 public interface INotificationFactory {
+
     Notification createNotification(MsgSender msgSender);
+
 }

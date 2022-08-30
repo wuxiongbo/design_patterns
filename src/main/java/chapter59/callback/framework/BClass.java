@@ -21,8 +21,9 @@ public class BClass {
 
 
         // 业务逻辑的某一个步骤的实现，进行扩展。
-        callback.methodToCallback();  // BClass 反过来调用 由 AClass 传递过来的 f()函数 。
-
+        callback.methodToCallback();
+        // 本来是 AClass 调用 BClass 的 process() 函数，现在，BClass 反过来调用 AClass 的 f()函数 。
+        // 这就是 回调。
 
         //...框架的业务逻辑...
 

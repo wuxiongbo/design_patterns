@@ -19,7 +19,7 @@ public class PPTFile extends ResourceFile {
     // 利用 多态特性，避免了原本的accept方法重载
     @Override
     public void accept(Visitor visitor) {
-        // 具体的 visit() 方法 进行的什么业务操作，由传入的 访问者实现 而定。
+        // 具体的 visit() 方法， 进行的什么业务操作，由传入的 访问者实现 而定。
         visitor.visit(this);
     }
 

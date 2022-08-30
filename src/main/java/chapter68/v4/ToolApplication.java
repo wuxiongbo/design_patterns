@@ -22,6 +22,7 @@ public class ToolApplication {
 
     public static void main(String[] args) {
 
+        // 资源文件
         List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
 
 

@@ -11,7 +11,7 @@ import my_demo.decorator.dependence.item.LibraryItem;
  * @date 2021/12/22
  * </pre>
  */
-public abstract class Library{
+public abstract class AbstractLibrary {
 
     // 借阅
     public abstract void borrowItem(LibraryItem item, Borrower borrower);

@@ -14,6 +14,11 @@ import chapter16.demo1.module.notify.v1.notification.impl.SevereNotification;
  * </pre>
  */
 public class SevereNotificationFactory implements INotificationFactory {
+
+    /**
+     * @param msgSender
+     * @return Notification   懒加载、多例
+     */
     @Override
     public Notification createNotification(MsgSender msgSender) {
         return new SevereNotification(msgSender);

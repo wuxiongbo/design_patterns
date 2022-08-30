@@ -14,8 +14,14 @@ import chapter16.demo1.module.notify.v1.notification.impl.UrgencyNotification;
  * </pre>
  */
 public class UrgencyNotificationFactory implements INotificationFactory {
+
+    /**
+     * @param msgSender
+     * @return Notification   懒加载、多例
+     */
     @Override
     public Notification createNotification(MsgSender msgSender) {
         return new UrgencyNotification(msgSender);
     }
+
 }

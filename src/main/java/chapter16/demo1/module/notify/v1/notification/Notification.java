@@ -6,6 +6,7 @@ import chapter16.demo1.module.notify.v1.msgsender.MsgSender;
  * <p>通知类</p>
  *
  * 使用了
+ *    "策略模式"
  *    “工厂方法模式”
  *    “桥接模式”
  *

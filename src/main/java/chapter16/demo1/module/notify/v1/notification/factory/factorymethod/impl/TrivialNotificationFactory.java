@@ -14,8 +14,14 @@ import chapter16.demo1.module.notify.v1.notification.Notification;
  * </pre>
  */
 public class TrivialNotificationFactory implements INotificationFactory {
+
+    /**
+     * @param msgSender
+     * @return Notification   懒加载、多例
+     */
     @Override
     public Notification createNotification(MsgSender msgSender) {
         return new TrivialNotification(msgSender);
     }
+
 }

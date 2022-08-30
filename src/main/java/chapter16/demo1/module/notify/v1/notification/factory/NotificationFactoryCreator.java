@@ -28,6 +28,11 @@ public class NotificationFactoryCreator {
         NOTIFICATIONS.put(NotificationEmergencyLevel.TRIVIAL,new TrivialNotificationFactory());
     }
 
+    /**
+     * 饿加载、单例
+     * @param notificationEmergencyLevel
+     * @return
+     */
     public static INotificationFactory getNotificationFactory(NotificationEmergencyLevel notificationEmergencyLevel){
         // ...校验
         return NOTIFICATIONS.get(notificationEmergencyLevel);
