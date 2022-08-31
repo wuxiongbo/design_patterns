@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * <p>描述类的信息</p>
+ * <p>动态代理</p>
  *
  * <pre>
  * @author wuxiongbo

@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class $Proxy  #palegreen {
+    + method1()
+    + method2()
+}
+class Proxy   #pink {
+   # InvocationHandler h;
+}
+interface InvocationHandler #pink{
+   + Object invoke(Object proxy, Method method, Object[] args)
+}
+class InvocationHandlerImpl
+
+interface Principal #palegreen {
+   + method1()
+   + method2()
+}
+class PrincipalImpl{
+   + method1()
+   + method2()
+}
+
+Proxy <|-- $Proxy  : 继承
+Principal <|.. $Proxy : 实现
+InvocationHandler <-- $Proxy : 构造依赖
+Proxy o--> InvocationHandler : 组合、依赖
+InvocationHandler <|.. InvocationHandlerImpl : 实现
+Principal <|.. PrincipalImpl : 实现
+
+/'InvocationHandlerImpl o--> PrincipalImpl  : 组合、依赖(该关系可选)'/
+
+@enduml
