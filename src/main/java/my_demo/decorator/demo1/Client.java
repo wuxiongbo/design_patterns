@@ -1,6 +1,6 @@
 package my_demo.decorator.demo1;
 
-import my_demo.decorator.demo1.component.Component;
+import my_demo.decorator.demo1.component.BaseComponent;
 import my_demo.decorator.demo1.component.impl.ConcreteComponent;
 import my_demo.decorator.demo1.decorator.impl.ConcreteDecoratorA;
 import my_demo.decorator.demo1.decorator.Decorator;
@@ -48,7 +48,7 @@ public class Client {
     public static void main(String[] args){
 
         // 原始组件
-        Component c1 = new ConcreteComponent();
+        BaseComponent c1 = new ConcreteComponent();
 
         // 第一次装饰
         Decorator objDecoratorA = new ConcreteDecoratorA(c1);

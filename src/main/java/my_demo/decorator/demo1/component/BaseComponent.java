@@ -8,7 +8,7 @@ package my_demo.decorator.demo1.component;
  * @date 2021/12/22
  * </pre>
  */
-public abstract class Component {
+public abstract class BaseComponent {
 
     public abstract void operation();
 

@@ -12,7 +12,7 @@ import chapter71.demo1.command.Command;
  */
 public class GotDiamondCommand implements Command {
 
-    // 省略成员变量——receiver
+    // 省略成员变量 —————— receiver
     // Private Receiver receiver；
 
     public GotDiamondCommand(/*依赖注入 receiver */) {

@@ -5,9 +5,9 @@ import chapter71.demo1.Invoker.GameApplication;
 /**
  * <p> 命令模式、指令模式 </p>
  *
- * 命令模式用的 “最核心的实现手段”是， 将‘函数’封装成‘对象’。
+ * 命令模式， 用的 “最核心的实现手段”是 —————— 将 ‘函数’ 封装成 ‘对象’。
  *
- * 我们知道，C 语言支持函数指针，我们可以把 函数 当作变量传递来传递去。
+ * 我们知道，C 语言支持函数指针，我们可以把 '函数' 当作 变量， 传递来传递去。
  * 但是，在大部分编程语言中，函数 没法儿作为 参数 传递给其他函数，也没法儿赋值给变量。
  *
  * 借助 命令模式，我们可以将函数封装成对象：
@@ -28,9 +28,9 @@ public class Client {
 
     public static void main(String[] args) {
 
-        // 构造 Invoker
+        // 构造 Invoker。 命令执行者
         GameApplication invoker = new GameApplication();
-        // 调用命令对象
+        // 调用 命令对象(命令对象内包裹着 命令函数)
         invoker.mainloop();
 
     }

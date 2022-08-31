@@ -4,7 +4,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * <p>描述类的信息</p>
+ * <p>解释器模式</p>
  *
  * <pre>
  * @author wuxiongbo

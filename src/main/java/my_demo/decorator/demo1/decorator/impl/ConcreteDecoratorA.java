@@ -1,6 +1,6 @@
 package my_demo.decorator.demo1.decorator.impl;
 
-import my_demo.decorator.demo1.component.Component;
+import my_demo.decorator.demo1.component.BaseComponent;
 import my_demo.decorator.demo1.decorator.Decorator;
 
 /**
@@ -14,18 +14,22 @@ import my_demo.decorator.demo1.decorator.Decorator;
 public class ConcreteDecoratorA extends Decorator {  // 装饰器 继承了 抽象装饰类
 
 
-    public ConcreteDecoratorA(Component component){
-        super(component);
+    public ConcreteDecoratorA(BaseComponent baseComponent){
+        super(baseComponent);
     }
 
 
-    // 对原始类的操作，进行装饰
+    // 装饰器 对原始类的操作，进行装饰增强
     @Override
     public void operation() {
 
         operationFirst();
 
+
+        // 原始方法
         super.operation();
+
+
         anotherOperation();
 
         operationLast();

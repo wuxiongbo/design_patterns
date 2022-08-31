@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+/' 类定义 '/
+abstract class BaseComponent{
+    + {abstract} operation()
+}
+class ConcreteComponent{
+    + operation()
+}
+class Decorator{
+    + operation()
+}
+class ConcreteDecorator1{
+    + operation()
+    + addBehavior()
+}
+class ConcreteDecorator2{
+    + operation()
+    + addBehavior()
+}
+
+/' 关系定义 '/
+BaseComponent <|-- ConcreteComponent : 泛化
+BaseComponent <|--o Decorator : 泛化、聚合
+
+Decorator <|-- ConcreteDecorator1 : 泛化
+Decorator <|-- ConcreteDecorator2 : 泛化
+
+
+/' 方法注释 '/
+note left of ConcreteDecorator1::addBehavior
+  增强方法
+end note
+
+note right of ConcreteDecorator2::addBehavior
+  增强方法
+end note
+
+@enduml

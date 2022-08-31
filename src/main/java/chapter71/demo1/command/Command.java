@@ -2,7 +2,7 @@ package chapter71.demo1.command;
 
 /**
  * <p>Command</p>
- *
+ * 命令对象，用来包裹函数
  * <pre>
  * @author wuxiongbo
  * @date 2022/1/10

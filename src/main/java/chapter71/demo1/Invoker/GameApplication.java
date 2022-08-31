@@ -56,6 +56,7 @@ public class GameApplication {
 
             Command command = null;
 
+            // 根据请求事件，添加不同的命令。
             if (event==Event.GOT_DIAMOND) {
                 command = new GotDiamondCommand(/*receiver 数据*/);
             } else if (event==Event.GOT_STAR) {
