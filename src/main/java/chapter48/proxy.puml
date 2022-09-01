@@ -31,4 +31,6 @@ Principal <|.. PrincipalImpl : 实现
 
 /'InvocationHandlerImpl o--> PrincipalImpl  : 组合、依赖(该关系可选)'/
 
+/'$Proxy 委托 InvocationHandler 委托 Principal  '/
+
 @enduml
