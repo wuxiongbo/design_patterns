@@ -19,7 +19,6 @@ import java.util.ArrayList;
  * UML 图
  * Iterator.puml
  *
- *
  * 在示例代码实现中，我们需要将 ‘待遍历的容器对象’ ，通过  构造函数  传递给  迭代器类。
  * 实际上，为了 封装 迭代器的创建细节，我们可以在容器中定义一个 iterator() 方法，来创建对应的迭代器。
  * 为了能实现基于接口而非实现编程，我们还需要将这个方法定义在 List 接口中。
@@ -73,7 +72,7 @@ public class Demo {
 
             System.out.println(iterator.currentItem());
 
-            iterator.next();
+//            iterator.next();
         }
 
 

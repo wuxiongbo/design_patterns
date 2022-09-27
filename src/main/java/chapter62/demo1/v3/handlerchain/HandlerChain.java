@@ -23,6 +23,7 @@ public class HandlerChain {
         this.handlers.add(handler);
     }
 
+    // 传递判断放在 职责链
     public void handle() {
 
         // 依次 轮询调用，

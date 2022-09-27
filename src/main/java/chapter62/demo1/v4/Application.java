@@ -5,7 +5,7 @@ import chapter62.demo1.v4.handler.concrete.HandlerA;
 import chapter62.demo1.v4.handler.concrete.HandlerB;
 
 /**
- * <p> 职责链模式 变体</p>
+ * <p> 职责链模式 变体————链表方式</p>
  *
  * 在 GoF 给出的定义中，如果处理器链上的某个处理器能够处理这个请求，那就 “不会” 继续往下传递 请求。
  *

@@ -40,7 +40,7 @@ public class HandlerChain {
     }
 
 
-    // 触发 一连串的 链表的调用动作，从头结点开始
+    // 触发 一连串的 链表的调用动作，从头结点开始。 传递判断 放在  过滤器抽象。
     public void handle() {
         if (head != null) {
             head.handle();

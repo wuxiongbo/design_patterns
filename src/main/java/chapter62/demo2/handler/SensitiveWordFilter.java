@@ -3,7 +3,7 @@ package chapter62.demo2.handler;
 import chapter62.depencence.Content;
 
 /**
- * <p>描述类的信息</p>
+ * <p>敏感词过滤器</p>
  *
  * <pre>
  * @author wuxiongbo

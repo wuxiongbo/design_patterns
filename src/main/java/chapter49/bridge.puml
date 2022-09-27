@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class client
+abstract class Abstraction
+class RefinedAbstraction extends Abstraction
+
+abstract Implementor
+class ConcreteImplementorA extends Implementor
+class ConcreteImplementorB extends Implementor
+
+Abstraction o---> Implementor :  Abstraction 委托给 Implementor
+client ...> Abstraction : 访问
+@enduml

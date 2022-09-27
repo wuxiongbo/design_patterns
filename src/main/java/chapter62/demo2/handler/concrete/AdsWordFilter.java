@@ -4,7 +4,7 @@ import chapter62.demo2.handler.SensitiveWordFilter;
 import chapter62.depencence.Content;
 
 /**
- * <p>描述类的信息</p>
+ * <p>广告关键字过滤器</p>
  *
  * <pre>
  * @author wuxiongbo

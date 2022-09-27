@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>描述类的信息</p>
+ * <p>敏感词过滤器链</p>
  *
  * <pre>
  * @author wuxiongbo

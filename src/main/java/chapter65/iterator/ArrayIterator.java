@@ -37,7 +37,7 @@ public class ArrayIterator<E> implements Iterator<E> {
     // 移动 游标
     @Override
     public void next() {
-        cursor++;
+//        cursor++;
     }
 
     // 获取当前元素
@@ -46,6 +46,8 @@ public class ArrayIterator<E> implements Iterator<E> {
         if (cursor >= arrayList.size()) {
             throw new NoSuchElementException();
         }
-        return arrayList.get(cursor);
+        E e = arrayList.get(cursor);
+        cursor++; // 移动 游标
+        return e;
     }
 }

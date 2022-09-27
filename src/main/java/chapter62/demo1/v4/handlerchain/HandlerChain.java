@@ -31,7 +31,7 @@ public class HandlerChain {
             return;
         }
 
-
+        // 将 新处理器 入队。
         tail.setSuccessor(handler);
 
         // 更新链尾

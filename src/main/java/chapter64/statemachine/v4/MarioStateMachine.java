@@ -5,7 +5,7 @@ import chapter64.statemachine.v4.state.IMario;
 import chapter64.statemachine.v4.state.impl.SmallMario;
 
 /**
- * <p>描述类的信息</p>
+ * <p>马里奥状态机</p>
  *
  *
  * MarioStateMachine 依赖各个 状态类 是理所当然的

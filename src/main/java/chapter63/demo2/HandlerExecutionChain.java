@@ -28,23 +28,23 @@ public class HandlerExecutionChain {
     private final List<HandlerInterceptor> interceptorList = new ArrayList<>();
 
 
-    // 增加 处理器
+    // 1）添加 处理器
     public void addInterceptor(HandlerInterceptor interceptor) {
         this.interceptorList.add(interceptor);
     }
 
 
-    // 请求
+    // 2）触发 请求拦截
     boolean applyPreHandle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        // 顺向遍历，传递
+        // 顺向遍历，判断是否传递
         for (int i = 0; i < this.interceptorList.size(); i++) {
 
             HandlerInterceptor interceptor = this.interceptorList.get(i);
 
             if (!interceptor.preHandle(request, response, this.handler)) { // 动作传递
 
-                // 触发 ，请求 已处理的
+                // 被拦截。则触发 完成请求动作
                 triggerAfterCompletion(request, response, null);
                 return false;
             }
@@ -56,10 +56,10 @@ public class HandlerExecutionChain {
     }
 
 
-    // 响应
+    // 2）触发 响应拦截
     void applyPostHandle(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) throws Exception {
 
-        // 反向遍历，传递
+        // 反向遍历，一直传递
         for (int i = this.interceptorList.size() - 1; i >= 0; i--) {
 
             HandlerInterceptor interceptor = this.interceptorList.get(i);

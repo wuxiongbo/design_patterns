@@ -5,7 +5,7 @@ import chapter62.demo1.v5.handler.concrete.HandlerB;
 import chapter62.demo1.v5.handlerchain.HandlerChain;
 
 /**
- * <p> 责任链 变体 </p>
+ * <p> 责任链 变体 ————数组方式 </p>
  *
  * 责任链变体 第二种实现方式   ‘数组’ 结构
  *

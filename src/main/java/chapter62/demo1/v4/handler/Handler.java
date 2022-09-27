@@ -14,6 +14,7 @@ public abstract class Handler {
     protected Handler next = null;
 
 
+    // 依赖注入 下一个处理器
     public void setSuccessor(Handler successor) {
         this.next = successor;
     }
@@ -24,11 +25,11 @@ public abstract class Handler {
      *
      * 传递动作，由模板方法完成
      *
-     * 注意，这里用 Final 修饰方法。
-     * final来修饰  '类'、 '方法' 、'属性'  都表示其值不可变，也就是说  类 不可继承，方法 不可重写，属性 不可覆盖。
+     * 注意，这里使用了 Final 关键字，来修饰方法。
+     * final 关键字 ，修饰  '类'、 '方法' 、'属性' 都表示其值不可变，
+     * 也就是说， "类" 不可继承，"方法" 不可重写，"属性" 不可覆盖。
      *
-     * 如果使用final来修饰方法，那么表示该方法不能被重写，
-     * 如果在父类中使用final 来修饰方法，那么该方法就 不可 被子类 重写
+     * 此处 使用final来修饰方法，让此方法不能被重写，是为了防止 父类中的  handle()方法  被 子类 重写
      */
     public final void handle() {
 
@@ -39,11 +40,11 @@ public abstract class Handler {
 //        }
 
 
-        // 算法骨架
+        // 算法骨架 (填充业务)
         doHandle();
 
 
-        // 责任链模式 的变体。
+        // 责任链模式 的变体：
         // 无论成功与否，均将请求向下传递。 不再判断当前处理器是否成功处理
         if (next != null ) {
             next.handle();  // 向下传递
