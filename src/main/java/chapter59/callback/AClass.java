@@ -70,9 +70,9 @@ public class AClass {
                 new ICallback() {
 
                     // jvm编译后，会隐性的在这里添加一个属性，指向外部类。
+                    // 所以，这里的匿名类，起‘过桥’作用。 类似“桥接模式” 的思想
 
                     // 这里的 methodToCallback 函数， 就是所谓的 “回调函数”。
-                    // 这里的匿名类，起‘过桥’作用。 类似“桥接模式” 的思想
                     @Override
                     public void methodToCallback() {
                         AClass.this.f();  // 使用“桥接模式”，将 回调方法的实现，委托给了 AClass的 f() 函数。

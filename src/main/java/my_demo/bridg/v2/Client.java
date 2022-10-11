@@ -1,13 +1,15 @@
 package my_demo.bridg.v2;
 
-import my_demo.bridg.v2.additives.Milk;
-import my_demo.bridg.v2.coffee.LargeCoffee;
+import my_demo.bridg.v2.additives.impl.Milk;
+import my_demo.bridg.v2.coffee.impl.LargeCoffee;
 import my_demo.bridg.v2.coffee.RefinedCoffee;
 
 /**
  * 桥接模式
- * <p>
  *
+ * 巧妙利用 组合关系 进行功能组合，避免了繁杂的继承
+ *
+ * <p>
  * <a href="https://github.com/shusheng007/design-patterns"/>
  *
  * @author Xander Wu
@@ -15,7 +17,9 @@ import my_demo.bridg.v2.coffee.RefinedCoffee;
  */
 public class Client {
     public static void main(String[] args) {
-        // 点两杯加奶的大杯咖啡
+        // 数量： 点两杯
+        // 属性1：加奶
+        // 属性2：大杯咖啡
         RefinedCoffee largeWithMilk = new LargeCoffee(new Milk());
 
         // 点咖啡

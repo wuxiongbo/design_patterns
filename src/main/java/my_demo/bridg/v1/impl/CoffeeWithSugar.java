@@ -1,4 +1,6 @@
-package my_demo.bridg.v1;
+package my_demo.bridg.v1.impl;
+
+import my_demo.bridg.v1.ICoffee;
 
 /**
  * 加糖咖啡

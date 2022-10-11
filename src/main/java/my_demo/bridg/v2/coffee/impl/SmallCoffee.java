@@ -1,6 +1,7 @@
-package my_demo.bridg.v2.coffee;
+package my_demo.bridg.v2.coffee.impl;
 
 import my_demo.bridg.v2.additives.ICoffeeAdditives;
+import my_demo.bridg.v2.coffee.RefinedCoffee;
 
 /**
  * @author Xander Wu
