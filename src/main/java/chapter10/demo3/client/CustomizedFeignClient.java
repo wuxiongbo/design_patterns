@@ -1,4 +1,4 @@
-package chapter10.demo3;
+package chapter10.demo3.client;
 
 /**
  * <p> 必须使用 “继承” 的场景 </p>
@@ -12,7 +12,8 @@ package chapter10.demo3;
  */
 public class CustomizedFeignClient extends FeignClient{
     @Override
-    public void encode(String url) {
+    protected void encode(String url) {
         //...重写encode的实现...
+        System.out.println("CustomizedFeignClient.encode()");
     }
 }

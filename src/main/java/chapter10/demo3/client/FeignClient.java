@@ -1,4 +1,4 @@
-package chapter10.demo3;
+package chapter10.demo3.client;
 
 /**
  * <p> 必须使用 “继承” 的场景 </p>
@@ -14,7 +14,7 @@ public class FeignClient {
     //...省略其他代码...
 
     protected void encode(String url) {
-        //...
+        System.out.println("FeignClient.encode()");
     }
 
     //...省略其他代码...
