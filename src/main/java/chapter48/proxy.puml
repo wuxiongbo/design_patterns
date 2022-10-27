@@ -2,6 +2,8 @@
 'https://plantuml.com/class-diagram
 
 class $Proxy  #palegreen {
+代理实现
+----
     + method1()
     + method2()
 }
@@ -14,10 +16,14 @@ interface InvocationHandler #pink{
 class InvocationHandlerImpl
 
 interface Principal #palegreen {
+接口
+----
    + method1()
    + method2()
 }
 class PrincipalImpl{
+普通实现
+----
    + method1()
    + method2()
 }

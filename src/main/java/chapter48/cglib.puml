@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+'MethodProxy 中包含了：
+'   原方法名对应方法的签名 和 生成方法名对应方法的签名
+'   原方法名对应方法的索引 和 生成方法名对应方法的索引
+'   被代理类class对象、代理类class对象
+
+'调用 proxy 的方法时，决定了 传入拦截器 的 MethodProxy。
+'因此，只要知道了对应的 MethodProxy，就可以同时知道 原方法名、生成方法名 的索引及签名
+'通常，代理方法 methodA、methodB 供外部调用，内部生成方法 CGLIB${xxx}${num} 供内部调用
+
+interface Callback
+interface MethodInterceptor #pink extends Callback
+class MethodInterceptorImpl
+
+
+class Proxy  #pink {
+    + methodA()
+    + methodB()
+    + originMethodA()
+    + originMethodB()
+}
+
+class Origin #yellow{
+    + methodA()
+    + methodB()
+}
+class Client #blue
+class MethodProxy #pink
+class FastClass #pink
+class ProxyFastClass
+class FastClass
+class OriginFastClass
+
+class Method
+
+MethodInterceptor <|.. MethodInterceptorImpl : 实现
+Proxy o--> MethodInterceptor : 组合、依赖
+MethodProxy o--> FastClass : 组合、依赖
+MethodInterceptor ..> MethodProxy : 依赖
+MethodInterceptor ..> Method : 依赖
+Proxy o--> MethodProxy : 组合、依赖
+Method <--o Proxy : 组合、依赖
+Origin <|-- Proxy : 泛化
+OriginFastClass ..> Origin : 依赖
+ProxyFastClass ..> Proxy : 依赖
+FastClass <|-- ProxyFastClass : invokeSuper
+FastClass <|-- OriginFastClass : invoke
+
+Client --> Proxy
+
+@enduml
