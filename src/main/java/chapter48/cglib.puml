@@ -25,7 +25,7 @@ class Origin #yellow{
     + methodA()
     + methodB()
 }
-class Client #blue
+class Client #lightblue
 class MethodProxy #pink
 class FastClass #pink
 class ProxyFastClass
