@@ -13,9 +13,9 @@ import my_demo.monitor.event.eventsource.IEventSource;
  */
 public class CrudEvent implements IEvent {
 
-    private IEventSource eventSource;   // 事件源(被观察者)。 通常，事件中可以获取事件源，此示例中则没用到
+    private final IEventSource eventSource;   // 事件源(被观察者)。 通常，事件中可以获取事件源，此示例中则没用到
 
-    private String methodName;          // 事件源(被观察者) 所执行的方法名称。 用于判断事件类型
+    private final String methodName;          // 事件源(被观察者) 所执行的方法名称。 用于判断事件类型
 
     public CrudEvent(IEventSource eventSource, String methodName){
         super();

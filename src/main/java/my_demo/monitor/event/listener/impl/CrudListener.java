@@ -13,10 +13,12 @@ import my_demo.monitor.event.event.IEvent;
  */
 public class CrudListener implements IListener {
 
-    // 监听器将监听自己感兴趣的事件，这里只包含CRUD事件，其他事件不感兴趣。
-    // 一旦感兴趣的事件在‘事件源’被触发或改变，‘监听器’ 立即得到 ‘事件源’ 的通知，做出响应
     @Override
     public void handleEvent(IEvent event) {
+
+        // 事件处理器
+        // 监听器将监听自己感兴趣的事件，这里只包含CRUD事件，其他事件不感兴趣。
+        // 一旦感兴趣的事件在‘事件源’被触发或改变，‘监听器’ 立即得到 ‘事件源’ 的通知，做出响应
         switch (event.getEventType()){
             case IEvent.CREATE_EVENT:
                 System.out.println(" CrudListener 监听到'添加'事件，执行'添加'操作");
@@ -33,5 +35,7 @@ public class CrudListener implements IListener {
             default:
                 System.out.println("其他");
         }
+
+
     }
 }

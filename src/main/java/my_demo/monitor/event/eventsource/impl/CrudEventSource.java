@@ -35,6 +35,8 @@ public class CrudEventSource implements IEventSource {
     }
 
     /**
+     * 通知：
+     *
      * 触发监听器 (即，通知“事件”，也就是 被观察者 通知 所有观察者)
      * 注意：事件处理 托付给了 监听器，事件源 本身 只‘产生’事件 而不 ‘处理’事件
      */
@@ -50,23 +52,39 @@ public class CrudEventSource implements IEventSource {
      * 事件源（被观察者） 只负责 “产生”并“通知” 事件
      */
     public void save(){
+        // 产生事件
         System.out.println("CrudEventSource 产生‘插入’事件");
         IEvent saveEvent = new CrudEvent(this,"save");
+
+
+        // 通知监听器
         this.triggerListener(saveEvent);
     }
     public void remove(){
+        // 产生事件
         System.out.println("CrudEventSource 产生‘删除’事件");
         IEvent removeEvent = new CrudEvent(this,"remove");
+
+
+        // 通知监听器
         this.triggerListener(removeEvent);
     }
     public void modify(){
+        // 产生事件
         System.out.println("CrudEventSource 产生‘修改’事件");
         IEvent modifyEvent = new CrudEvent(this,"modify");
+
+
+        // 通知监听器
         this.triggerListener(modifyEvent);
     }
     public void find(){
+
         System.out.println("CrudEventSource 触发了‘查询’事件");
         IEvent findEvent = new CrudEvent(this,"find");
+
+
+        // 通知监听器
         this.triggerListener(findEvent);
     }
 

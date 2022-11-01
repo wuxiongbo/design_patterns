@@ -3,7 +3,7 @@ package my_demo.monitor.event_jdk.event;
 /**
  * <p>事件</p>
  *
- *  关键要素：提供 事件源 以及其他数据。
+ *  关键要素：提供 事件源 以及  其他数据。
  *
  *  EventObject事件状态对象。 所有 派生的事件状态对象 的根类。
  *  所有的 事件对象 都是通过对 “source” 对象的引用来构造的， “source” 在逻辑上被认为是事件最初发生的对象。
@@ -24,7 +24,7 @@ import java.util.EventObject;
 public class PrintEvent extends EventObject {
     private static final long serialVersionUID = 1L;
 
-    private String eventName;
+    private final String eventName;
 
     /**
      * @param eventSource 事件源

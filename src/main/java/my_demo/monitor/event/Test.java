@@ -18,6 +18,7 @@ import my_demo.monitor.event.listener.IListener;
  */
 public class Test {
     public static void main(String[] args) {
+
         // 事件源 (充当 被观察者 的角色，‘事件’ 由 ‘事件源’ 发出)
         CrudEventSource eventSource = new CrudEventSource();
         // 监听者/监听器 (充当 观察者 的角色)
