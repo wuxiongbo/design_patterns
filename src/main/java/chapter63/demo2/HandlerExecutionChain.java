@@ -70,7 +70,7 @@ public class HandlerExecutionChain {
 
     }
 
-
+    // 2）在完成请求并生成视图后调用
     void triggerAfterCompletion(HttpServletRequest request, HttpServletResponse response, Exception ex) {
 
         for (int i = this.interceptorIndex; i >= 0; i--) {

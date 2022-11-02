@@ -28,20 +28,21 @@ import java.util.Map;
 
 public class RuleConfigParserFactory {
 
-    private static final Map<String, IRuleConfigParser> cachedParsers = new HashMap<>();
+    private static final Map<String, IRuleConfigParser> CACHED_PARSERS = new HashMap<>();
 
+    // 工厂模式改进版
+    // 在静态方法中实例化
     static {
-        cachedParsers.put("json", new JsonRuleConfigParser());
-        cachedParsers.put("xml", new XmlRuleConfigParser());
-        cachedParsers.put("yaml", new YamlRuleConfigParser());
-        cachedParsers.put("properties", new PropertiesRuleConfigParser());
+        CACHED_PARSERS.put("json", new JsonRuleConfigParser());
+        CACHED_PARSERS.put("xml", new XmlRuleConfigParser());
+        CACHED_PARSERS.put("yaml", new YamlRuleConfigParser());
+        CACHED_PARSERS.put("properties", new PropertiesRuleConfigParser());
     }
 
     public static IRuleConfigParser createParser(String configFormat) {
         if (configFormat == null || configFormat.isEmpty()) {
-            return null;//返回null还是IllegalArgumentException全凭你自己说了算
+            return null;  //返回 null 还是 IllegalArgumentException，全凭你自己说了算
         }
-        IRuleConfigParser parser = cachedParsers.get(configFormat.toLowerCase());
-        return parser;
+        return CACHED_PARSERS.get(configFormat.toLowerCase());
     }
 }
