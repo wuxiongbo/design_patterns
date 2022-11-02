@@ -9,6 +9,15 @@ import java.nio.channels.SocketChannel;
 /**
  * <p>回调函数handler</p>
  *
+ * 回调体现在哪里？
+ * Acceptor 将 Handler 注册到 selector
+ * selector 在收到事件后，selector 又回调 Handler 里面的 业务逻辑
+ *
+ *
+ * 说明：
+ * SelectionKey 是个 由 SocketChannel、Selector 组成的 组合对象
+ *
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2022/4/18
