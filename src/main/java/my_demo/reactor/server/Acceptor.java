@@ -6,8 +6,8 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 
 /**
- * <p>acceptor调度器</p>
- *
+ * <p>acceptor 调度器</p>
+ * 读写事件
  * <pre>
  * @author wuxiongbo
  * @date 2022/4/18
@@ -18,7 +18,7 @@ public class Acceptor implements Runnable {
     ServerSocketChannel serverSocket;
     Selector selector;
 
-    public Acceptor(ServerSocketChannel serverSocket,Selector selector) {
+    public Acceptor(ServerSocketChannel serverSocket, Selector selector) {
         this.serverSocket = serverSocket;
         this.selector = selector;
     }
@@ -31,7 +31,8 @@ public class Acceptor implements Runnable {
             if (socket != null) {
                 // 仅仅需要调用构造方法。主要做的事情是： 1）绑定 附加对象 2）注册感兴趣的事件
                 // 构造方法中，此对象会绑定到相应的channel，从而使该对象保活
-                new Handler(selector,socket);
+                // selector.register(socket);
+                new Handler(selector, socket);
             }
 
         } catch (IOException e) {

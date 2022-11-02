@@ -8,12 +8,12 @@ import java.nio.channels.SocketChannel;
 
 /**
  * <p>回调函数 handler</p>
- *
+ * <p>
  * 回调体现在哪里？
  * Acceptor 将 Handler 注册到 selector
  * selector 在收到事件后，selector 又回调 Handler 里面的 业务逻辑
- *
- *
+ * <p>
+ * <p>
  * 说明：
  * SelectionKey 是个 由 SocketChannel、Selector 组成的 组合对象
  *
@@ -40,7 +40,7 @@ public class Handler implements Runnable {
         this.socket.configureBlocking(false);
 
         // 用给定的选择器 注册 这个 channel通道。 返回一个 SelectionKey。
-        sk = this.socket.register(selector,SelectionKey.OP_READ);
+        sk = this.socket.register(selector, SelectionKey.OP_READ);
 
         // 绑定附加对象
         sk.attach(this);
@@ -50,7 +50,7 @@ public class Handler implements Runnable {
 
     @Override
     public void run() {
-        try{
+        try {
 
             // 读事件
             if (sk.isReadable()) {
@@ -75,15 +75,15 @@ public class Handler implements Runnable {
 
         state = SENDING;
         // Normally also do first write now
-        sk.interestOps(SelectionKey.OP_WRITE|SelectionKey.OP_READ);
+        sk.interestOps(SelectionKey.OP_WRITE | SelectionKey.OP_READ);
 
     }
 
     private void send() throws IOException {
-        if(output.hasRemaining()){
+        if (output.hasRemaining()) {
             int count = socket.write(output);
-            System.out.println("write :"+count +"byte, remaining:"+output.hasRemaining());
-        }else{
+            System.out.println("write :" + count + "byte, remaining:" + output.hasRemaining());
+        } else {
             sk.interestOps(SelectionKey.OP_READ);
             state = READING;
         }
@@ -91,7 +91,7 @@ public class Handler implements Runnable {
 
 
     // 处理非IO操作(业务逻辑代码)
-    private void process(){
+    private void process() {
         // 处理buffer中的数据
         input.flip();
         byte[] bytes = new byte[input.remaining()];
@@ -103,7 +103,7 @@ public class Handler implements Runnable {
         output.flip();
     }
 
-    protected String doProcess(String msg){
+    protected String doProcess(String msg) {
         System.out.println("服务器收到消息：" + msg);
         return "收到";
     }

@@ -8,12 +8,12 @@ import java.nio.channels.SocketChannel;
 
 /**
  * <p>回调函数handler</p>
- *
+ * <p>
  * 回调体现在哪里？
  * Acceptor 将 Handler 注册到 selector
  * selector 在收到事件后，selector 又回调 Handler 里面的 业务逻辑
- *
- *
+ * <p>
+ * <p>
  * 说明：
  * SelectionKey 是个 由 SocketChannel、Selector 组成的 组合对象
  *
@@ -41,7 +41,7 @@ public class Handler implements Runnable {
         this.socket = socket;
         this.socket.configureBlocking(false);
 
-        sk = this.socket.register(selector,SelectionKey.OP_READ);
+        sk = this.socket.register(selector, SelectionKey.OP_READ);
 
         // 绑定附加对象
         sk.attach(this);
@@ -51,7 +51,7 @@ public class Handler implements Runnable {
 
     @Override
     public void run() {
-        try{
+        try {
             if (sk.isReadable()) {
                 read();
             } else if (sk.isWritable()) {
@@ -68,14 +68,14 @@ public class Handler implements Runnable {
         // 执行业务逻辑代码
         process();
         state = SENDING;
-        sk.interestOps(SelectionKey.OP_WRITE|SelectionKey.OP_READ);
+        sk.interestOps(SelectionKey.OP_WRITE | SelectionKey.OP_READ);
     }
 
     // 预写入 到 ByteBuffer
     public void send(String text) throws IOException {
         output.put(text.getBytes());
         output.flip();
-        sk = this.socket.register(selector,SelectionKey.OP_READ|SelectionKey.OP_WRITE);
+        sk = this.socket.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
         sk.attach(this);
         state = SENDING;
     }
@@ -84,18 +84,18 @@ public class Handler implements Runnable {
     private void doWrite() throws IOException {
         SocketChannel sc = (SocketChannel) sk.channel();
 
-        if(output.hasRemaining()){
+        if (output.hasRemaining()) {
             int count = sc.write(output);
-            System.out.println("write :"+count +"byte, remaining:"+output.hasRemaining());
+            System.out.println("write :" + count + "byte, remaining:" + output.hasRemaining());
             state = READING;
-        }else{
+        } else {
             /*取消对写的注册*/
             sk.interestOps(SelectionKey.OP_READ);
         }
     }
 
     // 处理非IO操作(业务逻辑代码)
-    void process(){
+    void process() {
         // 处理buffer中的数据
         input.flip();
         byte[] bytes = new byte[input.remaining()];

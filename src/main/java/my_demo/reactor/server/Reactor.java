@@ -10,8 +10,8 @@ import java.util.concurrent.*;
 
 /**
  * <p>Reactor</p>
- *
- *
+ * <p>
+ * <p>
  * from, Netty源码之Reactor模式 <a href="https://www.toutiao.com/article/6982760949048476190/">...</a>
  *
  * <pre>
@@ -37,7 +37,7 @@ public class Reactor implements Runnable {
         // serverSocket注册到selector上，帮忙监听accept事件。
         SelectionKey sk = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
         // 绑定附加对象
-        sk.attach(new Acceptor(serverSocket,selector));
+        sk.attach(new Acceptor(serverSocket, selector));
         /**
          * 还可以使用 SPI provider，来创建selector和serverSocket对象
          SelectorProvider p = SelectorProvider.provider();
@@ -53,7 +53,7 @@ public class Reactor implements Runnable {
 
             // EventLoop
             while (!Thread.interrupted()) {
-                selector.select(1000*60);
+                selector.select(1000 * 60);
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
 
                 for (SelectionKey selectedKey : selectedKeys) {
@@ -69,9 +69,8 @@ public class Reactor implements Runnable {
     }
 
 
-
     private void dispatch(SelectionKey key) {
-        if(key.isValid()){
+        if (key.isValid()) {
             // 获取管道上的附加对象。 Acceptor、Handler
             Runnable r = (Runnable) key.attachment();
             if (r != null) {

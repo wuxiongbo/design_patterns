@@ -1,15 +1,12 @@
 package my_demo.reactor.client;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 
 /**
- * <p>acceptor调度器</p>
- *
+ * <p> Connector 调度器 </p>
+ * 注册读写事件
  * <pre>
  * @author wuxiongbo
  * @date 2022/4/18
@@ -17,20 +14,21 @@ import java.nio.channels.SocketChannel;
  */
 public class Connector implements Runnable {
 
-    SocketChannel serverSocket;
+    SocketChannel socket;
     Selector selector;
 
     public Connector(SocketChannel serverSocket, Selector selector) {
-        this.serverSocket = serverSocket;
+        this.socket = serverSocket;
         this.selector = selector;
     }
 
     @Override
     public void run() {
         try {
-            if(serverSocket.finishConnect()){
-                // selector.register(serverSocket);
-                Handler handler = new Handler(selector, serverSocket);
+            // 连接完成
+            if (socket.finishConnect()) {
+                // selector.register(socket);
+                Handler handler = new Handler(selector, socket);
                 handler.send("43243434243423");
             }
         } catch (IOException e) {
