@@ -8,7 +8,7 @@ import chapter59.callback.framework.ICallback;
  *
  *
  * 回调函数：
- *     AClass.$匿名类.methodToCallback();
+ *     AClass.$匿名类.methodToCallback();  （回调函数）
  *     methodToCallback()具备完整的实现。
  *
  * <pre>
@@ -19,6 +19,7 @@ import chapter59.callback.framework.ICallback;
 public class AClass1 {
 
     public void processA(){
+        System.out.println("方法开始" + " in AClass");
 
         BClass b = new BClass();
 
@@ -26,13 +27,13 @@ public class AClass1 {
             new ICallback() {
                 @Override
                 public void methodToCallback() {
-                    System.out.println("Call back me.");
+                    System.out.println("Call back me." + " in AClass");
                 }
             }
         );
 
         // 要等待回调函数执行完，才能走到这里。 所以是  “同步回调”
-        System.out.println("方法结束");
+        System.out.println("方法结束" + " in AClass");
 
     }
 

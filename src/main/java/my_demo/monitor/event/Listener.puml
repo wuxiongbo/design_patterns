@@ -1,6 +1,11 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+'回调思想
+'监听器 IListener  注册给  事件源 EventSource
+'事件源 EventSource  回调  监听器 IListener
+
+
 class Event
 class EventSource
 interface IListener

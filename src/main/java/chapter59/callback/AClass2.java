@@ -19,17 +19,20 @@ public class AClass2 {
 
 
     public void f() {
-        System.out.println("Call back me.");
+        System.out.println("Call back me."  + " in AClass");
     }
 
 
     public void processA(){
+        System.out.println("方法开始" + " in AClass");
 
         BClass b = new BClass();
 
         // 在 Java 8 之前，“内部类” 是实现 “闭包” 的唯一方式。
         // 在 Java 8 之后，我们可以使用 lambda表达式  来实现 “闭包” 行为，并且语法更加优雅和简洁，
         b.process(AClass2.this::f);
+
+        System.out.println("方法结束" + " in AClass");
     }
 
 

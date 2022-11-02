@@ -4,12 +4,12 @@ import chapter59.callback.framework.BClass;
 import chapter59.callback.framework.ICallback;
 
 /**
- * <p>  回调函数 由 被回调方 实现，但借用‘内部类’包裹并传递。‘内部类’ 起过桥作用</p>
+ * <p>  '回调函数' 由 '被回调方' 实现，但 该函数 借用‘内部类’包裹并传递。‘内部类’ 起过桥作用</p>
  *
  *
  * 回调函数：
- *     AClass.$匿名类.methodToCallback();
- *     methodToCallback() 的实现，委托给了 AClass.f();
+ *     AClass.$匿名类.methodToCallback(); （回调函数）
+ *     methodToCallback() 的真实 实现，委托给了 AClass.f();
  *
  *
  *
@@ -17,7 +17,7 @@ import chapter59.callback.framework.ICallback;
  *
  * 相对于 “普通的函数调用” 来说，“回调” 是一种  ‘双向调用’  关系。
  * 1） A 类 事先 将 ‘函数 f()’ -------注册-------->   到 B 类，
- * 2） 当 A 类 在未来某个时刻，调用 B 类 的 函数P() 时，
+ * 2） 当 A 类 在未来某个时刻，调用 B 类 的 函数 p() 时，
  *     B 类 的 函数 p() 内部   -------反过来调用------>  A 类（注册给B类）的 ‘函数 f()’ 。
  *
  * 这里的 ‘函数 f()’ 就是 “回调函数”。
@@ -52,11 +52,13 @@ public class AClass {
 
     //  回调函数的实现
     public void f() {
-        System.out.println("Call back me.");
+        System.out.println("Call back me." + " in AClass");
     }
 
 
     public void processA(){
+        System.out.println("方法开始" + " in AClass");
+
 
         BClass b = new BClass();
 
@@ -82,8 +84,8 @@ public class AClass {
         );
 
 
-        // 要等待回调函数执行完，才能走到这里。 所以是  “同步回调”
-        System.out.println("方法结束");
+        // 要等待 '回调函数' 执行完毕，才能走到这里。 所以，是  “同步回调”
+        System.out.println("方法结束" + " in AClass");
 
     }
 

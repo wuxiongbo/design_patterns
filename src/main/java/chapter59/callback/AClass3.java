@@ -21,14 +21,18 @@ public class AClass3 implements ICallback {
 
     @Override
     public void methodToCallback() {
-        System.out.println("Call back me.");
+        System.out.println("Call back me."  + " in AClass");
     }
 
 
     // 入口
     public void processA(){
+        System.out.println("方法开始" + " in AClass");
+
         BClass b = new BClass();
         b.process(this);
+
+        System.out.println("方法结束" + " in AClass");
     }
 
 

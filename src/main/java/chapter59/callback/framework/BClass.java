@@ -18,6 +18,7 @@ public class BClass {
     public void process(ICallback callback) {
 
         //...框架的业务逻辑...
+        System.out.println("业务逻辑----1111111----" + " in BClass");
 
 
         // 业务逻辑的某一个步骤的实现，进行扩展。
@@ -26,6 +27,7 @@ public class BClass {
         // 这就是 回调。
 
         //...框架的业务逻辑...
+        System.out.println("业务逻辑----2222222----" + " in BClass");
 
     }
 
