@@ -29,6 +29,7 @@ public class Connector implements Runnable {
     public void run() {
         try {
             if(serverSocket.finishConnect()){
+                // selector.register(serverSocket);
                 Handler handler = new Handler(selector, serverSocket);
                 handler.send("43243434243423");
             }

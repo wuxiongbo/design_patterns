@@ -29,7 +29,7 @@ public class Acceptor implements Runnable {
             // 分配一个 Channel。
             SocketChannel socket = this.serverSocket.accept();
             if (socket != null) {
-                // 仅仅需要调用构造方法。 绑定 附加对象 以及感兴趣的事件
+                // 仅仅需要调用构造方法。主要做的事情是： 1）绑定 附加对象 2）注册感兴趣的事件
                 // 构造方法中，此对象会绑定到相应的channel，从而使该对象保活
                 new Handler(selector,socket);
             }

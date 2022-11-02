@@ -62,7 +62,7 @@ public class Handler implements Runnable {
         sk.interestOps(SelectionKey.OP_WRITE|SelectionKey.OP_READ);
     }
 
-    // 预写入
+    // 预写入 到 ByteBuffer
     public void send(String text) throws IOException {
         output.put(text.getBytes());
         output.flip();
@@ -71,7 +71,7 @@ public class Handler implements Runnable {
         state = SENDING;
     }
 
-    // 真正预写入
+    // 真正写入 到 SocketChannel
     private void doWrite() throws IOException {
         SocketChannel sc = (SocketChannel) sk.channel();
 

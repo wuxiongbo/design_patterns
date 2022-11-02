@@ -1,20 +1,18 @@
 package my_demo.reactor.server;
 
-import org.openjdk.jol.info.ClassLayout;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
-import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.*;
 
 /**
  * <p>Reactor</p>
  *
  *
- * from, Netty源码之Reactor模式 https://www.toutiao.com/article/6982760949048476190/
+ * from, Netty源码之Reactor模式 <a href="https://www.toutiao.com/article/6982760949048476190/">...</a>
  *
  * <pre>
  * @author wuxiongbo
@@ -84,8 +82,16 @@ public class Reactor implements Runnable {
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        Thread thread = new Thread(new Reactor(2021));
-        thread.start();
+        ThreadPoolExecutor executorService = new ThreadPoolExecutor(
+                1,
+                1,
+                0L,
+                TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>(),
+                Executors.defaultThreadFactory());
+
+        executorService.execute(new Reactor(2021));
+
 
         Reactor.class.wait();
 

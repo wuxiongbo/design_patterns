@@ -7,7 +7,15 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 
 /**
- * <p>回调函数handler</p>
+ * <p>回调函数 handler</p>
+ *
+ * 回调体现在哪里？
+ * Acceptor 将 Handler 注册到 selector
+ * selector 在收到事件后，selector 又回调 Handler 里面的 业务逻辑
+ *
+ *
+ * 说明：
+ * SelectionKey 是个 由 SocketChannel、Selector 组成的 组合对象
  *
  * <pre>
  * @author wuxiongbo
@@ -31,7 +39,7 @@ public class Handler implements Runnable {
         this.socket = socket;
         this.socket.configureBlocking(false);
 
-        // 用给定的选择器注册这个 channel通道。返回一个 SelectionKey。
+        // 用给定的选择器 注册 这个 channel通道。 返回一个 SelectionKey。
         sk = this.socket.register(selector,SelectionKey.OP_READ);
 
         // 绑定附加对象
@@ -43,11 +51,16 @@ public class Handler implements Runnable {
     @Override
     public void run() {
         try{
+
+            // 读事件
             if (sk.isReadable()) {
                 read();
-            } else if (sk.isWritable()) {
+            }
+            // 写事件
+            else if (sk.isWritable()) {
                 send();
             }
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -78,15 +91,22 @@ public class Handler implements Runnable {
 
 
     // 处理非IO操作(业务逻辑代码)
-    void process(){
+    private void process(){
         // 处理buffer中的数据
         input.flip();
         byte[] bytes = new byte[input.remaining()];
         input.get(bytes);
-        String msg = new String(bytes);
-        System.out.println("服务器收到消息：" + msg);
 
-        output.put(msg.getBytes());
+        String ask = doProcess(new String(bytes));
+
+        output.put(ask.getBytes());
         output.flip();
     }
+
+    protected String doProcess(String msg){
+        System.out.println("服务器收到消息：" + msg);
+        return "收到";
+    }
+
+
 }

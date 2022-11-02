@@ -37,7 +37,7 @@ public class Reactor implements Runnable {
 
 
 
-        // serverSocket注册到selector上，帮忙监听 CONNECT 事件。
+        // serverSocket注册到selector上，帮忙监听 CONNECT 事件。  selector.register(this)
         SelectionKey sk = serverSocket.register(selector, 0);
 
         sk.interestOps(SelectionKey.OP_CONNECT);
@@ -64,9 +64,8 @@ public class Reactor implements Runnable {
             while (!Thread.interrupted()) {
                 selector.select(1000*60);
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
-                Iterator<SelectionKey> it = selectedKeys.iterator();
-                while (it.hasNext()) {
-                    dispatch(it.next());
+                for (SelectionKey selectedKey : selectedKeys) {
+                    dispatch(selectedKey);
                 }
                 selectedKeys.clear();
             }
