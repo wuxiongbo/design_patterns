@@ -6,8 +6,8 @@
 
 常用的有：
 - 单例模式    chapter41 ~ chapter43
-- **工厂模式**（包括，简单工厂、工厂方法 和 抽象工厂） 
-             chapter44 ~ chapter45
+- **工厂模式** chapter44 ~ chapter45 
+              （包括，简单工厂、工厂方法 和 抽象工厂）
 - 建造者模式   chapter46
 
 不常用的有：
@@ -44,6 +44,7 @@
 - **模板模式**    chapter58 ~ chapter59 callback
 - **策略模式**    chapter60 ~ chapter61
 - **职责链模式**  chapter62 ~ chapter63
+
 - 状态模式        chapter64
 - 迭代器模式      chapter65 ~ chapter67
 
