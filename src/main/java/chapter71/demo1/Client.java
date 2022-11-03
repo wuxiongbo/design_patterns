@@ -30,6 +30,7 @@ public class Client {
 
         // 构造 Invoker。 命令执行者
         GameApplication invoker = new GameApplication();
+
         // 调用 命令对象(命令对象内包裹着 命令函数)
         invoker.mainloop();
 

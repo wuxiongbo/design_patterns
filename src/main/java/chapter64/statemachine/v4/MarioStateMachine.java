@@ -1,6 +1,6 @@
 package chapter64.statemachine.v4;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 import chapter64.statemachine.v4.state.IMario;
 import chapter64.statemachine.v4.state.impl.SmallMario;
 
@@ -25,13 +25,16 @@ import chapter64.statemachine.v4.state.impl.SmallMario;
  */
 public class MarioStateMachine {
     private int score;
+
+    /**
+     * 不同状态的 马里奥
+     */
     private IMario currentState;
 
     public MarioStateMachine() {
         this.score = 0;
         this.currentState = SmallMario.getInstance();
     }
-
 
 
 
@@ -54,19 +57,16 @@ public class MarioStateMachine {
 
 
 
-
+    // getter setter
     public int getScore() {
         return this.score;
     }
-
-    public State getCurrentState() {
-        return this.currentState.getName();
-    }
-
     public void setScore(int score) {
         this.score = score;
     }
-
+    public State getCurrentState() {
+        return this.currentState.getName();
+    }
     public void setCurrentState(IMario currentState) {
         this.currentState = currentState;
     }

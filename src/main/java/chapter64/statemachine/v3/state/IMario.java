@@ -1,6 +1,6 @@
 package chapter64.statemachine.v3.state;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 
 /**
  * <p>描述类的信息</p>

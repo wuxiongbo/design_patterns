@@ -1,6 +1,6 @@
 package chapter64.statemachine.v4.state;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 import chapter64.statemachine.v4.MarioStateMachine;
 
 /**

@@ -1,4 +1,4 @@
-package chapter71.demo1.concretecommand;
+package chapter71.demo1.command.concretecommand;
 
 import chapter71.demo1.command.Command;
 

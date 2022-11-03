@@ -1,4 +1,4 @@
-package chapter64;
+package chapter64.statemachine.dependence;
 
 /**
  * <p>描述类的信息</p>
@@ -6,6 +6,7 @@ package chapter64;
  * 马里奥可以变身为多种形态，
  *      小 马里奥（Small Mario）、
  *      超级 马里奥（Super Mario）、
+ *
  *      火焰 马里奥（Fire Mario）、
  *      斗篷 马里奥（Cape Mario）
  *

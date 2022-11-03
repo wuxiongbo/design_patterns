@@ -1,6 +1,6 @@
 package chapter64.statemachine.v4.state.impl;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 import chapter64.statemachine.v4.MarioStateMachine;
 import chapter64.statemachine.v4.state.IMario;
 
@@ -9,7 +9,7 @@ import chapter64.statemachine.v4.state.IMario;
  *
  * ‘状态类’ 不需要依赖 MarioStateMachine
  *
- * 通过 函数参数 将 MarioStateMachine 传递进 ‘状态类’。
+ * 通过 函数参数 将 MarioStateMachine 传递进 本类‘状态类’。
  *
  * <pre>
  * @author wuxiongbo
@@ -38,19 +38,25 @@ public class SuperMario implements IMario {
 
     @Override
     public void obtainCape(MarioStateMachine stateMachine) {
+        // 状态切换
         stateMachine.setCurrentState(CapeMario.getInstance());
+
         stateMachine.setScore(stateMachine.getScore() + 200);
     }
 
     @Override
     public void obtainFireFlower(MarioStateMachine stateMachine) {
+        // 状态切换
         stateMachine.setCurrentState(FireMario.getInstance());
+
         stateMachine.setScore(stateMachine.getScore() + 300);
     }
 
     @Override
     public void meetMonster(MarioStateMachine stateMachine) {
+        // 状态切换
         stateMachine.setCurrentState(SmallMario.getInstance());
+
         stateMachine.setScore(stateMachine.getScore() - 100);
     }
 }

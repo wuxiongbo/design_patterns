@@ -1,6 +1,6 @@
 package chapter64.statemachine.v2;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 
 /**
  * <p>状态机 实现方式二：查表法</p>

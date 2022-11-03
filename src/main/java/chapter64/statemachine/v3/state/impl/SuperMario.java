@@ -1,6 +1,6 @@
 package chapter64.statemachine.v3.state.impl;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 import chapter64.statemachine.v3.MarioStateMachine;
 import chapter64.statemachine.v3.state.IMario;
 

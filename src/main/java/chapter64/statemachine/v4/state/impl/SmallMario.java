@@ -1,6 +1,6 @@
 package chapter64.statemachine.v4.state.impl;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 import chapter64.statemachine.v4.MarioStateMachine;
 import chapter64.statemachine.v4.state.IMario;
 
@@ -33,19 +33,25 @@ public class SmallMario  implements IMario {
 
     @Override
     public void obtainMushRoom(MarioStateMachine stateMachine) {
+        // 状态切换
         stateMachine.setCurrentState(SuperMario.getInstance());
+
         stateMachine.setScore(stateMachine.getScore() + 100);
     }
 
     @Override
     public void obtainCape(MarioStateMachine stateMachine) {
+        // 状态切换
         stateMachine.setCurrentState(CapeMario.getInstance());
+
         stateMachine.setScore(stateMachine.getScore() + 200);
     }
 
     @Override
     public void obtainFireFlower(MarioStateMachine stateMachine) {
+        // 状态切换
         stateMachine.setCurrentState(FireMario.getInstance());
+
         stateMachine.setScore(stateMachine.getScore() + 300);
     }
 

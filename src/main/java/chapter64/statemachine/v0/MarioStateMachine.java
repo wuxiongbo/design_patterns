@@ -1,6 +1,6 @@
 package chapter64.statemachine.v0;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 
 /**
  * <p>状态机</p>

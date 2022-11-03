@@ -1,6 +1,6 @@
 package chapter64.statemachine.v4.state.impl;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 import chapter64.statemachine.v4.MarioStateMachine;
 import chapter64.statemachine.v4.state.IMario;
 
@@ -46,7 +46,9 @@ public class FireMario implements IMario {
 
     @Override
     public void meetMonster(MarioStateMachine stateMachine) {
+        // 状态切换
         stateMachine.setCurrentState(SmallMario.getInstance());
+
         stateMachine.setScore(stateMachine.getScore() - 300);
     }
 

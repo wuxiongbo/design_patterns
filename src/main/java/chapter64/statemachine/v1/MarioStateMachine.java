@@ -1,6 +1,6 @@
 package chapter64.statemachine.v1;
 
-import chapter64.State;
+import chapter64.statemachine.dependence.State;
 
 /**
  * <p>状态机 实现方式一：分支逻辑法</p>
