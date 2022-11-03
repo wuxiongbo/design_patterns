@@ -1,8 +1,14 @@
 @startuml
 'https://plantuml.com/class-diagram
+' https://blog.csdn.net/scoryy/article/details/123667176
+
 ' 结构对象 ObjectStructure
 ' 元素  Element
+' 上面是稳定结构
+
 ' 访问者 Visitor
+' 上面是变化结构
+
 
 interface Visitor {
     + visit(ConcreteElementA element):void
@@ -27,10 +33,12 @@ class ConcreteElementA extends Element{
 }
 class ConcreteElementB extends Element{
     + accept(Visitor visitor):void
-    + operationA()
+    + operationB()
 }
 class ObjectStructure{
     - list:List<Element>
+
+    + accept(Visitor visitor):void
 
     + add(Element element)
     + remove(Element element)

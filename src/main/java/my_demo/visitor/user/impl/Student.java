@@ -1,5 +1,6 @@
-package my_demo.visitor.user;
+package my_demo.visitor.user.impl;
 
+import my_demo.visitor.user.User;
 import my_demo.visitor.visitor.Visitor;
 
 /**

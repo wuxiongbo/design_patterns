@@ -1,10 +1,10 @@
 package my_demo.visitor;
 
-import my_demo.visitor.user.Student;
-import my_demo.visitor.user.Teacher;
+import my_demo.visitor.user.impl.Student;
+import my_demo.visitor.user.impl.Teacher;
 import my_demo.visitor.user.User;
-import my_demo.visitor.visitor.Parent;
-import my_demo.visitor.visitor.Principal;
+import my_demo.visitor.visitor.impl.Parent;
+import my_demo.visitor.visitor.impl.Principal;
 import my_demo.visitor.visitor.Visitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,10 @@ import java.util.List;
 
 /**
  *
- * 校长、家长  观察  学生、老师 的视角都不一样
+ * 校长、家长  观察  学生、老师 的 视角点 不一样
+ *
+ *
+ *
  *
  * @author Xander Wu
  * @date 2022/11/3 11:21
