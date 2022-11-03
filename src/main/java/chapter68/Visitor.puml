@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/class-diagram
+' 结构对象 ObjectStructure
+' 元素  Element
+' 访问者 Visitor
+
+interface Visitor {
+    + visit(ConcreteElementA element):void
+    + visit(ConcreteElementB element):void
+}
+class ConcreteVisitorA implements Visitor{
+    + visit(ConcreteElementA element):void
+    + visit(ConcreteElementB element):void
+}
+class ConcreteVisitorB implements Visitor{
+    + visit(ConcreteElementA element):void
+    + visit(ConcreteElementB element):void
+}
+
+
+abstract class Element {
+    + accept(Visitor visitor):void
+}
+class ConcreteElementA extends Element{
+    + accept(Visitor visitor):void
+    + operationA()
+}
+class ConcreteElementB extends Element{
+    + accept(Visitor visitor):void
+    + operationA()
+}
+class ObjectStructure{
+    - list:List<Element>
+
+    + add(Element element)
+    + remove(Element element)
+}
+
+
+' 分组
+together {
+    abstract class Element
+    class ConcreteElementA
+    class ConcreteElementB
+    class ObjectStructure
+}
+
+
+ObjectStructure o--> Element : 组合、依赖
+Client --> Visitor : 依赖
+Client --> ObjectStructure : 依赖
+
+
+@enduml

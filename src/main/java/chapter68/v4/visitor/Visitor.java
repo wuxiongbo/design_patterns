@@ -19,17 +19,20 @@ public interface Visitor {
     // visit 访问
 
     /**
+     * 访问 pdf
      * @param pdfFile
      */
     void visit(PdfFile pdfFile);
 
     /**
-     * @param pdfFile
+     * 访问 ppt
+     * @param pptFile
      */
-    void visit(PPTFile pdfFile);
+    void visit(PPTFile pptFile);
 
     /**
-     * @param pdfFile
+     * 访问 word
+     * @param wordFile
      */
-    void visit(WordFile pdfFile);
+    void visit(WordFile wordFile);
 }

@@ -40,6 +40,22 @@ import java.util.List;
  */
 public class ToolApplication {
 
+    // 资源文件列表
+    private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {
+
+        List<ResourceFile> resourceFiles = new ArrayList<>();
+
+        //...根据后缀(pdf/ppt/word)由工厂方法创建不同的类对象(PdfFile/PPTFile/WordFile)
+
+        resourceFiles.add(new PdfFile(resourceDirectory+"a.pdf"));
+        resourceFiles.add(new WordFile(resourceDirectory+"b.word"));
+        resourceFiles.add(new PPTFile(resourceDirectory+"c.ppt"));
+
+        return resourceFiles;
+
+    }
+
+
     public static void main(String[] args) {
 
         Extractor extractor = new Extractor();
@@ -55,19 +71,4 @@ public class ToolApplication {
 
     }
 
-
-    // 资源文件列表
-    private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {
-
-        List<ResourceFile> resourceFiles = new ArrayList<>();
-
-        //...根据后缀(pdf/ppt/word)由工厂方法创建不同的类对象(PdfFile/PPTFile/WordFile)
-
-        resourceFiles.add(new PdfFile(resourceDirectory+"a.pdf"));
-        resourceFiles.add(new WordFile(resourceDirectory+"b.word"));
-        resourceFiles.add(new PPTFile(resourceDirectory+"c.ppt"));
-
-        return resourceFiles;
-
-    }
 }

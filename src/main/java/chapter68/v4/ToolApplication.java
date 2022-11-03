@@ -4,6 +4,7 @@ import chapter68.v4.resourcefile.ResourceFile;
 import chapter68.v4.resourcefile.concrete.PPTFile;
 import chapter68.v4.resourcefile.concrete.PdfFile;
 import chapter68.v4.resourcefile.concrete.WordFile;
+import chapter68.v4.visitor.Visitor;
 import chapter68.v4.visitor.concrete.Compressor;
 import chapter68.v4.visitor.concrete.Extractor;
 
@@ -20,28 +21,6 @@ import java.util.List;
  */
 public class ToolApplication {
 
-    public static void main(String[] args) {
-
-        // 资源文件
-        List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
-
-
-
-        // 提取器 访问者
-        Extractor extractorVisitor = new Extractor();
-        for (ResourceFile resourceFile : resourceFiles) {
-            resourceFile.accept(extractorVisitor);
-        }
-
-
-        // 压缩器 访问者
-        Compressor compressorVisitor = new Compressor();
-        for(ResourceFile resourceFile : resourceFiles) {
-            resourceFile.accept(compressorVisitor);
-        }
-
-    }
-
     private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {
 
         List<ResourceFile> resourceFiles = new ArrayList<>();
@@ -55,5 +34,28 @@ public class ToolApplication {
         return resourceFiles;
 
     }
+
+
+    public static void main(String[] args) {
+
+        // 资源文件
+        List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
+
+
+        // 提取器——访问者1
+        Visitor extractorVisitor = new Extractor();
+        for (ResourceFile resourceFile : resourceFiles) {
+            resourceFile.accept(extractorVisitor);
+        }
+
+
+        // 压缩器——访问者2
+        Visitor compressorVisitor = new Compressor();
+        for(ResourceFile resourceFile : resourceFiles) {
+            resourceFile.accept(compressorVisitor);
+        }
+
+    }
+
 
 }

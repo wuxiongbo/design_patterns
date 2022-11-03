@@ -10,7 +10,6 @@ import chapter68.v4.visitor.Visitor;
  * @date 2022/1/18
  * </pre>
  */
-
 public abstract class ResourceFile {
 
     protected String filePath;

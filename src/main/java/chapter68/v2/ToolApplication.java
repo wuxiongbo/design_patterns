@@ -32,19 +32,6 @@ import java.util.List;
  */
 public class ToolApplication {
 
-    public static void main(String[] args) {
-
-        Extractor extractor = new Extractor();
-
-        List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
-
-        // 我们 转换思路， 将  ‘提取器’  注入给  ‘资源文件’。 而不是 直接向 ‘资源文件’ 传入到 ‘提取器’
-        for (ResourceFile resourceFile : resourceFiles) {
-            resourceFile.accept(extractor);
-        }
-
-    }
-
     private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {
 
         List<ResourceFile> resourceFiles = new ArrayList<>();
@@ -58,5 +45,20 @@ public class ToolApplication {
         return resourceFiles;
 
     }
+
+
+    public static void main(String[] args) {
+
+        List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
+
+        // 我们 转换思路， 将  ‘提取器’  注入给  ‘资源文件’。 而不是 直接向 ‘资源文件’ 传入到 ‘提取器’
+        Extractor extractor = new Extractor();
+        for (ResourceFile resourceFile : resourceFiles) {
+            resourceFile.accept(extractor);
+        }
+
+    }
+
+
 
 }
