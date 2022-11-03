@@ -54,9 +54,9 @@ together {
 }
 
 
-ObjectStructure o--> Element : 组合、依赖
-Client --> Visitor : 依赖
-Client --> ObjectStructure : 依赖
+ObjectStructure o--> Element : 组合、依赖\n 这里可以抽象再一个接口 IElement
+Client -left-> Visitor : 依赖
+Client -right-> ObjectStructure : 依赖
 
 
 @enduml

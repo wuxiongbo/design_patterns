@@ -3,7 +3,7 @@ package chapter70.v1;
 import chapter70.v1.snap.Snapshot;
 
 /**
- * <p>描述类的信息</p>
+ * <p>备忘录模式</p>
  *
  * <pre>
  * @author wuxiongbo
