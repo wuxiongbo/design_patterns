@@ -12,7 +12,7 @@ import chapter62.demo1.v2.handler.concrete.HandlerB;
  * 利用  模板模式 ，将调用 successor.handle() 的逻辑从具体的处理器类中剥离出来，放到抽象父类中。
  * 这样， 具体的处理器类 只需要实现自己的业务逻辑就可以了。
  *
- * HandlerChain和Application代码则保持不变
+ * HandlerChain 和 Application 代码则保持不变
  *
  * <pre>
  * @author wuxiongbo

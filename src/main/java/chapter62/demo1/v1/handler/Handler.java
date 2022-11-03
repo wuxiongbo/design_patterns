@@ -11,7 +11,10 @@ package chapter62.demo1.v1.handler;
  */
 public abstract class Handler {
 
-    // 用来记录  下一个 处理器。   由此可见，是个 单向连表 结构
+    /**
+     * successor 继承者
+     * 用来记录  下一个 处理器。   由此可见，是个 单向连表 结构
+     */
     protected Handler successor = null;
 
 
@@ -20,6 +23,9 @@ public abstract class Handler {
     }
 
 
+    /**
+     *
+     */
     public abstract void handle();
 
 }

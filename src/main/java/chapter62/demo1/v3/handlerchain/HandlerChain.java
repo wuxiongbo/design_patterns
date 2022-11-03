@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class HandlerChain {
 
-    private List<IHandler> handlers = new ArrayList<>();
+    private final List<IHandler> handlers = new ArrayList<>();
 
     public void addHandler(IHandler handler) {
         this.handlers.add(handler);

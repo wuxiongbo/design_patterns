@@ -42,7 +42,7 @@ public class ResourcePoolConfig {
     private int minIdle;
 
 
-    // 将 构造方法 私有
+    // *** 将 构造方法 私有 ***
     // 这样，我们就只能通过 Builder 来创建 ResourcePoolConfig 类对象。
     // 并且，ResourcePoolConfig 没有提供任何 set() 方法，这样我们创建出来的对象就是不可变对象了。
     private ResourcePoolConfig(Builder builder) {

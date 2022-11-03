@@ -34,11 +34,10 @@ public abstract class Handler {
 
         boolean handled = doHandle();
 
+
         // 在 ‘当前处理器’ 判断 是否将调用动作 传递 给 ‘下一个处理器’
         if (successor != null && !handled) {
-
             successor.handle();
-
         }
 
         // 不用返回判断结果

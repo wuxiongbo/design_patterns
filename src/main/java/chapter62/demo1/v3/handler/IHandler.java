@@ -10,7 +10,7 @@ package chapter62.demo1.v3.handler;
  */
 public interface IHandler {
 
-    // 返回处理结果。 从而 将 是否需要向下传递  交给 职责链去判断
+    // 返回处理结果。 从而 将 是否需要向下传递  交给 职责链去判断；判断逻辑抛给了 上层
     boolean handle();
 
 

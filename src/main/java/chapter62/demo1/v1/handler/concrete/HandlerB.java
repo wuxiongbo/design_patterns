@@ -28,7 +28,7 @@ public class HandlerB extends Handler {
         // 能否处理
         boolean handled = false;
 
-        //...
+        //...业务逻辑
 
         // 在处理器中判断  是否将调用动作 传递 给下一个处理器
         if (!handled && successor != null) {
