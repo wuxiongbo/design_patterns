@@ -14,7 +14,7 @@ interface MethodInterceptor #pink extends Callback
 class MethodInterceptorImpl
 
 
-class Proxy  #pink {
+class Proxy  #aliceblue {
     + methodA()
     + methodB()
     + originMethodA()
@@ -28,9 +28,9 @@ class Origin #yellow{
 class Client #lightblue
 class MethodProxy #pink
 class FastClass #pink
-class ProxyFastClass
-class FastClass
-class OriginFastClass
+class ProxyFastClass #aliceblue
+class FastClass #pink
+class OriginFastClass #aliceblue
 
 class Method
 
@@ -44,8 +44,10 @@ Method <--o Proxy : 组合、依赖
 Origin <|-- Proxy : 泛化
 OriginFastClass ..> Origin : 依赖
 ProxyFastClass ..> Proxy : 依赖
-FastClass <|-- ProxyFastClass : invokeSuper
-FastClass <|-- OriginFastClass : invoke
+FastClass <|-- ProxyFastClass
+FastClass <|-- OriginFastClass
+MethodProxy --> ProxyFastClass #line.dotted : invokeSuper
+MethodProxy --> OriginFastClass #line.dotted : invoke
 
 Client --> Proxy
 
