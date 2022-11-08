@@ -6,6 +6,8 @@ import my_demo.monitor.event.event.IEvent;
 /**
  * <p>监听器实现类(观察者。记者，只记录自己感兴趣的新闻类型)</p>
  *
+ * 问题：监听器 自己判断 事件是否感兴趣？
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/6/16

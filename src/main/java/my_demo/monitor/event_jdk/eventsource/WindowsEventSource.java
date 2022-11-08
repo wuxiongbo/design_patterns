@@ -1,8 +1,11 @@
 package my_demo.monitor.event_jdk.eventsource;
 
+import my_demo.monitor.event_jdk.event.CloseEvent;
 import my_demo.monitor.event_jdk.event.PrintEvent;
 import my_demo.monitor.event_jdk.listener.IListener;
 import my_demo.monitor.event_jdk.listener.impl.CloseWindowsListener;
+import my_demo.monitor.event_jdk.listener.impl.OpenWindowsListener;
+import my_demo.monitor.event_jdk.listener.impl.WindowsListener;
 
 import java.util.EventListener;
 import java.util.Vector;
@@ -42,10 +45,15 @@ public class WindowsEventSource {
 
     // 触发事件
     // 每触发一次 外部事件， 都会 通知(调用)所有的 “监听器”
+    // 参考： org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener
     public void notifyListenerEvents(PrintEvent event) {
         for(EventListener eventListener : listenerList) {
             // 监听器类，被调用handleEvent方法。 对事件进行处理。
-            ((IListener)eventListener).handleEvent(event);
+            try {
+                ((IListener) eventListener).handleEvent(event);
+            } catch (ClassCastException e) {
+                // ignore
+            }
         }
     }
 
@@ -58,9 +66,18 @@ public class WindowsEventSource {
         }
     }
 
+    public void addOpenWindowListener(EventListener eventListener) {
+        if(eventListener instanceof OpenWindowsListener){
+            System.out.println("注册 打开窗口监听器，以关注 打开窗口事件");
+            listenerList.add(eventListener);
+        }
+    }
+
+
+
     // "事件源" 产生 "关窗事件" 并通知 (调用)所有的监听器
     public void doCloseWindows() {
-        PrintEvent closeWindowsEvent = new PrintEvent(this,"closeWindows");
+        PrintEvent closeWindowsEvent = new CloseEvent(this);
         this.notifyListenerEvents(closeWindowsEvent);
     }
 

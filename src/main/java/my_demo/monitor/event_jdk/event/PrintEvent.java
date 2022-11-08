@@ -27,7 +27,7 @@ public class PrintEvent extends EventObject {
     private final String eventName;
 
     /**
-     * @param eventSource 事件源
+     * @param eventSource 事件源； 本示例中，是 {@link WindowsEventSource}
      */
     public PrintEvent(Object eventSource,String eventName) {
         // 保存 事件源
@@ -45,9 +45,7 @@ public class PrintEvent extends EventObject {
         System.out.println(eventName);
     }
 
-
-    @Override
-    public String toString(){
+    public String eventType(){
         return eventName;
     }
 }

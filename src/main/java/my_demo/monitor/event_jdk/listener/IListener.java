@@ -3,6 +3,7 @@ package my_demo.monitor.event_jdk.listener;
 import my_demo.monitor.event_jdk.event.PrintEvent;
 
 import java.util.EventListener;
+import java.util.EventObject;
 
 /**
  * <p>监听器接口</p>
@@ -22,12 +23,12 @@ import java.util.EventListener;
  * @date 2021/6/16
  * </pre>
  */
-public interface IListener extends EventListener {
+public interface IListener<E extends EventObject> extends EventListener {
 
     String OPENWINDOWS= "openWindows";
     String CLOSEWINDOWS= "closeWindows";
 
     // 事件处理器
-    void handleEvent(PrintEvent event);
+    void handleEvent(E event);
 
 }

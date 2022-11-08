@@ -1,8 +1,10 @@
 package my_demo.monitor.event_jdk;
 
+import my_demo.monitor.event_jdk.event.OpenEvent;
 import my_demo.monitor.event_jdk.event.PrintEvent;
 import my_demo.monitor.event_jdk.eventsource.WindowsEventSource;
 import my_demo.monitor.event_jdk.listener.impl.CloseWindowsListener;
+import my_demo.monitor.event_jdk.listener.impl.OpenWindowsListener;
 import my_demo.monitor.event_jdk.listener.impl.WindowsListener;
 
 import java.util.EventListener;
@@ -18,7 +20,7 @@ import java.util.EventListener;
 public class Test {
     public static void main(String[] args) {
 
-        test1();
+//        test1();
         System.out.println("===========================================");
         test2();
 
@@ -38,7 +40,7 @@ public class Test {
 
         // 由 ‘事件源’ 触发事件：
         //    1. 产生 openWindows事件
-        PrintEvent openWindowsEvent = new PrintEvent(windows, "openWindows");
+        PrintEvent openWindowsEvent = new OpenEvent(windows);
         //    2. 对 openWindows事件 感兴趣的listener将会监听到 该事件，然后执行相关操作
         windows.notifyListenerEvents(openWindowsEvent);
 
@@ -59,6 +61,10 @@ public class Test {
         // 注册 监听器。 具体这里是 调用事件源的 addCloseWindowListener方法。 事件，在事件源中产生，
         // 刚注册的监听器 closeWindowsListener  ，只关注 关闭窗口事件
         windows.addCloseWindowListener(closeWindowsListener);
+
+        OpenWindowsListener openWindowsListener = new OpenWindowsListener();
+        windows.addOpenWindowListener(openWindowsListener);
+
 
         //事件源 触发 窗口关闭动作。
         windows.doCloseWindows();

@@ -27,7 +27,7 @@ public class Connector implements Runnable {
         try {
             // 连接完成
             if (socket.finishConnect()) {
-                // selector.register(socket);
+                // 注册socket； selector.register(socket);
                 Handler handler = new Handler(selector, socket);
                 handler.send("43243434243423");
             }

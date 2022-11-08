@@ -1,5 +1,6 @@
 package my_demo.monitor.event_jdk.listener.impl;
 
+import my_demo.monitor.event_jdk.event.CloseEvent;
 import my_demo.monitor.event_jdk.event.PrintEvent;
 import my_demo.monitor.event_jdk.listener.IListener;
 
@@ -11,16 +12,18 @@ import my_demo.monitor.event_jdk.listener.IListener;
  * @date 2021/12/11
  * </pre>
  */
-public class CloseWindowsListener implements IListener {
+public class CloseWindowsListener implements IListener<CloseEvent> {
 
     @Override
-    public void handleEvent(PrintEvent event) {
+    public void handleEvent(CloseEvent event) {
 
         // 处理感兴趣的事件。
-        if (CLOSEWINDOWS.equals(event.toString())) {
-            System.out.println("CloseWindowsListener 监听到closeWindows事件，do close");
-            event.doEvent();
-        }
+//        if (CLOSEWINDOWS.equals(event.eventType())) {
+
+        System.out.println("CloseWindowsListener 监听到closeWindows事件，do close");
+        event.doEvent();
+
+//        }
 
     }
 }
