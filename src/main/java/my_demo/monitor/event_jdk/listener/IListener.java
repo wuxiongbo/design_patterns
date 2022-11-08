@@ -1,7 +1,5 @@
 package my_demo.monitor.event_jdk.listener;
 
-import my_demo.monitor.event_jdk.event.PrintEvent;
-
 import java.util.EventListener;
 import java.util.EventObject;
 

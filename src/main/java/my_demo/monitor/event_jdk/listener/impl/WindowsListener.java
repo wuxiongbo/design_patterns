@@ -6,6 +6,8 @@ import my_demo.monitor.event_jdk.listener.IListener;
 /**
  * <p> 窗口 监听器 </p>
  *
+ * 事件分发由监听器自己处理
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/12/11

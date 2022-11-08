@@ -53,6 +53,7 @@ public class WindowsEventSource {
                 ((IListener) eventListener).handleEvent(event);
             } catch (ClassCastException e) {
                 // ignore
+                // 事件不匹配，则会类型转化异常
             }
         }
     }
@@ -75,9 +76,11 @@ public class WindowsEventSource {
 
 
 
-    // "事件源" 产生 "关窗事件" 并通知 (调用)所有的监听器
+    // "事件源" 产生 "关窗事件" ，然后 通知 所有的监听器
     public void doCloseWindows() {
+
         PrintEvent closeWindowsEvent = new CloseEvent(this);
+
         this.notifyListenerEvents(closeWindowsEvent);
     }
 

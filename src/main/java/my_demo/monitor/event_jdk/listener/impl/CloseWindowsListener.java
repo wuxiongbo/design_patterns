@@ -7,6 +7,8 @@ import my_demo.monitor.event_jdk.listener.IListener;
 /**
  * <p> 关窗 监听器 </p>
  *
+ * 事件分发由 事件源处理
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/12/11
