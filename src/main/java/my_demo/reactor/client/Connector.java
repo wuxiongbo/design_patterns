@@ -27,7 +27,10 @@ public class Connector implements Runnable {
         try {
             // 连接完成
             if (socket.finishConnect()) {
+
                 // 注册socket； selector.register(socket);
+                // 这里，个人觉得有个非常 有趣的点。
+                // socket.register(selector) 其实等价于 selector.register(this)
                 Handler handler = new Handler(selector, socket);
                 handler.send("43243434243423");
             }

@@ -35,6 +35,8 @@ public class Reactor implements Runnable {
 
 
         // serverSocket注册到selector上，帮忙监听accept事件。
+        // 这里，个人觉得有个非常 有趣的点。
+        // serverSocket.register(selector) 其实等价于 selector.register(this)
         SelectionKey sk = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
         // 绑定附加对象
         sk.attach(new Acceptor(serverSocket, selector));

@@ -18,8 +18,8 @@ public class PdfFile extends ResourceFile {
 
     @Override
     public void accept(Visitor visitor) {
-        // 具体的 visit() 方法 进行的什么业务操作，由传入的 接口实现而定。
-        // 利用多态的特性，避免了原本的accept方法重载
+        // 具体的 visit() 方法 进行的什么业务操作，由传入的 接口实现(Visitor) 而定。
+        // 关键：这里的this关键字，巧妙利用多态的特性，避免了原本的accept方法重载
         visitor.visit(this);
     }
 

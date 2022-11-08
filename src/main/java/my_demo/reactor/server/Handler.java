@@ -40,6 +40,8 @@ public class Handler implements Runnable {
         this.socket.configureBlocking(false);
 
         // 用给定的选择器 注册 这个 channel通道。 返回一个 SelectionKey。
+        // 这里，个人觉得有个非常 有趣的点。
+        // socket.register(selector) 其实等价于 selector.register(this)
         sk = this.socket.register(selector, SelectionKey.OP_READ);
 
         // 绑定附加对象

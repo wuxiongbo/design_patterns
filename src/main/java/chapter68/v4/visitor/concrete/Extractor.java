@@ -1,6 +1,6 @@
 package chapter68.v4.visitor.concrete;
 
-import chapter68.v4.resourcefile.concrete.PPTFile;
+import chapter68.v4.resourcefile.concrete.PptFile;
 import chapter68.v4.resourcefile.concrete.PdfFile;
 import chapter68.v4.resourcefile.concrete.WordFile;
 import chapter68.v4.visitor.Visitor;
@@ -21,7 +21,7 @@ public class Extractor implements Visitor {
 
     // 方法重载
     @Override
-    public void visit(PPTFile pptFile) {
+    public void visit(PptFile pptFile) {
         //...ppt文本提取实现
         System.out.println(pptFile.hashCode()+"Extract PPT.");
     }

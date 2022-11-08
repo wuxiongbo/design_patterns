@@ -31,7 +31,9 @@ public class Acceptor implements Runnable {
             if (socket != null) {
                 // 仅仅需要调用构造方法。主要做的事情是： 1）绑定 附加对象 2）注册感兴趣的事件
                 // 构造方法中，此对象会绑定到相应的channel，从而使该对象保活
-                // 注册 socket； selector.register(socket);
+                // 注册socket； selector.register(socket);
+                // 这里，个人觉得有个非常 有趣的点。
+                // socket.register(selector) 其实等价于 selector.register(this)
                 new Handler(selector, socket);
             }
 

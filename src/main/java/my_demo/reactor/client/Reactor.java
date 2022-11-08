@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * <p>Reactor</p>
  * <p>
  * <p>
- * from, Netty源码之Reactor模式 https://www.toutiao.com/article/6982760949048476190/
+ * from, Netty源码之Reactor模式 <a href="https://www.toutiao.com/article/6982760949048476190/">...</a>
  *
  * <pre>
  * @author wuxiongbo

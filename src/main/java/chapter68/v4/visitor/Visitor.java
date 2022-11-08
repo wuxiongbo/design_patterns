@@ -1,6 +1,6 @@
 package chapter68.v4.visitor;
 
-import chapter68.v4.resourcefile.concrete.PPTFile;
+import chapter68.v4.resourcefile.concrete.PptFile;
 import chapter68.v4.resourcefile.concrete.PdfFile;
 import chapter68.v4.resourcefile.concrete.WordFile;
 
@@ -28,7 +28,7 @@ public interface Visitor {
      * 访问 ppt
      * @param pptFile
      */
-    void visit(PPTFile pptFile);
+    void visit(PptFile pptFile);
 
     /**
      * 访问 word

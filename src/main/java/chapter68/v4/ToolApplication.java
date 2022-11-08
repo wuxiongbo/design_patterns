@@ -1,7 +1,7 @@
 package chapter68.v4;
 
 import chapter68.v4.resourcefile.ResourceFile;
-import chapter68.v4.resourcefile.concrete.PPTFile;
+import chapter68.v4.resourcefile.concrete.PptFile;
 import chapter68.v4.resourcefile.concrete.PdfFile;
 import chapter68.v4.resourcefile.concrete.WordFile;
 import chapter68.v4.visitor.Visitor;
@@ -29,7 +29,7 @@ public class ToolApplication {
 
         resourceFiles.add(new PdfFile(resourceDirectory+"a.pdf"));
         resourceFiles.add(new WordFile(resourceDirectory+"b.word"));
-        resourceFiles.add(new PPTFile(resourceDirectory+"c.ppt"));
+        resourceFiles.add(new PptFile(resourceDirectory+"c.ppt"));
 
         return resourceFiles;
 
