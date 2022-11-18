@@ -9,5 +9,5 @@ package my_demo.monitor.callback.hollywood.demo3.lower;
  * </pre>
  */
 public interface IPerformer {
-    public void update (int i);
+    void update (int i);
 }

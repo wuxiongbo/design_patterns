@@ -4,13 +4,20 @@ import my_demo.monitor.publishsubscribe.subpub.SubscribePublish;
 
 /**
  * 订阅者
+ *
  * @author Xander Wu
  * @date 2022/11/18 10:42
  */
 public interface ISubscriber<Msg> {
-    public void subscribe(SubscribePublish subscribePublish);
 
-    public void unSubscribe(SubscribePublish subscribePublish);
+    // 注册、注销
+    default void subscribe(SubscribePublish subscribePublish){
+        subscribePublish.subscribe(this);
+    }
+    default void unSubscribe(SubscribePublish subscribePublish) {
+        subscribePublish.unSubscribe(this);
+    }
 
-    public void update(String publisher, Msg message);
+
+    void update(String publisher, Msg message);
 }

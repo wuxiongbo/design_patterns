@@ -9,6 +9,6 @@ abstract Implementor
 class ConcreteImplementorA extends Implementor
 class ConcreteImplementorB extends Implementor
 
-Abstraction o---> Implementor :  Abstraction 委托给 Implementor
+Abstraction o---> Implementor :  桥接：Abstraction 委托给 Implementor
 client ...> Abstraction : 访问
 @enduml

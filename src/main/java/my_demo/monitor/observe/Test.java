@@ -8,6 +8,16 @@ import my_demo.monitor.observe.observe.impl.Observer2;
 /**
  * <p> 观察者模式， 简单实现 </p>
  *
+ * 观察者模式中的回调思想：
+ *
+ * 观察者 Observer   向   被观察者 Observable  注册 handleNotify 方法
+ * 未来的某个时刻，
+ * 由 上层模块  Observable 触发 回调 handleNotify 方法
+ *
+ *
+ * 注意：
+ * 区别于 标准的回调，事件是由 下层模块 触发
+ *
  * <pre>
  * @author wuxiongbo
  * @date 2021/6/16
@@ -17,7 +27,7 @@ public class Test {
     public static void main(String[] args) {
 
         //创建 被观察者
-        Observable observable =new Observable();
+        Observable observable = new Observable();
 
         //创建 观察者
         IObserver observer1 = new Observer1();

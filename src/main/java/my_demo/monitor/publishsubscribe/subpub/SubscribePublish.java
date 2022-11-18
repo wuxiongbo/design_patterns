@@ -53,6 +53,8 @@ public class SubscribePublish {
 
     private void subscriptionTask(){
         this.threadPoolExecutor.execute(()->{
+
+            // 订阅消费
             while (true){
 
                 try {
@@ -62,6 +64,7 @@ public class SubscribePublish {
                     throw new RuntimeException(e);
                 }
             }
+
         });
     }
 
@@ -70,23 +73,24 @@ public class SubscribePublish {
     public void subscribe(ISubscriber subcriber) {
         subscribers.add(subcriber);
     }
-
     public void unSubscribe(ISubscriber subcriber) {
         subscribers.remove(subcriber);
     }
 
 
 
-    public <Msg> void publish(String publisherName, Msg msg, boolean isInstantMsg) {
+    public <Msg> void publish(String publisherName, Msg msg, boolean async) {
 
-        if (isInstantMsg) {
+        // 同步
+        if (!async) {
             // 及时消费消息，不缓存
             update(publisherName, msg);
             return;
         }
 
+        // 异步
         Message<Msg> message = new Message<>(publisherName, msg);
-        // 入队消息队列
+        // 入队消息队列，如果入队失败，说明队列满了，则需要触发队列的消费
         if (!queue.offer(message)) {
             // 消费消息队列
             try {

@@ -20,7 +20,7 @@ public class Demo {
     public static void test(){
         Director3 d =new Director3();
 
-        Observer p1 = new Actress3();
+        Actress3 p1 = new Actress3();
 
         d.addObserver(p1);
         d.copy();

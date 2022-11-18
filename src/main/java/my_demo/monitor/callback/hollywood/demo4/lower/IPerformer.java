@@ -9,5 +9,10 @@ package my_demo.monitor.callback.hollywood.demo4.lower;
  * </pre>
  */
 public interface IPerformer {
-    public void update(int i);
+    void update(int i);
+
+    default void register(Director2 director2){
+        director2.register(this);
+    }
+
 }

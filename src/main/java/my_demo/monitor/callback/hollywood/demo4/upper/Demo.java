@@ -13,23 +13,28 @@ import my_demo.monitor.callback.hollywood.demo4.lower.IPerformer;
  */
 public class Demo {
 
-    public static void call(){
+    public static void call() {
 
-        Director2 d =new Director2();
+        // 导演
+        Director2 d = new Director2();
 
         // 演员1
         IPerformer p1 = new Actress();
         // 演员2
-        IPerformer p2= (i)-> System.out.println("p2收到:"+i+"%");
+        IPerformer p2 = (i) -> System.out.println("p2收到:" + i + "%");
 
-        d.register(p1);
-        d.register(p2);
+        // 演员关注导演。 有以下两种写法。
+//        d.register(p1);
+//        d.register(p2);
+        p1.register(d);
+        p2.register(d);
 
-        d.copy();  //这里由上层模块，触发事件的发生
+
+        d.copy();  //注意： 这里事件的发生 是由 上层模块 触发的。  区别于回调，是由 下层模块 触发
     }
 
-    public static void main(String[] args){
-      call();
+    public static void main(String[] args) {
+        call();
     }
 
 }

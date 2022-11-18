@@ -18,11 +18,11 @@ public class PublisherImpOne<Msg> implements IPublisher<Msg> {
      * 仅在方法层面，将逻辑委托给了 SubscribePublish
      * @param subscribePublish
      * @param message
-     * @param isInstantMsg
+     * @param async
      */
     @Override
-    public void publish(SubscribePublish subscribePublish, Msg message, boolean isInstantMsg) {
-        subscribePublish.publish(this.name, message, isInstantMsg);
+    public void publish(SubscribePublish subscribePublish, Msg message, boolean async) {
+        subscribePublish.publish(this.name, message, async);
     }
 
 }

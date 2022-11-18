@@ -18,10 +18,12 @@ public class Actress0 {
         server.copy();
     }
 
-    public void ask(){
+    public void ask() {
         System.out.print("询问进度：");
 
         int x2 = 0;
+
+
         while (true) {
 
             // 主动 询问 导演
@@ -51,9 +53,10 @@ public class Actress0 {
     public static void test() throws InterruptedException {
         Actress0 upper = new Actress0();
 
+        // 打电话给导演。告知我想演剧本。导演在忙，待会儿再来找我吧
         new Thread(() -> upper.call()).start();
 
-        // 主动询问进度
+        // 演员 主动向 导演 询问进度
         upper.ask();
 
         System.out.println("do something...");

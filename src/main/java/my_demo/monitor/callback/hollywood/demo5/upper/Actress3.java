@@ -26,16 +26,16 @@ public class Actress3 implements Observer {
          * 回调方法。下层模块执行时，传回一些数据。
          */
         @Override
-        public void update(int i) {
-            System.out.println("进度："+i+"%");
+        public void update(int msg) {
+            System.out.println("进度："+ msg +"%");
         }
     }
 
 
     @Override
-    public void update(Observable observable , Object data){//data为任意对象，用于传递参数
-        int i = (Integer)data;
-        new Actress().update(i);
+    public void update(Observable observable , Object data){  //data为任意对象，用于传递参数
+        int msg = (Integer)data;
+        new Actress().update(msg);
     }
 
 }

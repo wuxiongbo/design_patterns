@@ -13,16 +13,19 @@ public class Director0 {
     private int x; //复制工作的进度
 
     // 被动 由演员查询进度
-    public int getX(){ return x;}
+    public int getX() {
+        return x;
+    }
 
     public void copy() {
 
-        while(x<100){
-            try{
+        while (x < 100) {
+            try {
                 // 更新进度
-                Thread.sleep((long)(100*Math.random()));
+                Thread.sleep((long) (100 * Math.random()));
                 x++;
-            }catch(InterruptedException e){}
+            } catch (InterruptedException e) {
+            }
         }
 
     }
