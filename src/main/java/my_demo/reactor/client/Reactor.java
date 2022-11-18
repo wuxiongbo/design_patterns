@@ -5,6 +5,7 @@ import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
+import java.nio.channels.spi.SelectorProvider;
 import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -31,7 +32,9 @@ public class Reactor implements Runnable {
     public Reactor(String host, int port) throws IOException {
         this.port = port;
         this.host = host;
-        // 创建serverSocket对象
+
+
+        // 初始化serverSocket对象
         socket = SocketChannel.open();
         // 配置非阻塞
         socket.configureBlocking(false);
@@ -39,19 +42,21 @@ public class Reactor implements Runnable {
         selector = Selector.open();
 
 
-        // serverSocket注册到selector上，帮忙监听 CONNECT 事件。  selector.register(this)
+        // 将serverSocket注册到selector上，让其帮忙监听 CONNECT 事件。  以下两种写法
+        // selector.register(this)
 //        SelectionKey sk = serverSocket.register(selector, 0);
 //        sk.interestOps(SelectionKey.OP_CONNECT);
         SelectionKey sk = socket.register(selector, SelectionKey.OP_CONNECT);
 
+
         // 绑定附加对象
         sk.attach(new Connector(socket, selector));
-        /**
-         * 还可以使用 SPI provider，来创建selector和serverSocket对象
-         SelectorProvider p = SelectorProvider.provider();
-         selector = p.openSelector();
-         serverSocket = p.openServerSocketChannel();
-         */
+
+
+//         还可以使用 SPI provider，来创建 selector 和 serverSocket对象。如下：
+//         SelectorProvider p = SelectorProvider.provider();
+//         selector = p.openSelector();
+//         serverSocket = p.openServerSocketChannel();
 
         System.out.println("client: start select event...");
     }
@@ -64,14 +69,24 @@ public class Reactor implements Runnable {
             e.printStackTrace();
         }
         try {
+
+
             while (!Thread.interrupted()) {
+
+                // 读取就绪事件
                 selector.select(1000 * 60);
+
+                // 获取已就绪的事件列表
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
                 for (SelectionKey selectedKey : selectedKeys) {
+                    // 事件分发
                     dispatch(selectedKey);
                 }
+                // 清空事件列表
                 selectedKeys.clear();
             }
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,9 +113,9 @@ public class Reactor implements Runnable {
                 Executors.defaultThreadFactory());
         executorService.execute(new Reactor("127.0.0.1", 2021));
 
-
         synchronized (Reactor.class) {
             Reactor.class.wait();
         }
+
     }
 }

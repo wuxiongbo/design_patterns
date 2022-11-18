@@ -9,8 +9,8 @@ import my_demo.bridg.v2.additives.ICoffeeAdditives;
  * 这里的  ICoffeeAdditives 类，就是 设计的 "桥"
  *
  *
- * 我们通过这个引用就可以调用ICoffeeAdditives的方法，
- * 进而将 Coffee的行为 与 ICoffeeAdditives 的行为  通过  orderCoffee()  组合起来。
+ * 我们通过这个引用，就可以调用 ICoffeeAdditives 的方法，
+ * 进而，将 Coffee 的行为 与 ICoffeeAdditives 的行为  通过  orderCoffee()  组合起来。
  *
  * @author Xander Wu
  * @date 2022/9/27 18:00

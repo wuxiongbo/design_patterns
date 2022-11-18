@@ -17,7 +17,7 @@ import my_demo.bridg.v2.coffee.RefinedCoffee;
  */
 public class Client {
     public static void main(String[] args) {
-        // 数量： 点两杯
+        // 数量： 两杯
         // 属性1：加奶
         // 属性2：大杯咖啡
         RefinedCoffee largeWithMilk = new LargeCoffee(new Milk());

@@ -7,7 +7,7 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 
 /**
- * <p>回调函数handler</p>
+ * <p> 回调函数handler </p>
  * <p>
  * 回调体现在哪里？
  * Acceptor 将 Handler 注册到 selector

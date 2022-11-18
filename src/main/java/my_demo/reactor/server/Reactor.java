@@ -55,13 +55,17 @@ public class Reactor implements Runnable {
 
             // EventLoop
             while (!Thread.interrupted()) {
-                selector.select(1000 * 60);
-                Set<SelectionKey> selectedKeys = selector.selectedKeys();
 
+                // 读取就绪事件
+                selector.select(1000 * 60);
+
+                // 获取已就绪的事件列表
+                Set<SelectionKey> selectedKeys = selector.selectedKeys();
                 for (SelectionKey selectedKey : selectedKeys) {
-                    // 分发器
+                    // 事件分发器
                     dispatch(selectedKey);
                 }
+                // 清空事件列表
                 selectedKeys.clear();
             }
 
@@ -97,10 +101,9 @@ public class Reactor implements Runnable {
         Reactor.class.wait();
 
 //        synchronized (Reactor.class) {
-//
 //            System.out.println(ClassLayout.parseInstance(Reactor.class).toPrintable());
-//
 //            Reactor.class.wait();
 //        }
+
     }
 }
