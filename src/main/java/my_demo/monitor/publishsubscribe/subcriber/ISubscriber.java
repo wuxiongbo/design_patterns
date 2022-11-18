@@ -10,6 +10,8 @@ import my_demo.monitor.publishsubscribe.subpub.SubscribePublish;
  */
 public interface ISubscriber<Msg> {
 
+    String getName();
+
     // 注册、注销
     default void subscribe(SubscribePublish subscribePublish){
         subscribePublish.subscribe(this);

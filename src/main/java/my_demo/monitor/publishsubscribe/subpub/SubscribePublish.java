@@ -46,19 +46,22 @@ public class SubscribePublish {
         this.threadPoolExecutor = new ThreadPoolExecutor(1, 1,
                 0, TimeUnit.SECONDS, workQueue, factory);
 
-        subscriptionTask();
+        subscribeMsg();
 
     }
 
-
-    private void subscriptionTask(){
+    /**
+     * 订阅消息
+     * 单独一个线程，专门用来帮助 消息订阅者  消费消息。
+     */
+    private void subscribeMsg(){
         this.threadPoolExecutor.execute(()->{
 
-            // 订阅消费
+            // 订阅消息
             while (true){
 
                 try {
-                    this.update();
+                    this.notifyMsg();
                     Thread.sleep(1000L);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
@@ -69,32 +72,33 @@ public class SubscribePublish {
     }
 
 
-    // 维护订阅者
-    public void subscribe(ISubscriber subcriber) {
-        subscribers.add(subcriber);
+    // 订阅，取消订阅
+    public void subscribe(ISubscriber subscriber) {
+        subscribers.add(subscriber);
     }
-    public void unSubscribe(ISubscriber subcriber) {
-        subscribers.remove(subcriber);
+    public void unSubscribe(ISubscriber subscriber) {
+        subscribers.remove(subscriber);
     }
 
 
 
-    public <Msg> void publish(String publisherName, Msg msg, boolean async) {
+    public <Msg> void publish(String publisherName, Msg msg, boolean block) {
 
-        // 同步
-        if (!async) {
+        // 异步阻塞
+        if (block) {
             // 及时消费消息，不缓存
-            update(publisherName, msg);
+            notifyMsg(publisherName, msg);
             return;
         }
 
-        // 异步
+
+        // 异步非阻塞
         Message<Msg> message = new Message<>(publisherName, msg);
         // 入队消息队列，如果入队失败，说明队列满了，则需要触发队列的消费
         if (!queue.offer(message)) {
             // 消费消息队列
             try {
-                update();
+                notifyMsg();
             } catch (InterruptedException e) {
 
             }
@@ -104,27 +108,35 @@ public class SubscribePublish {
 
 
 
-    // 队列消费后 通知订阅者
-    private <Msg> void update() throws InterruptedException {
-        Message message = null;
+    // 队列消费后 通知所有的 订阅者
+    private <Msg> void notifyMsg() throws InterruptedException {
+
+        // 消息消费。
+        Message<Msg> message = null;
         while ((message = queue.take()) != null) {
-            this.update(message.getPublisher(), (Msg) message.getMsg());
+
+            // 将取出的消息，通知 给订阅者。
+            this.notifyMsg(message.getPublisher(), message.getMsg());
+
         }
     }
 
 
-    // 及时 通知订阅者
-    private <Msg> void update(String publisher, Msg Msg) {
+    // 通知所有的订阅者
+    private <Msg> void notifyMsg(String publisher, Msg msg) {
+
         for (ISubscriber subscriber : subscribers) {
 
             try {
-                subscriber.update(publisher, Msg);
+                subscriber.update(publisher, msg);
             } catch (Exception e) {
-                //ignore
-                System.out.println(e);
+                // ignore
+                System.out.println("类型转换异常,"+subscriber.getName() + e.getMessage());
             }
 
         }
+
+
     }
 
 

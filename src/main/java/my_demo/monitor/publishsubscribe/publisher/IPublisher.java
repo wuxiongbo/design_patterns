@@ -8,5 +8,13 @@ import my_demo.monitor.publishsubscribe.subpub.SubscribePublish;
  * @date 2022/11/18 10:41
  */
 public interface IPublisher<Msg> {
-    void publish(SubscribePublish subscribePublish, Msg msg, boolean isInstantMsg);
+
+    /**
+     * 弱依赖 SubscribePublish，并没有直接委托。
+     * 仅在方法层面，将逻辑委托给了 SubscribePublish
+     * @param subscribePublish
+     * @param msg
+     * @param block             是否阻塞
+     */
+    void publish(SubscribePublish subscribePublish, Msg msg, boolean block);
 }

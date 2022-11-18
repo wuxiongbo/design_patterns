@@ -1,4 +1,4 @@
-package my_demo.monitor.event_jdk.event;
+package my_demo.monitor.event_jdk.event.base;
 
 /**
  * <p>事件</p>

@@ -1,10 +1,12 @@
 package my_demo.monitor.event_jdk.event;
 
+import my_demo.monitor.event_jdk.event.base.PrintEvent;
+
 /**
  * @author Xander Wu
  * @date 2022/11/4 18:10
  */
-public class CloseEvent extends PrintEvent{
+public class CloseEvent extends PrintEvent {
     /**
      * @param eventSource 事件源； 本示例中，是 {@link my_demo.monitor.event_jdk.eventsource.WindowsEventSource}
      * @param eventName

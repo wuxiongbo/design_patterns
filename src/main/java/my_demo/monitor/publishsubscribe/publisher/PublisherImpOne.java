@@ -13,16 +13,9 @@ public class PublisherImpOne<Msg> implements IPublisher<Msg> {
         this.name = name;
     }
 
-    /**
-     * 弱依赖 SubscribePublish，并没有直接委托。
-     * 仅在方法层面，将逻辑委托给了 SubscribePublish
-     * @param subscribePublish
-     * @param message
-     * @param async
-     */
     @Override
-    public void publish(SubscribePublish subscribePublish, Msg message, boolean async) {
-        subscribePublish.publish(this.name, message, async);
+    public void publish(SubscribePublish subscribePublish, Msg msg, boolean block) {
+        subscribePublish.publish(this.name, msg, block);
     }
 
 }
