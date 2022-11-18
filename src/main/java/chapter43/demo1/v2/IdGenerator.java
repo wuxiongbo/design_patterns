@@ -1,8 +1,8 @@
 package chapter43.demo1.v2;
 
-import chapter43.demo1.v2.dependence.DistributedLock;
-import chapter43.demo1.v2.dependence.FileSharedObjectStorage;
-import chapter43.demo1.v2.dependence.SharedObjectStorage;
+import chapter43.demo1.dependence.DistributedLock;
+import chapter43.demo1.dependence.FileSharedObjectStorage;
+import chapter43.demo1.dependence.SharedObjectStorage;
 
 import java.util.concurrent.atomic.AtomicLong;
 

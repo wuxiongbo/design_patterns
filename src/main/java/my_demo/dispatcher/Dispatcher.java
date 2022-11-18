@@ -4,7 +4,7 @@ import my_demo.dispatcher.view.HomeView;
 import my_demo.dispatcher.view.StudentView;
 
 /**
- * <p> 分发器 </p>
+ * <p> 内容分发器 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -27,7 +27,7 @@ public class Dispatcher {
         if(request.equalsIgnoreCase("STUDENT")){
             studentView.show();
         }
-        else{
+        else if(request.equalsIgnoreCase("HOME")){
             homeView.show();
         }
     }

@@ -6,9 +6,9 @@
 '事件源 EventSource  回调  监听器 IListener
 
 
-class Event
-class EventSource
-interface IListener
+class Event #pink
+class EventSource #pink
+interface IListener #pink
 class ListenerImpl
 
 

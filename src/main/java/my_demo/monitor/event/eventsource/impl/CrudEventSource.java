@@ -81,7 +81,7 @@ public class CrudEventSource implements IEventSource {
         this.triggerListener(modifyEvent);
     }
     public void find(){
-
+        // 产生事件
         System.out.println("CrudEventSource 触发了‘查询’事件");
         IEvent findEvent = new CrudEvent(this,"find");
 

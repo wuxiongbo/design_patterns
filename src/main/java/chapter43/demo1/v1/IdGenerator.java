@@ -16,7 +16,6 @@ import java.util.concurrent.atomic.AtomicLong;
  * @date 2021/12/15
  * </pre>
  */
-
 public class IdGenerator {
     private AtomicLong id = new AtomicLong(0);
 

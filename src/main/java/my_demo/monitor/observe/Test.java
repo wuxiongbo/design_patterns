@@ -1,9 +1,9 @@
 package my_demo.monitor.observe;
 
 import my_demo.monitor.observe.observable.impl.Observable;
-import my_demo.monitor.observe.observe.IObserve;
-import my_demo.monitor.observe.observe.impl.Observe1;
-import my_demo.monitor.observe.observe.impl.Observe2;
+import my_demo.monitor.observe.observe.IObserver;
+import my_demo.monitor.observe.observe.impl.Observer1;
+import my_demo.monitor.observe.observe.impl.Observer2;
 
 /**
  * <p> 观察者模式， 简单实现 </p>
@@ -20,16 +20,21 @@ public class Test {
         Observable observable =new Observable();
 
         //创建 观察者
-        IObserve iObserve1 = new Observe1();
-        IObserve iObserve2 = new Observe2();
-
-        // 向 '被观察者' 添加 '观察者'
-        observable.addObserve(iObserve1);
-        observable.addObserve(iObserve2);
+        IObserver observer1 = new Observer1();
+        IObserver observer2 = new Observer2();
 
 
-        // 被观察者 给  观察者   发送信息
+
+        // 向 '被观察者' 注册 '观察者'
+        observable.addObserver(observer1);
+        observable.addObserver(observer2);
+
+
+
+        // '被观察者' 给  '观察者'  发送 通知
         observable.notifyObservers("111111111111");
+
+
 
 
        /* System.out.println("====删除1号观察者=====");

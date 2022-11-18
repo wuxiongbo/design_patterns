@@ -38,17 +38,20 @@ public class Reactor implements Runnable {
         // 这里，个人觉得有个非常 有趣的点。
         // serverSocket.register(selector) 其实等价于 selector.register(this)
         SelectionKey sk = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
+
         // 绑定附加对象
         sk.attach(new Acceptor(serverSocket, selector));
-        /**
-         * 还可以使用 SPI provider，来创建selector和serverSocket对象
-         SelectorProvider p = SelectorProvider.provider();
-         selector = p.openSelector();
-         serverSocket = p.openServerSocketChannel();
-         */
+
+//         还可以使用 SPI provider，来创建 selector 和 serverSocket对象。如下：
+//         SelectorProvider p = SelectorProvider.provider();
+//         selector = p.openSelector();
+//         serverSocket = p.openServerSocketChannel();
+
         System.out.println("client: start select event...");
     }
 
+
+    // 单线程跑即可
     @Override
     public void run() {
         try {
@@ -87,6 +90,7 @@ public class Reactor implements Runnable {
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
+        // 单线程
         ThreadPoolExecutor executorService = new ThreadPoolExecutor(
                 1,
                 1,

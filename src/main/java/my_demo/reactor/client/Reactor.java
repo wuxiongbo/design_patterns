@@ -61,6 +61,9 @@ public class Reactor implements Runnable {
         System.out.println("client: start select event...");
     }
 
+
+
+    // 单线程跑即可
     @Override
     public void run() {
         try {
@@ -68,8 +71,8 @@ public class Reactor implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
 
+        try {
 
             while (!Thread.interrupted()) {
 
@@ -84,9 +87,8 @@ public class Reactor implements Runnable {
                 }
                 // 清空事件列表
                 selectedKeys.clear();
+
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -103,7 +105,10 @@ public class Reactor implements Runnable {
     }
 
 
+
+
     public static void main(String[] args) throws IOException, InterruptedException {
+        // 单线程
         ThreadPoolExecutor executorService = new ThreadPoolExecutor(
                 1,
                 1,
@@ -111,6 +116,7 @@ public class Reactor implements Runnable {
                 TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<Runnable>(),
                 Executors.defaultThreadFactory());
+
         executorService.execute(new Reactor("127.0.0.1", 2021));
 
         synchronized (Reactor.class) {

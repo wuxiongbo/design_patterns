@@ -9,7 +9,7 @@ package my_demo.dispatcher;
  * </pre>
  */
 public class FrontController {
-    private Dispatcher dispatcher;
+    private final Dispatcher dispatcher;
 
     public FrontController(){
         dispatcher = new Dispatcher();
@@ -21,18 +21,29 @@ public class FrontController {
         return true;
     }
 
+    // request 日志
     private void trackRequest(String request){
         System.out.println("Page requested: " + request);
     }
 
 
     public void dispatchRequest(String request){
-        // request 日志
-        trackRequest(request);
 
+        trackRequest(request);
         if(isAuthenticUser()){
             dispatcher.dispatch(request);
         }
+    }
+
+
+
+
+    public static void main(String[] args){
+        FrontController frontController = new FrontController();
+
+        frontController.dispatchRequest("HOME");
+        System.out.println("====================================");
+        frontController.dispatchRequest("STUDENT");
     }
 
 }

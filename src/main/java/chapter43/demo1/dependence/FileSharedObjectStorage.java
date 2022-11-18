@@ -1,4 +1,4 @@
-package chapter43.demo1.v2.dependence;
+package chapter43.demo1.dependence;
 
 /**
  * <p>描述类的信息</p>

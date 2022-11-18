@@ -8,7 +8,9 @@ package my_demo.monitor.observe.observe;
  * @date 2021/6/16
  * </pre>
  */
-public interface IObserve {
-    //    观察者处理被观察者发送过来额信息
+public interface IObserver {
+
+    // 观察者 处理 被观察者 发送过来的信息
     void handleNotify(String message);
+
 }

@@ -1,7 +1,7 @@
 package my_demo.dispatcher.view;
 
 /**
- * <p>描述类的信息</p>
+ * <p>视图层</p>
  *
  * <pre>
  * @author wuxiongbo

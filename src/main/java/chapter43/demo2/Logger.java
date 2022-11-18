@@ -3,7 +3,7 @@ package chapter43.demo2;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * <p>描述类的信息</p>
+ * <p>多例</p>
  *
  * 对于多例模式，还有一种理解方式：同一类型的只能创建一个对象，不同类型的可以创建多个对象。
  *

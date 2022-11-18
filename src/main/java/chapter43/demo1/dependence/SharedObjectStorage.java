@@ -1,4 +1,4 @@
-package chapter43.demo1.v2.dependence;
+package chapter43.demo1.dependence;
 
 import chapter43.demo1.v2.IdGenerator;
 
