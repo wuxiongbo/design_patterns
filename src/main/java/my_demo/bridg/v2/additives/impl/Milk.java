@@ -10,6 +10,6 @@ import my_demo.bridg.v2.additives.ICoffeeAdditives;
 public class Milk implements ICoffeeAdditives {
     @Override
     public void addSomething() {
-        System.out.println("加奶");
+        System.out.println("添加牛奶");
     }
 }

@@ -21,6 +21,6 @@ public class SmallCoffee extends RefinedCoffee {
         additives.addSomething();
 
         // 业务逻辑...
-        System.out.printf("小杯咖啡%d杯%n", count);
+        System.out.printf("%d杯小杯咖啡，制作中...%n", count);
     }
 }

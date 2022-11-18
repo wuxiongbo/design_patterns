@@ -7,7 +7,7 @@ import my_demo.bridg.v2.coffee.RefinedCoffee;
 /**
  * 桥接模式
  *
- * 巧妙利用 组合关系 进行功能组合，避免了繁杂的继承
+ * 巧妙利用 组合关系 进行 功能组合，避免了繁杂的继承
  *
  * <p>
  * <a href="https://github.com/shusheng007/design-patterns"/>
@@ -17,15 +17,14 @@ import my_demo.bridg.v2.coffee.RefinedCoffee;
  */
 public class Client {
     public static void main(String[] args) {
-        // 数量： 两杯
-        // 属性1：加奶
-        // 属性2：大杯咖啡
+        // 功能属性1：加奶
+        // 功能属性2：大杯咖啡
         RefinedCoffee largeWithMilk = new LargeCoffee(new Milk());
 
-        // 点咖啡
+        // 点两杯咖啡
         largeWithMilk.orderCoffee(2);
 
-        // 检查咖啡的质量
+        // 检查咖啡的质量参数
         largeWithMilk.checkQuality();
     }
 }

@@ -1,12 +1,12 @@
 package my_demo.monitor.publishsubscribe.subpub;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.Getter;
 import my_demo.monitor.publishsubscribe.subcriber.ISubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.*;
 
 /**
  * 订阅器
@@ -26,19 +26,53 @@ public class SubscribePublish {
     private final BlockingQueue<Message> queue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);
 
     //订阅者
-    private final List<ISubscriber> subcribers = new ArrayList<>();
+    private final List<ISubscriber> subscribers = new ArrayList<>();
+
+    /**
+     * 订阅消费任务
+     */
+    private final ThreadPoolExecutor threadPoolExecutor;
+
 
     public SubscribePublish(String name) {
         this.name = name;
+
+
+        BlockingQueue<Runnable> workQueue = new SynchronousQueue<>();
+        ThreadFactory factory = new ThreadFactoryBuilder()
+                .setDaemon(true)
+                .setNameFormat("at-sub-task-%s")
+                .build();
+        this.threadPoolExecutor = new ThreadPoolExecutor(1, 1,
+                0, TimeUnit.SECONDS, workQueue, factory);
+
+        subscriptionTask();
+
     }
+
+
+    private void subscriptionTask(){
+        this.threadPoolExecutor.execute(()->{
+            while (true){
+
+                try {
+                    this.update();
+                    Thread.sleep(1000L);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
 
     // 维护订阅者
-    public void subcribe(ISubscriber subcriber) {
-        subcribers.add(subcriber);
+    public void subscribe(ISubscriber subcriber) {
+        subscribers.add(subcriber);
     }
 
-    public void unSubcribe(ISubscriber subcriber) {
-        subcribers.remove(subcriber);
+    public void unSubscribe(ISubscriber subcriber) {
+        subscribers.remove(subcriber);
     }
 
 
@@ -52,10 +86,14 @@ public class SubscribePublish {
         }
 
         Message<Msg> message = new Message<>(publisherName, msg);
-        // 生产消息队列
+        // 入队消息队列
         if (!queue.offer(message)) {
             // 消费消息队列
-            update();
+            try {
+                update();
+            } catch (InterruptedException e) {
+
+            }
         }
 
     }
@@ -63,28 +101,30 @@ public class SubscribePublish {
 
 
     // 队列消费后 通知订阅者
-    private <Msg> void update() {
-        Message m = null;
-        while ((m = queue.peek()) != null) {
-            this.update(m.getPublisher(), (Msg) m.getMsg());
+    private <Msg> void update() throws InterruptedException {
+        Message message = null;
+        while ((message = queue.take()) != null) {
+            this.update(message.getPublisher(), (Msg) message.getMsg());
         }
     }
 
+
     // 及时 通知订阅者
     private <Msg> void update(String publisher, Msg Msg) {
-        for (ISubscriber subcriber : subcribers) {
-
+        for (ISubscriber subscriber : subscribers) {
 
             try {
-                subcriber.update(publisher, Msg);
+                subscriber.update(publisher, Msg);
             } catch (Exception e) {
                 //ignore
                 System.out.println(e);
             }
 
-
         }
     }
+
+
+
 }
 
 

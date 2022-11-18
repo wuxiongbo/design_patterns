@@ -16,12 +16,12 @@ public class SubscriberImpOne<Msg> implements ISubscriber<Msg> {
 
     @Override
     public void subscribe(SubscribePublish subscribePublish) {
-        subscribePublish.subcribe(this);
+        subscribePublish.subscribe(this);
     }
 
     @Override
     public void unSubscribe(SubscribePublish subscribePublish) {
-        subscribePublish.unSubcribe(this);
+        subscribePublish.unSubscribe(this);
     }
 
     @Override

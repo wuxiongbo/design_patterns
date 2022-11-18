@@ -20,7 +20,7 @@ public class LargeCoffee extends RefinedCoffee {
         additives.addSomething();
 
         // 业务逻辑...
-        System.out.printf("大杯咖啡%d杯%n",count);
+        System.out.printf("%d杯大杯咖啡，制作中...%n",count);
 
     }
 }
