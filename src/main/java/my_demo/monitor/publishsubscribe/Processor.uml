@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.reactivestreams.Processor</OriginalElement>
+  <nodes>
+    <node x="-86.25534744341809" y="170.15899219433328">org.reactivestreams.Subscription</node>
+    <node x="281.480523705367" y="51.594637304548094">org.reactivestreams.Publisher</node>
+    <node x="139.34112665442723" y="173.2995665021095">org.reactivestreams.Processor</node>
+    <node x="-25.23698420610252" y="-13.52013227895877">org.reactivestreams.Subscriber</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.reactivestreams.Processor" target="org.reactivestreams.Publisher" relationship="INTERFACE_GENERALIZATION">
+      <point x="63.13939705093975" y="-14.0" />
+      <point x="-112.5" y="26.5" />
+    </edge>
+    <edge source="org.reactivestreams.Processor" target="org.reactivestreams.Subscriber" relationship="INTERFACE_GENERALIZATION">
+      <point x="-16.578110860529762" y="-14.0" />
+      <point x="113.49999999999999" y="59.5" />
+    </edge>
+  </edges>
+  <settings layout="分层" zoom="1.2000000000000002" showDependencies="false" x="192.58333333333354" y="101.16666666666669" />
+  <SelectedNodes />
+  <Categories>
+    <Category>方法</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

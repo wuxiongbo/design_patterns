@@ -5,6 +5,8 @@ import chapter62.demo1.v1.handler.Handler;
 /**
  * <p> 处理器链 </p>
  *
+ * 个人理解： 本对象的职责更像 是 责任链 管理器。 可有可无。   放在 handler抽象类中也是可以的
+ *
  * 单向连表
  *
  * <pre>

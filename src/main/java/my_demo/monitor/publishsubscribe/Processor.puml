@@ -1,0 +1,24 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+interface Processor<T, R> << interface >>
+interface Publisher<T> << interface >> {
+  + subscribe(Subscriber<T>): void
+}
+interface Subscriber<T> << interface >> {
+  + onNext(T): void
+  + onError(Throwable): void
+  + onComplete(): void
+  + onSubscribe(Subscription): void
+}
+interface Subscription << interface >> {
+  + request(long): void
+  + cancel(): void
+}
+
+Processor     -[#008200,plain]-^  Publisher    
+Processor     -[#008200,plain]-^  Subscriber   
+@enduml
