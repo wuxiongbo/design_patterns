@@ -1,7 +1,7 @@
-package my_demo.monitor.publishsubscribe.subcriber.impl;
+package my_demo.monitor.publishsubscribe.v1.subcriber.impl;
 
 import lombok.Getter;
-import my_demo.monitor.publishsubscribe.subcriber.ISubscriber;
+import my_demo.monitor.publishsubscribe.v1.subcriber.ISubscriber;
 
 /**
  * 泛型 指定消息类型。 达到，对指定类型的消息感兴趣的目的

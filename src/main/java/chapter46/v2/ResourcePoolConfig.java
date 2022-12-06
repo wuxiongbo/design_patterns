@@ -151,9 +151,10 @@ public class ResourcePoolConfig {
 
         r.setHeight(3); // 有效
     }
+
     // 长方形
     @Data
-    private class Rectangle{
+    private static class Rectangle{
         private long width;  // 宽
         private long height; // 高
     }

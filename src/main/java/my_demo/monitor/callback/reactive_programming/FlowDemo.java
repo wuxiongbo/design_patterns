@@ -14,22 +14,31 @@ import java.util.concurrent.SubmissionPublisher;
 public class FlowDemo {
 
     public static void main(String[] args) throws Exception {
+
+
         // 1. 定义 发布者(生产者), 发布的数据类型是 Integer
         //    直接使用jdk自带的SubmissionPublisher, 它实现了 Publisher 接口。
         // SubmissionPublisher里有一个数据缓冲区，用于缓冲发布者产生的数据，
         // 而这个缓冲区是利用一个Object数组实现的，缓冲区最大长度为256。
         // 我们可以在onSubscribe方法里打上断点，查看到这个缓冲区：
-        SubmissionPublisher<Integer> publiser = new SubmissionPublisher<>();
+        SubmissionPublisher<Integer> publisher = new SubmissionPublisher<>();
+
+
 
         // 2. 定义 订阅者（消费者）
         Flow.Subscriber<Integer> subscriber = new Flow.Subscriber<>() {
 
             /**
-             * Subscription相当于是连接Publisher和Subscriber的“纽带”。
-             * 当发布者调用subscribe方法注册订阅者时，
-             * 会通过订阅者的回调方法onSubscribe传入Subscription对象，
-             * 之后，订阅者就可以使用这个Subscription对象的request方法向发布者“要”数据了。
-             * 背压机制 正是基于此来实现的。 背压(反压) back pressure
+             * 订阅器：
+             *
+             * Subscription 相当于，连接 Publisher 和 Subscriber 的“纽带”。
+             * 当 '发布者' 调用 subscribe 方法注册 '订阅者' 时，
+             * 会通过 '订阅者' 的回调方法 onSubscribe ，传入 Subscription '订阅器'，
+             * 之后，'订阅者' 就可以使用这个 Subscription '订阅器' 的 request 方法， 向 '发布者'  “要” 数据了。
+             *
+             * "背压机制" 正是基于此来实现的。
+             * 背压(反压) back pressure
+             *
              */
             private Flow.Subscription subscription;
 
@@ -73,27 +82,43 @@ public class FlowDemo {
 
         };
 
-        // 3. 发布者和订阅者 建立订阅关系。  回调 onSubscribe 方法
-        publiser.subscribe(subscriber);
 
-        // 4. 生产数据, 并发布
-        // 这里忽略数据生产过程
+
+        // 3. 发布者和订阅者 建立订阅关系。  部分源码如下， 回调 onSubscribe 方法:
+        //   subscription.onSubscribe();
+        //   if ((ex = closedException) != null)
+        //       subscription.onError(ex);
+        //   else if (closed)
+        //       subscription.onComplete();
+
+        publisher.subscribe(subscriber);
+
+
+
+        // 4. 生产数据, 并发布。 内部，会将 消息 缓存到 "订阅器"里面的 数组(队列) 中
+        //   这里忽略数据生产过程
         for (int i = 0; i < 3; i++) {
             System.out.println("生成数据:" + i);
-            // submit是个block方法
-            publiser.submit(i);
+            // submit 是个 block方法
+            publisher.submit(i);
         }
 
         // 5. 结束后 关闭发布者
-        // 正式环境 应该放 finally 或者使用 try-resouce 确保关闭
-        publiser.close();
+        // 正式环境 应该放 finally 或者使用 try-resource 确保关闭
+        publisher.close();
+
+
+
+
 
         // 主线程延迟停止, 否则数据没有消费就会退出
-        Thread.currentThread().join(1000);
+        Thread.currentThread().join(10000L);
 
         // debug的时候, 下面这行需要有断点
         // 否则主线程结束无法debug
         System.out.println();
+
+
     }
 
 }

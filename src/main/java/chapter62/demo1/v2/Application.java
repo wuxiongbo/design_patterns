@@ -23,13 +23,25 @@ public class Application {
 
     public static void main(String[] args) {
 
+        // 责任链 构造器
         HandlerChain chain = new HandlerChain();
 
         // 扩展点。 处理器的创建 交给客户端
-        chain.addHandler(new HandlerA());
-        chain.addHandler(new HandlerB());
+        HandlerA handlerA = new HandlerA();
+        HandlerB handlerB = new HandlerB();
+
+        // 构建责任链
+        chain.addHandler(handlerA);
+        chain.addHandler(handlerB);
+
+
 
         // 提交请求
+        // 方式一：直接通过 责任链构造器 调用
         chain.handle();
+        // 方式二：通过 链表 的头结点调用。
+        handlerA.handle();
+
+
     }
 }

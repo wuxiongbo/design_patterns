@@ -1,6 +1,6 @@
-package my_demo.monitor.publishsubscribe.publisher;
+package my_demo.monitor.publishsubscribe.v1.publisher;
 
-import my_demo.monitor.publishsubscribe.subpub.SubscribePublish;
+import my_demo.monitor.publishsubscribe.v1.subpub.SubscribePublish;
 
 /**
  * 发布者

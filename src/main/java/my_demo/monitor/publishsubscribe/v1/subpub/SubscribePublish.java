@@ -1,8 +1,8 @@
-package my_demo.monitor.publishsubscribe.subpub;
+package my_demo.monitor.publishsubscribe.v1.subpub;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.Getter;
-import my_demo.monitor.publishsubscribe.subcriber.ISubscriber;
+import my_demo.monitor.publishsubscribe.v1.subcriber.ISubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,9 @@ public class SubscribePublish {
     //订阅器队列容量
     final int QUEUE_CAPACITY = 20;
 
-    //订阅器 消息存储队列
+    /**
+     * 订阅器中，拥有 消息存储队列
+     */
     private final BlockingQueue<Message> queue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);
 
     //订阅者
@@ -84,7 +86,8 @@ public class SubscribePublish {
 
     public <Msg> void publish(String publisherName, Msg msg, boolean block) {
 
-        // 异步阻塞
+        // 异步 阻塞
+        // 直接进行消息通知
         if (block) {
             // 及时消费消息，不缓存
             notifyMsg(publisherName, msg);
@@ -92,16 +95,20 @@ public class SubscribePublish {
         }
 
 
-        // 异步非阻塞
+        // 异步 非阻塞
+        // 消息存到队列，异步消费
         Message<Msg> message = new Message<>(publisherName, msg);
-        // 入队消息队列，如果入队失败，说明队列满了，则需要触发队列的消费
+        // 入队消息队列，如果入队失败，说明队列满了。则需要等待
         if (!queue.offer(message)) {
-            // 消费消息队列
-            try {
-                notifyMsg();
-            } catch (InterruptedException e) {
 
+            while(!queue.offer(message)){
+                try {
+                    TimeUnit.MILLISECONDS.sleep(1000L);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
+
         }
 
     }

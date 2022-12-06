@@ -1,7 +1,7 @@
-package my_demo.monitor.publishsubscribe.subcriber.impl;
+package my_demo.monitor.publishsubscribe.v1.subcriber.impl;
 
 import lombok.Getter;
-import my_demo.monitor.publishsubscribe.subcriber.ISubscriber;
+import my_demo.monitor.publishsubscribe.v1.subcriber.ISubscriber;
 
 /**
  *

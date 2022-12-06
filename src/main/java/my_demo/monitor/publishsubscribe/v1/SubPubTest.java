@@ -1,11 +1,11 @@
-package my_demo.monitor.publishsubscribe;
+package my_demo.monitor.publishsubscribe.v1;
 
-import my_demo.monitor.publishsubscribe.publisher.IPublisher;
-import my_demo.monitor.publishsubscribe.publisher.PublisherImpOne;
-import my_demo.monitor.publishsubscribe.subcriber.ISubscriber;
-import my_demo.monitor.publishsubscribe.subcriber.impl.SubscriberImpOne;
-import my_demo.monitor.publishsubscribe.subcriber.impl.SubscriberImpTwo;
-import my_demo.monitor.publishsubscribe.subpub.SubscribePublish;
+import my_demo.monitor.publishsubscribe.v1.publisher.IPublisher;
+import my_demo.monitor.publishsubscribe.v1.publisher.PublisherImpOne;
+import my_demo.monitor.publishsubscribe.v1.subcriber.ISubscriber;
+import my_demo.monitor.publishsubscribe.v1.subcriber.impl.SubscriberImpOne;
+import my_demo.monitor.publishsubscribe.v1.subcriber.impl.SubscriberImpTwo;
+import my_demo.monitor.publishsubscribe.v1.subpub.SubscribePublish;
 
 /**
  * 发布订阅模式
@@ -33,24 +33,31 @@ public class SubPubTest {
 
     public static void main(String[] args) {
 
+        // 初始化 "订阅器"
         SubscribePublish subscribePublish = new SubscribePublish("订阅器");
 
+
+
+        // 初始化 '订阅者'
         ISubscriber<String> subscriber1 = new SubscriberImpOne("【订阅者1】");
         ISubscriber<String> subscriber2 = new SubscriberImpOne("【订阅者2】");
         ISubscriber<Long> subscriber3 = new SubscriberImpTwo("【订阅者3】");
 
-        // 将 订阅者 注册到 订阅器
+
+
+        // 将 '订阅者' 注册到 "订阅器"
         subscriber1.subscribe(subscribePublish);
         subscriber2.subscribe(subscribePublish);
         subscriber3.subscribe(subscribePublish);
 
 
-        // 初始化 发布者
+
+
+
+        // 初始化 '发布者'1
         IPublisher<String> publisher1 = new PublisherImpOne<>("【发布者1】");
 
-
-        // 委托 订阅器  发布消息
-
+        // '发布者' 委托 "订阅器"
         // 发布消息1
         publisher1.publish(subscribePublish,
                 "welcome", true);
@@ -64,13 +71,18 @@ public class SubPubTest {
 
 
 
+
+
+        // 初始化 '发布者'2
         IPublisher<Long> publisher2 = new PublisherImpOne<>("【发布者2】");
+
+        // '发布者' 委托 "订阅器"
+        // 发布消息3
         publisher2.publish(subscribePublish,
                 123L, true);
         System.out.println("---------");
 
-
-        // 发布消息3
+        // 发布消息4
         publisher1.publish(subscribePublish,
                 "my zone", false);
         System.out.println("-----异步----");

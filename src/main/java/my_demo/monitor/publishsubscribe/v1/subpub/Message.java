@@ -1,4 +1,4 @@
-package my_demo.monitor.publishsubscribe.subpub;
+package my_demo.monitor.publishsubscribe.v1.subpub;
 
 /**
  * @author Xander Wu
