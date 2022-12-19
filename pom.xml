@@ -162,6 +162,13 @@
             <version>3.4.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>commons-chain</groupId>
+            <artifactId>commons-chain</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+
     </dependencies>
 
 

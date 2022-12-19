@@ -22,7 +22,7 @@ import chapter62.demo1.v1.handler.Handler;
 public class HandlerA extends Handler {
 
     @Override
-    public void handle() {
+    public void handle(/* 消息上下文 */) {
 
         // 能否处理
         boolean handled = false;
@@ -33,7 +33,7 @@ public class HandlerA extends Handler {
 
         // 在处理器中判断  是否将调用动作 传递 给下一个处理器
         if (!handled && successor != null) {
-            successor.handle();
+            successor.handle(/* 消息上下文 */);
         }
 
         // 不用返回判断结果

@@ -7,7 +7,9 @@ import chapter62.demo2.handlerchain.SensitiveWordFilterChain;
 import chapter62.depencence.Content;
 
 /**
- * <p>客户端</p>
+ * <p>责任链的  应用 实例</p>
+ *
+ * 客户端
  *
  * 对于支持 UGC（User Generated Content，用户生成内容）的应用（比如论坛）来说，
  * 用户生成的内容（比如，在论坛中发表的帖子）可能会包含一些敏感词（比如涉黄、广告、反动等词汇）。

@@ -12,10 +12,18 @@ public interface ISubscriber<Msg> {
 
     String getName();
 
-    // 注册、注销
+    /**
+     * 注册
+     * @param subscribePublish
+     */
     default void subscribe(SubscribePublish subscribePublish){
         subscribePublish.subscribe(this);
     }
+
+    /**
+     * 注销
+     * @param subscribePublish
+     */
     default void unSubscribe(SubscribePublish subscribePublish) {
         subscribePublish.unSubscribe(this);
     }

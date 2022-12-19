@@ -24,8 +24,9 @@ public abstract class Handler {
 
 
     /**
-     *
+     * 处理方法。
+     * 这是最简单的模型。函数没有入参
      */
-    public abstract void handle();
+    public abstract void handle(/* 消息上下文 */);
 
 }

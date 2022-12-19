@@ -38,9 +38,9 @@ public class Application {
 
         // 提交请求
         // 方式一：直接通过 责任链构造器 调用
-        chain.handle();
+        chain.handle(/* 消息上下文 */);
         // 方式二：通过 链表 的头结点调用。
-        handlerA.handle();
+        handlerA.handle(/* 消息上下文 */);
 
 
     }

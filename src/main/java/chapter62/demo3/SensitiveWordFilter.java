@@ -1,4 +1,9 @@
-package chapter62;
+package chapter62.demo3;
+
+/**
+ * @author Xander Wu
+ * @date 2022/12/19 15:27
+ */
 
 import chapter62.depencence.Content;
 
@@ -36,7 +41,7 @@ import chapter62.depencence.Content;
  * @date 2022/1/14
  * </pre>
  */
-class SensitiveWordFilter {
+public class SensitiveWordFilter {
 
     // return true if content doesn't contain sensitive words.
     public boolean filter(Content content) {

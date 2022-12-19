@@ -31,7 +31,7 @@ public abstract class Handler {
      *
      * 此处 使用final来修饰方法，让此方法不能被重写，是为了防止 父类中的  handle()方法  被 子类 重写
      */
-    public final void handle() {
+    public final void handle(/* 消息上下文 */) {
 
         // 责任链模式 的典型
 //        boolean handled = doHandle();
@@ -41,18 +41,18 @@ public abstract class Handler {
 
 
         // 算法骨架 (填充业务)
-        doHandle();
+        doHandle(/* 消息上下文 */);
 
 
         // 责任链模式 的变体：
         // 无论成功与否，均将请求向下传递。 不再判断当前处理器是否成功处理
         if (next != null ) {
-            next.handle();  // 向下传递
+            next.handle(/* 消息上下文 */);  // 向下传递
         }
 
     }
 
     // 算法骨架。 模板
-    protected abstract void doHandle();
+    protected abstract void doHandle(/* 消息上下文 */);
 
 }

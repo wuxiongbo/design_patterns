@@ -62,7 +62,7 @@ public class Application {
         chain.addHandler(new HandlerB());
 
         // 提交请求
-        chain.handle();
+        chain.handle(/* 消息上下文 */);
 
     }
 }

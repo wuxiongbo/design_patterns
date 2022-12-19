@@ -13,7 +13,7 @@ import chapter62.demo1.v4.handler.Handler;
 public class HandlerA extends Handler {
 
     @Override
-    protected void doHandle() {
+    protected void doHandle(/* 消息上下文 */) {
 
         //...
         System.out.println("HandlerA.handle()");

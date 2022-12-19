@@ -30,20 +30,20 @@ public abstract class Handler {
      *
      * 也就是说，这里加 final 的目的是， 让 父类中 final 修饰的handle()方法 不可被 子类 重写
      */
-    public final void handle() {
+    public final void handle(/* 消息上下文 */) {
 
-        boolean handled = doHandle();
+        boolean handled = doHandle(/* 消息上下文 */);
 
 
         // 在 ‘当前处理器’ 判断 是否将调用动作 传递 给 ‘下一个处理器’
         if (successor != null && !handled) {
-            successor.handle();
+            successor.handle(/* 消息上下文 */);
         }
 
         // 不用返回判断结果
     }
 
     // 算法骨架
-    protected abstract boolean doHandle();
+    protected abstract boolean doHandle(/* 消息上下文 */);
 
 }

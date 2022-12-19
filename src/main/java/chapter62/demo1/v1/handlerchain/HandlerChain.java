@@ -5,7 +5,8 @@ import chapter62.demo1.v1.handler.Handler;
 /**
  * <p> 处理器链 </p>
  *
- * 个人理解： 本对象的职责更像 是 责任链 管理器。 可有可无。   放在 handler抽象类中也是可以的
+ * 个人理解：
+ * 本对象的职责更像 是 责任链 管理器。 可有可无。  放在 handler抽象类中，使用建造者模式 作为内部类构造器，也是可以的
  *
  * 单向连表
  *
@@ -42,7 +43,7 @@ public class HandlerChain {
     }
 
 
-    public void handle() {
+    public void handle(/* 消息上下文 */) {
         if (head != null) {
             // 从 ‘头结点’ 开始处理请求。
             head.handle();

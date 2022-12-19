@@ -14,7 +14,7 @@ import chapter62.demo1.v5.handler.IHandler;
 public class HandlerA implements IHandler {
 
     @Override
-    public void handle() {
+    public void handle(/* 消息上下文 */) {
 
         //...
         System.out.println("HandlerA.handle()");

@@ -16,7 +16,7 @@ public class HandlerB extends Handler {
 
     // 子类只需要实现 算法骨架
     @Override
-    protected boolean doHandle() {
+    protected boolean doHandle(/* 消息上下文 */) {
 
         boolean handled = false;
 

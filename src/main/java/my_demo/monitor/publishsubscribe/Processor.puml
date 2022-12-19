@@ -1,19 +1,30 @@
 @startuml
+'idea 类图一键生成。
+' jdk框架 Flow， 定义的几个类：
+' Flow
+' ├── Processor      一个 同时扮演 Subscriber 和 Publisher 的组件
+' ├── Publisher      发布者
+' ├── Subscriber     订阅者
+' └── Subscription   订阅器
 
 !theme plain
 top to bottom direction
 skinparam linetype ortho
 
+
 interface Processor<T, R> << interface >>
+
 interface Publisher<T> << interface >> {
   + subscribe(Subscriber<T>): void
 }
+
 interface Subscriber<T> << interface >> {
   + onNext(T): void
   + onError(Throwable): void
   + onComplete(): void
   + onSubscribe(Subscription): void
 }
+
 interface Subscription << interface >> {
   + request(long): void
   + cancel(): void

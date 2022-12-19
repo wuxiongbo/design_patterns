@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * 订阅器
+ * 消息 订阅器
+ *
  * @author Xander Wu
  * @date 2022/11/18 10:42
  */
@@ -56,11 +57,11 @@ public class SubscribePublish {
      * 订阅消息
      * 单独一个线程，专门用来帮助 消息订阅者  消费消息。
      */
-    private void subscribeMsg(){
-        this.threadPoolExecutor.execute(()->{
+    private void subscribeMsg() {
+        this.threadPoolExecutor.execute(() -> {
 
             // 订阅消息
-            while (true){
+            while (true) {
 
                 try {
                     this.notifyMsg();
@@ -78,15 +79,15 @@ public class SubscribePublish {
     public void subscribe(ISubscriber subscriber) {
         subscribers.add(subscriber);
     }
+
     public void unSubscribe(ISubscriber subscriber) {
         subscribers.remove(subscriber);
     }
 
 
-
     public <Msg> void publish(String publisherName, Msg msg, boolean block) {
 
-        // 异步 阻塞
+        // <异步 阻塞>
         // 直接进行消息通知
         if (block) {
             // 及时消费消息，不缓存
@@ -95,13 +96,13 @@ public class SubscribePublish {
         }
 
 
-        // 异步 非阻塞
+        // <异步 非阻塞>
         // 消息存到队列，异步消费
         Message<Msg> message = new Message<>(publisherName, msg);
         // 入队消息队列，如果入队失败，说明队列满了。则需要等待
         if (!queue.offer(message)) {
 
-            while(!queue.offer(message)){
+            while (!queue.offer(message)) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(1000L);
                 } catch (InterruptedException e) {
@@ -112,7 +113,6 @@ public class SubscribePublish {
         }
 
     }
-
 
 
     // 队列消费后 通知所有的 订阅者
@@ -138,14 +138,13 @@ public class SubscribePublish {
                 subscriber.update(publisher, msg);
             } catch (Exception e) {
                 // ignore
-                System.out.println("类型转换异常,"+subscriber.getName() + e.getMessage());
+                System.out.println("类型转换异常," + subscriber.getName() + e.getMessage());
             }
 
         }
 
 
     }
-
 
 
 }

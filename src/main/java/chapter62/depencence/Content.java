@@ -1,7 +1,7 @@
 package chapter62.depencence;
 
 /**
- * <p>描述类的信息</p>
+ * <p>上下文</p>
  *
  * <pre>
  * @author wuxiongbo

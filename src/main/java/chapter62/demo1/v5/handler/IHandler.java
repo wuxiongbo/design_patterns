@@ -11,7 +11,7 @@ package chapter62.demo1.v5.handler;
 public interface IHandler {
 
     // 不返回处理结果。 不再判断 是否需要将行为继续向下传递
-    void handle();
+    void handle(/* 消息上下文 */);
 
 
     //  处理器，仅处理业务逻辑，

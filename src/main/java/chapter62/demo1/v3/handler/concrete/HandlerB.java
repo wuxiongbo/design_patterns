@@ -13,7 +13,7 @@ import chapter62.demo1.v3.handler.IHandler;
  */
 public class HandlerB implements IHandler {
     @Override
-    public boolean handle() {
+    public boolean handle(/* 消息上下文 */) {
 
         boolean handled = false;
 
