@@ -6,9 +6,11 @@ import org.reactivestreams.Subscription;
 import reactor.core.publisher.Flux;
 
 /**
- * Flux  发布者
+ * Flux 使用示例
  *
- * LambdaSubscriber   订阅者
+ * FluxArray            发布者
+ * StrictSubscriber     订阅者     类似的 还有 LambdaSubscriber
+ * ArraySubscription    订阅器
  *
  *
  * @author Xander Wu
@@ -22,9 +24,16 @@ public class FluxDemo {
 //                .subscribe(System.out::println);
 
 
-
+        // 订阅者
         Subscriber<String> subscriber = new Subscriber<>() {
-            //在订阅成功的时候，如何操作
+
+            /**
+             * 这里是，在订阅成功的时候，如何操作
+             * @param subscription   订阅器
+             *
+             * {@link Subscription} that allows requesting data via {@link Subscription#request(long)}
+             *
+             */
             @Override
             public void onSubscribe(Subscription subscription) {
                 //取最大数量的元素个数
@@ -53,11 +62,29 @@ public class FluxDemo {
 
 
 
-        Flux.just("test1", "test2", "test3")
-                //打印详细流日志
+        /*
+         * subscribe 方法的部分源码:
+         *
+         * public static <T> void subscribe(CoreSubscriber<? super T> s, T[] array) {
+         *      省略....
+         *
+         *      s.onSubscribe(new ArraySubscription<>(s, array));
+         *
+         *      省略....
+         * }
+         *
+         */
+
+
+        // 发布者
+        Flux
+                // 构建 发布者，并 发布数据
+                .just("test1", "test2", "test3")
+                // 打印详细流日志
                 .log()
-                //订阅消费
+                // 订阅 消费
                 .subscribe(subscriber);
+
 
     }
 }

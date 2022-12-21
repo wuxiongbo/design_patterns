@@ -4,6 +4,8 @@ import org.reactivestreams.Subscriber;
 
 /**
  *
+ * reactivestreams  接口的简单实现
+ *
  *
  * <a href="https://www.jianshu.com/p/d7fa576e50da"> 响应式编程入门之 Project Reactor </a>
  * @author Xander Wu

@@ -59,6 +59,7 @@ public class Handler implements Runnable {
                 read();
             }
             // 写事件
+            // 客户端将 数据写入到 ByteBuffer 后，被系统监听到。selector 被唤醒。从而进入到这里来。
             else if (sk.isWritable()) {
                 send();
             }
@@ -92,7 +93,7 @@ public class Handler implements Runnable {
     }
 
 
-    // 处理非IO操作(业务逻辑代码)
+    // 处理非IO操作： 1）二进制数据 转为 可读业务数据  2）组装待返回的业务数据(业务逻辑代码)
     private void process() {
         // 处理buffer中的数据
         input.flip();
@@ -106,7 +107,9 @@ public class Handler implements Runnable {
     }
 
     protected String doProcess(String msg) {
+
         System.out.println("服务器收到消息：" + msg);
+
         return "收到";
     }
 

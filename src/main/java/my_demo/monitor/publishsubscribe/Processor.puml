@@ -1,11 +1,14 @@
 @startuml
 'idea 类图一键生成。
-' jdk框架 Flow， 定义的几个类：
+' reactivestreams  或  Flow  的接口设计：
 ' Flow
-' ├── Processor      一个 同时扮演 Subscriber 和 Publisher 的组件
+' ├── Processor      一个 同时扮演 Subscriber 和 Publisher 的组件。
 ' ├── Publisher      发布者
 ' ├── Subscriber     订阅者
 ' └── Subscription   订阅器
+
+' 说明：处理者Processor 可以同时充当订阅者和发布者，起到转换  发布者————订阅者  管道 中的元素的作用。
+' https://www.jb51.net/article/240906.htm
 
 !theme plain
 top to bottom direction

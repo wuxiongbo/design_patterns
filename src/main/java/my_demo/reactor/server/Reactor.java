@@ -12,7 +12,11 @@ import java.util.concurrent.*;
  * <p>Reactor</p>
  * <p>
  * <p>
- * from, Netty源码之Reactor模式 <a href="https://www.toutiao.com/article/6982760949048476190/">...</a>
+ * from  <a href="https://www.toutiao.com/article/6982760949048476190/"> Netty源码之Reactor模式 </a>
+ *
+ *
+ * <a href = "https://blog.csdn.net/weixin_44471490/article/details/114606481"></a>
+ *
  *
  * <pre>
  * @author wuxiongbo
@@ -20,8 +24,9 @@ import java.util.concurrent.*;
  * </pre>
  */
 public class Reactor implements Runnable {
-    Selector selector;
-    ServerSocketChannel serverSocket;
+    // 中心I/O多路复用器
+    private final Selector selector;
+    private final ServerSocketChannel serverSocket;
 
     public Reactor(int port) throws IOException {
         // 创建serverSocket对象
@@ -59,7 +64,7 @@ public class Reactor implements Runnable {
             // EventLoop
             while (!Thread.interrupted()) {
 
-                // 读取就绪事件
+                // 获取 就绪事件
                 selector.select(1000 * 60);
 
                 // 获取已就绪的事件列表
@@ -83,6 +88,7 @@ public class Reactor implements Runnable {
             // 获取管道上的附加对象。 Acceptor、Handler
             Runnable r = (Runnable) key.attachment();
             if (r != null) {
+                // 这里可以改造成多线程
                 r.run();
             }
         }

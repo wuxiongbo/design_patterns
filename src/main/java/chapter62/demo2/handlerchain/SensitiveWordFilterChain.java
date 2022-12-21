@@ -30,7 +30,8 @@ public class SensitiveWordFilterChain {
             // 判断内容是否合法
             if (!filter.doFilter(content)) {
 
-                // 只要有处理器检测不通过，则 内容非法，返回false，不再向下传递请求。
+                // 只要有处理器检测不通过，则 内容非法
+                // 具体为，返回false，不再向下传递请求。
                 return false;
 
             }
