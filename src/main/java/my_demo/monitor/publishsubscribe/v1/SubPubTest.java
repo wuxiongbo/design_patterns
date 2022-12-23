@@ -32,14 +32,14 @@ import my_demo.monitor.publishsubscribe.v1.subpub.SubscribePublish;
  *
  * 个人总结：
  * 中间层 就像一个容器。
- * 订阅者 观察 这个容器。
+ * 订阅者 观察 中间层。
  * 发布者 发布消息时，将产生的消息扔到容器中就不管了。
- * 容器 监听到发布者扔消息过来了。 便开始 消费消息， 然后通知给 订阅者。
+ * 中间层 监听到 发布者 扔消息过来了。 便开始 消费消息， 然后主动 通知（推送）给 订阅者。
  *
  *
  * 发布者 ----- 中间层 ---- 订阅者
- * 订阅者 只与  中间层  进行交互
- * 发布者 也只与 中间层 进行交互
+ * 订阅者 只与  中间层   进行交互
+ * 发布者 也只与 中间层  进行交互
  *
  *
  * @author Xander Wu
@@ -65,15 +65,15 @@ public class SubPubTest {
         subscriber3.subscribe(subscribePublish);
 
 
+
+
         // 初始化 '发布者1'
         IPublisher<String> publisher1 = new PublisherImpOne<>("【发布者1】");
-        // 3）'发布者1' 委托 "订阅器"  进行消息发布
+        // 3）'发布者1' 将消息发布到  "订阅器"
         // 发布 String类型 消息 1
         publisher1.publish(subscribePublish,
                 "welcome", true);
         System.out.println("---------");
-
-
         // 发布 String类型 消息 2
         publisher1.publish(subscribePublish,
                 "to", true);
@@ -84,13 +84,11 @@ public class SubPubTest {
 
         // 初始化 '发布者2'
         IPublisher<Long> publisher2 = new PublisherImpOne<>("【发布者2】");
-        // 3）'发布者2' 委托 "订阅器"  进行消息发布
-
+        // 3）'发布者2'  将消息发布到  "订阅器"
         // 发布 Long类型 消息 3
         publisher2.publish(subscribePublish,
                 123L, true);
         System.out.println("---------");
-
         // 发布 Long类型 消息 4
         publisher1.publish(subscribePublish,
                 "my zone", false);

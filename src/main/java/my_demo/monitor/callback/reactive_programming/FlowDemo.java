@@ -7,6 +7,16 @@ import java.util.concurrent.SubmissionPublisher;
  * <p>响应流 Flow 的简单使用</p>
  *
  * SubmissionPublisher 发布-订阅 框架 的基本使用
+ * 队列长度默认为 256
+ *
+ *
+ * @see  SubmissionPublisher
+ * SubmissionPublisher{
+ *     //缓存 订阅器
+ *     BufferedSubscription<T> clients;
+ * }
+ *
+ *
  *
  * <a href="https://www.jb51.net/article/240906.htm"> java9新特性 Reactive Stream 响应式编程 API </a>
  *
@@ -17,6 +27,13 @@ public class FlowDemo {
 
     public static void main(String[] args) throws Exception {
 
+
+
+
+    }
+
+
+    public static void simpleTest() throws InterruptedException {
 
         // 1. 定义 发布者(生产者), 发布的数据类型是 Integer，
         //    本示例，直接使用jdk自带的 SubmissionPublisher 类， 它实现了 Publisher 接口。
@@ -43,16 +60,21 @@ public class FlowDemo {
              * 背压(反压) back pressure
              *
              * 说明：
-             * 订阅器 的初始化是这样代码
+             * 订阅器 的初始化是这段代码
              * BufferedSubscription<T> subscription =
-             *                new BufferedSubscription<T>(subscriber, executor, onNextHandler, array, max);
+             *                new BufferedSubscription<T>(
+             *                      subscriber,
+             *                      executor,
+             *                      onNextHandler,
+             *                      array,
+             *                      max);
              *
              */
             private Flow.Subscription subscription;
 
             @Override
             public void onSubscribe(Flow.Subscription subscription) {
-                System.out.println("保存订阅关系");
+                System.out.println("callback 1 保存订阅关系");
 
                 // 保存订阅关系, 需要用它来给发布者响应
                 this.subscription = subscription;
@@ -64,7 +86,7 @@ public class FlowDemo {
             @Override
             public void onNext(Integer item) {
                 // 接受到一个数据, 处理
-                System.out.println("接受到数据: " + item);
+                System.out.println("callback 2 接受到数据: " + item);
 
                 // 处理完调用request，再请求一个数据。  流量控制
                 this.subscription.request(1);
@@ -85,7 +107,7 @@ public class FlowDemo {
             @Override
             public void onComplete() {
                 // 全部数据处理完了(发布者关闭了)
-                System.out.println("处理完了!");
+                System.out.println("callback 3 处理完了!");
             }
 
         };
@@ -103,8 +125,9 @@ public class FlowDemo {
 
 
 
-        // 4. 生产数据, 并发布。 内部，会将 消息 缓存到 "订阅器" 里面的 数组(队列) 中
-        //   这里忽略数据生产过程
+        // 4. 生产 消息数据、 发布 消息数据。
+        //   内部，会将 消息 缓存到 "订阅器" 里面的 数组(队列) 中
+        //   这里简化数据的生产过程
         for (int i = 0; i < 3; i++) {
             System.out.println("生成数据:" + i);
             // submit 是个 block方法
@@ -118,15 +141,76 @@ public class FlowDemo {
 
 
 
-
         // 主线程延迟停止, 否则数据没有消费就会退出
         Thread.currentThread().join(10000L);
 
         // debug的时候, 下面这行需要有断点
         // 否则主线程结束无法debug
         System.out.println();
+    }
+
+    public static void backPressureTest() {
+
+        // 发布者
+        SubmissionPublisher<String> publisher = new SubmissionPublisher<>();
 
 
+        // 订阅者
+        Flow.Subscriber<String> subscriber = new Flow.Subscriber<>() {
+
+            /**
+             * 订阅器
+             * {@link SubmissionPublisher.BufferedSubscription}
+             */
+            private Flow.Subscription subscription;
+
+            @Override
+            public void onSubscribe(Flow.Subscription subscription) {
+                this.subscription = subscription;
+                //向数据发布者请求一个数据
+                this.subscription.request(1);
+            }
+
+            @Override
+            public void onNext(String item) {
+                System.out.println("接收到 publisher 发来的消息了：" + item);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                this.subscription.request(1);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                //出现异常，就会来到这个方法，此时直接取消订阅即可
+                this.subscription.cancel();
+            }
+
+            @Override
+            public void onComplete() {
+                //发布者的所有数据都被接收，并且发布者已经关闭
+                System.out.println("数据接收完毕");
+            }
+        };
+
+
+
+        // 添加 订阅者。 这一步会在 发布者中 创建并缓存 一份 订阅器
+        publisher.subscribe(subscriber);
+
+
+
+        // 发布500条消息
+        for (int i = 0; i < 500; i++) {
+            System.out.println("i--------->" + i);
+            publisher.submit("hello:" + i);
+        }
+
+
+        //关闭发布者
+        publisher.close();
     }
 
 }

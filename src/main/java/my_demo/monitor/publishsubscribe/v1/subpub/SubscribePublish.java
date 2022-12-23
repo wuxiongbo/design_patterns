@@ -55,12 +55,15 @@ public class SubscribePublish {
 
     /**
      * 订阅消息
-     * 单独一个线程，专门用来帮助 消息订阅者  消费消息。
+     * 单独一个线程，专门用来帮助  "订阅者"  消费消息。
      */
     private void subscribeMsg() {
+
         this.threadPoolExecutor.execute(() -> {
 
             // 订阅消息
+            // （为什么这里称为订阅消息，而不是消费消息？ 因为这里的订阅，是站在 订阅者的 角度来讲的。
+            //   严格上来讲，当前 函数接口 是划到 订阅模块的，即，我来帮 订阅者订阅消息，订阅者们你们不用管，消息来了我会通知你们）
             while (true) {
 
                 try {
@@ -72,6 +75,7 @@ public class SubscribePublish {
             }
 
         });
+
     }
 
 
@@ -99,7 +103,9 @@ public class SubscribePublish {
         // <异步 非阻塞>
         // 消息存到队列，异步消费
         Message<Msg> message = new Message<>(publisherName, msg);
-        // 入队消息队列，如果入队失败，说明队列满了。则需要等待
+
+        // 消息发布：
+        // 将消息 入队 消息队列，如果入队失败，说明队列满了。则需要重试
         if (!queue.offer(message)) {
 
             while (!queue.offer(message)) {
@@ -111,6 +117,7 @@ public class SubscribePublish {
             }
 
         }
+
 
     }
 
@@ -126,6 +133,8 @@ public class SubscribePublish {
             this.notifyMsg(message.getPublisher(), message.getMsg());
 
         }
+
+
     }
 
 

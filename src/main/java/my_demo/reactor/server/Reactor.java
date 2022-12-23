@@ -12,10 +12,33 @@ import java.util.concurrent.*;
  * <p>Reactor</p>
  * <p>
  * <p>
- * from  <a href="https://www.toutiao.com/article/6982760949048476190/"> Netty源码之Reactor模式 </a>
+ * from
+ * <a href="https://www.toutiao.com/article/6982760949048476190/"> Netty源码之Reactor模式 </a>
+ * <a href = "https://blog.csdn.net/weixin_44471490/article/details/114606481"> Reactor 线程模型 </a>
  *
  *
- * <a href = "https://blog.csdn.net/weixin_44471490/article/details/114606481"></a>
+ *
+ * 命令式编程   HOW
+ *   一步一步告诉计算机怎么做。 如：if/else/for等控制语句、表达式、数据变量的操作、赋值等指令
+ *
+ * 声明式编程   WHAT
+ *   告诉计算机应该做什么想要什么结果，但不关注具体要怎么做。
+ *   如： sql     SELECT * FROM collection WHERE num > 5
+ *       spring  事务注解
+ *
+ * 函数式编程
+ *   “函数第一位”，即，函数可以出现在任何地方，比如你可以把  函数作为参数  传递给  另一个函数，不仅如此，你还可以 将函数作为 返回值。
+ *
+ * 响应式编程
+ *   观察者模式、Reactor设计模式。
+ *   不主动调用某个请求的API，而是通过 事先 注册对应 接口，实现未来某个时刻，通过事件 触发执行该接口
+ *
+ *   excel 计算函数。将计算函数提前写好。 输入数据流，动态变动结果
+ *
+ *
+ * 面向对象编程
+ *  从问题域出发，将封装、继承、多态的语言特性映射到现实世界
+ *  对象 作为程序的基本组成单元
  *
  *
  * <pre>
@@ -44,7 +67,7 @@ public class Reactor implements Runnable {
         // serverSocket.register(selector) 其实等价于 selector.register(this)
         SelectionKey sk = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
 
-        // 绑定附加对象
+        // 绑定附加对象 Acceptor 到 key
         sk.attach(new Acceptor(serverSocket, selector));
 
 //         还可以使用 SPI provider，来创建 selector 和 serverSocket对象。如下：
@@ -64,7 +87,7 @@ public class Reactor implements Runnable {
             // EventLoop
             while (!Thread.interrupted()) {
 
-                // 获取 就绪事件
+                // 获取 所有的就绪事件
                 selector.select(1000 * 60);
 
                 // 获取已就绪的事件列表
@@ -95,6 +118,12 @@ public class Reactor implements Runnable {
     }
 
 
+    /**
+     * 入口 {@link Reactor#run()}
+     * @param args
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws IOException, InterruptedException {
         // 单线程
         ThreadPoolExecutor executorService = new ThreadPoolExecutor(

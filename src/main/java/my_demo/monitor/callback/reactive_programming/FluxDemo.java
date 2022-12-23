@@ -13,17 +13,26 @@ import reactor.core.publisher.Flux;
  * ArraySubscription    订阅器
  *
  *
+ * 背压的概念：
+ * <a href="https://developer.aliyun.com/article/939660"> 关于『背压』这个错误翻译 </a>
+ *
+ * 响应式的应用——webflux
+ * <a href="https://zhuanlan.zhihu.com/p/559158740"> 一文弄懂 Spring WebFlux 的来龙去脉 </a>
+ *
  * @author Xander Wu
  * @date 2022/12/6 13:34
  */
 @Slf4j
 public class FluxDemo {
     public static void main(String[] args) {
-//        Flux.just("11", "22", "33")
-//                .log()
-//                .subscribe(System.out::println);
+        Flux.just("11", "22", "33")
+                .log()
+                .subscribe(System.out::println);
 
 
+    }
+
+    public static void simpleFluxTest(){
         // 订阅者
         Subscriber<String> subscriber = new Subscriber<>() {
 
@@ -84,7 +93,5 @@ public class FluxDemo {
                 .log()
                 // 订阅 消费
                 .subscribe(subscriber);
-
-
     }
 }

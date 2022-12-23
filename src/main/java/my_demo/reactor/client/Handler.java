@@ -45,8 +45,6 @@ public class Handler implements Runnable {
         this.selector = selector;
         this.socket = socket;
 
-        this.socket.configureBlocking(false);
-
 
         // 注册socket； 关注 读事件
         // selector.register(socket);
@@ -54,7 +52,7 @@ public class Handler implements Runnable {
         // socket.register(selector) 其实等价于 selector.register(this)
         sk = this.socket.register(selector, SelectionKey.OP_READ);
 
-        // 为key 覆盖绑定 附加对象 Handler。  这行代码，使得 Handler 对象得以保活
+        // 为key 覆盖 绑定附加对象 Handler。  这行代码，使得 Handler 对象得以保活
         sk.attach(this);
 
 
@@ -96,6 +94,7 @@ public class Handler implements Runnable {
         // 关注 读、写事件
         sk = this.socket.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
         sk.attach(this);
+
         state = SENDING;
     }
 

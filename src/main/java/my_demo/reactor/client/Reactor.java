@@ -33,7 +33,7 @@ public class Reactor implements Runnable {
 
 
     // 构造方法，初始化
-    // 中心I/O多路复用器
+    // selector  中心I/O多路复用器
     private final Selector selector;
     private final SocketChannel socket;
 
@@ -54,8 +54,7 @@ public class Reactor implements Runnable {
         // 将serverSocket注册到selector上，让其帮忙监听 CONNECT 事件。
         // 以下两种写法：
 
-        // selector.register(this)
-//        SelectionKey sk = serverSocket.register(selector, 0);
+//        SelectionKey sk = socket.register(selector, 0);
 //        sk.interestOps(SelectionKey.OP_CONNECT);
 
         SelectionKey sk = socket.register(selector, SelectionKey.OP_CONNECT);
@@ -64,6 +63,7 @@ public class Reactor implements Runnable {
 
         // 为key 绑定附加对象 Connector。
         sk.attach(new Connector(socket, selector));
+
 
 
 //         还可以使用 SPI provider，来创建 selector 和 serverSocket对象。如下：
@@ -120,7 +120,7 @@ public class Reactor implements Runnable {
         // 校验 key是否被取消
         if (key.isValid()) {
 
-            // 获取 与当前管道绑定的 附加对象。 Connector、Handler
+            // 获取 与当前管道绑定的 附加对象。 Connector 、Handler
             Runnable r = (Runnable) key.attachment();
             if (r != null) {
                 r.run();
@@ -130,8 +130,12 @@ public class Reactor implements Runnable {
     }
 
 
-
-
+    /**
+     * 入口 {@link Reactor#run()}
+     * @param args
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws IOException, InterruptedException {
         // 单线程
         ThreadPoolExecutor executorService = new ThreadPoolExecutor(

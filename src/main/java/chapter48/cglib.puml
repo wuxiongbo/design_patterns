@@ -7,7 +7,17 @@
 
 '调用 proxy 的方法时，决定了 传入拦截器 的 MethodProxy。
 '因此，只要知道了对应的 MethodProxy，就可以同时知道 原方法名、生成方法名 的索引及签名
-'通常，代理方法 methodA、methodB 供外部调用，内部生成方法 CGLIB${xxx}${num} 供内部调用
+'通常，代理方法 methodA、methodB 供外部调用，内部生成方法 CGLIB${xxx}${num} 供内部调用 ，以下简写为 originMethod
+
+' 详细步骤：
+' 1）生成的 proxy代理类
+' 2）静态加载为每个 方法创建 MethodProxy
+' 3）proxy代理类 代理方法 调用  MethodInterceptor
+' 4）MethodInterceptor 调用 MethodProxy
+' 5）MethodProxy 获取 FastClass。 用方法签名为方法查找到索引
+' 6）MethodProxy 在 FastClass 中，通过 索引找到 方法的调用
+' 7）在 FastClass 中调用 proxy代理类 的 被代理类原始方法。
+'    如果调用代理方法，则会回到第3步。无限死循环
 
 interface Callback
 interface MethodInterceptor #pink extends Callback

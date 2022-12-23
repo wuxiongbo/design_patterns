@@ -44,7 +44,8 @@ public class Handler implements Runnable {
         // socket.register(selector) 其实等价于 selector.register(this)
         sk = this.socket.register(selector, SelectionKey.OP_READ);
 
-        // 绑定附加对象
+        // 覆盖 绑定附加对象 Handler 到  key;
+        // 这行代码 使 Handler 对象 得以保活
         sk.attach(this);
 
         selector.wakeup();
