@@ -21,6 +21,10 @@ import org.apache.commons.chain.impl.ContextBase;
  *     Apache Commons Chain(2) -开源责任链模式（apache commons chain）
  * </a>
  *
+ * <a href="https://blog.csdn.net/ProMonkey_chen/article/details/96702524">
+ *     Apache Commons Chain 简单介绍
+ * </a>
+ *
  * @author Xander Wu
  * @date 2022/12/9 13:43
  */
