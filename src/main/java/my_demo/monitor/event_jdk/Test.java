@@ -1,6 +1,5 @@
 package my_demo.monitor.event_jdk;
 
-import my_demo.monitor.event_jdk.event.OpenEvent;
 import my_demo.monitor.event_jdk.eventsource.WindowsEventSource;
 import my_demo.monitor.event_jdk.listener.impl.CloseWindowsListener;
 import my_demo.monitor.event_jdk.listener.impl.OpenWindowsListener;
@@ -51,12 +50,10 @@ public class Test {
         // 事件:
         // 在事件源中产生，注册的监听器 closeWindowsListener，只关注 关闭窗口事件
         CloseWindowsListener closeWindowsListener = new CloseWindowsListener();
-//        windows.addWindowListener(closeWindowsListener);
         closeWindowsListener.register(windows);
 
 
         OpenWindowsListener openWindowsListener = new OpenWindowsListener();
-//        windows.addWindowListener(openWindowsListener);
         openWindowsListener.register(windows);
 
 

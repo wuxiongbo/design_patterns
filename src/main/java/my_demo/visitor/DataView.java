@@ -14,10 +14,10 @@ import java.util.List;
 
 /**
  *
- * 校长、家长  观察  学生、老师 的 视角点 不一样
- *
- *
- *
+ * 校长、家长
+ *    观察
+ * 学生、老师
+ *    的 视角点 不一样
  *
  * @author Xander Wu
  * @date 2022/11/3 11:21
@@ -30,11 +30,13 @@ public class DataView {
     List<User> userList = new ArrayList<>();
 
     public DataView() {
+        // 学生
         userList.add(new Student("谢飞机", "重点班", "一年一班"));
         userList.add(new Student("windy", "重点班", "一年一班"));
         userList.add(new Student("大毛", "普通班", "二年三班"));
         userList.add(new Student("Shing", "普通班", "三年四班"));
 
+        // 老师
         userList.add(new Teacher("BK", "特级教师", "一年一班"));
         userList.add(new Teacher("娜娜Goddess", "特级教师", "一年一班"));
         userList.add(new Teacher("dangdang", "普通教师", "二年三班"));
@@ -51,14 +53,13 @@ public class DataView {
 
 
 
-
     public static void main(String[] args) {
         DataView dataView = new DataView();
 
-        logger.info("\r\n家长视角访问：");
+        logger.info("\r\n家长视角，观察访问：");
         dataView.show(new Parent());     // 家长
 
-        logger.info("\r\n校长视角访问：");
+        logger.info("\r\n校长视角，观察访问：");
         dataView.show(new Principal());  // 校长
     }
 

@@ -25,7 +25,7 @@ import java.util.List;
 public class CrudEventSource implements IEventSource {
 
     // 此列表，用来维护 各个监听器（即，观察者）
-    private List<IListener> listeners = new ArrayList<>();
+    private final List<IListener> listeners = new ArrayList<>();
 
 
     // 注册监听器
@@ -50,13 +50,21 @@ public class CrudEventSource implements IEventSource {
     }
 
 
+
+
+
+
+
     /**
-     * 事件源（被观察者） 只负责 “产生”并“通知” 事件
+     * =========事件源（被观察者） 只负责 “产生”并“通知” 事件=============
+     * 增删改查事件
      */
+
+
     public void save(){
         // 产生事件
         System.out.println("CrudEventSource 产生‘插入’事件");
-        IEvent saveEvent = new CrudEvent(this,"save");
+        IEvent saveEvent = new CrudEvent(this, CrudEvent.MethodName.SAVE);
 
 
         // 通知监听器
@@ -65,7 +73,7 @@ public class CrudEventSource implements IEventSource {
     public void remove(){
         // 产生事件
         System.out.println("CrudEventSource 产生‘删除’事件");
-        IEvent removeEvent = new CrudEvent(this,"remove");
+        IEvent removeEvent = new CrudEvent(this,CrudEvent.MethodName.REMOVE);
 
 
         // 通知监听器
@@ -74,7 +82,7 @@ public class CrudEventSource implements IEventSource {
     public void modify(){
         // 产生事件
         System.out.println("CrudEventSource 产生‘修改’事件");
-        IEvent modifyEvent = new CrudEvent(this,"modify");
+        IEvent modifyEvent = new CrudEvent(this,CrudEvent.MethodName.MODIFY);
 
 
         // 通知监听器
@@ -83,7 +91,7 @@ public class CrudEventSource implements IEventSource {
     public void find(){
         // 产生事件
         System.out.println("CrudEventSource 触发了‘查询’事件");
-        IEvent findEvent = new CrudEvent(this,"find");
+        IEvent findEvent = new CrudEvent(this,CrudEvent.MethodName.FIND);
 
 
         // 通知监听器

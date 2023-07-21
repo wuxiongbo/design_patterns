@@ -14,7 +14,7 @@ import my_demo.monitor.event.event.IEvent;
  * @date 2021/7/22
  * </pre>
  */
-public class CListener  implements IListener {
+public class CListener implements IListener {
 
 
     @Override

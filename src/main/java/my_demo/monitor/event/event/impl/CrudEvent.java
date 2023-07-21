@@ -35,13 +35,13 @@ public class CrudEvent implements IEvent {
     public String getEventType() {
         String eventType;
 
-        if (methodName.startsWith("save")){
+        if (methodName.startsWith(MethodName.SAVE)){
             eventType = CREATE_EVENT;
-        }else if (methodName.startsWith("remove")){
+        }else if (methodName.startsWith(MethodName.REMOVE)){
             eventType = DELETE_EVENT;
-        }else if (methodName.startsWith("modify")){//修改
+        }else if (methodName.startsWith(MethodName.MODIFY)){
             eventType = UPDATE_EVENT;
-        }else if (methodName.startsWith("find")){
+        }else if (methodName.startsWith(MethodName.FIND)){
             eventType = RETRIEVE_EVENT;
         }else {
             eventType = "have not this event type";
@@ -49,5 +49,13 @@ public class CrudEvent implements IEvent {
 
         return eventType;
     }
+
+    public interface MethodName{
+        String SAVE = "save";
+        String REMOVE = "remove";
+        String MODIFY = "modify";
+        String FIND = "find";
+    }
+
 }
 
