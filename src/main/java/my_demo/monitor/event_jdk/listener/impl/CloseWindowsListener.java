@@ -18,8 +18,12 @@ public class CloseWindowsListener implements IListener<CloseEvent> {
 
     @Override
     public void handleEvent(CloseEvent event) {
+
+        // 这部分代表我们的业务逻辑
         System.out.println("CloseWindowsListener 监听到closeWindows事件，do close");
-        event.doEvent();
+
+        // 这部分代表框架对事件的处理
+        IListener.super.handleEvent(event);
     }
 
     @Override

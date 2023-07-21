@@ -29,7 +29,7 @@ public class Test {
         windowsListener.register(windows);
 
 
-        // 3）触发事件
+        // 3）触发开窗事件
         windows.doOpenWindows();
     }
 
@@ -61,9 +61,11 @@ public class Test {
 
 
 
-        //3）事件源 触发 窗口关闭动作，产生 关闭事件。
+        //3）事件源 触发 事件
+        // 窗口关闭动作，产生 关闭事件。
         windows.doCloseWindows();
 
+        // 窗口开启动作，产生 开启事件。
         windows.doOpenWindows();
 
         //到了这里，是不是 类似按钮注册监听器，然后点击触发点击事件，执行监听器中对应事件的动作

@@ -73,4 +73,5 @@ public class WindowsEventSource {
         System.out.println("=====触发事件=====");
         this.notifyListenerEvents(openWindowsEvent);
     }
+
 }

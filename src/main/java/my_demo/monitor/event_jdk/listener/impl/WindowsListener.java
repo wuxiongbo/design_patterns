@@ -19,6 +19,7 @@ public class WindowsListener implements IListener<PrintEvent> {
     public void handleEvent(PrintEvent event) {
 
         // 拿感兴趣的事件，对事件响应。
+        // 这部分代表我们的业务逻辑
         if(OPENWINDOWS.equals(event.eventType())) {
             System.out.println("WindowsListener 监听到openWindows事件，do open");
         }else if(CLOSEWINDOWS.equals(event.eventType())){
@@ -27,7 +28,8 @@ public class WindowsListener implements IListener<PrintEvent> {
             System.out.println("WindowsListener 监听到windows事件，do something");
         }
 
-        event.doEvent();
+        // 这部分代表框架对事件的处理
+        IListener.super.handleEvent(event);
     }
 
     @Override

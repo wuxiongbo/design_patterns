@@ -19,7 +19,11 @@ public class OpenWindowsListener implements IListener<OpenEvent> {
 
     @Override
     public void handleEvent(OpenEvent event) {
+
+        // 这部分代表我们的业务逻辑
         System.out.println("OpenWindowsListener 监听到 openWindows事件，do open");
+
+        // 这部分代表框架对事件的处理
         IListener.super.handleEvent(event);
     }
 
