@@ -38,6 +38,12 @@ public class ToolApplication {
 
 
 
+
+    /**
+     * 获取资源文件
+     * @param resourceDirectory
+     * @return
+     */
     private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {
 
         List<ResourceFile> resourceFiles = new ArrayList<>();

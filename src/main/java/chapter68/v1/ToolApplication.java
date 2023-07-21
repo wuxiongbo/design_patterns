@@ -40,6 +40,34 @@ import java.util.List;
  */
 public class ToolApplication {
 
+    public static void main(String[] args) {
+
+        // 提取器
+        Extractor extractor = new Extractor();
+
+        // 文件资源
+        List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
+
+
+        // 尝试 通过 方法重载 实现扩展
+        for (ResourceFile resourceFile : resourceFiles) {
+            // 尝试用 Extractor处理业务， 发现编译不通过。
+            // 原因是，“多态” 无法在 编译时识别 ，从而无法动态的 向下转型。
+//            extractor.extract2txt(resourceFile);
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     // 资源文件列表
     private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {
 
@@ -55,20 +83,5 @@ public class ToolApplication {
 
     }
 
-
-    public static void main(String[] args) {
-
-        Extractor extractor = new Extractor();
-
-        List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
-
-        // 尝试 通过 方法重载 实现扩展
-        for (ResourceFile resourceFile : resourceFiles) {
-            // 尝试用 Extractor处理业务， 发现编译不通过。
-            // 原因是，“多态” 无法编译时 识别，从而向下转型。
-//            extractor.extract2txt(resourceFile);
-        }
-
-    }
 
 }
