@@ -10,6 +10,6 @@ import my_demo.bridg.v1.ICoffee;
 public class CoffeeWithSugar implements ICoffee {
     @Override
     public void orderCoffee(int count) {
-        System.out.println(String.format("加糖咖啡%d杯",count));
+        System.out.printf("加糖咖啡%d杯%n",count);
     }
 }

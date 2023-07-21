@@ -40,9 +40,10 @@ public class PrintEvent extends EventObject {
         // 获取 事件源
         WindowsEventSource eventSource = (WindowsEventSource) this.getSource();
 
+        System.out.println("↓↓↓↓↓事件信息↓↓↓↓↓");
         System.out.println("当前事件的 事件源:" + eventSource.getClass().getName());
-
-        System.out.println(eventName);
+        System.out.println("当前事件的 类型:" + eventName);
+        System.out.println("↑↑↑↑↑事件信息↑↑↑↑↑");
     }
 
     public String eventType(){

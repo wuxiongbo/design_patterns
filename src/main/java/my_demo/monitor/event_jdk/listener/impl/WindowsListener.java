@@ -20,11 +20,18 @@ public class WindowsListener implements IListener<PrintEvent> {
 
         // 拿感兴趣的事件，对事件响应。
         if(OPENWINDOWS.equals(event.eventType())) {
-            System.out.println("WindowsListener 监听到openWindows事件，do Open");
+            System.out.println("WindowsListener 监听到openWindows事件，do open");
         }else if(CLOSEWINDOWS.equals(event.eventType())){
-            System.out.println("WindowsListener 监听到closeWindows事件，do Close");
+            System.out.println("WindowsListener 监听到closeWindows事件，do close");
+        }else {
+            System.out.println("WindowsListener 监听到windows事件，do something");
         }
 
         event.doEvent();
+    }
+
+    @Override
+    public String toString() {
+        return "WindowsListener";
     }
 }

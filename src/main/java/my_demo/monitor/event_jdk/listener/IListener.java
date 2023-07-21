@@ -1,5 +1,9 @@
 package my_demo.monitor.event_jdk.listener;
 
+import my_demo.monitor.event_jdk.event.OpenEvent;
+import my_demo.monitor.event_jdk.event.base.PrintEvent;
+import my_demo.monitor.event_jdk.eventsource.WindowsEventSource;
+
 import java.util.EventListener;
 import java.util.EventObject;
 
@@ -21,12 +25,18 @@ import java.util.EventObject;
  * @date 2021/6/16
  * </pre>
  */
-public interface IListener<E extends EventObject> extends EventListener {
+public interface IListener<E extends PrintEvent> extends EventListener {
 
     String OPENWINDOWS= "openWindows";
     String CLOSEWINDOWS= "closeWindows";
 
     // 事件处理器
-    void handleEvent(E event);
+    default void handleEvent(E event) {
+        event.doEvent();
+    }
+
+   default void register(WindowsEventSource eventSource){
+       eventSource.addWindowsListener(this);
+   }
 
 }
