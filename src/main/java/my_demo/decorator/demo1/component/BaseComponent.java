@@ -10,6 +10,9 @@ package my_demo.decorator.demo1.component;
  */
 public abstract class BaseComponent {
 
+    /**
+     * 操作
+     */
     public abstract void operation();
 
 }

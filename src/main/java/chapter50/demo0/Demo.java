@@ -35,7 +35,7 @@ public class Demo {
      *      |
      *     继承
      *      |
-     * FilterInputStream
+     * FilterInputStream  注意是 Filter ，不是File
      *      |
      *     继承
      *      |

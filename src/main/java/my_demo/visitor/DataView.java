@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * 模拟背景： 观察者，观察用户数据。 不同观察者关注的用户数据不一样。
  * 校长、家长
  *    观察
  * 学生、老师
@@ -44,7 +44,7 @@ public class DataView {
 
     }
 
-    // 展示
+    // 向访问者展示数据
     public void show(Visitor visitor) {
         for (User user : userList) {
             user.accept(visitor);
@@ -57,10 +57,12 @@ public class DataView {
         DataView dataView = new DataView();
 
         logger.info("\r\n家长视角，观察访问：");
-        dataView.show(new Parent());     // 家长
+        dataView.show(new Parent());
+        // 家长
 
         logger.info("\r\n校长视角，观察访问：");
-        dataView.show(new Principal());  // 校长
+        dataView.show(new Principal());
+        // 校长
     }
 
 }

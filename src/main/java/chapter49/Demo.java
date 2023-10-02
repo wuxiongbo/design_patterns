@@ -38,7 +38,7 @@ import java.sql.Statement;
  *
  * 理解方式1 ：解耦
  *      将 “抽象” 和 “实现”  `解耦`，让它们可以独立变化。
- *          (注意：这里的 抽象、实现  并非指的 ‘类或接口’ 的 抽象、实现，而是 ‘业务侧’ 的 抽象、实现)
+ *          (注意：这里的 抽象、实现  并非指的 ‘类或接口’ 的 抽象、实现  ，而是 ‘业务侧’ 的 抽象、实现)
  *      这种理解方式比较特别，应用场景也不多。
  *
  * 理解方式2 ：扩展
@@ -66,22 +66,24 @@ import java.sql.Statement;
  *
  * @see Driver
  * Driver 类。  业务的“实现”
- * public class Driver extends NonRegisteringDriver implements java.sql.Driver {
+ * @code
+ *   public class Driver extends NonRegisteringDriver implements java.sql.Driver {
  *
- *     // Register ourselves with the DriverManager
- *     static {
- *         try {
- *             // 依赖注入 Driver。 为接下来的 "桥接"  作准备
- *             java.sql.DriverManager.registerDriver(new Driver());
- *         } catch (SQLException E) {
- *             throw new RuntimeException("Can't register driver!");
- *         }
- *     }
+ *       // Register ourselves with the DriverManager
+ *       static {
+ *           try {
+ *               // 依赖注入 Driver。 为接下来的 "桥接"  作准备
+ *               java.sql.DriverManager.registerDriver(new Driver());
+ *           } catch (SQLException E) {
+ *               throw new RuntimeException("Can't register driver!");
+ *           }
+ *       }
  *
- *     public Driver() throws SQLException {
- *         // Required for Class.forName().newInstance()
- *     }
- * }
+ *       public Driver() throws SQLException {
+ *           // Required for Class.forName().newInstance()
+ *       }
+ *   }
+ *
  *
  *
  *

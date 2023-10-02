@@ -4,7 +4,7 @@ import my_demo.decorator.demo1.component.BaseComponent;
 import my_demo.decorator.demo1.decorator.Decorator;
 
 /**
- * <p> 具体装饰器 </p>
+ * <p> 具体装饰器 B功能</p>
  *
  * <pre>
  * @author wuxiongbo
