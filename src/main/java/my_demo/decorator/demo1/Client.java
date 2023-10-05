@@ -52,7 +52,7 @@ public class Client {
 
         // 第一次装饰
         Decorator objDecoratorA = new ConcreteDecoratorA(c1);
-        objDecoratorA .operation();
+        objDecoratorA.operation();
 
         System.out.println("------------------------------------------------");
 

@@ -22,7 +22,7 @@ public class ConcreteDecoratorA extends Decorator {  // 装饰器 继承了 抽�
     // 装饰器 对原始类的操作，进行装饰增强
     @Override
     public void operation() {
-
+        // ...增强逻辑
         operationFirst();
 
 
@@ -30,22 +30,22 @@ public class ConcreteDecoratorA extends Decorator {  // 装饰器 继承了 抽�
         super.operation();
 
 
-        anotherOperation();
-
+        // ...功能迭代新增逻辑
+        anotherNewOperation();
+        // ...增强逻辑
         operationLast();
-
     }
 
 
     private void operationFirst(){
-        System.out.println("operationFirst say");
+        System.out.println("operationFirst say ...DecoratorA");
     }
     private void operationLast(){
-        System.out.println("operationLast say");
+        System.out.println("operationLast say ...DecoratorA");
     }
     //新功能
-    private void anotherOperation() {
-        System.out.println("another operation");
+    private void anotherNewOperation() {
+        System.out.println("another operation ...DecoratorA");
     }
 
 }
