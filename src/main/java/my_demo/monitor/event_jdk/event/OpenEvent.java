@@ -3,6 +3,7 @@ package my_demo.monitor.event_jdk.event;
 import my_demo.monitor.event_jdk.event.base.PrintEvent;
 
 /**
+ * 开窗事件
  * @author Xander Wu
  * @date 2022/11/4 18:10
  */

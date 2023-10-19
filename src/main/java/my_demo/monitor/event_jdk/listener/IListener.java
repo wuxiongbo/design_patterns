@@ -9,13 +9,13 @@ import java.util.EventObject;
 
 /**
  * <p>监听器接口</p>
- *
+ * <p>
  * EventListener 是 所有事件监听器接口都必须扩展的标记接口。
- *
+ * <p>
  * 关键要素：
- *  1.监听器标记
- *  2.事件处理器(能接受到事件源)
- *
+ * 1.监听器标记
+ * 2.事件处理器(能接受到事件源)
+ * <p>
  * 监听器的工作步骤：
  * 1.将监听器绑定到事件源。即，注册监听器
  * 2.事件发生后，触发监听器的成员方法。即，传递事件对象 给 事件处理器。
@@ -27,16 +27,16 @@ import java.util.EventObject;
  */
 public interface IListener<E extends PrintEvent> extends EventListener {
 
-    String OPENWINDOWS= "openWindows";
-    String CLOSEWINDOWS= "closeWindows";
+    String OPENWINDOWS = "openWindows";
+    String CLOSEWINDOWS = "closeWindows";
 
     // 事件处理器
     default void handleEvent(E event) {
         event.doEvent();
     }
 
-   default void register(WindowsEventSource eventSource){
-       eventSource.addWindowsListener(this);
-   }
+    default void register(WindowsEventSource eventSource) {
+        eventSource.addWindowsListener(this);
+    }
 
 }

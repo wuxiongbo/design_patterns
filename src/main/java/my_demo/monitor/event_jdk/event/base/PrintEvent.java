@@ -1,7 +1,10 @@
 package my_demo.monitor.event_jdk.event.base;
 
+import my_demo.monitor.event_jdk.eventsource.WindowsEventSource;
+import java.util.EventObject;
+
 /**
- * <p>事件</p>
+ * <p>打印事件</p>
  *
  *  关键要素：提供 事件源 以及  其他数据。
  *
@@ -17,10 +20,6 @@ package my_demo.monitor.event_jdk.event.base;
  * @date 2021/6/16
  * </pre>
  */
-import my_demo.monitor.event_jdk.eventsource.WindowsEventSource;
-
-import java.util.EventObject;
-
 public class PrintEvent extends EventObject {
     private static final long serialVersionUID = 1L;
 

@@ -1,7 +1,6 @@
 package my_demo.monitor.event_jdk.listener.impl;
 
 import my_demo.monitor.event_jdk.event.CloseEvent;
-import my_demo.monitor.event_jdk.eventsource.WindowsEventSource;
 import my_demo.monitor.event_jdk.listener.IListener;
 
 /**
