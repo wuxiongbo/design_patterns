@@ -28,7 +28,7 @@ public class Main {
 
         List<Integer> numbers = Stream.generate(() -> new SplittableRandom(47).nextInt(1000))
                 .limit(10)
-                .collect(Collectors.toList());
+                .toList();
         // 将生产出的数据，闭包到Seq中。
         Seq<Integer> myStream1 = numbers::forEach;
 
