@@ -14,7 +14,6 @@ import java.util.stream.StreamSupport;
 /**
  *
  *  <a href="https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw">参考文档</a>
- *
  */
 public class Main {
     public static void main(String[] args) {
@@ -61,6 +60,8 @@ public class Main {
         // 2） map: integer -》String
         // 3） consumer: 打印 String
         mapAndThanForEach.consume(System.out::println);
+        System.out.println("class");
+        mapAndThanForEach.consume(e-> System.out.println(e.toString() + " " + e.getClass().toString()));
 
 
         System.out.println("--------------------------");
@@ -69,10 +70,12 @@ public class Main {
         List<Integer> list2 = Arrays.asList(4, 5, 6);
         List<List<Integer>> lists = List.of(list1, list2);
 
-        Seq<List<Integer>> stream1 = lists::forEach;
-        Seq<Integer> integerSeq = stream1.flatMap(Main::seq);
+        Seq<List<Integer>> listSeq = lists::forEach;
+        Seq<Integer> integerSeq = listSeq.flatMap(Main::seq);
 
         integerSeq.consume(System.out::println);
+        integerSeq.take(3).consume(System.out::println);
+
 
     }
 
