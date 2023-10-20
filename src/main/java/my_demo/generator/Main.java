@@ -3,10 +3,13 @@ package my_demo.generator;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  *
@@ -18,8 +21,17 @@ public class Main {
 
 
         List<Integer> list = Arrays.asList(1, 2, 3);
-        // 已绑定this 的方法引用
+        // 已绑定this 的方法引用 (将 list 闭包了。使用 c 对元素进行 消费。 具体的消费动作交给 调用者 扩展)
+//        Seq<Integer> myStream = c -> list.forEach(c);
         Seq<Integer> myStream = list::forEach;
+
+
+
+        List<Integer> numbers = Stream.generate(() -> new SplittableRandom(47).nextInt(1000))
+                .limit(10)
+                .collect(Collectors.toList());
+        // 将生产出的数据，闭包到Seq中。
+        Seq<Integer> myStream1 = numbers::forEach;
 
 
 //        list.forEach(System.out::println);
@@ -65,7 +77,48 @@ public class Main {
     }
 
     @Test
-    void nestConsumerTest() {
+    public void underscoreToCamelTest(){
+        String a = Seq.underscoreToCamel("aeb_afa_bbb");
+        System.out.println(a);
+    }
+
+    @Test
+    public void zipDemo1(){
+        List<Integer> list1 = Arrays.asList(1, 2, 3);
+        Seq<Integer> myStream = list1::forEach;
+
+        List<Integer> list2 = List.of(4, 5, 6);
+
+        List<String> result = myStream.zip(list2, (arg1, arg2) -> arg1 + "-" + arg2).toList();
+
+        System.out.println(result);
+    }
+
+    @Test
+    public void zipDemo2(){
+
+        Seq<Function<Integer,String>> seq = c -> {
+
+            // 这里的 c 为 zip 的 consumer
+            System.out.println("zipDemo2 c: " + c);
+
+            Function<Integer,String> function = num -> num + "-";
+            System.err.println("zipDemo2()-function_address: " + function);
+
+            while (true) {
+                c.accept(function);
+            }
+        };
+        System.err.println("zipDemo2()-Seq_address: "+ seq);
+
+
+        List<String> result = seq.zip(List.of(4, 5, 6), Function::apply).toList();
+        System.out.println(result);
+    }
+
+
+    @Test
+    public void nestConsumerTest() {
         // Integer -> String
         Function<Integer, String>  function3 = t -> {
             System.out.println("Integer -> String");
@@ -160,11 +213,6 @@ public class Main {
     }
 
 
-    void testset() {
-
-    }
-
-
     static <T> Seq<T> unit(T t) {
         return c -> c.accept(t);
     }
@@ -173,5 +221,45 @@ public class Main {
     static Seq<Integer> seq(List<Integer> list) {
         return list::forEach;
     }
+
+    @Test
+    public void test23123(){
+        List<Integer> integers = List.of(1, 2, 3);
+
+        Iterator<Integer> iterator1 = integers.iterator();
+        if(iterator1.hasNext()){
+            System.out.println(iterator1.next());
+        }
+
+        Iterator<Integer> iterator2 = integers.iterator();
+        if(iterator2.hasNext()){
+            System.out.println(iterator2.next());
+        }
+
+    }
+
+
+    @Test
+    public void stream2Seq(){
+        Stream<Integer> stream = Stream.of(1, 2, 3);
+        Seq<Integer> seq = stream::forEach;
+    }
+    @Test
+    public void seq2Stream(){
+        Stream<Integer> stream = Stream.of(1, 2, 3);
+
+        Seq<Integer> seq = stream::forEach;
+
+
+        Stream<Integer> stream1 = Seq.stream(seq);
+
+        List<Integer> list = stream1.toList();
+        System.out.println(list);
+
+    }
+
+
+
+
 
 }
