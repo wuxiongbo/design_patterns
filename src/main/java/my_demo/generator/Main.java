@@ -97,16 +97,16 @@ public class Main {
     @Test
     public void zipDemo2(){
 
-        Seq<Function<Integer,String>> seq = c -> {
+        Seq<Function<Integer,String>> seq = c2 -> {
 
-            // 这里的 c 为 zip 的 consumer
-            System.out.println("zipDemo2 c: " + c);
+            // 这里的 c2 为 zip 的 consumer
+            System.out.println("zipDemo2 c: " + c2);
 
             Function<Integer,String> function = num -> num + "-";
             System.err.println("zipDemo2()-function_address: " + function);
 
             while (true) {
-                c.accept(function);
+                c2.accept(function);
             }
         };
         System.err.println("zipDemo2()-Seq_address: "+ seq);

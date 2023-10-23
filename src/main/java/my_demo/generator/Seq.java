@@ -89,13 +89,13 @@ public interface Seq<T> {
             Iterator<E> iterator = iterable.iterator();
 
 
-            // consumer 被循环执行。
+            // c2 为 zip 的 Consumer
             // zip 的 consumer 包装了  toList 的 consumer
-            Consumer<T> consumer= t -> {
+            Consumer<T> c2 = t -> {
                 if (iterator.hasNext()) {
                     System.out.println("zip  t: " + t);
 
-                    // c 为 toList/join 的 Consumer
+                    // c 为 toList() / join() 的 Consumer
                     c.accept(mrFunction.apply(t, iterator.next()));
 
                 } else {
@@ -104,11 +104,11 @@ public interface Seq<T> {
             };
 
 
-            System.err.println("zip()-consumer_address: " + consumer);
+            System.err.println("zip()-consumer_address: " + c2);
 
             // 调用 zipDemo2 中 Seq 的 consume 方法。
             System.out.println("zip() seq_address: " + Seq.this);
-            consumeTillStop(consumer);
+            consumeTillStop(c2);
         };
 
         System.err.println("zip()-Seq_address: " + seq);
@@ -170,6 +170,7 @@ public interface Seq<T> {
 
     /**
      * {@link Seq#zip(Iterable, BiFunction)}
+     *
      * @return
      */
     default List<T> toList() {
@@ -189,14 +190,14 @@ public interface Seq<T> {
     }
 
 
-
     /**
      * 在Java Stream提供的官方实现里，有一个StreamSupport.stream 的构造工具，可以帮助用户将一个iterator转化为stream。
      * 针对这个入口，我们其实可以用生成器来构造一个非标准的iterator：不实现 hastNext 和 next，而是单独重载 forEachRemaining 方法，
      * 从而 hack 进Stream的底层逻辑 ——
-     *      在那迷宫一般的源码里，有一个非常隐秘的角落，一个叫AbstractPipeline.copyInto的方法，
-     *      会在真正执行流的时候，调用 Spliterator的 forEachRemaining 方法 来遍历元素——
-     *      虽然，这个方法原本是通过 next 和 hasNext实现的，但当我们把它重载之后，就可以做到假狸猫换真太子。
+     * 在那迷宫一般的源码里，有一个非常隐秘的角落，一个叫AbstractPipeline.copyInto的方法，
+     * 会在真正执行流的时候，调用 Spliterator的 forEachRemaining 方法 来遍历元素——
+     * 虽然，这个方法原本是通过 next 和 hasNext实现的，但当我们把它重载之后，就可以做到假狸猫换真太子。
+     *
      * @param seq
      * @param <T>
      * @return Stream<T>
