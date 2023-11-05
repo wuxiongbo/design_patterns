@@ -16,27 +16,42 @@ import java.util.stream.StreamSupport;
  *  <a href="https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw">参考文档</a>
  */
 public class Main {
-    public static void main(String[] args) {
+
+    @Test
+    public void seqTest() {
+        // 1）生产数据
+        List<Integer> numbers = Stream.generate(() -> new SplittableRandom().nextInt(1000))
+                .limit(10)
+                .toList();
 
 
+        // 2）将生产出的数据，闭包到Seq中。
+        Seq<Integer> myStream1 = numbers::forEach;
+
+
+        // 3）消费数据
+        myStream1.consume(System.out::println);
+    }
+
+    @Test
+    public void flatMap(){
+        List<Integer> list1 = Arrays.asList(1, 2, 3);
+        List<Integer> list2 = Arrays.asList(4, 5, 6);
+        List<List<Integer>> lists = List.of(list1, list2);
+
+        Seq<List<Integer>> listSeq = lists::forEach;
+        Seq<Integer> integerSeq = listSeq.flatMap(Main::seq);
+
+        integerSeq.consume(System.out::println);
+        integerSeq.take(3).consume(System.out::println);
+    }
+
+    @Test
+    public void mapTest(){
         List<Integer> list = Arrays.asList(1, 2, 3);
         // 已绑定this 的方法引用 (将 list 闭包了。使用 c 对元素进行 消费。 具体的消费动作交给 调用者 扩展)
 //        Seq<Integer> myStream = c -> list.forEach(c);
         Seq<Integer> myStream = list::forEach;
-
-
-
-        List<Integer> numbers = Stream.generate(() -> new SplittableRandom(47).nextInt(1000))
-                .limit(10)
-                .toList();
-        // 将生产出的数据，闭包到Seq中。
-        Seq<Integer> myStream1 = numbers::forEach;
-
-
-//        list.forEach(System.out::println);
-//        seq.consume(System.out::println);
-
-
         // 一、 map的实现
         // Integer -> String -> Long -> BigDecimal
         //
@@ -60,22 +75,10 @@ public class Main {
         // 2） map: integer -》String
         // 3） consumer: 打印 String
         mapAndThanForEach.consume(System.out::println);
+
         System.out.println("class");
+
         mapAndThanForEach.consume(e-> System.out.println(e.toString() + " " + e.getClass().toString()));
-
-
-        System.out.println("--------------------------");
-
-        List<Integer> list1 = Arrays.asList(1, 2, 3);
-        List<Integer> list2 = Arrays.asList(4, 5, 6);
-        List<List<Integer>> lists = List.of(list1, list2);
-
-        Seq<List<Integer>> listSeq = lists::forEach;
-        Seq<Integer> integerSeq = listSeq.flatMap(Main::seq);
-
-        integerSeq.consume(System.out::println);
-        integerSeq.take(3).consume(System.out::println);
-
 
     }
 
@@ -247,6 +250,8 @@ public class Main {
         Stream<Integer> stream = Stream.of(1, 2, 3);
         Seq<Integer> seq = stream::forEach;
     }
+
+
     @Test
     public void seq2Stream(){
         Stream<Integer> stream = Stream.of(1, 2, 3);
