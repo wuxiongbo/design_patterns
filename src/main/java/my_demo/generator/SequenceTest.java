@@ -2,20 +2,24 @@ package my_demo.generator;
 
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 /**
+ *  生成器设计模式
  *
  *  <a href="https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw">参考文档</a>
  */
-public class Main {
+public class SequenceTest {
 
     @Test
     public void seqTest() {
@@ -40,7 +44,7 @@ public class Main {
         List<List<Integer>> lists = List.of(list1, list2);
 
         Seq<List<Integer>> listSeq = lists::forEach;
-        Seq<Integer> integerSeq = listSeq.flatMap(Main::seq);
+        Seq<Integer> integerSeq = listSeq.flatMap(SequenceTest::seq);
 
         integerSeq.consume(System.out::println);
         integerSeq.take(3).consume(System.out::println);
@@ -56,16 +60,15 @@ public class Main {
         // Integer -> String -> Long -> BigDecimal
         //
         Seq<BigDecimal> mapAndThanForEach = myStream
-                // 1）调用完此方法，function 包装进入了一层Seq 内部类
+                // 1）调用完此方法，function 包装进入了一层Seq 内部类，这是第一层
                 .map(
-                        (t) -> {
-                            return t + "---";
-                        }
+                        t -> t + "---"
                 )
-                // 2）在以上 Seq内部类的基础上，再包装一层内部类
+                // 2）在以上 Seq内部类的基础上，再包装一层内部类，这是第二层
                 .map(
                         t -> Long.valueOf(t.replace("---", ""))
                 )
+                // 2）在以上 Seq内部类的基础上，外面再包装一层内部类，这是第三层。
                 .map(
                         BigDecimal::new
                 );
@@ -266,6 +269,29 @@ public class Main {
 
     }
 
+
+    @Test
+    public void ioDemo() throws FileNotFoundException {
+        Stream<String> lines = new BufferedReader(new InputStreamReader(new FileInputStream("filePath"))).lines();
+
+    }
+
+    @Test
+    public void ioTest(){
+        Seq<String> seq = c -> {
+            // 1) 构建数据源
+            try (BufferedReader reader = Files.newBufferedReader(Paths.get("filePath"))) {
+                String s;
+                // 2）遍历读数据
+                while ((s = reader.readLine()) != null) {
+                    // 3）yield 元素
+                    c.accept(s);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        };
+    }
 
 
 

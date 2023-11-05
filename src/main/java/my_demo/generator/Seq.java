@@ -62,7 +62,7 @@ public interface Seq<T> {
     // 如果觉得理解起来不太直观，就把Seq看作是List，把consume看作是forEach就好。
     //                                       甚至，还可以 把 consumer 看做是 System.out::println
     default <E> Seq<E> map1(Function<T, E> function) {
-        return consumer -> consume(t -> consumer.accept(function.apply(t)));
+        return consumer -> Seq.this.consume(t -> consumer.accept(function.apply(t)));
     }
 
     static <T> Seq<T> unit(T t) {
@@ -174,7 +174,7 @@ public interface Seq<T> {
 
     }
 
-    static <T> T stop() {
+    static void stop() {
         throw StopException.INSTANCE;
     }
 
@@ -268,8 +268,7 @@ public interface Seq<T> {
             }
 
         };
-        return StreamSupport.stream(
-                Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED),
-                false);
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(
+                iterator, Spliterator.ORDERED), false);
     }
 }
