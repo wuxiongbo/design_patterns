@@ -1,10 +1,20 @@
 package refactoring.chapter01.ver01;
 
 public class Movie {
-	public static final int CHILDRENS = 2;
+	/**
+	 * 影片分类
+	 */
+	public static final int CHILDREN = 2;
 	public static final int REGULAR = 0;
 	public static final int NEW_RELEASE = 1;
-	private String _title;
+
+	/**
+	 * 电影名称
+	 */
+	private final String _title;
+	/**
+	 * 影片类型对应的价格码
+	 */
 	private int _priceCode;
 
 	public Movie(String title, int priceCode) {

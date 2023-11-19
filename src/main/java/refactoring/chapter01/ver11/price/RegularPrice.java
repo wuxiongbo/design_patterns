@@ -1,7 +1,9 @@
-package refactoring.chapter01.ver11;
+package refactoring.chapter01.ver11.price;
 
-public class RegularPrice extends Price {
-	int getPriceCode() {
+import refactoring.chapter01.ver11.Movie;
+
+public class RegularPrice implements Price {
+	public int getPriceCode() {
 		return Movie.REGULAR;
 	}
 

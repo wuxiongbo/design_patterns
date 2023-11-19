@@ -1,5 +1,10 @@
 package refactoring.chapter01.ver10;
 
+import refactoring.chapter01.ver10.price.impl.NewReleasePrice;
+import refactoring.chapter01.ver10.price.Price;
+import refactoring.chapter01.ver10.price.impl.RegularPrice;
+import refactoring.chapter01.ver10.price.impl.ChildrensPrice;
+
 public class Movie {
 	public static final int CHILDRENS = 2;
 	public static final int REGULAR = 0;
@@ -19,17 +24,10 @@ public class Movie {
 
 	public void setPriceCode(int arg) { // 设定价格代号
 		switch (arg) {
-		case REGULAR:
-			_price = new RegularPrice();
-			break;
-		case CHILDRENS:
-			_price = new ChildrensPrice();
-			break;
-		case NEW_RELEASE:
-			_price = new NewReleasePrice();
-			break;
-		default:
-			throw new IllegalArgumentException("Incorrect Price Code");
+			case REGULAR -> _price = new RegularPrice();
+			case CHILDRENS -> _price = new ChildrensPrice();
+			case NEW_RELEASE -> _price = new NewReleasePrice();
+			default -> throw new IllegalArgumentException("Incorrect Price Code");
 		}
 	}
 
@@ -42,9 +40,10 @@ public class Movie {
 	}
 
 	public int getFrequentRenterPoints(int daysRented) {
-		if ((getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)
+		if ((getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1) {
 			return 2;
-		else
+		} else {
 			return 1;
+		}
 	}
 }

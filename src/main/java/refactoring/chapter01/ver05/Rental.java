@@ -1,8 +1,8 @@
 package refactoring.chapter01.ver05;
 
 public class Rental {
-	private Movie _movie; // 影片
-	private int _daysRented; // 租期
+	private final Movie _movie; // 影片
+	private final int _daysRented; // 租期
 
 	public Rental(Movie movie, int daysRented) {
 		_movie = movie;
@@ -18,22 +18,26 @@ public class Rental {
 	}
 
 	public double getCharge() {
+
 		double result = 0;
+
 		switch (getMovie().getPriceCode()) {
-		case Movie.REGULAR:
-			result += 2;
-			if (getDaysRented() > 2)
-				result += (getDaysRented() - 2) * 1.5;
-			break;
-		case Movie.NEW_RELEASE:
-			result += getDaysRented() * 3;
-			break;
-		case Movie.CHILDRENS:
-			result += 1.5;
-			if (getDaysRented() > 3)
-				result += (getDaysRented() - 3) * 1.5;
-			break;
+
+			case Movie.REGULAR -> {
+				result += 2;
+				if (getDaysRented() > 2)
+					result += (getDaysRented() - 2) * 1.5;
+			}
+
+			case Movie.NEW_RELEASE -> result += getDaysRented() * 3;
+
+			case Movie.CHILDRENS -> {
+				result += 1.5;
+				if (getDaysRented() > 3)
+					result += (getDaysRented() - 3) * 1.5;
+			}
 		}
+
 		return result;
 	}
 

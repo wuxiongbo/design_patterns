@@ -4,8 +4,8 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 public class Customer {
-	private String _name; // 姓名
-	private Vector _rentals = new Vector(); // 租借记
+	private final String _name; // 姓名
+	private final Vector _rentals = new Vector(); // 租借记
 
 	public Customer(String name) {
 		_name = name;
