@@ -56,6 +56,8 @@ public class Main {
         LibraryItem book = new Book("Harry potter");
         LibraryItem journal = new Journal("Day night");
 
+
+
         // 图书馆（被修饰者）
         AbstractLibrary lib = new ConcreteLibrary();  // 原始的具体组件
         lib.borrowItem(book, person); // Lindz  '借阅' 书本
@@ -72,6 +74,21 @@ public class Main {
         // 使用 装饰器 再次包装 图书馆。 增加售卖功能
         SellingLibrary sLib = new SellingLibrary(cLib);  // 修饰器
         sLib.sellItem(journal); // 新增 原始组件 不存在的 业务功能“出售”
+
+
+        System.out.println("------------以下示例为，装饰器模式的缺点--------------");
+
+        // 使用 装饰器 再次包装 图书馆。 增加售卖功能
+        SellingLibrary sLib2 = new SellingLibrary(lib);  // 修饰器
+        // 使用 装饰器 包装 图书馆。 增加计数功能
+        CountingLibrary cLib2 = new CountingLibrary(sLib2); // 修饰器
+        cLib2.borrowItem(book, person); // 加强 借阅 功能
+        cLib2.returnItem(journal);    //  加强 归还 功能
+
+        // 想调用 新增的方法，但是调不出来。 明明 已经实现了方法，但却隐藏不见了。
+//        cLib2.sellItem()    // 新增 原始组件 不存在的 业务功能“出售”
+
+
 
     }
 }

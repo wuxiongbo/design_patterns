@@ -1,5 +1,7 @@
 package refactoring.chapter01.ver10;
 
+import refactoring.chapter01.ver10.Movie;
+
 public class Rental {
 	private Movie _movie; // 影片
 	private int _daysRented; // 租期

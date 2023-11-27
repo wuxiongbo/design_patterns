@@ -2,56 +2,73 @@ package my_demo.generator;
 
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 /**
+ *  生成器设计模式
  *
  *  <a href="https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw">参考文档</a>
- *
  */
-public class Main {
-    public static void main(String[] args) {
+public class SequenceTest {
+
+    @Test
+    public void seqTest() {
+        // 1）生产数据
+        List<Integer> numbers = Stream.generate(() -> new SplittableRandom().nextInt(1000))
+                .limit(10)
+                .toList();
 
 
+        // 2）将生产出的数据，闭包到Seq中。
+        Seq<Integer> myStream1 = numbers::forEach;
+
+
+        // 3）消费数据
+        myStream1.consume(System.out::println);
+    }
+
+    @Test
+    public void flatMap(){
+        List<Integer> list1 = Arrays.asList(1, 2, 3);
+        List<Integer> list2 = Arrays.asList(4, 5, 6);
+        List<List<Integer>> lists = List.of(list1, list2);
+
+        Seq<List<Integer>> listSeq = lists::forEach;
+        Seq<Integer> integerSeq = listSeq.flatMap(SequenceTest::seq);
+
+        integerSeq.consume(System.out::println);
+        integerSeq.take(3).consume(System.out::println);
+    }
+
+    @Test
+    public void mapTest(){
         List<Integer> list = Arrays.asList(1, 2, 3);
         // 已绑定this 的方法引用 (将 list 闭包了。使用 c 对元素进行 消费。 具体的消费动作交给 调用者 扩展)
 //        Seq<Integer> myStream = c -> list.forEach(c);
         Seq<Integer> myStream = list::forEach;
-
-
-
-        List<Integer> numbers = Stream.generate(() -> new SplittableRandom(47).nextInt(1000))
-                .limit(10)
-                .collect(Collectors.toList());
-        // 将生产出的数据，闭包到Seq中。
-        Seq<Integer> myStream1 = numbers::forEach;
-
-
-//        list.forEach(System.out::println);
-//        seq.consume(System.out::println);
-
-
         // 一、 map的实现
         // Integer -> String -> Long -> BigDecimal
         //
         Seq<BigDecimal> mapAndThanForEach = myStream
-                // 1）调用完此方法，function 包装进入了一层Seq 内部类
+                // 1）调用完此方法，function 包装进入了一层Seq 内部类，这是第一层
                 .map(
-                        (t) -> {
-                            return t + "---";
-                        }
+                        t -> t + "---"
                 )
-                // 2）在以上 Seq内部类的基础上，再包装一层内部类
+                // 2）在以上 Seq内部类的基础上，再包装一层内部类，这是第二层
                 .map(
                         t -> Long.valueOf(t.replace("---", ""))
                 )
+                // 2）在以上 Seq内部类的基础上，外面再包装一层内部类，这是第三层。
                 .map(
                         BigDecimal::new
                 );
@@ -62,17 +79,9 @@ public class Main {
         // 3） consumer: 打印 String
         mapAndThanForEach.consume(System.out::println);
 
+        System.out.println("class");
 
-        System.out.println("--------------------------");
-
-        List<Integer> list1 = Arrays.asList(1, 2, 3);
-        List<Integer> list2 = Arrays.asList(4, 5, 6);
-        List<List<Integer>> lists = List.of(list1, list2);
-
-        Seq<List<Integer>> stream1 = lists::forEach;
-        Seq<Integer> integerSeq = stream1.flatMap(Main::seq);
-
-        integerSeq.consume(System.out::println);
+        mapAndThanForEach.consume(e-> System.out.println(e.toString() + " " + e.getClass().toString()));
 
     }
 
@@ -244,6 +253,8 @@ public class Main {
         Stream<Integer> stream = Stream.of(1, 2, 3);
         Seq<Integer> seq = stream::forEach;
     }
+
+
     @Test
     public void seq2Stream(){
         Stream<Integer> stream = Stream.of(1, 2, 3);
@@ -258,6 +269,29 @@ public class Main {
 
     }
 
+
+    @Test
+    public void ioDemo() throws FileNotFoundException {
+        Stream<String> lines = new BufferedReader(new InputStreamReader(new FileInputStream("filePath"))).lines();
+
+    }
+
+    @Test
+    public void ioTest(){
+        Seq<String> seq = c -> {
+            // 1) 构建数据源
+            try (BufferedReader reader = Files.newBufferedReader(Paths.get("filePath"))) {
+                String s;
+                // 2）遍历读数据
+                while ((s = reader.readLine()) != null) {
+                    // 3）yield 元素
+                    c.accept(s);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        };
+    }
 
 
 
