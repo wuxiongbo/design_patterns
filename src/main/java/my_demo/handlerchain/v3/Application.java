@@ -29,7 +29,8 @@ public class Application {
 
         // 责任链 构造器
         HandlerChain<String> chain = new HandlerChain<>();
-        String result = chain.addHandler(new FunctionHandler<>(str -> str.contains("1"), str -> str + "\n包含1"))
+        String result = chain
+                .addHandler(new FunctionHandler<>(str -> str.contains("1"), str -> str + "\n包含1"))
                 .addHandler(new FunctionHandler<>(str -> str.contains("2"), str -> str + "\n包含2"))
                 .addHandler(new FunctionHandler<>(str -> str.contains("3"), str -> str + "\n包含3"))
                 .addHandler(new FunctionHandler<>(str -> str.contains("4"), str -> str + "\n包含4"))

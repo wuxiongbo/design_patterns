@@ -6,7 +6,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * <p>  处理器抽象类 </p>
+ * <p> 处理器抽象类 </p>
  *
  * <pre>
  * @author wuxiongbo
