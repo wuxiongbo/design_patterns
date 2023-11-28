@@ -15,9 +15,9 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
- *  生成器设计模式
+ * 生成器设计模式
  *
- *  <a href="https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw">参考文档</a>
+ * <a href="https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw">参考文档</a>
  */
 public class SequenceTest {
 
@@ -38,7 +38,7 @@ public class SequenceTest {
     }
 
     @Test
-    public void flatMap(){
+    public void flatMap() {
         List<Integer> list1 = Arrays.asList(1, 2, 3);
         List<Integer> list2 = Arrays.asList(4, 5, 6);
         List<List<Integer>> lists = List.of(list1, list2);
@@ -51,7 +51,7 @@ public class SequenceTest {
     }
 
     @Test
-    public void mapTest(){
+    public void mapTest() {
         List<Integer> list = Arrays.asList(1, 2, 3);
         // 已绑定this 的方法引用 (将 list 闭包了。使用 c 对元素进行 消费。 具体的消费动作交给 调用者 扩展)
 //        Seq<Integer> myStream = c -> list.forEach(c);
@@ -81,18 +81,18 @@ public class SequenceTest {
 
         System.out.println("class");
 
-        mapAndThanForEach.consume(e-> System.out.println(e.toString() + " " + e.getClass().toString()));
+        mapAndThanForEach.consume(e -> System.out.println(e.toString() + " " + e.getClass().toString()));
 
     }
 
     @Test
-    public void underscoreToCamelTest(){
+    public void underscoreToCamelTest() {
         String a = Seq.underscoreToCamel("aeb_afa_bbb");
         System.out.println(a);
     }
 
     @Test
-    public void zipDemo1(){
+    public void zipDemo1() {
         List<Integer> list1 = Arrays.asList(1, 2, 3);
         Seq<Integer> myStream = list1::forEach;
 
@@ -104,21 +104,23 @@ public class SequenceTest {
     }
 
     @Test
-    public void zipDemo2(){
+    public void zipDemo2() {
 
-        Seq<Function<Integer,String>> seq = c2 -> {
+        Seq<Function<Integer, String>> seq = c2 -> {
 
             // 这里的 c2 为 zip 的 consumer
-            System.out.println("zipDemo2 c: " + c2);
+            System.out.println("客户端方法zipDemo2() 接收的 c2的地址值: " + c2);
 
-            Function<Integer,String> function = num -> num + "-";
-            System.err.println("zipDemo2()-function_address: " + function);
+            Function<Integer, String> function = num -> num + "-";
+            System.err.println("客户端方法zipDemo2() 里面 定义的function的地址值: " + function);
+
 
             while (true) {
                 c2.accept(function);
             }
+
         };
-        System.err.println("zipDemo2()-Seq_address: "+ seq);
+        System.err.println("客户端方法zipDemo2() 里面 的Seq的地址值: " + seq);
 
 
         List<String> result = seq.zip(List.of(4, 5, 6), Function::apply).toList();
@@ -129,12 +131,12 @@ public class SequenceTest {
     @Test
     public void nestConsumerTest() {
         // Integer -> String
-        Function<Integer, String>  function3 = t -> {
+        Function<Integer, String> function3 = t -> {
             System.out.println("Integer -> String");
             return t + "===111";
         };
         // String -> Long
-        Function<String, Long>     function2 = e -> {
+        Function<String, Long> function2 = e -> {
             System.out.println("String -> Long");
             return Long.valueOf(e.replace("===111", ""));
         };
@@ -232,16 +234,16 @@ public class SequenceTest {
     }
 
     @Test
-    public void test23123(){
+    public void test23123() {
         List<Integer> integers = List.of(1, 2, 3);
 
         Iterator<Integer> iterator1 = integers.iterator();
-        if(iterator1.hasNext()){
+        if (iterator1.hasNext()) {
             System.out.println(iterator1.next());
         }
 
         Iterator<Integer> iterator2 = integers.iterator();
-        if(iterator2.hasNext()){
+        if (iterator2.hasNext()) {
             System.out.println(iterator2.next());
         }
 
@@ -249,14 +251,14 @@ public class SequenceTest {
 
 
     @Test
-    public void stream2Seq(){
+    public void stream2Seq() {
         Stream<Integer> stream = Stream.of(1, 2, 3);
         Seq<Integer> seq = stream::forEach;
     }
 
 
     @Test
-    public void seq2Stream(){
+    public void seq2Stream() {
         Stream<Integer> stream = Stream.of(1, 2, 3);
 
         Seq<Integer> seq = stream::forEach;
@@ -277,7 +279,7 @@ public class SequenceTest {
     }
 
     @Test
-    public void ioTest(){
+    public void ioTest() {
         Seq<String> seq = c -> {
             // 1) 构建数据源
             try (BufferedReader reader = Files.newBufferedReader(Paths.get("filePath"))) {
@@ -292,8 +294,6 @@ public class SequenceTest {
             }
         };
     }
-
-
 
 
 }

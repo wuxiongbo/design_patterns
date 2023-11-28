@@ -137,11 +137,11 @@ public interface Seq<T> {
 
     default <E, R> Seq<R> zip(Iterable<E> iterable, BiFunction<T, E, R> mrFunction) {
 
-        // zip 的 Seq 包装了  zipDemo2 的 Seq
+        // zip 的 Seq 包装了  zipDemo2 的 Seq。  内层 zip 的 Seq 的 consume 方法 闭包了 外层 zipDemo2 的 Seq 的 consume 方法
         Seq<R> seq = c -> {
 
             // c 为 toList/join 传递进来的 Consumer
-            System.out.println("zip  c: " + c);
+            System.out.println("zip() 里面接收的 c: " + c);
 
             Iterator<E> iterator = iterable.iterator();
 
@@ -150,25 +150,29 @@ public interface Seq<T> {
             // zip 的 consumer 包装了  toList 的 consumer
             Consumer<T> consumer = t -> {
                 if (iterator.hasNext()) {
-                    System.out.println("zip  t: " + t);
 
-                    // c 为 toList/join 传递进来的 Consumer
+                    System.out.println("zip() 里面接收的 t 的地址值: " + t);
+
+                    System.out.println("zip()入参中的 mrFunction 的地址值: " + mrFunction);
+
+                    // c 为 toList/join 传递进来的 Consumer， 在 zipDemo2 中，t 是个 function
                     c.accept(mrFunction.apply(t, iterator.next()));
+
 
                 } else {
                     stop();
                 }
             };
 
+            System.err.println("zip() 里面定义的 consumer 的地址值: " + consumer);
 
-            System.err.println("zip()-consumer_address: " + consumer);
-
-            // 调用 zipDemo2 中 Seq 的 consume 方法。
-            System.out.println("zip() seq_address: " + Seq.this);
+            // 调用 客户端方法zipDemo2() 中， Seq 的 consume 方法。
+            System.out.println("zip() 外层 Seq.this 的地址值: " + Seq.this);
             consumeTillStop(consumer);
+
         };
 
-        System.err.println("zip()-Seq_address: " + seq);
+        System.err.println("zip() 里面定义的 seq 的地址值: " + seq);
 
         return seq;
 
@@ -191,18 +195,19 @@ public interface Seq<T> {
         UnaryOperator<String> capitalize = s -> s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
 
         // 利用生成器构造一个方法的流
-        Seq<UnaryOperator<String>> seq = c -> {
+        Seq< UnaryOperator<String> > seq = c -> {
 
-            // yield 第一个小写函数
+            // yield 第一个函数————单词小写函数
             c.accept(String::toLowerCase);
 
             // 这里IDEA会告警，提示死循环风险，无视即可
             while (true) {
-                // 按需yield首字母大写函数
+                // yield 第二个函数————首字母大写函数
                 c.accept(capitalize);
             }
 
         };
+
 
         List<String> split = Arrays.asList(str.split("_"));
 
@@ -212,7 +217,9 @@ public interface Seq<T> {
 
     default String join(String sep) {
         StringJoiner joiner = new StringJoiner(sep);
+
         Seq.this.consume(t -> joiner.add(t.toString()));
+
         return joiner.toString();
     }
 
@@ -224,15 +231,14 @@ public interface Seq<T> {
     default List<T> toList() {
 
         List<T> list = new ArrayList<>();
+        Consumer<T> c = list::add;
 
-        Consumer<T> consumer = list::add;
+        // 这里将 toList() 的 Consumer 传递给了 zip()
+        System.err.println("toList() 里面定义的 consumer 的地址值: " + c);
 
-        System.err.println("toList()-consumer_address: " + consumer);
-
-        // 调用的是 zip 的 Seq 实现
-        System.out.println("toList() seq_address: " + Seq.this);
-
-        Seq.this.consume(consumer);
+        // 这里调用的是 zip Seq 的 consume 实现。
+        System.out.println("toList() 外层 Seq.this 的地址值: " + Seq.this);
+        Seq.this.consume(c);
 
         return list;
     }
