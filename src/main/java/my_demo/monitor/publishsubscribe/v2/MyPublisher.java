@@ -14,11 +14,11 @@ public class MyPublisher<T> implements Publisher<T> {
     private T data;
 
     @Override
-    public void subscribe(Subscriber subscriber) {
+    public void subscribe(Subscriber<? super T> subscriber) {
 
 
         // 初始化  subscription '订阅器'。 将 subscriber '订阅者'  注册给了 "订阅器"
-        Subscription subscription = new MySubscription(data, subscriber);
+        Subscription subscription = new MySubscription<>(data, subscriber);
 
 
 

@@ -25,11 +25,11 @@ import reactor.core.publisher.Flux;
 @Slf4j
 public class FluxDemo {
     public static void main(String[] args) {
-        Flux.just("11", "22", "33")
-                .log()
-                .subscribe(System.out::println);
+//        Flux.just("11", "22", "33")
+//                .log()
+//                .subscribe(System.out::println);
 
-
+        simpleFluxTest();
     }
 
     public static void simpleFluxTest(){
@@ -47,12 +47,15 @@ public class FluxDemo {
             public void onSubscribe(Subscription subscription) {
                 //取最大数量的元素个数
                 subscription.request(Long.MAX_VALUE);
+//                subscription.request(1L);
             }
 
             //对于每个元素的操作
             @Override
-            public void onNext(String o) {
-                System.out.println(o);
+            public void onNext(String msg) {
+
+                System.out.println("收到消息:" + msg);
+
             }
 
             //在发生错误的时候
@@ -64,8 +67,9 @@ public class FluxDemo {
             //在完成的时候，发生错误不算完成
             @Override
             public void onComplete() {
-                log.info("complete");
+                System.out.println("所有消息消费完毕：complete");
             }
+
         };
 
 

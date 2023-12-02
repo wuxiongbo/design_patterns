@@ -27,7 +27,7 @@ public class Application {
     public static void main(String[] args) {
 
         // 责任链 构造器
-        String result = FunctionHandler.<String>build()
+        String result = FunctionHandler.<String>chainBuilder()
                 .addHandler(new FunctionHandler<>(str -> str.contains("1"), str -> str + "\n包含1"))
                 .addHandler(new FunctionHandler<>(str -> str.contains("2"), str -> str + "\n包含2"))
                 .addHandler(new FunctionHandler<>(str -> str.contains("3"), str -> str + "\n包含3"))

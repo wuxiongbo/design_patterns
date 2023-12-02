@@ -52,6 +52,9 @@ public class ResourcePoolConfig {
         this.minIdle = builder.minIdle;
     }
 
+    public static Builder builder(){
+        return new Builder();
+    }
 
     // 我们将Builder类设计成了 ResourcePoolConfig的内部类。
     // 也可以将Builder类设计成 独立的非内部类ResourcePoolConfigBuilder

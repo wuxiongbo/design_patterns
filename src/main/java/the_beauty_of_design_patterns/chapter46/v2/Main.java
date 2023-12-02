@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args){
         // 这段代码会抛出IllegalArgumentException，因为  minIdle > maxIdle
-        ResourcePoolConfig config = new ResourcePoolConfig.Builder()
+        ResourcePoolConfig config = ResourcePoolConfig.builder()
                 .setName("dbconnectionpool")
                 .setMaxTotal(16)
                 .setMaxIdle(10)

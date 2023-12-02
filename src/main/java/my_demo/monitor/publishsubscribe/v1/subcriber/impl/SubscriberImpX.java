@@ -22,7 +22,7 @@ public class SubscriberImpX<Msg> implements ISubscriber<Msg> {
 
     @Override
     public void update(String publisher, Msg msg) {
-        System.out.println(this.name + "收到" + publisher + "发来的消息:" + msg);
+        System.out.println(this.name + "收到发布者" + publisher + "发布的消息:" + msg);
     }
 
 }

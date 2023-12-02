@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -27,16 +28,18 @@ public class FunctionHandler<T> {
     }
 
     public FunctionHandler(Predicate<T> predicate, Function<T,T> processor){
+        Objects.requireNonNull(predicate);
+        Objects.requireNonNull(processor);
         this.processor = processor;
         this.predicate = predicate;
     }
 
-    public static <R> HandlerChain<R> build() {
+    public static <R> HandlerChain<R> chainBuilder() {
         return new HandlerChain<>();
     }
 
 
-    public static class HandlerChain<T> {
+    public final static class HandlerChain<T> {
 
         private final List<FunctionHandler<T>> handlers = new ArrayList<>();
 

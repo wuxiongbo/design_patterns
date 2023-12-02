@@ -19,9 +19,8 @@ public class Main {
         MyPublisher<String> publisher = new MyPublisher<>();
 
         // 初始化 订阅者
-        Subscriber<String> subscriber = new MySubscriber();
-
-
+        MySubscriber subscriber = new MySubscriber();
+        subscriber.next(new MySubscriber()).next(new MySubscriber());
 
         publisher.setMsg("hello world");
 

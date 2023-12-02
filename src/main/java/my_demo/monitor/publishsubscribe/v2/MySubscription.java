@@ -11,22 +11,22 @@ import org.reactivestreams.Subscription;
  * @author Xander Wu
  * @date 2022/11/25 13:36
  */
-public class MySubscription implements Subscription {
+public class MySubscription<T> implements Subscription {
 
     /**
      * 消息数据
      */
-    private Object data;
+    private final T data;
 
     /**
      * 订阅者
      */
-    private Subscriber actual;
+    private final Subscriber<? super T> actual;
 
 
     boolean isCanceled;
 
-    public MySubscription(Object data, Subscriber actual) {
+    public MySubscription(T data, Subscriber<? super T> actual) {
         this.data = data;
         this.actual = actual;
     }
@@ -44,7 +44,6 @@ public class MySubscription implements Subscription {
                 // 4. Subscription(订阅器) 在 反向 接收到 '订阅者' 的调用后
                 //    回调 Subscriber#onNext ，触发通知， 向下游 '订阅者' 传递 (通知) 消息
                 actual.onNext(data);
-
 
                 // 5. 在消息发布完成(链式调用)后，回调 Subscriber#onComplete ，结束本次流
                 actual.onComplete();

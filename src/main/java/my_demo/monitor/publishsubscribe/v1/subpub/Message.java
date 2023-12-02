@@ -1,7 +1,7 @@
 package my_demo.monitor.publishsubscribe.v1.subpub;
 
 /**
- * 消息。（狭义上的消息体，实际在模型中 代表的是 事件，消息订阅与发布  实际是 事件的订阅与发布 ）
+ * 消息体。（狭义上的消息体，实际在模型中 代表的是 事件，消息订阅与发布  实际是 事件的订阅与发布 ）
  * @author Xander Wu
  * @date 2022/11/18 10:45
  */
