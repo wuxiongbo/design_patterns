@@ -1,5 +1,8 @@
 package the_beauty_of_design_patterns.chapter47.dependence;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 /**
  * <p>描述类的信息</p>
  *
@@ -8,6 +11,8 @@ package the_beauty_of_design_patterns.chapter47.dependence;
  * @date 2021/8/9
  * </pre>
  */
+@Data
+@AllArgsConstructor
 public class SearchWord {
     // 关键字
     private String keyword;
@@ -15,29 +20,4 @@ public class SearchWord {
     private int count;
     // 最后更新时间
     private long lastUpdateTime;
-
-    public SearchWord(String keyword, int count, long lastUpdateTime) {
-
-    }
-
-    public long getLastUpdateTime() {
-        return 0;
-    }
-
-
-    public String getKeyword() {
-        return null;
-    }
-
-    public int getCount() {
-        return 0;
-    }
-
-    public void setCount(int count) {
-
-    }
-
-    public void setLastUpdateTime(long lastUpdateTime) {
-
-    }
 }

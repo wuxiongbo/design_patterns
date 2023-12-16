@@ -36,7 +36,7 @@ import java.util.List;
  */
 public class Demo {
     //  服务版本数据
-    private HashMap<String, SearchWord> currentKeywords=new HashMap<>();
+    private HashMap<String, SearchWord> currentKeywords = new HashMap<>();
 
     public void refresh() {
 

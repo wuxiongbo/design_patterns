@@ -5,21 +5,27 @@ import org.junit.jupiter.api.Test;
 
 public class CustomerTest {
 
-	@Test
-	public void statement() {
+    @Test
+    public void statement() {
 
-		Customer customer = new Customer("John");
+        // 1 消费者
+        Customer customer = new Customer("John");
 
-		String title = "Titanic";
-		int priceCode = 2;
-		Movie movie = new Movie(title, priceCode);
+        // 2 电影
+        String title = "Titanic";
+        int priceCode = 2;
+        Movie movie = new Movie(title, priceCode);
 
-		int _daysRented = 7;
-		Rental rental = new Rental(movie, _daysRented);
+        // 3 租赁信息
+        int _daysRented = 7;
+        Rental rental = new Rental(movie, _daysRented);
 
-		customer.addRental(rental);
-		String result = customer.statement();
+        // 消费者租赁
+        customer.addRental(rental);
 
-		System.out.println(result);
-	}
+        // 拿到账单
+        String result = customer.statement();
+
+        System.out.println(result);
+    }
 }

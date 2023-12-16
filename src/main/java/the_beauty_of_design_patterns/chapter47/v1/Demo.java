@@ -35,7 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Demo {
 
     // 散列表。   代表 内存中的 索引 和 数据
-    private ConcurrentHashMap<String, SearchWord> currentKeywords = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, SearchWord> currentKeywords = new ConcurrentHashMap<>();
 
     // 最后更新时间
     private long lastUpdateTime = -1;

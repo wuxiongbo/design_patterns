@@ -2,6 +2,7 @@ package the_beauty_of_design_patterns.chapter47.v3;
 
 import the_beauty_of_design_patterns.chapter47.dependence.SearchWord;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -75,6 +76,6 @@ public class Demo {
 
     private List<SearchWord> getSearchWords(long lastUpdateTime) {
         // ...从数据库中取出更新时间>lastUpdateTime的数据
-        return null;
+        return new ArrayList<>();
     }
 }

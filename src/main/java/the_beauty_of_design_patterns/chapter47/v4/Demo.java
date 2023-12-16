@@ -39,11 +39,11 @@ public class Demo {
         for (HashMap.Entry<String, SearchWord> entry : currentKeywords.entrySet()) {
             SearchWord searchWord = entry.getValue();
 
-            SearchWord newSearchWord = new SearchWord(searchWord.getKeyword(), searchWord.getCount(), searchWord.getLastUpdateTime());
+            // 深拷贝
+            SearchWord newSearchWord = deepCopy1(searchWord);
 
             newKeywords.put(entry.getKey(), newSearchWord);
         }
-
 
 
         // 从数据库中取出更新时间>lastUpdateTime的数据，放入到newKeywords中
@@ -51,24 +51,25 @@ public class Demo {
         long maxNewUpdatedTime = lastUpdateTime;
         for (SearchWord searchWord : toBeUpdatedSearchWords) {
 
+            // 更新最大时间
             if (searchWord.getLastUpdateTime() > maxNewUpdatedTime) {
                 maxNewUpdatedTime = searchWord.getLastUpdateTime();
             }
 
-            // 更新 深拷贝map （newKeywords）
-
-            // 对 内存中 已存在的进行更新。（这样会同时修改到，newKeywords、currentKeywords 中的数据）
+            // 更新 由深拷贝得到的map （newKeywords）
+            // 对 map内存中 已存在的进行更新。（这部分是深拷贝）
             if (newKeywords.containsKey(searchWord.getKeyword())) {
                 SearchWord oldSearchWord = newKeywords.get(searchWord.getKeyword());
                 oldSearchWord.setCount(searchWord.getCount());
                 oldSearchWord.setLastUpdateTime(searchWord.getLastUpdateTime());
             }
-            // 对 内存中 不存在的，进行插入。
+            // 对 内存中 不存在的，进行插入。（这部分是浅拷贝）
             else {
                 newKeywords.put(searchWord.getKeyword(), searchWord);
             }
 
         }
+
 
         lastUpdateTime = maxNewUpdatedTime;
 
@@ -79,32 +80,49 @@ public class Demo {
 
     private List<SearchWord> getSearchWords(long lastUpdateTime) {
         // ...从数据库中取出更新时间>lastUpdateTime的数据
-        return null;
+        return List.of();
+    }
+
+    /**
+     * 深拷贝，第一种方法：创建新对象
+     * @param searchWord
+     * @return cloneObject
+     */
+    public SearchWord deepCopy1(SearchWord searchWord) {
+        return new SearchWord(searchWord.getKeyword(), searchWord.getCount(), searchWord.getLastUpdateTime());
     }
 
 
     /**
      * 深拷贝，第二种方法：先将对象序列化，然后再反序列化成新的对象。
-     * @param object
-     * @return
+     * @param originalObject
+     * @return cloneObject
      */
-    public Object deepCopy(Object object) {
+    public <T> T deepCopy2(T originalObject) {
+        T cloneObject;
         try {
             // 序列化
             ByteArrayOutputStream bo = new ByteArrayOutputStream();
             ObjectOutputStream oo = new ObjectOutputStream(bo);
-            oo.writeObject(object);
+            oo.writeObject(originalObject);
 
             // 反序列化
             ByteArrayInputStream bi = new ByteArrayInputStream(bo.toByteArray());
             ObjectInputStream oi = new ObjectInputStream(bi);
-            return oi.readObject();
+            cloneObject = (T)oi.readObject();
+
+            return cloneObject;
 
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println("111");
+            System.err.println(e);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println("222");
+            System.err.println(e);
         }
+
         return null;
     }
 

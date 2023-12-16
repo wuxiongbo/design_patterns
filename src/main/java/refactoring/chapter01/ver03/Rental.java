@@ -1,5 +1,8 @@
 package refactoring.chapter01.ver03;
 
+/**
+ *
+ */
 public class Rental {
 	private final Movie _movie; // 影片
 	private final int _daysRented; // 租期
