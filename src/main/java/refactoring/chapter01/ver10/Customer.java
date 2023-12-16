@@ -1,18 +1,20 @@
 package refactoring.chapter01.ver10;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Vector;
 
 public class Customer {
 	private final String _name; // 姓名
-	private final Vector _rentals = new Vector(); // 租借记
+	private final List<Rental> _rentals = new ArrayList<>(); // 租借记
 
 	public Customer(String name) {
 		_name = name;
 	};
 
 	public void addRental(Rental arg) {
-		_rentals.addElement(arg);
+		_rentals.add(arg);
 	}
 
 	public String getName() {
@@ -20,48 +22,44 @@ public class Customer {
 	}
 
 	public String statement() {
-		int frequentRenterPoints = 0;
-		Enumeration rentals = _rentals.elements();
-		String result = "Rental Record for " + getName() + "\n";
-		while (rentals.hasMoreElements()) {
-			Rental each = (Rental) rentals.nextElement();
-			frequentRenterPoints += each.getFrequentRenterPoints();
+		// add header lines
+		StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");
+
+		// 详单细目
+		for (Rental rental : _rentals) {
 			// show figures for this rental
-			result += "\t" + each.getMovie().getTitle() + "\t"
-					+ String.valueOf(each.getCharge()) + "\n";
+			result.append("\t")
+					.append(rental.getMovie().getTitle()).append("\t")
+					.append(rental.getCharge()).append("\n");
 		}
+
 		// add footer lines
-		result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-		result += "You earned " + String.valueOf(getTotalFrequentRenterPoints())
-				+ " frequent renter points";
-		return result;
+		result.append("Amount owed is ").append(getTotalCharge()).append("\n");
+		result.append("You earned ").append(getTotalFrequentRenterPoints()).append(" frequent renter points");
+		return result.toString();
 	}
 
 	public String htmlStatement() {
-		Enumeration rentals = _rentals.elements();
-		String result = "<H1>Rentals for <EM>" + getName() + "</EM></ H1><P>\n";
-		while (rentals.hasMoreElements()) {
-			Rental each = (Rental) rentals.nextElement();
+		// add header lines
+		StringBuilder result = new StringBuilder("<H1>Rentals for <EM>" + getName() + "</EM></ H1><P>\n");
+
+		// 详单细目
+		for (Rental rental : _rentals) {
 			// show figures for each rental
-			result += each.getMovie().getTitle() + ": "
-					+ String.valueOf(each.getCharge()) + "<BR>\n";
+			result.append(rental.getMovie().getTitle()).append(": ").append(rental.getCharge()).append("<BR>\n");
 		}
+
 		// add footer lines
-		result += "<P>You owe <EM>" + String.valueOf(getTotalCharge())
-				+ "</EM><P>\n";
-		result += "On this rental you earned <EM>"
-				+ String.valueOf(getTotalFrequentRenterPoints())
-				+ "</EM> frequent renter points<P>";
-		return result;
+		result.append("<P>You owe <EM>").append(getTotalCharge()).append("</EM><P>\n");
+		result.append("On this rental you earned <EM>").append(getTotalFrequentRenterPoints()).append("</EM> frequent renter points<P>");
+		return result.toString();
 	}
 
 	// 译注：此即所谓query method
 	private int getTotalFrequentRenterPoints() {
 		int result = 0;
-		Enumeration rentals = _rentals.elements();
-		while (rentals.hasMoreElements()) {
-			Rental each = (Rental) rentals.nextElement();
-			result += each.getFrequentRenterPoints();
+		for (Rental rental : _rentals) {
+			result += rental.getFrequentRenterPoints();
 		}
 		return result;
 	}
@@ -69,10 +67,8 @@ public class Customer {
 	// 译注：此即所谓query method
 	private double getTotalCharge() {
 		double result = 0;
-		Enumeration rentals = _rentals.elements();
-		while (rentals.hasMoreElements()) {
-			Rental each = (Rental) rentals.nextElement();
-			result += each.getCharge();
+		for (Rental rental : _rentals) {
+			result += rental.getCharge();
 		}
 		return result;
 	}

@@ -1,9 +1,13 @@
 package refactoring.chapter01.ver07;
 
 public class Movie {
-	public static final int CHILDRENS = 2;
+	/**
+	 * 影片分类
+	 */
 	public static final int REGULAR = 0;
 	public static final int NEW_RELEASE = 1;
+	public static final int CHILDRENS = 2;
+
 	private final String _title;
 	private int _priceCode;
 

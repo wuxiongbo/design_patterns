@@ -1,6 +1,7 @@
-package refactoring.chapter01.ver11.price;
+package refactoring.chapter01.ver11.price.impl;
 
 import refactoring.chapter01.ver11.Movie;
+import refactoring.chapter01.ver11.price.Price;
 
 public class NewReleasePrice implements Price {
 	public int getPriceCode() {

@@ -32,6 +32,7 @@ import java.util.*;
  *
  *
  * 待修改点：
+ *
  * 1）观察 amountFor() 时，我发现这个函数使用了来自 Rental类 的信息，却没有使用来自 Customer 类的信息。
  * 这立刻使我怀疑它是否被放错了位置。
  * 绝大多数情况下，函数应该放在它所使用的数据的所属对象内，所以，amountFor() 应该移到Rental 类去。
@@ -39,28 +40,14 @@ import java.util.*;
  * 首先，把代码复制到 Rental 类，调整代码使之适应新家，
  * 然后，重新编译。
  *
- * 在这个例子里，“适应新家”意味着要去掉参数。
- * 此外，我还要在搬移的同时变更函数名称。
+ * 在这个例子里，“适应新家”，意味着要，去掉参数。
+ * 此外，我还要在搬移的同时变更函数名称。 amountFor() 该为 getCharge()
  *
- * 2）下一件引我注意的事是：thisAmount 如今变得多余了。
+ *
+ * 2）下一件引我注意的事是：thisAmount 如今变得多余了。{@link refactoring.chapter01.ver02.Customer#statement()}
  * 它接受 each.getCharge()的执行结果，然后就不再有任何改变。
  * 所以，我可以运用 Replace Temp with Query(120) 把 thisAmount 除去
  *
- * 3）下一步要对“常客积分计算”做类似处理。
- * 积分的计算，视 影片种类 而有所不同，不过，不像收费规则有那么多变化。
- * 看来，似乎有理由把积分计算责任放在Rental类 身上。
- * 首先，需要针对 “常客积分计算” 这部分代码，
- * <pre>
- * {@code
- *   frequentRenterPoints++;
- *   // add bonus for a two day new release rental
- *   if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE)
- *          && rental.getDaysRented() > 1) {
- *      frequentRenterPoints++;
- *   }
- * }
- * </pre>
- * 运用 Extract Method(110) 重构手法,
  *
  *
  */
@@ -118,10 +105,6 @@ public class Customer {
     }
 
     /**
-     * 修改后
-     * 根据租赁记录计算费用
-     * <p>
-     * 1）抽取方法
      * 2）修改变量名
      *
      * @param aRental 一个租赁实例
@@ -151,7 +134,11 @@ public class Customer {
         return result;
     }
 
-    // 修改前（删除）
+    /**
+     * 1）抽取方法
+     * @param each
+     * @return
+     */
     public final double amountFor1(Rental each) {
         double thisAmount = 0;
         switch (each.getMovie().getPriceCode()) {

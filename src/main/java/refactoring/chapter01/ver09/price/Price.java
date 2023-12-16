@@ -3,7 +3,7 @@ package refactoring.chapter01.ver09.price;
 import refactoring.chapter01.ver09.Movie;
 
 /**
- * 增加这一层间接性。
+ * 增加这一层 间接性。
  */
 public abstract class Price {
     public abstract int getPriceCode(); // 取得价格代号

@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Movie {
+getCharge()
+}
+class Price {
+getCharge()
+}
+class RegularPrice {
+getCharge()
+}
+class ChildrenPrice {
+getCharge()
+}
+class NewReleasePrice {
+getCharge()
+}
+
+Price <|-- RegularPrice
+Price <|-- ChildrenPrice
+Price <|-- NewReleasePrice
+
+Movie -* Price
+
+together {
+  class RegularPrice
+  class ChildrenPrice
+  class NewReleasePrice
+}
+
+note left of Movie::getCharge
+   return price.getCharge
+end note
+
+@enduml

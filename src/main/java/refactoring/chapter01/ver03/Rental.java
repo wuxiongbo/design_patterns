@@ -22,7 +22,7 @@ public class Rental {
 
 	/**
 	 * 将金额计算逻辑从 Customer 类迁移到 Rental 类、
-	 * 同时，变更函数名称
+	 * 同时，变更函数名称，从 amountFor 改为 getCharge
 	 * @return 金额结果
 	 */
 	public double getCharge() {

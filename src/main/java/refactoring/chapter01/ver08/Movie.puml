@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+class Movie {
+getCharge()
+}
+
+class RegularMovie {
+getCharge()
+}
+class ChildrenMovie {
+getCharge()
+}
+class NewReleaseMovie {
+getCharge()
+}
+
+Movie <|-- RegularMovie
+Movie <|-- ChildrenMovie
+Movie <|-- NewReleaseMovie
+
+together {
+  class RegularMovie
+  class ChildrenMovie
+  class NewReleaseMovie
+}
+
+@enduml
