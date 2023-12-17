@@ -1,11 +1,7 @@
 package refactoring.chapter01.ver09;
 
-import refactoring.chapter01.ver10.price.impl.RegularPrice;
-
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * 加入这一层间接性，我们就可以在Price对象内，进行子类化动作，(见uml 图) 于是，便可在任何必要时刻修改价格。
@@ -26,16 +22,7 @@ import java.util.Vector;
  * 多数访问操作来自其他类，它们已经在使用 取值函数{@link Movie#getPriceCode()}
  * 但构造函数，仍然直接访问价格代码，我可以用 设值函数{@link Movie#setPriceCode(int)} 来代替
  * <p>
- * 2)接下来，我要对 getCharge() 实施 Move Method(142)。将 Movie 的 getCharge()逻辑 搬移至 Price。
- * <p>
- * 3)搬移之后，我就可以开始运用 Replace Conditional with Polymorphism(255)了。
- * 我的做法是，一次取出一个case 分支，在相应的类建立一个覆盖函数。
- * 先从 RegularPrice 开始 {@link RegularPrice#getCharge(int)}
- * 接下来是，ChildrensPrice，NewReleasePrice
- * 处理完所有case 分支之后，我就把 Price.getCharge() 声明为 abstract
- * <p>
- * 4) 运用 与 3) 同样手法，处理 getFrequentRenterPoints()
- * 但是这一次，我不把超类函数声明为 abstract。  我只是为新片类型增加一个覆写函数，并在超类内留下一个已定义的函数，使它成为一种默认行为。
+ *
  */
 public class Customer {
     private final String _name; // 姓名

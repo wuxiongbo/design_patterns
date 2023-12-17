@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Movie {
+getCharge()
+}
+class Price {
+getCharge()
+}
+class RegularPrice {
+getCharge()
+}
+class ChildrenPrice {
+getCharge()
+}
+class NewReleasePrice {
+getCharge()
+}
+class Rental {
+daysRented: int
+getCharge()
+getFrequentRenterPoints()
+}
+class Customer {
+name: String
+rentals: List<Rental>
+statement()
+htmlStatement()
+getTotalPrice()
+getTotalFrequentRenterPoints()
+}
+
+Customer --> "*" Rental
+Rental --> "1" Movie
+
+Price <|-- RegularPrice
+Price <|-- ChildrenPrice
+Price <|-- NewReleasePrice
+Movie -> "1" Price
+
+together {
+  class RegularPrice
+  class ChildrenPrice
+  class NewReleasePrice
+}
+
+note left of Movie::getCharge
+   return price.getCharge
+end note
+
+@enduml
