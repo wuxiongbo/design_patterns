@@ -63,16 +63,13 @@ public class ExpressionInterpreter {
             Expression exp2 = numbers.pollFirst();
 
             // 解释器
-            Expression combinedExp = null;
-            if ("+".equals(operator)) {
-                combinedExp = new AdditionExpression(exp1, exp2);
-            } else if ("-".equals(operator)) {
-                combinedExp = new SubstractionExpression(exp1, exp2);
-            } else if ("*".equals(operator)) {
-                combinedExp = new MultiplicationExpression(exp1, exp2);
-            } else if ("/".equals(operator)) {
-                combinedExp = new DivisionExpression(exp1, exp2);
-            }
+            Expression combinedExp = switch (operator) {
+                case "+" -> new AdditionExpression(exp1, exp2);
+                case "-" -> new SubstractionExpression(exp1, exp2);
+                case "*" -> new MultiplicationExpression(exp1, exp2);
+                case "/" -> new DivisionExpression(exp1, exp2);
+                default -> null;
+            };
 
 
             // 解释运算

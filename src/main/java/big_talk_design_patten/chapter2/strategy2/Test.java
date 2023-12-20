@@ -30,17 +30,12 @@ public class Test {
 
 			if (price>0 && num>0){
 
-				switch(discount){
-					case 1:
-						totalPrices = price * num;
-						break;
-					case 2:
-						totalPrices = price * num * 0.8;
-						break;
-					case 3:
-						totalPrices = price * num * 0.7;
-						break;
-				}
+                totalPrices = switch (discount) {
+                    case 1 -> price * num;
+                    case 2 -> price * num * 0.8;
+                    case 3 -> price * num * 0.7;
+                    default -> totalPrices;
+                };
 				
 				total = total + totalPrices;
 				

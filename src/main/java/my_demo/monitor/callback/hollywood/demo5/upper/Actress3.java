@@ -21,7 +21,7 @@ public class Actress3 implements Observer {
     }
 
 
-    private class Actress implements IPerformer{
+    private static class Actress implements IPerformer{
         /*
          * 回调方法。下层模块执行时，传回一些数据。
          */

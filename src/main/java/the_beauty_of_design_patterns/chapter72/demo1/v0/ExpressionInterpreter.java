@@ -2,6 +2,7 @@ package the_beauty_of_design_patterns.chapter72.demo1.v0;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Objects;
 
 /**
  * <p>解释器模式</p>
@@ -30,18 +31,19 @@ public class ExpressionInterpreter {
                 throw new RuntimeException("Expression is invalid: " + expression);
             }
 
-            long number1 = numbers.pollFirst();
-            long number2 = numbers.pollFirst();
-            long result = 0;
-            if (operator.equals("+")) {
-                result = number1 + number2;
-            } else if (operator.equals("-")) {
-                result = number1 - number2;
-            } else if (operator.equals("*")) {
-                result = number1 * number2;
-            } else if (operator.equals("/")) {
-                result = number1 / number2;
+            Long number1 = numbers.pollFirst();
+            Long number2 = numbers.pollFirst();
+            if (Objects.isNull(number1)|| Objects.isNull(number2)){
+                continue;
             }
+
+            long result = switch (operator) {
+                case "+" -> number1 + number2;
+                case "-" -> number1 - number2;
+                case "*" -> number1 * number2;
+                case "/" -> number1 / number2;
+                default -> 0;
+            };
             numbers.addFirst(result);
         }
 

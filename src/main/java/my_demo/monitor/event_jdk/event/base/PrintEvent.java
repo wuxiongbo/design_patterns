@@ -1,6 +1,8 @@
 package my_demo.monitor.event_jdk.event.base;
 
 import my_demo.monitor.event_jdk.eventsource.WindowsEventSource;
+
+import java.io.Serial;
 import java.util.EventObject;
 
 /**
@@ -21,6 +23,7 @@ import java.util.EventObject;
  * </pre>
  */
 public class PrintEvent extends EventObject {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private final String eventName;

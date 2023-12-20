@@ -20,7 +20,7 @@ public class AlertRule {
 
     // 规则匹配逻辑，写在内部类就行。
     // 因为，从业务逻辑上讲，告警规则 与 规则匹配 就属于一个模块
-    public class MatchedRule {
+    public static class MatchedRule {
 
         public long getMaxTps() {
             return 0;

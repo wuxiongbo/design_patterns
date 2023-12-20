@@ -65,14 +65,14 @@ public class JdbcTemplateDemo {
                     // SQL 语句
                     sql,
                     // '查询结果' 与 '对象' 之间的 映射关系
-                    new UserRowMapper()
+                new UserRowMapper()
         ).get(0);
 
     }
 
     // 可变因素二： 表结构 与 对象实体 之间的 映射 关系
     //   "查询结果" 与 "User对象" 之间的映射关系
-    class UserRowMapper implements RowMapper<User> {
+    static class UserRowMapper implements RowMapper<User> {
         @Override
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {
             User user = new User();

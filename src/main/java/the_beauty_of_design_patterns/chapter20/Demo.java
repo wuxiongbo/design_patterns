@@ -98,8 +98,7 @@ public class Demo {
         int ipUnitIntValue = -1;
         boolean isFirstUnit = true;
         int unitsCount = 0;
-        for (int i = 0; i < length; ++i) {
-            char c = ipChars[i];
+        for (char c : ipChars) {
             if (c == '.') {
                 if (ipUnitIntValue < 0 || ipUnitIntValue > 255) {
                     return false;
