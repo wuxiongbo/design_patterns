@@ -1,8 +1,8 @@
 package my_demo.visitor;
 
-import my_demo.visitor.user.impl.Student;
-import my_demo.visitor.user.impl.Teacher;
-import my_demo.visitor.user.User;
+import my_demo.visitor.interviewee.impl.Student;
+import my_demo.visitor.interviewee.impl.Teacher;
+import my_demo.visitor.interviewee.User;
 import my_demo.visitor.visitor.impl.Parent;
 import my_demo.visitor.visitor.impl.Principal;
 import my_demo.visitor.visitor.Visitor;
@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 模拟背景： 观察者，观察用户数据。 不同观察者关注的用户数据不一样。
+ * 模拟背景： 观察者，观察用户数据。
+ * 不同观察者关注的用户数据不一样。
+ *
  * 校长、家长
  *    观察
  * 学生、老师

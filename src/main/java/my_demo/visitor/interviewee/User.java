@@ -1,4 +1,4 @@
-package my_demo.visitor.user;
+package my_demo.visitor.interviewee;
 
 import my_demo.visitor.visitor.Visitor;
 

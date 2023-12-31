@@ -1,7 +1,7 @@
 package my_demo.visitor.visitor.impl;
 
-import my_demo.visitor.user.impl.Student;
-import my_demo.visitor.user.impl.Teacher;
+import my_demo.visitor.interviewee.impl.Student;
+import my_demo.visitor.interviewee.impl.Teacher;
 import my_demo.visitor.visitor.Visitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Parent implements Visitor {
 
-    private Logger logger = LoggerFactory.getLogger(Parent.class);
+    private final Logger logger = LoggerFactory.getLogger(Parent.class);
 
     @Override
     public void visit(Student student) {

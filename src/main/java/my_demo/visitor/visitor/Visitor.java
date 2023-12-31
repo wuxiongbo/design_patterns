@@ -1,7 +1,7 @@
 package my_demo.visitor.visitor;
 
-import my_demo.visitor.user.impl.Student;
-import my_demo.visitor.user.impl.Teacher;
+import my_demo.visitor.interviewee.impl.Student;
+import my_demo.visitor.interviewee.impl.Teacher;
 
 /**
  * 访问者

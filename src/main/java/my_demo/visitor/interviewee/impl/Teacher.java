@@ -1,6 +1,6 @@
-package my_demo.visitor.user.impl;
+package my_demo.visitor.interviewee.impl;
 
-import my_demo.visitor.user.User;
+import my_demo.visitor.interviewee.User;
 import my_demo.visitor.visitor.Visitor;
 
 import java.math.BigDecimal;
