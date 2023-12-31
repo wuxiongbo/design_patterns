@@ -3,11 +3,13 @@ package the_beauty_of_design_patterns.chapter59.callback;
 import the_beauty_of_design_patterns.chapter59.callback.framework.BClass;
 
 /**
- * <p>  回调函数 由 被回调方 实现，函数式写法  </p>
+ * 被回调方
  *
+ * <p>  回调函数 由 被回调方 实现，函数式写法  </p>
+ * <p>
  * 回调函数：
- *     AClass.$匿名类.methodToCallback();
- *     methodToCallback() 的实现，委托给了 AClass.f();
+ * AClass.$匿名类.methodToCallback();
+ * methodToCallback() 的实现，委托给了 AClass.f();
  *
  * <pre>
  * @author wuxiongbo
@@ -18,11 +20,11 @@ public class AClass2 {
 
 
     public void f() {
-        System.out.println("Call back me."  + " in AClass");
+        System.out.println("Call back me." + " in AClass");
     }
 
 
-    public void processA(){
+    public void processA() {
         System.out.println("方法开始" + " in AClass");
 
         BClass b = new BClass();

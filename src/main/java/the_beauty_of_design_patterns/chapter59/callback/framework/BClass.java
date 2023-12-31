@@ -1,7 +1,7 @@
 package the_beauty_of_design_patterns.chapter59.callback.framework;
 
 /**
- * <p>描述类的信息</p>
+ * <p>回调方</p>
  *
  * <pre>
  * @author wuxiongbo
