@@ -1,5 +1,7 @@
 package big_talk_design_patten.chapter2.strategy3;
 
+import big_talk_design_patten.chapter2.strategy3.cash.CashSuper;
+
 import java.util.Scanner;
 
 public class Test {

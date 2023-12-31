@@ -1,5 +1,8 @@
-package big_talk_design_patten.chapter2.strategy3;
+package big_talk_design_patten.chapter2.strategy3.cash;
 
+/**
+ * 打折收费
+ */
 public class CashRebate extends CashSuper {
 
     private double moneyRebate = 1d;

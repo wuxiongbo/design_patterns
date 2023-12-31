@@ -28,49 +28,4 @@ public class Test {
 	}
 }
 
-//抽象算法类
-abstract class Strategy{
-	//算法方法
-	public abstract void algorithmInterface();
-
-}
-
-//具体算法A
-class ConcreteStrategyA extends Strategy {
-    //算法A实现方法
-    public void algorithmInterface() {
-        System.out.println("算法A实现");
-    }
-}
-
-//具体算法B
-class ConcreteStrategyB extends Strategy {
-    //算法B实现方法
-    public void algorithmInterface() {
-        System.out.println("算法B实现");
-    }
-}
-
-//具体算法C
-class ConcreteStrategyC extends Strategy {
-    //算法C实现方法
-    public void algorithmInterface() {
-        System.out.println("算法C实现");
-    }
-}
-
-//上下文
-class Context {
-    Strategy strategy;
-    //初始化时，传入具体的策略对象
-    public Context(Strategy strategy) {
-        this.strategy = strategy;
-    }
-    //上下文接口
-    public void contextInterface() {
-    	//根据具体的策略对象，调用其算法的方法
-        strategy.algorithmInterface();
-    }
-}
-
 

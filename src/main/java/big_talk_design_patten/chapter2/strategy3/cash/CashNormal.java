@@ -1,5 +1,8 @@
-package big_talk_design_patten.chapter2.strategy3;
+package big_talk_design_patten.chapter2.strategy3.cash;
 
+/**
+ * 正常收费
+ */
 public class CashNormal extends CashSuper {
 
     //正常收费，原价返回
