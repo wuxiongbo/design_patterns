@@ -29,7 +29,6 @@ public class Main {
     }
 
 
-
     private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {
 
         List<ResourceFile> resourceFiles = new ArrayList<>();
