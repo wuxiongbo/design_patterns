@@ -2,11 +2,11 @@ package the_beauty_of_design_patterns.chapter63.demo1;
 
 import org.apache.catalina.core.ApplicationFilterConfig;
 
-import javax.servlet.FilterChain;
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 
 import java.io.IOException;
 
