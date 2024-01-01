@@ -21,41 +21,21 @@ import java.util.List;
  */
 public class ToolApplication {
 
-    private static List<ResourceFile> listAllResourceFiles(String resourceDirectory) {
+    // 1) 资源文件
+    private final List<ResourceFile> resourceFiles = new ArrayList<>();
 
-        List<ResourceFile> resourceFiles = new ArrayList<>();
-
-        //...根据后缀(pdf/ppt/word)由工厂方法创建不同的类对象(PdfFile/PPTFile/WordFile)
-
-        resourceFiles.add(new PdfFile(resourceDirectory+"a.pdf"));
-        resourceFiles.add(new WordFile(resourceDirectory+"b.word"));
-        resourceFiles.add(new PptFile(resourceDirectory+"c.ppt"));
-
-        return resourceFiles;
-
+    public void attach( ResourceFile resourceFile){
+        resourceFiles.add(resourceFile);
     }
 
-
-    public static void main(String[] args) {
-
-        // 资源文件
-        List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
-
-
-        // 提取器——访问者1
-        Visitor extractorVisitor = new Extractor();
+    public void operate(Visitor tool) {
         for (ResourceFile resourceFile : resourceFiles) {
-            resourceFile.accept(extractorVisitor);
+            resourceFile.accept(tool);
         }
-
-
-        // 压缩器——访问者2
-        Visitor compressorVisitor = new Compressor();
-        for(ResourceFile resourceFile : resourceFiles) {
-            resourceFile.accept(compressorVisitor);
-        }
-
     }
+
+
+
 
 
 }

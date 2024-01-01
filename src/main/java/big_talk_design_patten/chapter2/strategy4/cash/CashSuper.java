@@ -1,4 +1,4 @@
-package big_talk_design_patten.chapter2.strategy4;
+package big_talk_design_patten.chapter2.strategy4.cash;
 
 public abstract class CashSuper {
 

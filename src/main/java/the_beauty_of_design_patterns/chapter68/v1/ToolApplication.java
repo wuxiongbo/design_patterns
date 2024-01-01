@@ -42,7 +42,7 @@ public class ToolApplication {
 
     public static void main(String[] args) {
 
-        // 提取器
+        // 提取器(用于接收文件)
         Extractor extractor = new Extractor();
 
         // 文件资源

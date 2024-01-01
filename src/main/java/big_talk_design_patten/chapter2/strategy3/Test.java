@@ -4,6 +4,10 @@ import big_talk_design_patten.chapter2.strategy3.cash.CashSuper;
 
 import java.util.Scanner;
 
+/**
+ * 简单工厂实现
+ *
+ */
 public class Test {
 
 	public static void main(String[] args){

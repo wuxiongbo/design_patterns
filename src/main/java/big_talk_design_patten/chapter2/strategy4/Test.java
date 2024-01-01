@@ -1,5 +1,9 @@
 package big_talk_design_patten.chapter2.strategy4;
 
+import big_talk_design_patten.chapter2.strategy4.cash.CashNormal;
+import big_talk_design_patten.chapter2.strategy4.cash.CashRebate;
+import big_talk_design_patten.chapter2.strategy4.cash.CashReturn;
+
 import java.util.Scanner;
 
 public class Test {
@@ -13,8 +17,8 @@ public class Test {
         int discount = 0;        //商品折扣模式(1.正常收费 2.打八折 3.打七折)
 
         double price = 0d;        //商品单价
-        int num = 0;            //商品购买数量
-        double totalPrices = 0d;//当前商品合计费用
+        int num = 0;              //商品购买数量
+        double totalPrices = 0d;  //当前商品合计费用
         double total = 0d;        //总计所有商品费用
 
         Scanner sc = new Scanner(System.in);

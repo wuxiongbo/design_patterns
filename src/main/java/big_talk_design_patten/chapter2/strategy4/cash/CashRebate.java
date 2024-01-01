@@ -1,4 +1,4 @@
-package big_talk_design_patten.chapter2.strategy5;
+package big_talk_design_patten.chapter2.strategy4.cash;
 
 public class CashRebate extends CashSuper {
 

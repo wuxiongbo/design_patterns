@@ -4,7 +4,7 @@ import big_talk_design_patten.chapter28.visitor3.person.impl.Man;
 import big_talk_design_patten.chapter28.visitor3.person.impl.Woman;
 
 /**
- * 状态抽象类
+ * 状态抽象类(访问者)
  */
 public abstract class Action {
     //得到男人结论或反应

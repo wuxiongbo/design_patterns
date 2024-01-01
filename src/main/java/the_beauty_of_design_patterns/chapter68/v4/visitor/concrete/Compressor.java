@@ -28,12 +28,14 @@ public class Compressor implements Visitor {
         System.out.println(pptFile.hashCode()+"compress PPT.");
     }
 
+    // 方法重载
     @Override
     public void visit(PdfFile pdfFile) {
         //...pdf压缩实现
         System.out.println(pdfFile.hashCode()+"compress PDF.");
     }
 
+    // 方法重载
     @Override
     public void visit(WordFile wordFile) {
         //...word压缩实现

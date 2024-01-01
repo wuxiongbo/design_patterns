@@ -26,12 +26,14 @@ public class Extractor implements Visitor {
         System.out.println(pptFile.hashCode()+"Extract PPT.");
     }
 
+    // 方法重载
     @Override
     public void visit(PdfFile pdfFile) {
         //...pdf文本提取实现
         System.out.println(pdfFile.hashCode()+"Extract PDF.");
     }
 
+    // 方法重载
     @Override
     public void visit(WordFile wordFile) {
         //...word文本提取实现

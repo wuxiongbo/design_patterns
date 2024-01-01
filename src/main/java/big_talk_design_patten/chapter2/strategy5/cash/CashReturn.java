@@ -1,6 +1,6 @@
-package big_talk_design_patten.chapter2.strategy4;
+package big_talk_design_patten.chapter2.strategy5.cash;
 
-public class CashReturn extends big_talk_design_patten.chapter2.strategy4.CashSuper {
+public class CashReturn extends CashSuper {
 
     private double moneyCondition = 0d; //返利条件
     private double moneyReturn = 0d;    //返利值

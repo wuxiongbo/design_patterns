@@ -23,9 +23,10 @@ public class ToolApplication {
 
     public static void main(String[] args) {
 
+        // 1) 获取资源文件
         List<ResourceFile> resourceFiles = listAllResourceFiles(args[0]);
 
-        // 在 ToolApplication 中，利用 “多态” 特性，根据 对象 “运行时”的 实际类型，来决定执行哪个方法。
+        // 2) 在 ToolApplication 中，利用 “多态” 特性，根据 文件对象 “运行时”的 实际类型，来决定执行哪个方法。
         for (ResourceFile resourceFile : resourceFiles) {
             resourceFile.extract2txt();
         }

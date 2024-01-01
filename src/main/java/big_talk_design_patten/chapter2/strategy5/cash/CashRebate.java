@@ -1,6 +1,6 @@
-package big_talk_design_patten.chapter2.strategy4;
+package big_talk_design_patten.chapter2.strategy5.cash;
 
-public class CashRebate extends big_talk_design_patten.chapter2.strategy4.CashSuper {
+public class CashRebate extends CashSuper {
 
     private double moneyRebate = 1d;
 
