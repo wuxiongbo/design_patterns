@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class FileSystemNode {
 
-    private String path;    // 路径
+    private final String path;    // 路径
 
-    private boolean isFile; // 是否为文件
+    private final boolean isFile; // 是否为文件
 
-    private List<FileSystemNode> subNodes = new ArrayList<>();
+    private final List<FileSystemNode> subNodes = new ArrayList<>();
 
     public FileSystemNode(String path, boolean isFile) {
         this.path = path;

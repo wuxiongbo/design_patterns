@@ -1,6 +1,6 @@
 package the_beauty_of_design_patterns.chapter53.demo1.v2.node.impl;
 
-import the_beauty_of_design_patterns.chapter53.demo1.v2.node.FileSystemNode;
+import the_beauty_of_design_patterns.chapter53.demo1.v2.node.AbstractFileSystemNode;
 
 /**
  * <p>文件</p>
@@ -10,7 +10,7 @@ import the_beauty_of_design_patterns.chapter53.demo1.v2.node.FileSystemNode;
  * @date 2021/12/23
  * </pre>
  */
-public class File extends FileSystemNode {
+public class File extends AbstractFileSystemNode {
 
     public File(String path) {
         super(path);

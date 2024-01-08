@@ -1,6 +1,6 @@
 package the_beauty_of_design_patterns.chapter53.demo1.v2.node.impl;
 
-import the_beauty_of_design_patterns.chapter53.demo1.v2.node.FileSystemNode;
+import the_beauty_of_design_patterns.chapter53.demo1.v2.node.AbstractFileSystemNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +13,10 @@ import java.util.List;
  * @date 2021/12/23
  * </pre>
  */
-public class Directory extends FileSystemNode {
+public class Directory extends AbstractFileSystemNode {
 
     // 子节点
-    private List<FileSystemNode> subNodes = new ArrayList<>();
+    private List<AbstractFileSystemNode> subNodes = new ArrayList<>();
 
     public Directory(String path) {
         super(path);
@@ -25,7 +25,7 @@ public class Directory extends FileSystemNode {
     @Override
     public int countNumOfFiles() {
         int numOfFiles = 0;
-        for (FileSystemNode fileOrDir : subNodes) {
+        for (AbstractFileSystemNode fileOrDir : subNodes) {
             numOfFiles += fileOrDir.countNumOfFiles();
         }
         return numOfFiles;
@@ -34,17 +34,17 @@ public class Directory extends FileSystemNode {
     @Override
     public long countSizeOfFiles() {
         long sizeofFiles = 0;
-        for (FileSystemNode fileOrDir : subNodes) {
+        for (AbstractFileSystemNode fileOrDir : subNodes) {
             sizeofFiles += fileOrDir.countSizeOfFiles();
         }
         return sizeofFiles;
     }
 
-    public void addSubNode(FileSystemNode fileOrDir) {
+    public void addSubNode(AbstractFileSystemNode fileOrDir) {
         subNodes.add(fileOrDir);
     }
 
-    public void removeSubNode(FileSystemNode fileOrDir) {
+    public void removeSubNode(AbstractFileSystemNode fileOrDir) {
         int size = subNodes.size();
         int i = 0;
         for (; i < size; ++i) {

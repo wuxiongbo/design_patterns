@@ -1,5 +1,7 @@
 package the_beauty_of_design_patterns.chapter53.demo1.v2.node;
 
+import lombok.Getter;
+
 /**
  * <p>文件系统抽象类</p>
  *
@@ -8,27 +10,28 @@ package the_beauty_of_design_patterns.chapter53.demo1.v2.node;
  * @date 2021/12/23
  * </pre>
  */
-public abstract class FileSystemNode {
+@Getter
+public abstract class AbstractFileSystemNode {
 
-    protected String path;
+    /**
+     * 文件/文件夹的路径
+     */
+    protected final String path;
 
-    public FileSystemNode(String path) {
+    public AbstractFileSystemNode(String path) {
         this.path = path;
     }
 
     /**
      * 文件数
-     * @return
+     * @return 文件数
      */
     public abstract int countNumOfFiles();
 
     /**
      * 文件大小
-     * @return
+     * @return 文件大小
      */
     public abstract long countSizeOfFiles();
 
-    public String getPath() {
-        return path;
-    }
 }
