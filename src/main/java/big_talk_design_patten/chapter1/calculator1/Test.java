@@ -20,14 +20,18 @@ public class Test {
 		String C = sc.nextLine();
 		double D = 0d;
 
-		if (B.equals("+"))
+		if ("+".equals(B)) {
             D = Double.parseDouble(A) + Double.parseDouble(C);
-        if (B.equals("-"))
+        }
+        if ("-".equals(B)) {
             D = Double.parseDouble(A) - Double.parseDouble(C);
-        if (B.equals("*"))
+        }
+        if ("*".equals(B)) {
             D = Double.parseDouble(A) * Double.parseDouble(C);
-        if (B.equals("/"))
+        }
+        if ("/".equals(B)) {
             D = Double.parseDouble(A) / Double.parseDouble(C);
+        }
 
 		System.out.println("结果是："+D);	
 

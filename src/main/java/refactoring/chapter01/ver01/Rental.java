@@ -1,27 +1,25 @@
 package refactoring.chapter01.ver01;
 
+import lombok.Getter;
+
 /**
  * 租赁
  * 表示某个顾客租了一部影片
  */
+@Getter
 public class Rental {
-	private final Movie _movie; // 影片
-	private final int _daysRented; // 租期
+	private final Movie movie;
+	// 影片
+	/**
+	 * -- GETTER --
+	 *  获取租期
+	 */
+	private final int daysRented;
+	// 租期
 
 	public Rental(Movie movie, int daysRented) {
-		_movie = movie;
-		_daysRented = daysRented;
+		this.movie = movie;
+		this.daysRented = daysRented;
 	}
 
-	/**
-	 * 获取租期
-	 * @return 租期
-	 */
-	public int getDaysRented() {
-		return _daysRented;
-	}
-
-	public Movie getMovie() {
-		return _movie;
-	}
 }

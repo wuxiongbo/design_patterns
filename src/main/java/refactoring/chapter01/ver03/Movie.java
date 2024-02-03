@@ -1,5 +1,12 @@
 package refactoring.chapter01.ver03;
 
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * @author bear
+ */
+@Getter
 public class Movie {
     /**
      * 影片分类
@@ -8,24 +15,13 @@ public class Movie {
     public static final int NEW_RELEASE = 1;
     public static final int CHILDRENS = 2;
 
-    private final String _title;
-    private int _priceCode;
+    private final String title;
+    @Setter
+    private int priceCode;
 
     public Movie(String title, int priceCode) {
-        _title = title;
-        _priceCode = priceCode;
-    }
-
-    public int getPriceCode() {
-        return _priceCode;
-    }
-
-    public String getTitle() {
-        return _title;
-    }
-
-    public void setPriceCode(int priceCode) {
-        _priceCode = priceCode;
+        this.title = title;
+        this.priceCode = priceCode;
     }
 
 }

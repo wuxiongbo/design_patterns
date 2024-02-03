@@ -1,7 +1,10 @@
 package refactoring.chapter06.section8.v3;
 
+/**
+ * @author bear
+ */
 public class Gamma {
-    private final Account _account;
+    private final Account account;
     private final int inputVal;
     private final int quantity;
     private final int yearToDate;
@@ -12,15 +15,15 @@ public class Gamma {
     private int importantValue3;
 
 
-    public Gamma(Account _account, int inputVal, int quantity, int yearToDate) {
-        this._account = _account;
+    public Gamma(Account account, int inputVal, int quantity, int yearToDate) {
+        this.account = account;
         this.inputVal = inputVal;
         this.quantity = quantity;
         this.yearToDate = yearToDate;
     }
 
     int compute() {
-        importantValue1 = (inputVal * quantity) + _account.delta();
+        importantValue1 = (inputVal * quantity) + account.delta();
         importantValue2 = (inputVal * yearToDate) + 100;
         importantThing1();
         importantThing2();
