@@ -76,14 +76,17 @@ public class Customer {
      * @return
      */
     public String statement() {
-        double totalAmount = 0; // 总消费金。
-        int frequentRenterPoints = 0; // 常客积分
+        double totalAmount = 0;
+        // 总消费金。
+        int frequentRenterPoints = 0;
+        // 常客积分
 
         Iterator<Rental> rentals = this.rentals.iterator();
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");
         while (rentals.hasNext()) {
 
-            Rental rental = rentals.next(); // 取得一笔租借记。
+            Rental rental = rentals.next();
+            // 取得一笔租借记。
 
             // add frequent renter points
             // 累计常客积分
@@ -106,7 +109,11 @@ public class Customer {
         return result.toString();
     }
 
-    // 委托调用（删除）
+    /**
+     * 委托调用（删除）
+     * @param aRental
+     * @return
+     */
     private double amountFor1(Rental aRental) {
         return aRental.getCharge();
     }
