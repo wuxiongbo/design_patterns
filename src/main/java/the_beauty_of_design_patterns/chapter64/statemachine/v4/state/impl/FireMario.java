@@ -24,6 +24,7 @@ public class FireMario implements IMario {
         return instance;
     }
 
+
     @Override
     public State getName() {
         return State.FIRE;

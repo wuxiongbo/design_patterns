@@ -37,22 +37,28 @@ public class MarioStateMachine {
     private int score;
     private State currentState;
 
-    // 状态切换表。  列：事件， 行：状态
-    private static final State[][] transitionTable = {
-            // E1    E2    E3     E4        Even
-            {State.SUPER, State.CAPE, State.FIRE, State.SMALL},  // State  SMALL
-            {State.SUPER, State.CAPE, State.FIRE, State.SMALL},  // State  SUPER
-            {State.CAPE, State.CAPE, State.CAPE, State.SMALL},   // State  CAPE
-            {State.FIRE, State.FIRE, State.FIRE, State.SMALL}    // State  FIRE
+    /**
+     * 状态切换表
+     * 列：事件， 行：状态
+     */
+    private static final State[][] TRANSITION_TABLE = {
+            // E1           E2          E3           E4      Even   State
+            {State.SUPER, State.CAPE, State.FIRE, State.SMALL},  // SMALL
+            {State.SUPER, State.CAPE, State.FIRE, State.SMALL},  // SUPER
+            {State.CAPE, State.CAPE, State.CAPE, State.SMALL},   // CAPE
+            {State.FIRE, State.FIRE, State.FIRE, State.SMALL}    // FIRE
     };
 
-    // 分数行为表。  列：事件， 行：状态
-    private static final int[][] actionTable = {
-            // E1    E2    E3     E4     Even
-            {+100, +200, +300, +0},   // State  SMALL
-            {+0, +200, +300, -100},   // State  SUPER
-            {+0, +0, +0, -200},       // State  CAPE
-            {+0, +0, +0, -300}        // State  FIRE
+    /**
+     * 分数行为表
+     * 列：事件， 行：状态
+     */
+    private static final int[][] ACTION_TABLE = {
+            // E1    E2    E3   E4    Even         State
+            {+100, +200, +300, +0},             // SMALL
+            {+0,   +200, +300, -100},           // SUPER
+            {+0,   +0,   +0,   -200},           // CAPE
+            {+0,   +0,   +0,   -300}            // FIRE
     };
 
     public MarioStateMachine() {
@@ -83,10 +89,10 @@ public class MarioStateMachine {
 
 
         // 查 状态切换表
-        this.currentState = transitionTable[stateValue][eventValue];
+        this.currentState = TRANSITION_TABLE[stateValue][eventValue];
 
         // 查 分数行为表
-        this.score += actionTable[stateValue][eventValue];
+        this.score += ACTION_TABLE[stateValue][eventValue];
     }
 
     public int getScore() {

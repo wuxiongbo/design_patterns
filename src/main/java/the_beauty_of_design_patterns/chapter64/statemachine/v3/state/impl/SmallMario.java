@@ -5,7 +5,7 @@ import the_beauty_of_design_patterns.chapter64.statemachine.v3.MarioStateMachine
 import the_beauty_of_design_patterns.chapter64.statemachine.v3.state.IMario;
 
 /**
- * <p> 形态类 </p>
+ * <p> 小马里奥 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -16,11 +16,12 @@ public class SmallMario  implements IMario {
 
 
     private MarioStateMachine stateMachine;
-
     // 依赖注入  状态机
     public SmallMario(MarioStateMachine stateMachine) {
         this.stateMachine = stateMachine;
     }
+
+
 
     @Override
     public State getName() {

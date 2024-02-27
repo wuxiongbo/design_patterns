@@ -5,7 +5,7 @@ import the_beauty_of_design_patterns.chapter64.statemachine.v3.MarioStateMachine
 import the_beauty_of_design_patterns.chapter64.statemachine.v3.state.IMario;
 
 /**
- * <p> 形态类 </p>
+ * <p> 火焰马里奥 </p>
  *
  * <pre>
  * @author wuxiongbo
@@ -15,7 +15,6 @@ import the_beauty_of_design_patterns.chapter64.statemachine.v3.state.IMario;
 public class FireMario implements IMario {
 
     private MarioStateMachine stateMachine;
-
     // 依赖注入  状态机
     public FireMario(MarioStateMachine stateMachine) {
         this.stateMachine = stateMachine;

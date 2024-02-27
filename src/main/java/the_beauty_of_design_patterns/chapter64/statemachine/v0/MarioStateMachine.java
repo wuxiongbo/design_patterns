@@ -6,11 +6,10 @@ import the_beauty_of_design_patterns.chapter64.statemachine.dependence.State;
  * <p>状态机</p>
  *
  * 事件:
- *   E1   获得 蘑菇      MushRoom
- *   E2   获得 斗篷      Cape
- *   E3   获得 火焰      FireFlower
- *
- *   E4   遇到怪物       Monster
+ *   Event1   获得 蘑菇      MushRoom
+ *   Event2   获得 斗篷      Cape
+ *   Event3   获得 火焰      FireFlower
+ *   Event4   遇到怪物       Monster
  *
  * <pre>
  * @author wuxiongbo
@@ -29,19 +28,19 @@ public class MarioStateMachine {
 
 
     public void obtainMushRoom() {
-        //TODO  事件E1
+        //TODO  事件Event1
     }
 
     public void obtainCape() {
-        //TODO  事件E2
+        //TODO  事件Event2
     }
 
     public void obtainFireFlower() {
-        //TODO  事件E3
+        //TODO  事件Event3
     }
 
     public void meetMonster() {
-        //TODO  事件E4
+        //TODO  事件Event4
     }
 
 

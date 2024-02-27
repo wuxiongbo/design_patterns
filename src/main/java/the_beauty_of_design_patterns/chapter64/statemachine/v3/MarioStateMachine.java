@@ -7,7 +7,7 @@ import the_beauty_of_design_patterns.chapter64.statemachine.v3.state.impl.SmallM
 /**
  * <p>状态机 实现方式三：状态模式</p>
  *
- * MarioStateMachine 和各个 ‘状态类’  之间是 “双向依赖”关系。、
+ * MarioStateMachine 和各个 ‘状态类’  之间是 “双向依赖”关系。
  *
  * MarioStateMachine 依赖各个 ‘状态类’ 是理所当然的，
  * 但是，反过来，各个 ‘状态类’ 为什么要依赖 MarioStateMachine 呢？
