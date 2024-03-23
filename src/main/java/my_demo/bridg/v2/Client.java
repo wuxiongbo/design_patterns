@@ -6,9 +6,9 @@ import my_demo.bridg.v2.coffee.RefinedCoffee;
 
 /**
  * 桥接模式
- *
+ * <p>
  * 巧妙利用 组合关系 进行 功能组合，避免了繁杂的继承
- *
+ * <p>
  * 将 功能，从 咖啡杯大小、添加剂  两个维度拆开。
  *
  * <p>

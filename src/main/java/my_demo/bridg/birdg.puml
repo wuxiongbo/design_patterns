@@ -1,0 +1,47 @@
+@startuml
+abstract class bridge.coffee.RefinedCoffee {
++ void checkQuality()
+}
+
+interface bridge.coffee.ICoffee {
+~ void orderCoffee(int)
+}
+
+class bridge.coffee.impl.LargeCoffee {
++ void orderCoffee(int)
+}
+
+class bridge.additives.impl.Sugar {
++ void addSomething()
+}
+
+interface bridge.additives.ICoffeeAdditives {
+~ void addSomething()
+}
+
+class bridge.additives.impl.Milk {
++ void addSomething()
+}
+
+abstract class bridge.coffee.Coffee {
+# ICoffeeAdditives additives
+}
+
+class bridge.Client {
++ {static} void main(String[])
+}
+
+class bridge.coffee.impl.SmallCoffee {
++ void orderCoffee(int)
+}
+
+
+bridge.coffee.Coffee <|-- bridge.coffee.RefinedCoffee
+bridge.coffee.RefinedCoffee <|-- bridge.coffee.impl.LargeCoffee
+bridge.additives.ICoffeeAdditives <|.. bridge.additives.impl.Sugar
+bridge.additives.ICoffeeAdditives <|.. bridge.additives.impl.Milk
+bridge.coffee.ICoffee <|.. bridge.coffee.Coffee
+bridge.coffee.RefinedCoffee <|-- bridge.coffee.impl.SmallCoffee
+bridge.coffee.Coffee
+
+@enduml
