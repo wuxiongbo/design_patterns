@@ -25,18 +25,21 @@ public class Gamma {
     int compute() {
         importantValue1 = (inputVal * quantity) + account.delta();
         importantValue2 = (inputVal * yearToDate) + 100;
-        importantThing1();
+
         importantThing2();
+
+        importantThing3();
+
         return importantValue3 - 2 * importantValue1;
     }
 
-    private void importantThing1() {
+    private void importantThing2() {
         if ((yearToDate - importantValue1) > 100) {
             importantValue2 -= 20;
         }
     }
 
-    private void importantThing2() {
+    private void importantThing3() {
         importantValue3 = importantValue2 * 7;
         // and so on.
     }
