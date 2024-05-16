@@ -16,8 +16,9 @@ import java.util.stream.Stream;
 
 /**
  * 生成器设计模式
- *
+ * <p>
  * <a href="https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw">参考文档</a>
+ * @author bear
  */
 public class SequenceTest {
 
@@ -53,22 +54,24 @@ public class SequenceTest {
     @Test
     public void mapTest() {
         List<Integer> list = Arrays.asList(1, 2, 3);
-        // 已绑定this 的方法引用 (将 list 闭包了。使用 c 对元素进行 消费。 具体的消费动作交给 调用者 扩展)
+        // 已绑定this 的方法引用 (将 list 闭包了。使用 c(即 consumer) 对元素进行 消费。 具体的消费动作交给 调用者 扩展)
 //        Seq<Integer> myStream = c -> list.forEach(c);
         Seq<Integer> myStream = list::forEach;
+
+
         // 一、 map的实现
         // Integer -> String -> Long -> BigDecimal
         //
         Seq<BigDecimal> mapAndThanForEach = myStream
-                // 1）调用完此方法，function 包装进入了一层Seq 内部类，这是第一层
+                // 1）调用完此方法，function 包装进了一层Seq匿名内部类 ; 这是第一层
                 .map(
                         t -> t + "---"
                 )
-                // 2）在以上 Seq内部类的基础上，再包装一层内部类，这是第二层
+                // 2）在以上 Seq内部类的基础上，再包装一层Seq匿名内部类; 这是第二层
                 .map(
                         t -> Long.valueOf(t.replace("---", ""))
                 )
-                // 2）在以上 Seq内部类的基础上，外面再包装一层内部类，这是第三层。
+                // 2）在以上 Seq内部类的基础上，再包装一层Seq匿名内部类; 这是第三层。
                 .map(
                         BigDecimal::new
                 );

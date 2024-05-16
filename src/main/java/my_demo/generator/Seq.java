@@ -16,40 +16,54 @@ import java.util.concurrent.atomic.AtomicInteger;
 public interface Seq<T> {
 
     // 迭代器的引用
-    void consume(Consumer<T> consumer);
+    void consume(Consumer<T> initialSeqConsumer);
 
 
-    default <E> Seq<E> map(Function<T, E> function0) {
+    default <E> Seq<E> map(Function<T, E> initialSeqConvertFunction) {
         // 闭包
-        // Seq 匿名内部类
+        // Seq 匿名内部类 (闭包Function的 Seq匿名内部类)
         return new Seq<E>() {
             /**
-             * 这里把 outer1Consumer 当做 System.out::println  ，方便理解
+             * 这里把 anonymitySeqConsumer 当做 System.out::println  ，方便理解
              * 外部最先调用的是多层嵌套Seq类中 最后一层Seq类的 consume 方法。
              * 最后一层Seq 的 consume 方法实现逻辑 又懒加载， 层层传递，最终实际最先执行的逻辑是 最内层Seq类的 consume 方法
-             * @param outer1Consumer
              */
             @Override
-            public void consume(Consumer<E> outer1Consumer) {
+            public void consume(Consumer<E> anonymitySeqConsumer){
 
                 // 1) 内部类的 Consumer 消费者， 将 对 从T类型转型为的E类型元素  的消费行为，进行包装。 这部分逻辑实现了懒加载
-                Consumer<T> outer2Consumer = new Consumer<T>() {
+                Consumer<T> initialSeqConsumer = new Consumer<T>() {
                     /**
-                     * 将 Function 函数 闭包进了 Consumer 的实现当中。 层层闭包，就实现了函数柯里化。
+                     * 将 Function 函数过程, 闭包进了 Consumer 的实现当中。 层层闭包，就实现了 入参 Function<T, E> 的 函数柯里化。
                      * @param t the input argument
                      */
                     @Override
                     public void accept(T t) {
                         // 3) T -> E ,  Integer-》String
-                        outer1Consumer.accept(function0.apply(t));
+                        anonymitySeqConsumer.accept(initialSeqConvertFunction.apply(t));
                     }
                 };
 
 
                 // 2) 内部类的 consume 调用  外部类的 consume 方法。
-                // （从代码书写直观的看，是 代码结构内层的类 传递到了 代码结构外层的类）
-                // （实际上，是从逻辑层面，也就是从包装层级看，就是多层嵌套Seq类中，是外层Seq类将 consume方法的内部实现 传递给了内层 Seq类 的  consume方法）
-                Seq.this.consume(outer2Consumer);
+                // （代码书写角度: 多层嵌套Seq类中，
+                //                倒数第二次包装的Seq匿名内部类 的 consume方法的实现
+                //                被闭包进了
+                //                最后一次包装的Seq匿名内部类 的 consume方法中）
+                //  代码执行角度: 首先调用,最后一次包装的Seq匿名内部类 的 consume方法实现,
+                //              然后调用,倒数第二次包装的Seq匿名内部类 的 consume方法实现,
+                //              然后调用,倒数第三次包装的Seq匿名内部类
+                //              ...
+                //              最后调用,首个Seq接口实例 的 consume方法(foreach), 开始消费 Consumer
+                //    --------------------------------------------------------------------------------
+                //              此时, 首个Seq接口实例, 开始消费 经过了层层包装传递进来的 入参----Consumer.
+                //              consume方法的入参 Consumer 是懒加载的,  依次调用:
+                //              -> 首个Seq接口实例 的  Consumer initialSeqConsumer 的 accept 方法
+                //              -> ...
+                //              -> 倒数第三次包装的Seq匿名内部类 的  Consumer anonymitySeqConsumer 的 accept 方法
+                //              -> 倒数第二次包装的Seq匿名内部类 的  Consumer的accept 方法
+                //              -> 最后一次包装的Seq匿名内部类 的  Consumer的accept 方法;  例: System.out::println
+                Seq.this.consume(initialSeqConsumer);
 
             }
 
@@ -59,11 +73,31 @@ public interface Seq<T> {
 
     }
 
+    default <E> Seq<E> map0(Function<T, E> function0) {
+        return new Seq<E>() {
+            @Override
+            public void consume(Consumer<E> outer1Consumer) {
+                Consumer<T> outer2Consumer = new Consumer<T>() {
+                    @Override
+                    public void accept(T t) {
+                        outer1Consumer.accept(function0.apply(t));
+                    }
+                };
+                Seq.this.consume(outer2Consumer);
+            }
+        };
+    }
+
     // 如果觉得理解起来不太直观，就把Seq看作是List，把consume看作是forEach就好。
     //                                       甚至，还可以 把 consumer 看做是 System.out::println
     default <E> Seq<E> map1(Function<T, E> function) {
         return consumer -> Seq.this.consume(t -> consumer.accept(function.apply(t)));
     }
+
+    default <E> Seq<E> map2(Function<T, E> function) {
+        return consumer -> Seq.this.consume(t -> consumer.accept(function.apply(t)));
+    }
+
 
     static <T> Seq<T> unit(T t) {
         return c -> c.accept(t);
