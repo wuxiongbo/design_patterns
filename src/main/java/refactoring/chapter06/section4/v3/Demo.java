@@ -7,14 +7,16 @@ package refactoring.chapter06.section4.v3;
  */
 public class Demo {
 
-    private int _quantity;
-    private int itemPrice;
+    private final int _quantity;
+    private final int itemPrice;
 
-    double getPrice() {
+    public Demo(int quantity, int itemPrice) {
+        _quantity = quantity;
+        this.itemPrice = itemPrice;
+    }
 
-        final double discountFactor = discountFactor();
-
-        return basePrice() * discountFactor;
+    public double getPrice() {
+        return basePrice() * discountFactor();
     }
 
     private double discountFactor() {

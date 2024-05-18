@@ -1,6 +1,8 @@
 package refactoring.chapter06.section8.v3;
 
 /**
+ * 函数对象
+ * 将所有的局部变量都变成函数对象的字段. 然后就可以对这个新对象 使用 Extract Method 创造新函数
  * @author bear
  */
 public class Gamma {
@@ -26,12 +28,15 @@ public class Gamma {
         importantValue1 = (inputVal * quantity) + account.delta();
         importantValue2 = (inputVal * yearToDate) + 100;
 
+        // 提取出的新函数1
         importantThing2();
 
+        // 提取出的新函数2
         importantThing3();
 
         return importantValue3 - 2 * importantValue1;
     }
+
 
     private void importantThing2() {
         if ((yearToDate - importantValue1) > 100) {

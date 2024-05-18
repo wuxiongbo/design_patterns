@@ -7,13 +7,19 @@ package refactoring.chapter06.section4.v2;
  */
 public class Demo {
 
-    private int _quantity;
-    private int itemPrice;
+    private final int _quantity;
+    private final int itemPrice;
+
+    public Demo(int quantity, int itemPrice) {
+        _quantity = quantity;
+        this.itemPrice = itemPrice;
+    }
 
     double getPrice() {
         final int basePrice = _quantity * itemPrice;
 
         final double discountFactor;
+
         if (basePrice > 1000) {
             discountFactor = 0.95;
         } else {

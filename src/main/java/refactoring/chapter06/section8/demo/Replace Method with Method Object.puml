@@ -1,0 +1,21 @@
+@startuml
+class PriceCalculator {
+~ double primaryBasePrice
+~ double secondaryBasePrice
+~ double tertiaryBasePrice
++ double compute()
+}
+
+
+class Order {
+~ double price()
+}
+
+note "return new PriceCalculator(this).compute();" as priceMethod
+
+Order::price +.. priceMethod
+
+Order .right.> PriceCalculator: 依赖
+PriceCalculator --> Order: 关联
+
+@enduml

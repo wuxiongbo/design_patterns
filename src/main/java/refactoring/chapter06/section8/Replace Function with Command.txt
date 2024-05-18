@@ -1,6 +1,0 @@
-重构api
-
-replace function with command 以命令取代函数 (337)
-
-曾用名： 以函数对象取代函数（Replace Method with Method Object）
-反向重构：以函数取代命令（344）
