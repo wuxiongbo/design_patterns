@@ -1,6 +1,5 @@
 package my_demo.prototype.v1;
 
-import my_demo.prototype.v1.QuestionBankController;
 import org.junit.jupiter.api.Test;
 
 /**

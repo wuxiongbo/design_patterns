@@ -10,6 +10,7 @@ import java.util.HashMap;
  * @date 2023/12/5 10:02
  */
 public class DemoTest2 {
+
     @Test
     public void test_QuestionBank() throws CloneNotSupportedException {
         QuestionBankController questionBankController = new QuestionBankController();

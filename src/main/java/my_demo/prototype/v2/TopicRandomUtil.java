@@ -9,6 +9,7 @@ import java.util.*;
 public class TopicRandomUtil {
     /**
      * 乱序Map元素，记录对应答案key
+     *
      * @param option 题目
      * @param key    答案
      * @return Topic 乱序后 {A=c., B=d., C=a., D=b.}

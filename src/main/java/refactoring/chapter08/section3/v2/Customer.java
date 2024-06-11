@@ -25,6 +25,7 @@ import java.util.Hashtable;
  */
 public class Customer {
 
+    // 为了简化我们的例⼦，我把这个注册表保存在 Customer类 的 static字段 中，让 Customer类 作为访问点：
     private static final Dictionary<String, Customer> INSTANCES = new Hashtable<>();
 
     private final String _name;
@@ -49,7 +50,7 @@ public class Customer {
     }
 
     /**
-     * 由于create() 总是返回既有的Customer对象，所以, 我应该使⽤Rename Method （273）修改这个⼯⼚函数的名称，以便强调这⼀点。
+     * 由于create() 总是返回既有的Customer对象，所以，我应该使⽤Rename Method （273）修改这个⼯⼚函数的名称，以便强调这⼀点。
      * @param name name
      * @return Customer
      */
