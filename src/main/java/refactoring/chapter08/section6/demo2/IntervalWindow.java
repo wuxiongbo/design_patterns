@@ -36,57 +36,6 @@ public class IntervalWindow extends Frame implements Observer {
         update(subject, null);
     }
 
-
-    class SymFocus extends java.awt.event.FocusAdapter {
-
-        public void focusLost(java.awt.event.FocusEvent event) {
-            Object object = event.getSource();
-            if (object == startField) {
-                StartField_FocusLost(event);
-            } else if (object == endField) {
-                EndField_FocusLost(event);
-            } else if (object == lengthField) {
-                LengthField_FocusLost(event);
-            }
-        }
-
-        // 失焦事件（赋值给领域类，领域类反向通知本GUI）
-        void StartField_FocusLost(java.awt.event.FocusEvent event) {
-            setStart(startField.getText());
-            if (isNotInteger(getStart())) {
-                setStart("0");
-            }
-            subject.calculateLength();
-        }
-
-        // 失焦事件（赋值给领域类，领域类反向通知本GUI）
-        void EndField_FocusLost(java.awt.event.FocusEvent event) {
-            setEnd(endField.getText());
-            if (isNotInteger(getEnd())) {
-                setEnd("0");
-            }
-            subject.calculateLength();
-        }
-
-        // 失焦事件（赋值给领域类，领域类反向通知本GUI）
-        void LengthField_FocusLost(java.awt.event.FocusEvent event) {
-            setLength(lengthField.getText());
-            if (isNotInteger(getLength())) {
-                setLength("0");
-            }
-            subject.calculateEnd();
-        }
-
-        private boolean isNotInteger(String text) {
-            try {
-                Integer.parseInt(text);
-                return false;
-            } catch (NumberFormatException e) {
-                return true;
-            }
-        }
-    }
-
     // 通知的消费行为（根据领域类，初始化当前GUI）
     @Override
     public void update(Observable observed, Object arg) {
@@ -118,4 +67,58 @@ public class IntervalWindow extends Frame implements Observer {
     void setLength(String arg) {
         subject.setLength(arg);
     }
+
+    class SymFocus extends java.awt.event.FocusAdapter {
+
+        // 事件处理函数：失焦事件（赋值给领域类，领域类反向通知本GUI，对GUI的联动字段进行更新）
+        public void focusLost(java.awt.event.FocusEvent event) {
+            Object object = event.getSource();
+            if (object == startField) {
+                StartField_FocusLost(event);
+            } else if (object == endField) {
+                EndField_FocusLost(event);
+            } else if (object == lengthField) {
+                LengthField_FocusLost(event);
+            }
+        }
+
+        // 事件处理函数：失焦事件（赋值给领域类，领域类反向通知本GUI，对GUI的联动字段进行更新）
+        void StartField_FocusLost(java.awt.event.FocusEvent event) {
+            setStart(startField.getText());
+            if (isNotInteger(getStart())) {
+                setStart("0");
+            }
+            subject.calculateLength();
+        }
+
+        // 事件处理函数：失焦事件（赋值给领域类，领域类反向通知本GUI，对GUI的联动字段进行更新）
+        void EndField_FocusLost(java.awt.event.FocusEvent event) {
+            setEnd(endField.getText());
+            if (isNotInteger(getEnd())) {
+                setEnd("0");
+            }
+            subject.calculateLength();
+        }
+
+        // 事件处理函数：失焦事件（赋值给领域类，领域类反向通知本GUI，对GUI的联动字段进行更新）
+        void LengthField_FocusLost(java.awt.event.FocusEvent event) {
+            setLength(lengthField.getText());
+            if (isNotInteger(getLength())) {
+                setLength("0");
+            }
+            subject.calculateEnd();
+        }
+
+        private boolean isNotInteger(String text) {
+            try {
+                Integer.parseInt(text);
+                return false;
+            } catch (NumberFormatException e) {
+                return true;
+            }
+        }
+    }
+
+
+
 }
