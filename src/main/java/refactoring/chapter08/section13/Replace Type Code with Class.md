@@ -1,4 +1,5 @@
 # Replace Type Code with Class（以类取代类型码）
+
 类之中有⼀个数值类型码，但它并不影响类的⾏为。
 
 以⼀个新的类替换该数值类型码。
@@ -56,7 +57,7 @@ Java 只能以整数作为switch语句的判断依据，不能使⽤任意类，
 
 ## 范例
 
-每个⼈都拥有四种⾎型中的⼀种。我们以Person来表示“⼈”，以其中的类型码表示 “⾎型”：
+每个⼈都拥有四种⾎型中的⼀种。我们以 Person 来表示“⼈”，以其中的类型码表示 “⾎型”：
 
 ```java
 class Person{
@@ -101,7 +102,7 @@ class BloodGroup{
 
 ```
 
-然后，我把Person中的类型码改为使⽤BloodGroup类：
+然后，我把 Person中的类型码，改为使⽤ BloodGroup类：
 
 ```java
 class Person{
@@ -173,7 +174,7 @@ class Person{
 }
 ```
 
-另外，我还要建⽴新的构造函数和设值函数，让它们也使⽤BloodGroup：
+另外，我还要建⽴新的 构造函数 和 设值函数，让它们也使⽤ BloodGroup：
 
 ```java
 class Person{
@@ -218,7 +219,7 @@ class Person{
 就变成了：
 `Person thePerson = new Person(BloodGroup.A);`
 
-原来，调⽤取值函数的代码必须改为调⽤BloodGroup的取值函数。
+原来，调⽤取值函数的代码必须改为调⽤ BloodGroup 的取值函数。
 因此，下列代码：
 `thePerson.getBloodGroupCode()`
 变成了：
@@ -235,6 +236,7 @@ class Person{
 ![img.png](file/img1.png)
 
 我还可以将 BloodGroup中，使⽤ 整数类型 的函数 ，声明为 private，因为再没有⼈会使⽤它们了：
+
 ```java
 class BloodGroup{
     public static final BloodGroup O = new BloodGroup(0);
@@ -257,3 +259,4 @@ class BloodGroup{
     }
 }
 ```
+
