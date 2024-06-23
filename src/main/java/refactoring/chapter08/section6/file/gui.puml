@@ -1,0 +1,53 @@
+@startuml
+class IntervalWindow extends Frame implements Observer{
+~ java.awt.TextField startField
+~ java.awt.TextField endField
+~ java.awt.TextField lengthField
+
+- Interval subject
+
++ void update(Observable,Object)
+
++ String getEnd()
++ void setEnd(String)
+
+~ String getStart()
+~ void setStart(String)
+
+~ String getLength()
+~ void setLength(String)
+}
+
+
+class IntervalWindow$SymFocus extends FocusAdapter{
++ void focusLost(java.awt.event.FocusEvent)
+~ void StartField_FocusLost(java.awt.event.FocusEvent)
+~ void EndField_FocusLost(java.awt.event.FocusEvent)
+~ void LengthField_FocusLost(java.awt.event.FocusEvent)
+}
+
+class Interval extends Observable{
+- String end
+- String start
+- String length
+
+~ String getEnd()
+~ void setEnd(String)
+
+~ String getStart()
+~ void setStart(String)
+
+~ String getLength()
+~ void setLength(String)
+
+~ void calculateLength()
+~ void calculateEnd()
+
++ void addObserver(Observer)
+}
+
+IntervalWindow +.. IntervalWindow$SymFocus
+
+Interval "1"<-up- IntervalWindow
+
+@enduml

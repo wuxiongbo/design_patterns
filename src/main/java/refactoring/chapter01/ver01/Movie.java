@@ -25,6 +25,7 @@ public class Movie {
 	@Setter
 	private int priceCode;
 
+
 	public Movie(String title, int priceCode) {
 		this.title = title;
 		this.priceCode = priceCode;

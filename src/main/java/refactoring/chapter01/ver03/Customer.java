@@ -3,13 +3,14 @@ package refactoring.chapter01.ver03;
 import java.util.*;
 
 /**
- * 修改一，函数转移：
- * 现在，我可以测试转移后的新函数 Rental.getCharge() 是否正常工作。{@link Rental#getCharge()}
- * 想要进行测试，只要改变 Customer.amountFor() {@link Customer#amountFor1(Rental)} 内容，使它委托调用新函数 getCharge() 即可：
- * 1）现在，我可以编译并测试，看看有没有破坏什么东西。
- * 2）下一个步骤是，找出程序中对于旧函数的所有引用点，并修改它们，让它们改用新函数。
+ * 修改一，函数转移：<br>
+ * 现在，我可以测试转移后的新函数  {@link Rental#getCharge() Rental.getCharge()} 是否正常工作。<br>
+ * 想要进行测试，只要改变 Customer.amountFor() {@link Customer#amountFor(Rental) } 内容，<br>
+ * 使它委托调用新函数{@linkplain Rental#getCharge() Rental.getCharge()} 即可：<br>
+ * 1）现在，我可以编译并测试，看看有没有破坏什么东西。<br>
+ * 2）下一个步骤是，找出程序中对于旧函数的所有引用点，并修改它们，让它们改用新函数。<br>
  * <p>
- * 本例之中，这个步骤很简单，因为我才刚刚产生新函数，只有一个地方使用了它。
+ * 本例之中，这个步骤很简单，因为我才刚刚产生新函数，只有一个地方使用了它。<br>
  * 一般情况下，你得在可能运用该函数的所有类中查找一遍。
  * <p>
  * 做完这些修改之后，下一件事就是去掉旧函数。
@@ -19,7 +20,33 @@ import java.util.*;
  * <p>
  * 修改二，去除多余变量：
  * 去掉 多余的 临时变量 thisAmount
- * 去掉前：{@link refactoring.chapter01.ver02.Customer#amountFor1(refactoring.chapter01.ver02.Rental)}
+ * 去掉前：
+ * <pre>{@code
+ *     public final double amountFor1(Rental each) {
+ *         double thisAmount = 0;
+ *         switch (each.getMovie().getPriceCode()) {
+ *             case Movie.REGULAR:
+ *                 thisAmount += 2;
+ *                 if (each.getDaysRented() > 2) {
+ *                     thisAmount += (each.getDaysRented() - 2) * 1.5;
+ *                 }
+ *                 break;
+ *             case Movie.NEW_RELEASE:
+ *                 thisAmount += each.getDaysRented() * 3;
+ *                 break;
+ *             case Movie.CHILDRENS:
+ *                 thisAmount += 1.5;
+ *                 if (each.getDaysRented() > 3) {
+ *                     thisAmount += (each.getDaysRented() - 3) * 1.5;
+ *                 }
+ *                 break;
+ *             default:
+ *                 break;
+ *         }
+ *         return thisAmount;
+ *     }
+ * }</pre>
+ *
  * <p>
  * 做完这份修改，我立刻编译并测试，保证自己没有破坏任何东西。
  * <p>
@@ -36,17 +63,20 @@ import java.util.*;
  * 积分的计算，视 影片种类 而有所不同，不过，不像收费规则有那么多变化。
  * 看来，似乎有理由把 积分计算 的责任，放在 Rental类 身上。
  * 首先，需要针对 “常客积分计算” 这部分代码运用 Extract Method(110) 重构手法 :
- * <pre>
- * {@code
+ * 修改前：
+ * <pre>{@code
+ *
  *   frequentRenterPoints++;
  *   // add bonus for a two day new release rental
  *   if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE)
  *          && rental.getDaysRented() > 1) {
  *      frequentRenterPoints++;
  *   }
- * }
- * </pre>
- * 修改后：{@link refactoring.chapter01.ver04.Rental#getFrequentRenterPoints()}
+ *
+ * }</pre>
+ * <p>
+ * 修改后：<br>
+ * {@link refactoring.chapter01.ver04.Rental#getFrequentRenterPoints()}
  */
 public class Customer {
     private final String name;
@@ -111,10 +141,11 @@ public class Customer {
 
     /**
      * 委托调用（删除）
+     *
      * @param aRental
      * @return
      */
-    private double amountFor1(Rental aRental) {
+    private double amountFor(Rental aRental) {
         return aRental.getCharge();
     }
 

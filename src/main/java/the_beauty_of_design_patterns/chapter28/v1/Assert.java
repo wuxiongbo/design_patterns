@@ -9,6 +9,7 @@ package the_beauty_of_design_patterns.chapter28.v1;
  * </pre>
  */
 public class Assert {
+
     public static void assertEquals(Integer expectedValue, Integer actualValue) {
         if (actualValue != expectedValue) {
             String message = String.format(

@@ -8,14 +8,16 @@ import lombok.Getter;
  */
 @Getter
 public class Rental {
-	private final Movie movie;
-	// 影片
+
 	/**
-	 * -- GETTER --
-	 *  获取租期
+	 * 影片
+	 */
+	private final Movie movie;
+	/**
+	 * 租期
 	 */
 	private final int daysRented;
-	// 租期
+
 
 	public Rental(Movie movie, int daysRented) {
 		this.movie = movie;

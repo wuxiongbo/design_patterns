@@ -43,7 +43,7 @@ public class Customer {
     }
 
     /**
-     * 用同样的手法，处理 frequentRenterPoints 变量 为查询函数
+     * 用同样的手法，处理 frequentRenterPoints 变量 为查询函数 {@linkplain Rental#getFrequentRenterPoints() getFrequentRenterPoints()}
      *
      * @return 积分
      */

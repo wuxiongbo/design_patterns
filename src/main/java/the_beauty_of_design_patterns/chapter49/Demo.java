@@ -66,7 +66,7 @@ import java.sql.Statement;
  *
  * @see Driver
  * Driver 类。  业务的“实现”
- * @code
+ * <pre>{@code
  *   public class Driver extends NonRegisteringDriver implements java.sql.Driver {
  *
  *       // Register ourselves with the DriverManager
@@ -83,6 +83,7 @@ import java.sql.Statement;
  *           // Required for Class.forName().newInstance()
  *       }
  *   }
+ * }</pre>
  *
  *
  *

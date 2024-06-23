@@ -42,7 +42,7 @@ package the_beauty_of_design_patterns.chapter59.hook;
  * <p>
  * <p>
  * 扩展 多线程：
- * {@code
+ * <pre>{@code
  *    static void runHooks() {
  *         Collection<Thread> threads;
  *         synchronized(ApplicationShutdownHooks.class) {
@@ -64,7 +64,7 @@ package the_beauty_of_design_patterns.chapter59.hook;
  *             }
  *         }
  *     }
- * }
+ * }</pre>
  * <p>
  * <p>
  * <p>

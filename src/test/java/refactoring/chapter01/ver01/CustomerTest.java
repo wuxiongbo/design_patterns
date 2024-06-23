@@ -26,6 +26,7 @@ public class CustomerTest {
         // 拿到账单
         String result = customer.statement();
 
+
         System.out.println(result);
     }
 }

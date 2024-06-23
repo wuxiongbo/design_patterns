@@ -1,0 +1,39 @@
+'解释：
+'Observer 和 Subject 是两个接口，分别表示观察者和主题。
+'ConcreteSubject 是 Subject 接口的具体实现类，它维护了一组观察者并实现了状态管理和通知功能。
+'ConcreteObserver 是 Observer 接口的具体实现类，它实现了 update 方法以接收来自 ConcreteSubject 的通知。
+'关联关系使用箭头表示，其中 ConcreteSubject 通过 notifyObservers() 方法通知 Observer。
+'ConcreteObserver 通过 update() 方法接收 ConcreteSubject 的状态更新。
+
+
+@startuml
+interface Observer {
+    +update(subject: Subject): void
+}
+
+interface Subject {
+    +registerObserver(observer: Observer): void
+    +removeObserver(observer: Observer): void
+    +notifyObservers(): void
+}
+
+class ConcreteSubject implements Subject {
+    -observers: List<Observer>
+    -state: int
+    +getState(): int
+    +setState(state: int): void
+    +registerObserver(observer: Observer): void
+    +removeObserver(observer: Observer): void
+    +notifyObservers(): void
+}
+
+class ConcreteObserver implements Observer {
+    -subject: ConcreteSubject
+    -observerState: int
+    +update(subject: Subject): void
+}
+
+ConcreteSubject --> Observer : notifyObservers()
+ConcreteObserver --> ConcreteSubject : update()
+
+@enduml
