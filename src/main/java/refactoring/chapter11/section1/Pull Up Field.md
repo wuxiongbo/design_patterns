@@ -1,4 +1,29 @@
-字段上移
+# 字段上移
+两个⼦类拥有相同的字段。 
+
+将该宇段移⾄超类。
+
+```plantuml
+class Employee{}
+
+class Salesman extends Employee{
+    String name;
+}
+
+
+class Engineer extends Employee{
+    String name;
+}
+
+```
+
+```puml
+class Employee{
+    String name;
+}
+class Salesman extends Employee{}
+class Engineer extends Employee{}
+```
 
 # 动机
 

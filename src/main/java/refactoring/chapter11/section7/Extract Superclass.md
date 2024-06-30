@@ -1,4 +1,6 @@
-Extract Superclass（提炼超类）
+# Extract Superclass（提炼超类）
+
+
 
 # 动机
 
