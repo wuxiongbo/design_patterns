@@ -1,4 +1,4 @@
-# Replace Type Code with State/Strategy （以 State/Strategy 取代类型码）
+# Replace Type Code with State/Strategy（以 State/Strategy 取代类型码）
 
 你有⼀个类型码，它会影响类的⾏为，但你⽆法通过继承⼿法消除它。 
 

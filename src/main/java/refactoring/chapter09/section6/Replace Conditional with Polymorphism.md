@@ -5,15 +5,12 @@
 将这个条件表达式的每个分⽀放进⼀个⼦类内的覆写函数中，然后将原始函数声明为抽象函数。
 ```java
 double getSpeed() {
-    switch (_type) {
-        case EUROPEAN:
-            return getBaseSpeed();
-        case AFRICAN:
-            return getBaseSpeed() - getLoadFactor() * _numberOfCoconuts;
-        case NORWEGIAN_BLUE:
-            return (_isNailed) ? 0 : getBaseSpeed(_voltage);
-    }
-    throw new RuntimeException("Should be unreachable");
+    return switch (_type) {
+        case EUROPEAN -> getBaseSpeed();
+        case AFRICAN -> getBaseSpeed() - getLoadFactor() * _numberOfCoconuts;
+        case NORWEGIAN_BLUE -> (_isNailed) ? 0 : getBaseSpeed(_voltage);
+        default -> throw new RuntimeException("Should be unreachable");
+    };
 }
 ```
 
@@ -65,7 +62,6 @@ Replace Type Code with Stare/Strategy （227）。
 现在，可以向条件表达式开战了。
 你的⽬标可能是switch语句，也可能是if语句。
 
-
 -[ ] 如果要处理的条件表达式是⼀个更⼤函数中的⼀部分，⾸先对条件表达式进⾏分析，然后使⽤Extract Method（110）将它提炼到⼀个独⽴函数去。 
 -[ ] 如果有必要，使⽤Move Method （142）将条件表达式放置到继承结构的顶端。
 -[ ] 任选⼀个⼦类，在其中建⽴⼀个函数，使之覆写超类中容纳条件表达式的那 个函数。
@@ -94,29 +90,25 @@ Employee -right-> EmployeeType
 
 [Replace Type Code with State(Strategy)](..%2F..%2Fchapter08%2Fsection15%2FReplace%20Type%20Code%20with%20State%28Strategy%29.md)
 
-
 1) switch语句已经被很好地提炼出来，因此我不必费劲再做⼀遍。
    不过我需要将 它移到 EmployeeType类，因为 EmployeeType类 才是要被继承的类。
 ```java
 class EmployeeType {
     int payAmount(Employee emp) {
-        switch (emp.getType()) {
-            case Employee.ENGINEER:
-                return emp.get_monthlySalary();
-            case Employee.SALESMAN:
-                return emp.get_monthlySalary() + emp.get_commission();
-            case Employee.MANAGER:
-                return emp.get_monthlySalary() + emp.get_bonus();
-            default:
-                throw new RuntimeException("Incorrect Employee");
-        }
+        return switch (emp.getType()) {
+            case Employee.ENGINEER -> emp.get_monthlySalary();
+            case Employee.SALESMAN -> emp.get_monthlySalary() + emp.get_commission();
+            case Employee.MANAGER -> emp.get_monthlySalary() + emp.get_bonus();
+            default -> throw new RuntimeException("Incorrect Employee");
+        };
     }
 }
 ```
+
 2) 由于我需要Employee的数据，所以，需要将 Employee对象 作为参数，传递给 payAmount()。 
    这些数据中的⼀部分，也许可以移到 EmployeeType类 来，但那是另⼀项重构要关⼼的问题了。
 
-调整代码，使之通过编译，然后我修改 Employee 中的 payAmount() 函数，令它委托EmployeeType：
+调整代码，使之通过编译，然后我修改 Employee 中的 payAmount() 函数，令它委托 EmployeeType：
 ```java
 class Employee {
     int payAmount() {
@@ -136,3 +128,4 @@ class EmployeeType {
     abstract int payAmount(Employee emp);
 }
 ```
+

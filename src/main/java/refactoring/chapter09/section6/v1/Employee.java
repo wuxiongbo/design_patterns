@@ -1,7 +1,5 @@
 package refactoring.chapter09.section6.v1;
 
-import lombok.Getter;
-import lombok.Setter;
 import refactoring.chapter09.section6.v1.type.EmployeeType;
 
 /**
@@ -9,12 +7,28 @@ import refactoring.chapter09.section6.v1.type.EmployeeType;
  * @date 2024/6/30 上午9:15
  * @description
  */
-@Getter
-@Setter
 public class Employee {
     private int _monthlySalary;
     private int _commission;
     private int _bonus;
+    public int getMonthlySalary() {
+        return _monthlySalary;
+    }
+    public void setMonthlySalary(int _monthlySalary) {
+        this._monthlySalary = _monthlySalary;
+    }
+    public int getCommission() {
+        return _commission;
+    }
+    public void setCommission(int _commission) {
+        this._commission = _commission;
+    }
+    public int getBonus() {
+        return _bonus;
+    }
+    public void setBonus(int _bonus) {
+        this._bonus = _bonus;
+    }
 
     private EmployeeType _type;
 
@@ -26,15 +40,11 @@ public class Employee {
     }
 
     int payAmount() {
-        switch (getType()) {
-            case EmployeeType.ENGINEER:
-                return _monthlySalary;
-            case EmployeeType.SALESMAN:
-                return _monthlySalary + _commission;
-            case EmployeeType.MANAGER:
-                return _monthlySalary + _bonus;
-            default:
-                throw new RuntimeException("Incorrect Employee");
-        }
+        return switch (getType()) {
+            case EmployeeType.ENGINEER -> _monthlySalary;
+            case EmployeeType.SALESMAN -> _monthlySalary + _commission;
+            case EmployeeType.MANAGER -> _monthlySalary + _bonus;
+            default -> throw new RuntimeException("Incorrect Employee");
+        };
     }
 }

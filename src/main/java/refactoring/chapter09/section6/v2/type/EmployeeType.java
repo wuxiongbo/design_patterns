@@ -9,18 +9,16 @@ import refactoring.chapter09.section6.v2.Employee;
  */
 public abstract class EmployeeType {
 
+    // 工厂函数
     public static EmployeeType newType(int code) {
-        switch (code) {
-            case ENGINEER:
-                return new Engineer();
-            case SALESMAN:
-                return new Salesman();
-            case MANAGER:
-                return new Manager();
-            default:
-                throw new IllegalArgumentException("Incorrect Employee Code");
-        }
+        return switch (code) {
+            case ENGINEER -> new Engineer();
+            case SALESMAN -> new Salesman();
+            case MANAGER -> new Manager();
+            default -> throw new IllegalArgumentException("Incorrect Employee Code");
+        };
     }
+
     // 类型码复制到这里来
     public static final int ENGINEER = 0;
     public static final int SALESMAN = 1;
