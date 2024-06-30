@@ -22,7 +22,9 @@
 只有当类型码是纯粹数据时（也就是 类型码 不会在switch语句中引起⾏为变化时），你才能以类来取代它。
 Java 只能以整数作为switch语句的判断依据，不能使⽤任意类，因此，那种情况下不能够以类替换类型码。
 更重要的是：任何 switch语句都应该运⽤ Replace Conditional with Polymorphism （255）去掉。
-为了进⾏那样的重构，你⾸先必须运⽤ Replace Type Code with Subclasses （223）或 Replace Type Code with State/Strategy （227），把类型码处理掉。 
+为了进⾏那样的重构，你⾸先必须运⽤ 
+Replace Type Code with Subclasses （223）或 
+Replace Type Code with State/Strategy （227），把类型码处理掉。 
 即使，⼀个类型码 不会因其数值的不同 ⽽引起 ⾏为上的差异，宿主类中的某些⾏为还是有可能更适合置放于类型码类中，
 因此，你还应该留意是否有必要使⽤Move Method （142）将⼀两个函数搬过去。
 

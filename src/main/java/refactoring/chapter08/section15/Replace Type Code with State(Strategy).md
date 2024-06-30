@@ -36,8 +36,8 @@ State模式 和 Strategy模式 ⾮常相似，因此⽆论你选择其中哪⼀�
 
 ## 范例
 
-和上⼀项重构⼀样，我仍然使⽤这个既⽆聊⼜弱智的“雇员/薪资”例⼦。
-同样 地，我以Employee表示“雇员”；
+和上⼀项重构⼀样，我仍然使⽤这个既⽆聊⼜弱智的“雇员/薪资”例⼦。  
+同样地，我以Employee表示“雇员”；
 ```java
 class Employee {
        
@@ -74,12 +74,9 @@ class Employee {
 }
 ```
 
-
 假设这是⼀家激情四溢、积极进取的公司，他们可以将表现出⾊的⼯程师擢升为经理。
 因此，对象的类型码是可变的，所以我不能使⽤继承⽅式来处理类型码。
-
-和以前⼀样，我的第⼀步还是使⽤ SelfEncapsulate Field （171）将表示类型码的字段⾃我封装起来：
-
+和以前⼀样，我的第⼀步还是使⽤ SelfEncapsulate Field （171）将 **表示类型码的字段** ⾃我封装起来：
 ```java
 class Employee {
     private int _type;
@@ -115,8 +112,8 @@ class Employee {
 
 ```
 
-
-现在，我需要声明⼀个状态类。我把它声明为⼀个抽象类，并提供⼀个抽象函数，⽤以返回类型码：
+现在，我需要声明⼀个状态类。  
+我把它声明为⼀个抽象类，并提供⼀个抽象函数，⽤以返回类型码：
 
 ```java
 abstract class EmployeeType {
@@ -146,12 +143,17 @@ class Salesman extends EmployeeType {
 }
 ```
 
-现在进⾏⼀次编译。前⾯所做的修改实在太平淡了，即使对我来说也太简单。
-现在，我要修改类型码访问函数，实实在在地把这些⼦类和Employee类联系起来：
-
+现在进⾏⼀次编译。  
+前⾯所做的修改实在太平淡了，即使对我来说也太简单。  
+现在，我要修改类型码访问函数，实实在在地把这些 ⼦类 和 Employee类 联系起来：
 ```java
 class Employee {
+    static final int ENGINEER = 0;
+    static final int SALESMAN = 1;
+    static final int MANAGER = 2;
+    
     private EmployeeType _type;
+    
     int getType() {
         return _type.getTypeCode();
     }
@@ -171,43 +173,75 @@ class Employee {
                 throw new IllegalArgumentException("Incorrect Employee Code");
         }
     }
+
+    int payAmount() {
+        switch (getType()) {
+            case ENGINEER:
+                return _monthlySalary;
+            case SALESMAN:
+                return _monthlySalary + _commission;
+            case MANAGER:
+                return _monthlySalary + _bonus;
+            default:
+                throw new RuntimeException("Incorrect Employee");
+        }
+    }
     
 }
 
 ```
-
 这意味我将在这⾥拥有⼀个switch语句。
-完成重构之后，这将是代码中唯⼀的switch语句，并且只在对象类型发⽣改变时才会执⾏。
-我也可以运⽤ Replace Constructor with Factory Method （304）针对不同的 case⼦句建⽴相应的⼯⼚函数。
-我还可以⽴刻再使⽤ Replace Conditional with Polymorphism （255），从⽽将其他的case⼦句完全消除。 
-然后，我喜欢将所有关于 类型码 和 ⼦类 的知识都移到 新类，并以此结束 Replace Type Code with State/Strategy （227）。
 
-⾸先，我把类型码的定义复制到 EmployeeType 去，在其中建⽴⼀个⼯⼚函数以⽣成适当的EmployeeType对象，并调整Employee 中为类型码賦值的函数：
+完成重构之后，这将是代码中唯⼀的 switch语句，并且只在 对象类型 发⽣改变时，才会执⾏。  
+我也可以运⽤ Replace Constructor with Factory Method（304）针对不同的 case⼦句 建⽴相应的⼯⼚函数。  
+我还可以⽴刻再使⽤ Replace Conditional with Polymorphism （255），从⽽将其他的 case⼦句 完全消除。   
+然后，我喜欢将所有关于 类型码 和 ⼦类 的知识都移到 新类，并以此结束 Replace Type Code with State/Strategy（227）。  
+
+⾸先，我把 类型码的定义 复制到 EmployeeType 去，  
+在其中 建⽴⼀个⼯⼚函数，以⽣成适当的 EmployeeType对象，    
+并调整 Employee中为类型码赋值的函数：
 ```java
 class Employee {
+    static final int ENGINEER = 0;
+    static final int SALESMAN = 1;
+    static final int MANAGER = 2;
+    
     private EmployeeType _type;
     int getType() {
         return _type.getTypeCode();
     }
-
     void setType(int arg) {
         _type = EmployeeType.newType(arg);
+    }
+    
+    int payAmount() {
+        switch (getType()) {
+            case ENGINEER:
+                return _monthlySalary;
+            case SALESMAN:
+                return _monthlySalary + _commission;
+            case MANAGER:
+                return _monthlySalary + _bonus;
+            default:
+                throw new RuntimeException("Incorrect Employee");
+        }
     }
 }
 
 class EmployeeType {
     static EmployeeType newType(int code) {
         switch (code) {
-            case Employee.ENGINEER:
+            case ENGINEER:
                 return new Engineer();
-            case Employee.SALESMAN:
+            case SALESMAN:
                 return new Salesman();
-            case Employee.MANAGER:
+            case MANAGER:
                 return new Manager();
             default:
                 throw new IllegalArgumentException("Incorrect Employee Code");
         }
     }
+    // 类型码复制到这里来
     static final int ENGINEER = 0;
     static final int SALESMAN = 1;
     static final int MANAGER = 2;
@@ -215,10 +249,19 @@ class EmployeeType {
 
 ```
 
-
-然后，我删掉Employee中的类型码定义，代之以⼀个指向 EmployType 对象的引⽤：
+然后，我删掉 Employee中的 类型码定义，
+取而代之的是⼀个指向 EmployType对象的引⽤ `private EmployeeType _type`：
 ```java
 class Employee {
+    private EmployeeType _type;
+    
+    int getType() {
+        return _type.getTypeCode();
+    }
+    void setType(int arg) {
+        _type = EmployeeType.newType(arg);
+    }
+    
     int payAmount() {
         switch (getType()) {
             case EmployeeType.ENGINEER:
@@ -234,5 +277,7 @@ class Employee {
 }
 ```
 
+现在，万事俱备，
+可以运⽤ Replace Conditional with Polymorphism（255）来处理 payAmount() 函数了.
 
-现在，万事俱备，可以运⽤ Replace Conditional with Polymorphism（255）来处理 payAmount （）函数了.
+[Replace Conditional with Polymorphism](..%2F..%2Fchapter09%2Fsection6%2FReplace%20Conditional%20with%20Polymorphism.md)
