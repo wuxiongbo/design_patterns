@@ -4,7 +4,6 @@
 
 
 将这段代码放进一个独立函数中，并让函数名称解释该函数的用途。
-
 ```java
 void printOwing(Double amount) {
     printBanner();
