@@ -1,5 +1,7 @@
 package my_demo.friend.v1.friend;
 
+import java.util.List;
+
 /**
  * <p>描述类的信息</p>
  *
@@ -23,23 +25,28 @@ public class A {
         System.out.println("A.func()");
     }
 
+
     // 友元
     public static abstract class Friend{
 
         // 指定朋友
-        private static final Class<? extends Friend> friend = B.class;
+        private static final List<Class<? extends Friend>> friends = List.of(B.class);
 
         public Friend(){
             // 判断是不是朋友
-            if(this.getClass()!= friend){
+            if(!friends.contains(this.getClass())){
+
+                System.out.println("你不是我朋友");
+
                 throw new UnsupportedOperationException();
             }
         }
 
-        // 指定的朋友， 才可以直接 调用私有方法
+        // 指定的朋友才可以直接调用私有方法
         protected void func(A a){
             a.func();
         }
+
     }
 
 }

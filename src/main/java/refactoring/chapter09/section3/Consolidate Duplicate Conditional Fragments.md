@@ -8,9 +8,11 @@
 public void function1() {
     if (isSpecialDeal()) {
         total = price * 0.95;
+        // First call
         send();
     } else {
         total = price * 0.98;
+        // Second call
         send();
     }
 }

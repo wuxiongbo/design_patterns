@@ -46,3 +46,144 @@ double finalPrice = discountedPrice(basePrice);
 如果真是这样，你应该⾸先判断修改接⼝究竞会造成多严重的后果，然后考虑是否应该降低系统各部位之间的依赖，以减少修改接⼝所造成的影响。
 稳定的接⼝确实很好，但是被冻结在⼀个不良接⼝上也是有问题的。
 
+
+## 做法
+-[ ]  如果有必要，将参数的计算过程提炼到⼀个独⽴函数中。 
+-[ ]  将函数本体内引⽤该参数的地⽅改为调⽤新建的函数。 
+-[ ]  每次替换后，修改并测试。
+-[ ]  全部替换完成后，使⽤ Remove Parameter （277）将该参数去掉。
+
+
+## 范例
+
+以下代码⽤于计算定单折扣价格。
+虽然这么低的折扣不⼤可能出现在现实⽣活中，不过作为⼀个范例，我们暂不考虑这⼀点：
+```java
+public double getPrice() {
+    int basePrice = _quantity * _itemPrice;
+    
+    int discountLevel;
+    if (_quantity > 100) {
+        discountLevel = 2;
+    } else {
+        discountLevel = 1;
+    }
+    
+    double finalPrice = discountedPrice(basePrice, discountLevel);
+    return finalPrice;
+}
+
+private double discountedPrice(int basePrice, int discountLevel) {
+    if (discountLevel == 2) {
+        return basePrice * 0.1;
+    } else {
+        return basePrice * 0.05;
+    }
+}
+```
+
+
+⾸先，我把计算折扣等级（discountLevel）的代码提炼成为⼀个独⽴的 getDiscountLevel() 函数：
+```java
+public double getPrice() {
+    int basePrice = _quantity * _itemPrice;
+    
+    int discountLevel = getDiscountLevel();
+    
+    double finalPrice = discountedPrice(basePrice, discountLevel);
+    return finalPrice;
+}
+
+private int getDiscountLevel() {
+    if (_quantity > 100) {
+        return 2;
+    } else {
+        return 1;
+    }
+}
+```
+
+然后把 discountedPrice（）函数中对discountLevel 参数的所有引⽤点，替換为对getDiscountLevel()函数的调⽤：
+此时，我就可以使⽤ Remove Parameter（277）去掉 discountLevel参数了：
+接下来，可以将 discountLevel变量 去除掉：
+```java
+public double getPrice() {
+    
+    int basePrice = _quantity * _itemPrice;
+    
+    // double finalPrice = discountedPrice(basePrice, discountLevel);
+    double finalPrice = discountedPrice(basePrice);
+    
+    return finalPrice;
+}
+
+public double discountedPrice(int basePrice) {
+    if (getDiscountLevel() == 2) {
+        return basePrice * 0.1;
+    } else {
+        return basePrice * 0.05;
+    }
+}
+
+private int getDiscountLevel() {
+    if (_quantity > 100) {
+        return 2;
+    } else {
+        return 1;
+    }
+}
+```
+
+现在，可以去掉其他⾮必要的参数和相应的临时变量。
+basePrice 变量用同样的手法去掉后， 最后获得以下代码：
+```java
+
+public double getPrice(){
+    return discountedPrice();
+}
+
+
+private double discountedPrice(){
+    if (getDiscountLevel() == 2) {
+        return getBasePrice() * 0.1;
+    } else {
+        return getBasePrice() * 0.05;
+    }
+}
+
+private double getBasePrice(){
+    return _quantity * _itemPrice;
+}
+
+private int getDiscountLevel() {
+    if (_quantity > 100) {
+        return 2;
+    } else {
+        return 1;
+    }
+}
+```
+
+最后，我还可以针对 discountedPrice()函数使⽤ Inline Method(117):
+最终代码简化如下
+```java
+private double getPrice(){
+    if (getDiscountLevel() == 2) {
+        return getBasePrice() * 0.1;
+    } else {
+        return getBasePrice() * 0.05;
+    }
+}
+
+private double getBasePrice(){
+    return _quantity * _itemPrice;
+}
+
+private int getDiscountLevel() {
+    if (_quantity > 100) {
+        return 2;
+    } else {
+        return 1;
+    }
+}
+```

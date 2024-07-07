@@ -16,8 +16,8 @@ public class A {
         System.out.println("A.func()");
     }
 
-
-    // 内部类 B ，相当于友元。 可选择性的对外暴露私有成员
+    // 内部类 B ，相当于友元。
+    // 可选择性的对外暴露私有成员
     public static class B {
 
         public void call(A a){

@@ -2,6 +2,7 @@ package my_demo.friend.v1;
 
 import my_demo.friend.v1.friend.A;
 import my_demo.friend.v1.friend.B;
+import my_demo.friend.v1.friend.D;
 
 /**
  * <p>描述类的信息</p>
@@ -28,6 +29,7 @@ public class Main {
 
         C c = new C();
 
+        D d = new D();
 
     }
 }
