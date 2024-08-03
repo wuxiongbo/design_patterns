@@ -6,15 +6,15 @@ Introduce Parameter Object（引⼊参数对象）
 
 ```puml
 class Customer{
-  amountInvoicedIn(start: Date, end: Date)
-  amountReceivedIn(start: Date, end: Date)
-  amountOverdueIn(start: Date, end: Date)
+  amountInvoicedIn (start: Date, end: Date)
+  amountReceivedIn (start: Date, end: Date)
+  amountOverdueIn (start: Date, end: Date)
 }
 
 class Customer{
-  amountInvoicedIn(DateRange)
-  amountReceivedIn(DateRange)
-  amountOverdueIn(DateRange)
+  amountInvoicedIn (DateRange)
+  amountReceivedIn (DateRange)
+  amountOverdueIn (DateRange)
 }
 ```
 
