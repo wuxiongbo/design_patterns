@@ -40,7 +40,7 @@ public class WindowsEventSource {
         }
     }
 
-    public void pushEvent(Object event){
+    public final void pushEvent(Object event){
         PrintEvent printEvent = (PrintEvent)event;
         new Multicaster(listenerList).multicastEvent(printEvent);
     }

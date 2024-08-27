@@ -49,12 +49,8 @@ public class Test {
         // 具体这里是 调用事件源的 addCloseWindowListener方法。
         // 事件:
         // 在事件源中产生，注册的监听器 closeWindowsListener，只关注 关闭窗口事件
-        CloseWindowsListener closeWindowsListener = new CloseWindowsListener();
-        closeWindowsListener.register(windows);
-
-
-        OpenWindowsListener openWindowsListener = new OpenWindowsListener();
-        openWindowsListener.register(windows);
+        new CloseWindowsListener().register(windows);
+        new OpenWindowsListener().register(windows);
 
 
 
