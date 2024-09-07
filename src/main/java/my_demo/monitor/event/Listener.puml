@@ -15,7 +15,7 @@ class ListenerImpl
 EventSource o--> IListener : <<回调>>监听器:\n 1）向 事件源 '注册' 监听器 \n 3）事件源，将产生的事件 '通知' 回 监听器
 Event o--> EventSource : 2）客户端触发 事件源， 产生事件
 IListener <|-- ListenerImpl
-IListener --> Event : 4）监听器处理事件
+IListener --> Event : 4）监听器处理感兴趣的事件
 
 
 @enduml
