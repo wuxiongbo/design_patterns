@@ -25,6 +25,7 @@ public class Customer {
         return _name;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     public String statement() {
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");
         for (Rental rental : _rentals) {

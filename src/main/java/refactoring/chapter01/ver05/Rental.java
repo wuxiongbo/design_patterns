@@ -20,6 +20,8 @@ public class Rental {
 		return _movie;
 	}
 
+
+	@SuppressWarnings("Duplicates")
 	public double getCharge() {
 
 		double result = 0;

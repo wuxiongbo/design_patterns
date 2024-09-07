@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Price 中getCharge 方法 {@link Price#getCharge(int)} 的逻辑,分散到各个子类:
+ * Price中 {@link Price#getCharge(int)} 的逻辑, 分散到各个子类:
  * <p>
- * 2)接下来，我要对 getCharge() 实施 Move Method(142), 将 Movie类中的 getCharge()逻辑, 搬移至 Price类。
- * 3)搬移之后，我就可以开始运用 Replace Conditional with Polymorphism(255)了
- * 我的做法是，一次取出一个case 分支，在相应的类建立一个覆盖函数。
+ * 2)接下来，我要对 {@link Price#getCharge(int)} 实施 Move Method(142),
+ *   将 Movie类 中的{@link Movie#getCharge(int)}逻辑, 搬移至 Price类。
+ * 3)搬移之后，我就可以开始运用 Replace Conditional with Polymorphism(255) 了
+ * <p>
+ * 我的做法是，一次取出一个 case 分支，在相应的 类建立一个覆盖函数。
  * 先从 RegularPrice 开始 {@link RegularPrice#getCharge(int)}
  * 接下来是，Children's Price，NewReleasePrice
  * 处理完所有 case分支 之后，我就把 Price.getCharge() 声明为 abstract
@@ -32,6 +34,8 @@ public class Customer {
         return _name;
     }
 
+
+    @SuppressWarnings("DuplicatedCode")
     public String statement() {
         // add header lines
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");
@@ -50,6 +54,7 @@ public class Customer {
         return result.toString();
     }
 
+    @SuppressWarnings("DuplicatedCode")
     public String htmlStatement() {
         // add header lines
         StringBuilder result = new StringBuilder("<H1>Rentals for <EM>" + getName() + "</EM></ H1><P>\n");

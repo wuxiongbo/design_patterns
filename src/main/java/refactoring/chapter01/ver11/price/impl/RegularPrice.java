@@ -4,6 +4,7 @@ import refactoring.chapter01.ver11.Movie;
 import refactoring.chapter01.ver11.price.Price;
 
 public class RegularPrice implements Price {
+
 	public int getPriceCode() {
 		return Movie.REGULAR;
 	}
@@ -14,4 +15,5 @@ public class RegularPrice implements Price {
 			result += (daysRented - 2) * 1.5;
 		return result;
 	}
+
 }

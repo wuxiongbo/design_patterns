@@ -7,10 +7,10 @@
 ```mermaid
 classDiagram
     class Person {
-        name
-        officeAreaCode
-        officeNumber
-        getTelephoneNumber()
+        String name
+        String officeAreaCode
+        String officeNumber
+        String getTelephoneNumber()
     }
 
 ```
@@ -18,14 +18,14 @@ classDiagram
 ```mermaid
 classDiagram
     class Person {
-        name
-        getTelephoneNumber()
+        String name
+        String getTelephoneNumber()
     }
     
     class TelephoneNumber {
-        officeAreaCode
-        officeNumber
-        getTelephoneNumber()
+        String officeAreaCode
+        String officeNumber
+        String getTelephoneNumber()
     }
     
     Person -->"1" TelephoneNumber : officeTelephone
@@ -42,16 +42,18 @@ classDiagram
 于是，随着责任不断增加，这个类会变得过分复杂。很快，你的类就 会变成⼀团乱麻。  
 
 这样的类往往含有⼤量函数和数据。这样的类往往太⼤⽽不易理解。  
+
 此时，你需要考虑哪些部分可以分离出去，并将它们分离到⼀个单独的类中。  
 如果 某些数据 和 某些函数 总是 ⼀起出现，某些数据 经常同时变化甚⾄彼此相依，这就表示你应该将它们分离出去。  
+
 ⼀个有⽤的测试就是，问你⾃⼰，如果你搬移了某些字段和函数，会发⽣什么事？
 其他字段和函数 是否因此变得⽆意义？
 
 另⼀个往往在开发后期出现的信号是，类的⼦类化⽅式。
 如果你发现⼦类化只影响类的部分特性，或 
-如果你发现 某些特性 需要以⼀种⽅式来⼦类化，
-         某些特性 则需要以另⼀种⽅式⼦类化，
-这就意味你需要分解原来的类。
+如果你发现 某些特性 需要 以⼀种⽅式来⼦类化，
+         某些特性 则需要 以另⼀种⽅式⼦类化，
+这就意味着，你需要分解原来的类。
 
 
 ## 做法

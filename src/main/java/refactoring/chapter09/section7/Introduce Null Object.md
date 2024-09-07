@@ -1,9 +1,8 @@
 # Introduce Null Object （引⼊ Null 对象）
 
-你需要再三检查某对象是否为null。
+你需要再三检查，某对象 是否为 null。
 
-
-将  null值  替换为  null对象。
+将 ‘null值’  替换为  ‘null对象’ 。
 
 ## 动机
 

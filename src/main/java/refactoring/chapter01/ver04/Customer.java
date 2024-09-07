@@ -10,7 +10,7 @@ import java.util.*;
  * 我打算运用  Replace Temp with Query(120), 并利用查询函数 (query method) 来取代 totalAmount 和 frequentRentalPoints 这两个临时变量。
  * 由于类中的任何函数都可以调用上述查询函数，所以，它能够促成较干净的设计，而减少冗长复杂的函数：
  *
- * 首先，我用 Customer类的 getTotalCharge() 查询函数，取代totalAmount 变量：
+ * 首先，我用 Customer类的 getTotalCharge() 查询函数，取代 totalAmount 变量：
  * 修改前：{@link Customer#statement()}
  * 修改后：{@link refactoring.chapter01.ver05.Customer#getTotalCharge()}
  *

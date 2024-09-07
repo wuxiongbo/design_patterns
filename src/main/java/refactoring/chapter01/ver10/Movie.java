@@ -9,14 +9,14 @@ public class Movie {
 	public static final int CHILDRENS = 2;
 	public static final int REGULAR = 0;
 	public static final int NEW_RELEASE = 1;
-	private String _title;
+
+	private final String _title;
+	private Price _price;
 
 	public Movie(String title, int priceCode) {
 		_title = title;
 		setPriceCode(priceCode); // 译注：这就是一个set method
 	}
-
-	private Price _price;
 
 	public int getPriceCode() { // 取得价格代号
 		return _price.getPriceCode();
@@ -46,4 +46,5 @@ public class Movie {
 			return 1;
 		}
 	}
+
 }

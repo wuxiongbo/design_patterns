@@ -4,6 +4,7 @@ import refactoring.chapter01.ver11.Movie;
 import refactoring.chapter01.ver11.price.Price;
 
 public class ChildrensPrice implements Price {
+
 	public int getPriceCode() {
 		return Movie.CHILDRENS;
 	}
@@ -14,4 +15,5 @@ public class ChildrensPrice implements Price {
 			result += (daysRented - 3) * 1.5;
 		return result;
 	}
+
 }

@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 第一次重构后：<br>
  * 现在，我已经把原来的函数分为两块，可以分别处理它们。<br>
- * 我不喜欢 Customer.amountFor() {@link Customer#amountFor(Rental)} 内的某些变量名称，现在正是修改它们的时候。<br>
+ * 我不喜欢 {@link Customer#amountFor(Rental)} 内的某些变量名称，现在正是修改它们的时候。<br>
  * <p>
  * 更改变量名称是值得的行为吗?<br>
  * 绝对值得。好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。<br>
@@ -33,7 +33,7 @@ import java.util.*;
  * <p>
  * 待修改点：
  * <p>
- * 1）观察 Customer.amountFor() 时，我发现这个函数使用了来自 Rental{@link Rental} 类 的信息，却没有使用来自 Customer 类的信息。<br>
+ * 1）观察 {@link Customer#amountFor(Rental)} 时，我发现，这个函数使用了来自 {@link Rental} 类 的信息，却没有使用来自 {@link Customer} 类的信息。<br>
  * 这立刻使我怀疑它是否被放错了位置。<br>
  * 绝大多数情况下，函数应该放在它所使用的数据的所属对象内，所以，amountFor() 应该移到Rental 类去。<br>
  * 为了这么做，我要运用 Move Method(142)。<br>
@@ -105,6 +105,8 @@ public class Customer {
     }
 
     /**
+     * 本函数使用了 来自 Rental 的信息，却没使用 Customer 的信息。
+     * 重构步骤：
      * 1) 搬移函数
      * 2）修改变量名
      *

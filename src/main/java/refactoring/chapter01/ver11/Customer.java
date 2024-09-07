@@ -1,43 +1,50 @@
 package refactoring.chapter01.ver11;
 
 
+import refactoring.chapter01.ver11.price.Price;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * <p>
- * 4) 运用 与3) 同样的手法，处理 getFrequentRenterPoints(), 将 Movie 的 getFrequentRenterPoints()逻辑 搬移至 Price。
- * 但是这一次，我不把超类函数声明为 abstract。我只是为新片类型增加一个覆写函数，并在超类内留下一个已定义的函数，使它成为一种默认行为。
+ * 4) 运用 与3) 同样的手法，处理 {@link Rental#getFrequentRenterPoints()},
+ * 将 {@link Movie#getFrequentRenterPoints(int) }逻辑 搬移至 {@link Price#getFrequentRenterPoints(int)}。
+ * 但是这一次，我不把超类函数声明为 abstract。
+ * 我只是为 新片类型 增加一个 覆写函数，并在超类内留下一个已定义的函数{@link Price#getFrequentRenterPoints(int)}，使它成为一种默认行为。
  * <p>
  * =============================
  * <p>
- * 引入State模式花了我不少力气，值得吗?
+ * 引入 State模式 花了我不少力气，值得吗?
  * 这么做的收获是：如果我要修改任何与 价格 Price 有关的行为，或是添加新的定价标准，或是加入其他取决于价格的行为，程序的修改会容易得多。
- * 这个程序的其余部分并不知道我运用了State模式。
- * 对于我目前拥有的这么几个小量行为来说，任何功能或特性上的修改也许都不合算，
- * 但如果在一个更复杂的系统中，有十多个与价格相关的函数，程序的修改难易度就会有很大的区别。
- * 以上所有修改, 都是小步骤进行，进度似乎太过缓慢，但是,我一次都没有打开过调试器，所以，整个过程实际上很快就过去了。
+ * 这个程序的其余部分，并不知道我运用了 State模式。
+ * 对于我目前拥有的这么几个小量行为来说，任何 功能 或 特性上的修改 也许都不合算，
+ * 但，如果在一个更复杂的系统中，有十多个与价格相关的函数，程序的修改难易度就会有很大的区别。
+ * 以上所有修改, 都是小步骤进行，进度似乎太过缓慢，但是，我一次都没有打开过调试器，所以，整个过程实际上很快就过去了。
  * 我写本章文字所用的时间，远比修改那些代码的时间多得多。
  * <p>
- * 现在,我已经完成了第二个重要的重构行为。
- * 从此，修改影片分类结构，或是改 变费用计算规则、改变常客积分计算规则，都容易多了。
+ * 现在，我已经完成了第二个重要的重构行为。
+ * 从此，修改影片分类结构，或是改变费用计算规则、改变常客积分计算规则，都容易多了。
  * 图1-16 和 图1-17 描述 State模式 对于价格信息所起的作用。
  * <p>
  * =======================
  * <p>
- * 这是一个简单的例子，但我希望它能让你对于“重构怎么做”有一点感觉。
+ * 这是一个简单的例子，但我希望它能让你对于 “重构怎么做” 有一点感觉。
  * 例中，我已经示范了数个重构手法，包括：
- * Extract Method(110)、Move Method (142)、Replace Conditional with Polymorphism (255) 、
- * Self Encapsulate Field (171)、ReplaceType Code with State/Strategy(227)。
- * 所有这些重构行为都使责任的分配更合理，代码的维护更轻松。
- * 重构后的程序风格，将迥异于过程化风格后者也许是某些人习惯的风格。
+ * Extract Method(110)、
+ * Move Method (142)、
+ * Replace Conditional with Polymorphism (255) 、
+ * Self Encapsulate Field (171)、
+ * ReplaceType Code with State/Strategy(227)。
+ * 所有这些重构行为，都使责任的分配更合理，代码的维护更轻松。
+ * 重构后的程序风格，将迥异于过程化风格，后者也许是某些人习惯的风格。
  * 不过，一旦你习惯了这种重构后的风格，就很难再满足于结构化风格了。
  * <p>
- * 这个例子给我们最大的启发是重构的节奏：测试、小修改、测试、小修改、测试、小修改……
+ * 这个例子给我们最大的启发是重构的节奏：测试、小修改、测试、小修改、测试、小修改......
  * 正是这种节奏，让重构得以快速而安全地前进。
  * <p>
  * 如果你看懂了前面的例子，就应该已经理解重构是怎么回事了。
- * 现在，让我们了解一些背景、原理和理论(好在不太多)。
+ * 现在，让我们了解一些 背景、原理 和 理论(好在不太多)。
  */
 public class Customer {
     private final String _name; // 姓名
@@ -55,6 +62,7 @@ public class Customer {
         return _name;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     public String statement() {
         // add header lines
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");

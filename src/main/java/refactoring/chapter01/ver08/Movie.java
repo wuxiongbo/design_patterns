@@ -34,6 +34,7 @@ public class Movie {
      * @param daysRented
      * @return
      */
+    @SuppressWarnings("Duplicates")
     public double getCharge(int daysRented) {
         double result = 0;
         switch (getPriceCode()) {

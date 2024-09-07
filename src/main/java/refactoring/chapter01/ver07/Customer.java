@@ -58,6 +58,7 @@ public class Customer {
         return _name;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     public String statement() {
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");
         for (Rental rental : _rentals) {
@@ -74,6 +75,7 @@ public class Customer {
         return result.toString();
     }
 
+    @SuppressWarnings("DuplicatedCode")
     public String htmlStatement() {
         // add header lines
         StringBuilder result = new StringBuilder("<H1>Rentals for <EM>" + getName() + "</EM></ H1><P>\n");

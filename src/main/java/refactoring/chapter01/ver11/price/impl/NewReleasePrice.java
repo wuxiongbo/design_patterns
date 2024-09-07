@@ -4,6 +4,7 @@ import refactoring.chapter01.ver11.Movie;
 import refactoring.chapter01.ver11.price.Price;
 
 public class NewReleasePrice implements Price {
+
 	public int getPriceCode() {
 		return Movie.NEW_RELEASE;
 	}
