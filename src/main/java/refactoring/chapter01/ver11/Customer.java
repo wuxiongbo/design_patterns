@@ -97,7 +97,7 @@ public class Customer {
         return result.toString();
     }
 
-    // 译注：此即所谓query method
+    // 译注：此即所谓 query method
     private int getTotalFrequentRenterPoints() {
         int result = 0;
         for (Rental rental : _rentals) {
