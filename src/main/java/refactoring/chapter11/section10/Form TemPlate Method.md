@@ -139,7 +139,7 @@ class Statement
 class TextStatement
 class HtmlStatement
 
-Customer .right.> Statement
+Customer .right.>"1" Statement
 TextStatement -up-|> Statement
 HtmlStatement -up-|> Statement
 ```
@@ -386,7 +386,7 @@ eachRentalString(Rental)
 footerString(Customer)
 }
 
-Customer -right-> Statement
+Customer -right->"1" Statement
 Statement <|-- HtmlStatement
 Statement <|-- TextStatement
 ```

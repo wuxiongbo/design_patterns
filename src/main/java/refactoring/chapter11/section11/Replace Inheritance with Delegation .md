@@ -23,7 +23,7 @@ class Stack {
 isEmpty()
 }
 
-Stack .right.> Vector
+Stack -right->"1" Vector
 
 note left of Stack::isEmpty
   return _vector.isEmpty();

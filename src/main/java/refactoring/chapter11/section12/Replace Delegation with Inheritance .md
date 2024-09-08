@@ -5,8 +5,29 @@
 
 让委托类继承受托类。
 
+```plantuml
+class Employee{
+getName()
+}
+class Person{
+getName()
+}
 
+Employee -right->"1" Person
 
+note left of Employee::getName
+return person.getName();
+end note
+```
+
+```plantuml
+class Employee extends Person{
+}
+
+class Person{
+getName()
+}
+```
 
 ## 动机
 
@@ -30,17 +51,16 @@
 
 ## 做法
 
-⼝ 让委托端成为受托端的⼀个⼦类。 
-⼝编译。 
-•此时，某些函数可能会发⽣冲突：它们可能有相同的名称，但在返回类型.
+-[ ] 让委托端成为受托端的⼀个⼦类。 
+-[ ] 编译。  
+>•此时，某些函数可能会发⽣冲突：它们可能有相同的名称，但在 返回类型、异常指定 或 可⻅程度⽅⾯ 有所差异。
+ 你可以使⽤ Rename Method（273） 解决此类问题。
 
-异常指定或可⻅程度⽅⾯有所差异。你可以使⽤ Rename Method （273）解决 此类问题。
-
-⼝ 将受托字段设为该字段所处对象本身。 
-⼝ 去掉简单的委托函数。 
-⼝ 编译并测试。 
-⼝ 将所有其他涉及委托关系的代码，改为调⽤对象⾃身。 
-⼝ 移除受托字段。
+-[ ] 将受托字段设为该字段所处对象本身。 
+-[ ] 去掉简单的委托函数。 
+-[ ] 编译并测试。 
+-[ ] 将所有其他涉及委托关系的代码，改为调⽤对象⾃身。 
+-[ ] 移除受托字段。
 
 
 
@@ -50,6 +70,7 @@
 ```java
 class Employee{
     Person _person = new Person();
+    
     public String getName(){
         return _person.getName();
     }
@@ -80,17 +101,19 @@ class Person{
 
 此时，如果有任何函数发⽣冲突，编译器会提醒我。
 如果某⼏个函数的名称相同，但返回类型不同，或抛出不同的异常，它们之间就会出现冲突。
-所有此类问题都可以通过 Rename Method （273）加以解决。为求简化，我没有在范例中列出这些麻烦情况。 
-下⼀步要将受托字段设值为该字段所处对象⾃身。同时，我必须先删掉所有简单的委托函数（例如getName（）和setName（））。
+所有此类问题都可以通过 Rename Method（273）加以解决。
+为求简化，我没有在范例中列出这些麻烦情况。 
+下⼀步，要将受托字段设值为该字段所处对象⾃身。同时，我必须先删掉所有简单的委托函数（例如: getName() 和 setName()）。
 如果留下这种函数，就会因为⽆限递归⽽引起系统调⽤栈溢出。
-在此范例中，我应该把Employee的getName（）和 setName（）拿掉。
+在此范例中，我应该把 `Employee` 的 `getName()` 和 `setName()` 拿掉。
 
-⼀旦Employee可以正常⼯作了，我就修改其中⽤到委托函数的代码，让它们 直接调⽤从超类继承⽽来的函数：
+⼀旦Employee可以正常⼯作了，我就修改其中⽤到委托函数的代码，让它们直接调⽤ 从超类继承⽽来的函数：
 ```java
 public String toString(){
     return "Emp: " + getLastName();
 }
 ```
+
 摆脱所有涉及委托关系的函数后，我也就可以摆脱 _person 这个受托字段了。
 
 
