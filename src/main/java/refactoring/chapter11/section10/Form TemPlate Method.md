@@ -165,33 +165,33 @@ class Customer{
 class TextStatement{
     public String value(Customer aCustomer){
         Enumeration rentals = aCustomer.getRentals();
-        String result = "Rental Record for " + aCustomer.getName() + "\n";
+        StringBuilder result = new StringBuilder("Rental Record for " + aCustomer.getName() + "\n");
         while (rentals.hasMoreElements()){
             Rental each = (Rental) rentals.nextElement();
             // show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" 
-                    + String.valueOf(each.getCharge()) + "\n";
+            result.append("\t" + each.getMovie().getTitle() + "\t"
+                    + String.valueOf(each.getCharge()) + "\n");
         }
         // add footer lines
-        result += "Amount owed is " + String.valueOf(aCustomer.getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(aCustomer.getTotalFrequentRenterPoints()) + " frequent renter points";
-        return result;
+        result.append("Amount owed is ").append(String.valueOf(aCustomer.getTotalCharge())).append("\n");
+        result.append("You earned ").append(String.valueOf(aCustomer.getTotalFrequentRenterPoints())).append(" frequent renter points");
+        return result.toString();
     }
 }
 
 class HtmlStatement{
     public String value(Customer aCustomer){
         Enumeration rentals = aCustomer.getRentals();
-        String result = "<H1>Rentals for <EM>" + aCustomer.getName() + "</EM></H1><P>\n";
+        StringBuilder result = new StringBuilder("<H1>Rentals for <EM>" + aCustomer.getName() + "</EM></H1><P>\n");
         while (rentals.hasMoreElements()){
             Rental each = (Rental) rentals.nextElement();
             // show figures for each rental
-            result += each.getMovie().getTitle() + ": " + String.valueOf(each.getCharge()) + "<BR>\n";
+            result.append(each.getMovie().getTitle()).append(": ").append(String.valueOf(each.getCharge())).append("<BR>\n");
         }
         // add footer lines
-        result += "<P>You owe <EM>" + String.valueOf(aCustomer.getTotalCharge()) + "</EM><P>\n";
-        result += "On this rental you earned <EM>" + String.valueOf(aCustomer.getTotalFrequentRenterPoints()) + "</EM> frequent renter points<P>";
-        return result;
+        result.append("<P>You owe <EM>").append(String.valueOf(aCustomer.getTotalCharge())).append("</EM><P>\n");
+        result.append("On this rental you earned <EM>").append(String.valueOf(aCustomer.getTotalFrequentRenterPoints())).append("</EM> frequent renter points<P>");
+        return result.toString();
     }
 }
 ```
@@ -311,16 +311,16 @@ class HtmlStatement extends Statement{
     public String value(Customer aCustomer){
         Enumeration rentals = aCustomer.getRentals();
         
-        String result = headerString(aCustomer);
+        StringBuilder result = new StringBuilder(headerString(aCustomer));
         
         while (rentals.hasMoreElements()){
             Rental each = (Rental) rentals.nextElement();
             // show figures for each rental
-            result += eachRentalString(each);
+            result.append(eachRentalString(each));
         }
         // add footer lines
-        result += footerString(aCustomer);
-        return result;
+        result.append(footerString(aCustomer));
+        return result.toString();
     }
 
     String eachRentalString(Rental aRental){
