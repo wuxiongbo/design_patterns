@@ -42,6 +42,7 @@ public class Customer {
         // 常客积点(积分)
         int frequentRenterPoints = 0;
 
+        // 租赁记录
         Iterator<Rental> rentals = this.rentals.iterator();
 
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");

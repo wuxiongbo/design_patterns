@@ -16,9 +16,9 @@ import java.util.Date;
  */
 public class HRFacade {
     // 总工资情况
-    private SalaryProvider salaryProvider = new SalaryProvider();
+    private final SalaryProvider salaryProvider = new SalaryProvider();
     // 考勤情况
-    private Attendance attendance = new Attendance();
+    private final Attendance attendance = new Attendance();
 
     /**
      * 查询一个人的总收入

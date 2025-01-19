@@ -1,9 +1,8 @@
 # Extract Interface（提炼接⼝）
 
-若⼲客户使⽤类接⼝中的同⼀⼦集，或者两个类的接⼝有部分相同。
+若⼲客户，使⽤类接⼝中的同⼀⼦集，或者，两个类的接⼝有部分相同。
 
-
-将相同的⼦集提炼到⼀个独⽴接⼝中。
+将相同的⼦集，提炼到⼀个独⽴接⼝中。
 
 
 ```puml
@@ -32,7 +31,7 @@ class Employee implements Billable{
 ## 动机
 
 类之间，彼此互⽤的⽅式有若⼲种。
-“使⽤⼀个类“通常意味⽤到该类的 所有责任区。
+“使⽤⼀个类” 通常，意味着⽤到该类的所有责任区。
 另⼀种情况是，某⼀组客户只使⽤ 类责任区 中的 ⼀个特定⼦集。
 再⼀种情况则是，这个类需要与 所有协助处理某些特定请求的类 合作。
 
@@ -45,7 +44,7 @@ class Employee implements Billable{
 Java只提供 单继承（single inheritance），但你可以运⽤ 接⼝（interface）来昭示并实现上述需求。
 接⼝，对于Java程序的设计⽅式有着巨⼤的影响，就连 Smalltalk程序员 都认为 接⼝是⼀⼤进步！
 
-Extract Superclass （336）和 Extract Interface（341）之间有些相似之处。
+Extract Superclass（336）和 Extract Interface（341）之间有些相似之处。
 Extract Interface（341）只能提炼共通接⼝，不能提炼共通代码。
 使⽤ Extract Interface（341）可能造成难闻的“重复”坏味道，
 幸⽽你可以运⽤ Extract Class（149）先把共通⾏为放进⼀个组件中，
@@ -68,49 +67,67 @@ Extract Interface（341）只能提炼共通接⼝，不能提炼共通代码。
 
 ## 范例
 
-Timesheet类 表示员⼯为客户⼯作的时间表，从中可以计算客户应该⽀付的费⽤。
+Timesheet类 表示 员⼯为客户⼯作的 时间表，从中，可以计算 客户应该⽀付的费⽤。
 为了计算这笔费⽤，Timesheet 需要知道员⼯级别，以及该员⼯是否有特殊技能：
-```
-double charge (Employee emp, int days)｛
-    int base = emp.getRate() * days;
-    if (emp.hasSpecialSkill())
-        return base *1.05;
-    else
-        return base;
-｝
+``` java
+class Timesheet {
+    
+    double charge(Employee emp, int days) {
+        int base = emp.getRate() * days;
+        if (emp.hasSpecialSkill()) {
+            return base * 1.05;
+        } else {
+            return base;
+        }
+    }
+    
+    // ...
+    
+}
+
 ```
 
 除了提供员⼯的级别和特殊技能信息外，Employee还有很多其他⽅⾯的功能，但本应⽤程序只需这两项功能。
-我可以针对这两项功能定义⼀个接⼝，从⽽强调 “我只需要这部分功能” 的事实：
-```
-interface Billable ｛
-    public int getRate();
-    public boolean hasSpecialSkill(); 
-...
-```
-
-然后，我声明让Employee实现这个接⼝：
-```
-class Employee implements Billable ...
+我可以针对这两项功能定义⼀个接⼝ Billable ，从⽽强调 “我只需要这部分功能” 的事实：
+``` java
+interface Billable {
+    int getRate();
+    boolean hasSpecialSkill();
+}
+   
 ```
 
-
-完成以后，我可以修改charge()函数声明，强调该函数只使⽤ Employee的这部分⾏为：
+然后，我声明让 Employee 实现 Billable接⼝：
+```java
+class Employee implements Billable {
+    // ....
+}
 ```
-double charge (Billable emp, int days） ｛ 
-  int base = emp.get.Rate() * days;
-  iE （emp.hasSpecialSkill（））
-     return base * 1.05;
-  else 
-     return base;
+
+
+完成以后，我可以修改 charge()函数声明，强调该函数只使⽤ Employee 的这部分⾏为：
+```java
+class Timesheet {
+    
+    double charge(Billable emp, int days) {
+        int base = emp.getRate() * days;
+        if (emp.hasSpecialSkill()) {
+            return base * 1.05;
+        } else {
+            return base;
+        }
+    }
+    
+    // ...
+    
 }
 ```
 
 到⽬前为⽌，我们只不过是在⽂档化⽅⾯有⼀点收获。
 单就这⼀个函数⽽⾔，这样的收获并没有太⼤价值；
-但如果有若⼲个类都使⽤ Billable 接⼝，它就会很有⽤。
+但，如果有若⼲个类，都使⽤ Billable 接⼝，它就会很有⽤。
 
-如果我还想计算电脑租⾦，巨⼤的收获就显露出来了：
+如果，我还想计算 电脑租⾦，巨⼤的收获就显露出来了：
 要想计算客户租⽤电脑的费⽤，我只需让 computer类 实现 Billable 接⼝，
-然后，就可以把租⽤电脑的时间也填到时间表上了。
+然后，就可以把 租⽤电脑的时间 也填到 时间表 上了。
 

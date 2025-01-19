@@ -9,6 +9,9 @@ public class Movie {
 	public static final int CHILDRENS = 2;
 
 	private final String _title;
+	/**
+	 * 影片类型
+	 */
 	private int _priceCode;
 
 	public Movie(String title, int priceCode) {

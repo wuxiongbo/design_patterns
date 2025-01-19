@@ -27,24 +27,33 @@ public class Customer {
 
     @SuppressWarnings("DuplicatedCode")
     public String statement() {
+
         StringBuilder result = new StringBuilder("Rental Record for " + getName() + "\n");
+
         for (Rental rental : _rentals) {
             // show figures for this rental
-            result.append("\t").append(rental.getMovie().getTitle())
-                    .append("\t").append(rental.getCharge()).append("\n");
+            result.append("\t")
+                    .append(rental.getMovie().getTitle())
+                    .append("\t")
+                    .append(rental.getCharge())
+                    .append("\n");
         }
+
         // add footer lines
         result.append("Amount owed is ")
                 .append(getTotalCharge())
                 .append("\n");
+
         result.append("You earned ")
                 .append(getTotalFrequentRenterPoints())
                 .append(" frequent renter points");
+
         return result.toString();
     }
 
     /**
-     * 用同样的手法，处理 frequentRenterPoints 变量 为查询函数 {@linkplain Rental#getFrequentRenterPoints() getFrequentRenterPoints()}
+     * 用同样的手法，处理 frequentRenterPoints 变量
+     * 变为 查询函数 {@linkplain Rental#getFrequentRenterPoints() getFrequentRenterPoints()}
      *
      * @return 积分
      */

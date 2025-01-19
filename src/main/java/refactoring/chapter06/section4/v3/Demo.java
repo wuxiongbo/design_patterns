@@ -7,11 +7,11 @@ package refactoring.chapter06.section4.v3;
  */
 public class Demo {
 
-    private final int _quantity;
+    private final int quantity;
     private final int itemPrice;
 
     public Demo(int quantity, int itemPrice) {
-        _quantity = quantity;
+        this.quantity = quantity;
         this.itemPrice = itemPrice;
     }
 
@@ -30,7 +30,7 @@ public class Demo {
     }
 
     private int basePrice() {
-        return _quantity * itemPrice;
+        return quantity * itemPrice;
     }
 
 

@@ -21,8 +21,8 @@ public class Rental {
 	}
 
 	/**
-	 * 将金额计算逻辑从 Customer 类迁移到 当前 Rental 类；
-	 * 同时，变更函数名称，从 amountFor 改为 getCharge
+	 * 将 金额计算逻辑 从 Customer 类迁移到 当前 Rental 类；
+	 * 同时，变更 函数名称，从 amountFor 改为 getCharge
 	 * @return 金额结果
 	 */
 	@SuppressWarnings("Duplicates")

@@ -13,13 +13,13 @@ import my_demo.facade.colleague.items.Tax;
  */
 public class SalaryProvider {
     // 基本工資
-    private BasicSalary basicSalary = new BasicSalary();
+    private final BasicSalary basicSalary = new BasicSalary();
     // 奖金
-    private Bonus bonus = new Bonus();
+    private final Bonus bonus = new Bonus();
     // 绩效
-    private Performance perf = new Performance();
+    private final Performance perf = new Performance();
     // 税收
-    private Tax tax = new Tax();
+    private final Tax tax = new Tax();
 
     /**
      * 获得用户总收入

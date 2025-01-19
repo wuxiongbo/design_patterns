@@ -335,26 +335,32 @@ class HtmlStatement extends Statement{
 ```
 
 所有这些修改都完成后，两个value()函数 看上去已经⾮常相似了，
-因此我可以使⽤ Pull up Method（322）将它们提升到超类中。
-提升完毕后，我需要在超类中把⼦类函数声明为抽象函数。
+因此，我可以使⽤ Pull up Method（322）将它们提升到超类中。
+提升完毕后，我需要在 超类 中，把 ⼦类函数 声明为 抽象函数。
+```java
+class Statement {
+    public String value(Customer acustomer) {
+        Enumeration rentals = aCustomer.getRentals();
+        String result = headerstring(aCustomer);
+        while (rentals.hasMoreBlements()) {
+            Rental each = (Rental) rentals.nextBlement();
+            result += eachRentalString(each);
+        }
+        feasze += footersering(acustomet);
+        return result;
+        
+    }
 
-class Statement...
+    abstract String headerString(Customer aCustomer);
 
-public String value （Customer acustomer）｛
+    abstract String cachRentalstring(Rental aRenta1);
 
-Enumeration rentals = aCustomer .getRentals（）； String result - headerstring （aCustomer）； while （rentals.hasMoreBlements（））｛
+    abstract String footerString(Customer aCustomer);
+}
+```
 
-Rental each.= （Rental）rentals.nextBlement （）：
-
-result += eachRentalString （each）；
-
-feasze t- tootersering（acustomet） return result：
-
-abstract String headerString （Customer aCustomer）； abstract String cachRentalstring（Rental aRenta1）； abstract String footerString （Customer aCustomer）；
-
-
-然后我把 TextStatement.value()函数拿掉，编译并测试。
-完成之后再把 HtmlStatement.value()也删掉，再次编译并测试。
+然后，我把 TextStatement.value()函数 拿掉，编译并测试。
+完成之后，再把 HtmlStatement.value() 也删掉，再次编译并测试。
 最后结果如图11-2。
 
 完成本重构后，处理其他种类的报表就容易多了：

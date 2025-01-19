@@ -3,12 +3,12 @@ package refactoring.chapter01.ver02;
 import java.util.*;
 
 /**
- * 第一次重构后：<br>
  * 现在，我已经把原来的函数分为两块，可以分别处理它们。<br>
  * 我不喜欢 {@link Customer#amountFor(Rental)} 内的某些变量名称，现在正是修改它们的时候。<br>
  * <p>
  * 更改变量名称是值得的行为吗?<br>
- * 绝对值得。好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。<br>
+ * 绝对值得。
+ * 好的代码应该清楚表达出自己的功能，变量名称是代码清晰的关键。<br>
  * 如果为了提高代码的清晰度，需要修改某些东西的名字，那么就大胆去做吧。只要有良好的查找/替换工具，更改名称并不困难。<br>
  * 语言所提供的强类型检查以及你自己的测试机制，会指出任何你遗漏的东西。<br>
  * <p>
@@ -31,22 +31,24 @@ import java.util.*;
  * 如果你犯下错误，很容易便可发现它。<br>
  * <p>
  * <p>
+ * 搬移“金额计算” 代码
  * 待修改点：
  * <p>
- * 1）观察 {@link Customer#amountFor(Rental)} 时，我发现，这个函数使用了来自 {@link Rental} 类 的信息，却没有使用来自 {@link Customer} 类的信息。<br>
+ * 1）观察 {@link Customer#amountFor(Rental)} 函数时，
+ * 我发现，这个函数使用了来自{@link Rental}类 的信息，却没有使用来自{@link Customer}类的信息。<br>
  * 这立刻使我怀疑它是否被放错了位置。<br>
- * 绝大多数情况下，函数应该放在它所使用的数据的所属对象内，所以，amountFor() 应该移到Rental 类去。<br>
+ * 绝大多数情况下，函数应该放在 它所使用的 数据的 所属对象内，所以，Customer 类的 amountFor() 函数 应该移到 Rental类 去。<br>
  * 为了这么做，我要运用 Move Method(142)。<br>
  * 首先，把代码复制到 Rental 类，调整代码使之适应新家，<br>
  * 然后，重新编译。<br>
  * <p>
  * 在这个例子里，“适应新家”，意味着要，去掉参数。<br>
- * 此外，我还要在搬移的同时变更函数名称。 amountFor() 该为 getCharge()<br>
+ * 此外，我还要在搬移的同时变更函数名称。 amountFor() 改为 getCharge() <br>
  * <p>
- * <p>
- * 2）下一件引我注意的事是：thisAmount 如今变得多余了。{@link refactoring.chapter01.ver02.Customer#statement()}
- * 它接受 each.getCharge()的执行结果，然后就不再有任何改变。<br>
- * 所以，我可以运用 Replace Temp with Query(120) 把 thisAmount 除去<br>
+ * 2）下一件引我注意的事是：函数{@link Customer#statement()}中的 thisAmount 变量 如今变得多余了。
+ *   该变量接受 each.getCharge()的执行结果，然后，就不再有任何改变。<br>
+ *   所以，我可以运用 `Replace Temp with Query(120)` 把 thisAmount 变量 除去<br>
+ *
  */
 public class Customer {
 
@@ -63,6 +65,7 @@ public class Customer {
         rentals.add(arg);
     }
 
+    @SuppressWarnings("lombok")
     public String getName() {
         return name;
     }
@@ -106,9 +109,10 @@ public class Customer {
 
     /**
      * 本函数使用了 来自 Rental 的信息，却没使用 Customer 的信息。
+     * 那么，这个函数则更适合在 Rental 这个类中
      * 重构步骤：
-     * 1) 搬移函数
-     * 2）修改变量名
+     * 1) 搬移函数； 代码复制到 Rental 类
+     * 2）修改变量名； amountFor() 改为 getCharge()
      *
      * @param aRental 一个租赁实例
      * @return

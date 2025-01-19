@@ -38,6 +38,7 @@ public class Customer {
 		// add footer lines
 		result.append("Amount owed is ")
 				.append(getTotalCharge()).append("\n");
+
 		result.append("You earned ")
 				.append(frequentRenterPoints).append(" frequent renter points");
 
