@@ -6,6 +6,7 @@ package refactoring.chapter06.section8.v3;
  * @author bear
  */
 public class Gamma {
+
     private final Account account;
     private final int inputVal;
     private final int quantity;
@@ -25,6 +26,7 @@ public class Gamma {
     }
 
     int compute() {
+
         importantValue1 = (inputVal * quantity) + account.delta();
         importantValue2 = (inputVal * yearToDate) + 100;
 

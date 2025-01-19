@@ -1,7 +1,7 @@
 package refactoring.chapter06.section8.v1;
 
 /**
- *
+ * 账户
  * @author bear
  */
 public class Account {
