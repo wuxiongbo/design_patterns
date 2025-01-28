@@ -23,13 +23,14 @@ class Employee {
     static final int ENGINEER = 0;
     static final int SALESMAN = 1;
     static final int MANAGER = 2;
-
-    static Employee create(int type) {
-        return new Employee(type);
-    }
-
+    
     private Employee(int type) {
         _type = type;
+    }
+    
+    // 工厂函数
+    static Employee create(int type) {
+        return new Employee(type);
     }
 }
 ```
@@ -77,14 +78,16 @@ class Employee {
     static final int ENGINEER = 0;
     static final int SALESMAN = 1;
     static final int MANAGER = 2;
+    
+    private Employee(int type) {
+        _type = type;
+    }
 
+    // 工厂函数
     static Employee create(int type) {
         return new Employee(type);
     }
 
-    private Employee(int type) {
-        _type = type;
-    }
 }
 ```
 
@@ -110,23 +113,21 @@ class Employee {
     static final int ENGINEER = 0;
     static final int SALESMAN = 1;
     static final int MANAGER = 2;
-
-    static Employee create(int type) {
-        switch (type) {
-            case ENGINEER:
-                return new Engineer();
-            case SALESMAN:
-                return new Salesman();
-            case MANAGER:
-                return new Manager();
-            default:
-                throw new IllegalArgumentException("Incorrect type code value");
-        }
-    }
-
     private Employee(int type) {
         _type = type;
     }
+    
+    // 工厂函数
+    static Employee create(int type) {
+        return switch (type) {
+            case ENGINEER -> new Engineer();
+            case SALESMAN -> new Salesman();
+            case MANAGER -> new Manager();
+            default -> throw new IllegalArgumentException("Incorrect type code value");
+        };
+    }
+
+
 }
 ```
 
@@ -134,14 +135,18 @@ class Employee {
 如果我添加⼀个新的⼦类，就必须记得更新这⾥的switch语句，⽽我⼜偏偏很健忘。
 绕过这个switch语句的⼀个好办法是使⽤ class.forName()。
 第⼀件要做的事是修改参数类型，这从根本上说是 Rename Method （273）的⼀种变体。
-⾸先我得建⽴⼀个函数，让它接收⼀个字符串参数：
+⾸先，我得建⽴⼀个函数，让它接收⼀个字符串参数：
 ```java
 class Employee {
     private int _type;
     static final int ENGINEER = 0;
     static final int SALESMAN = 1;
     static final int MANAGER = 2;
-
+    private Employee(int type) {
+        _type = type;
+    }
+    
+    // create()函数 String版
     static Employee create(String name) {
         try {
             return (Employee) Class.forName(name).newInstance();
@@ -150,43 +155,53 @@ class Employee {
         }
     }
 
+    // create()函数 int版
     static Employee create(int type) {
-        switch (type) {
-            case ENGINEER:
-                return create("Engineer");
-            case SALESMAN:
-                return create("Salesman");
-            case MANAGER:
-                return create("Manager");
-            default:
-                throw new IllegalArgumentException("Incorrect type code value");
-        }
+        return switch (type) {
+            case ENGINEER -> new Engineer();
+            case SALESMAN -> new Salesman();
+            case MANAGER -> new Manager();
+            default -> throw new IllegalArgumentException("Incorrect type code value");
+        };
     }
 
+
+}
+```
+
+然后，让稍早那个 “create()函数int版”  调⽤ 新建的 “create()函数String版”
+```java
+class Employee {
+    
+    private int _type;
+    static final int ENGINEER = 0;
+    static final int SALESMAN = 1;
+    static final int MANAGER = 2;
     private Employee(int type) {
         _type = type;
     }
-}
-```
-
-然后，让稍早那个 “create（）函数int版”  调⽤ 新建的 “create（）函数String版”
-```java
-class Employee {
-    static Employee create(int type) {
-        switch (type) {
-            case ENGINEER:
-                return create("Engineer");
-            case SALESMAN:
-                return create("Salesman");
-            case MANAGER:
-                return create("Manager");
-            default:
-                throw new IllegalArgumentException("Incorrect type code value");
+    
+    // create()函数 String版
+    static Employee create(String name) {
+        try {
+            return (Employee) Class.forName(name).newInstance();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Unable to instantiate" + name);
         }
+    }
+    
+    // 让 “create()函数int版” 调⽤ “create()函数String版”
+    static Employee create(int type) {
+        return switch (type) {
+            case ENGINEER -> create("Engineer");
+            case SALESMAN -> create("Salesman");
+            case MANAGER -> create("Manager");
+            default -> throw new IllegalArgumentException("Incorrect type code value");
+        };
     }
 }
 ```
-然后，我得修改 create()函数 的 调⽤者，将下列这样的语句，修改为：
+然后，我得修改 create()函数int版 的 调⽤者，将调用方的代码语句，修改为：
 ```java
 class Client {
     void create() {
@@ -196,7 +211,7 @@ class Client {
 
 ```
 
-完成之后，我就可以将 “create()函数int版”移除了。
+完成之后，我就可以将 “create()函数int版” 移除了。
 
 现在，当我需要添加新的Employee⼦类时，就不再需要更新create（）函数了。
 但我却因此失去了编译期检验，使得⼀个⼩⼩的拼写错误就可能造成运⾏期错误。 
@@ -210,6 +225,7 @@ class Client {
 
 这也是不使⽤ Inline Method （117）去除⼯⼚函数的⼀个好理由。
 
+
 ## 范例：以明确函数创建⼦类
 
 我可以通过另—⼀条途径来隐藏⼦类——使⽤明确函数。
@@ -217,19 +233,26 @@ class Client {
 我可能有个抽象的Person类，它 有两个⼦类：Male 和 Female。
 ⾸先，我在超类中为每个⼦类定义⼀个⼯⼚函数：
 ```java
+// 超类
 class Person {
+    
+    // 子类1的工厂函数
     static Person createMale() {
         return new Male();
     }
     
+    // 子类2的工厂函数
     static Person createFemale() {
         return new Female();
     }
 }
 ```
-然后，我可以把下⾯的调⽤： Person kent = new Male(); 替換成：
-Person kent = Person.createMale();
 
-但是这就使得 超类 必须知晓 ⼦类。
-如果想避免这种情况，你需要⼀个更为复杂的设计，例如 Product Trader模式［Baumer and Riehle］。
-绝⼤多数情况下你并不需要如此复杂的设计，上⾯介绍的做法已经绰绰有余。
+然后，我可以把下⾯的(构造函数)调⽤：  
+`Person kent = new Male();`  
+替換成(工厂函数的调用)：  
+`Person kent = Person.createMale();`  
+
+但是，这就使得 ‘超类’ 必须知晓 ‘⼦类’。
+如果，想避免这种情况，你需要⼀个更为复杂的设计，例如 Product Trader (操盘手) 模式［Baumer and Riehle］。
+绝⼤多数情况下，你并不需要如此复杂的设计，上⾯介绍的做法 已经绰绰有余。

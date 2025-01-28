@@ -14,7 +14,6 @@ double finalPrice = discountedPrice(basePrice, discountLevel);
 getDiscountLevel() 函数，可以放到 discountedPrice()函数中调用， 这样就可以去掉 discountLevel 参数。
 ```java
 int basePrice = _quantity * _itemPrice;
-// double discountLevel = getDiscountLevel();
 double finalPrice = discountedPrice(basePrice);
 ```
 

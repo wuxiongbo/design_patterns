@@ -4,6 +4,7 @@ import my_demo.producttrader.Specification;
 import my_demo.producttrader.product.Product;
 
 /**
+ * 产品工厂
  * @author bear
  */
 public interface ProductCreator {

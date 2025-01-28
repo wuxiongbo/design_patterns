@@ -47,9 +47,11 @@ class Account{
   Account(String id){
     setId(id);
   }
-  void setId(String arg){
-    _id = arg;
+  
+  void setId(String id){
+    _id = id;
   }
+  
 }
 ```
 
@@ -70,17 +72,14 @@ class Account{
 ⾸先，你可能会在设值函数中对传⼊参数做运算：
 ```java
 class Account {
-
      private String _id;
-
      Account(String id) {
           setId(id);
      }
 
-     void setId(String arg) {
-          _id = "ZZ" + arg;
+     void setId(String id) {
+          _id = "ID" + id;
      }
-
 }
 ```
 
@@ -89,30 +88,32 @@ class Account {
 我需要为新函数起个好名字，清楚表达该函数的⽤途：
 ```java
 class Account {
+    
+     // private final String _id;  
+     // 译者注：这里的final修饰符必须去掉 ①
 
-     private final String _id;  // 译者注：这里的final修饰符必须去掉 ①
+     private String _id;
 
      Account(String id) {
           initializeId(id);
      }
 
-     private void initializeId(String arg) {
-          _id = "ZZ" + arg;
+     private void initializeId(String id) {
+          _id = "ID" + id;
      }
 
 }
 ```
-① 此时，不能将 独⽴函数中要赋值的字段（即，此处的 _id 字段）声明为 `final`，否则，不能通过编译。
+① 此时，不能将独⽴函数中要赋值的字段（即，此处的 _id 字段）声明为 `final`，否则，不能通过编译。
 因此，这⼀段所描述的 重构⼿法 实际上并不成⽴；
-Account在重构后，仍然是可变对象，唯⼀能够得到的好处是：
-通过修改设值函数的名称，可以让读者明⽩ initializeId()函数 只应该⽤于对象构造阶段。
-⼀译者注
+Account对象 在重构后，仍然是 可变对象，唯⼀能够得到的好处是：
+通过修改 设值函数 的名称，可以让读者明⽩ initializeId()函数 只应该⽤于 对象 构造阶段。
+——译者注
 ![img.png](img.png)
 
 
 
-
-如果，⼦类 需要对 超类的 private变量 赋初值，情况就⽐较麻烦⼀些：
+如果，⼦类 需要对 超类的 private变量赋初值，情况就⽐较麻烦⼀些：
 ```java
 class InterestAccount extends Account {
 
@@ -124,11 +125,21 @@ class InterestAccount extends Account {
     }
 
 }
+
+class Account {
+     private String _id;
+     Account(String id) {
+          setId(id);
+     }
+
+     void setId(String id) {
+          _id = "ID" + id;
+     }
+}
 ```
 
-问题是，我⽆法在 InterestAccount()中，直接访问 id变量。
+问题是，我⽆法在 InterestAccount() 构造函数中，直接访问id变量。
 最好的解决办法就是，使⽤超类构造函数：
-
 ```java
 class InterestAccount extends Account {
 
@@ -141,11 +152,25 @@ class InterestAccount extends Account {
 
 }
 
-```
-如果不能那样做，那么使⽤⼀个命名良好的函数就是最好的选择：
+class Account {
+     
+    private String _id;
+    
+    Account(String id) {
+        initializeId(id);
+    }
+    
+    private void initializeId(String id) {
+        _id = "ID" + id;
+    }
 
+}
+```
+
+如果不能那样做(如，超类没有 id构造函数)，那么，使⽤⼀个命名良好的函数就是最好的选择：
 ```java
 class InterestAccount extends Account {
+    
      private double _interestRate;
 
      InterestAccount(String id, double rate) {
@@ -154,26 +179,57 @@ class InterestAccount extends Account {
      }
 }
 
+class Account {
+    
+     private String _id;
+
+     Account() {
+     }
+
+     void initializeId(String id) {
+          _id = "ID" + id;
+     }
+
+}
 ```
+
 
 另⼀种需要考虑的情况就是，对⼀个集合设值：
 ```java
 class Person {
 
-    private Vector<Course> _courses;
+     private Vector<Course> _courses;
 
-    Vector<Course> getCourses() {
-        return _courses;
-    }
+     Vector<Course> getCourses() {
+          return _courses;
+     }
 
-    void setCourses(Vector<Course> arg) {
-        _courses = arg;
-    }
-
+     void setCourses(Vector<Course> arg) {
+          _courses = arg;
+     }
+     
 }
-
 ```
 
-在这⾥，我希望将 ‘设值函数’ 替换为 ‘add操作’ 和 ‘remove操作’ 。
+在这⾥，我希望将 ‘设值函数’ setCourses()， 替换为 ‘add操作’ 和 ‘remove操作’ 。
 我已经在 Encapsulate Collection（208）中，谈到了这⼀点。
 
+```java
+class Person {
+
+     private Vector<Course> _courses;
+
+     Vector<Course> getCourses() {
+          return _courses;
+     }
+     
+     void addCourse(Course arg) {
+          _courses.add(arg);
+     }
+
+     void removeCourse(Course arg) {
+          _courses.remove(arg);
+     }
+     
+}
+```

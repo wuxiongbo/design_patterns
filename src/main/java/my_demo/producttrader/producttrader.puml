@@ -1,0 +1,43 @@
+@startuml
+' 客户端
+class Client
+
+' 规格
+class Specification {
+  match(Specification):boolean
+  hashcode():Integer
+}
+
+' 操盘手
+class ProductTrader {
+  create(Specification):Product
+  lookup(Specification):Creator
+  add(Creator)
+  remove(Creator)
+  substitute(Creator)
+}
+
+' 产品生产工厂
+class Creator {
+   create(Specification):Product
+   productClass():Class
+}
+
+' 产品抽象
+abstract class Product
+' 具体的产品A
+class ConcreteProductA
+' 具体的产品B
+class ConcreteProductB
+
+
+Product <|-- ConcreteProductA
+Product <|-- ConcreteProductB
+
+Client --> ProductTrader
+Client --> Specification
+ProductTrader -left-> Specification
+ProductTrader o-> Creator
+Creator .> Product : creates
+
+@enduml

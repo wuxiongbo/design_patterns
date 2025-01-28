@@ -18,6 +18,7 @@ import java.util.Objects;
 @Getter
 public class Specification {
 
+
     private String criteria;
 
     /**
@@ -30,10 +31,12 @@ public class Specification {
         return Objects.equals(product.getCriteria(), this.criteria);
     }
 
+
     @Override
     public int hashCode() {
-        return Objects.hash(criteria);
+        return Objects.hash(this.criteria);
     }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -44,7 +47,7 @@ public class Specification {
             return false;
         }
         Specification that = (Specification) obj;
-        return Objects.equals(criteria, that.criteria);
+        return Objects.equals(this.criteria, that.criteria);
     }
 
 }

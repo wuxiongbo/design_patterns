@@ -6,10 +6,12 @@ import my_demo.producttrader.product.ConcreteProductB;
 import my_demo.producttrader.product.Product;
 
 /**
+ * 产品工厂
  * @author bear
  */
 public class ConcreteProductCreator implements ProductCreator {
 
+    // 产品标准
     public final static String FRO_PRODUCT_A = "SpecForConreteProductA";
     public final static String FRO_PRODUCT_B = "SpecForConreteProductB";
 
@@ -25,4 +27,5 @@ public class ConcreteProductCreator implements ProductCreator {
 
         throw new UnsupportedOperationException();
     }
+
 }

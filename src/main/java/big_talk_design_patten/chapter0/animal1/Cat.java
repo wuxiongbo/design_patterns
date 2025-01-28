@@ -11,10 +11,6 @@ public class Cat extends Animal {
 	}
 	
 	public String shout(){
-		String result="";
-		for(int i=0;i<this.shoutNum;i++){
-			result+= "喵 ";
-		}
-		return " 我的名字叫"+ name + " " + result;
+        return " 我的名字叫"+ name + " " + "喵 ".repeat(Math.max(0, this.shoutNum));
 	}
 }
