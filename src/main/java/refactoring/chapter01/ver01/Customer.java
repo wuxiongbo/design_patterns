@@ -55,7 +55,7 @@ public class Customer {
             // determine amounts for each line
             // 取得影片出租价格
             switch (each.getMovie().getPriceCode()) {
-
+                
                 // 普通片
                 case Movie.REGULAR -> {
                     thisAmount += 2;
@@ -63,10 +63,8 @@ public class Customer {
                         thisAmount += (each.getDaysRented() - 2) * 1.5;
                     }
                 }
-
                 // 新片
                 case Movie.NEW_RELEASE -> thisAmount += each.getDaysRented() * 3;
-
                 // 儿童
                 case Movie.CHILDREN -> {
                     thisAmount += 1.5;

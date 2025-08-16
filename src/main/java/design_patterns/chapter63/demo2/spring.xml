@@ -1,0 +1,9 @@
+<root xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns="http://java.sun.com/JSP/Page" version="1.0">
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <bean class="design_patterns.chapter63.demo2.LogInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+</root>
+

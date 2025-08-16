@@ -1,0 +1,61 @@
+@startmindmap
+* 底层知识思想地图
+** Java
+*** 核心思想
+**** JVM内存模型：堆/栈/方法区分工；GC聚焦堆与方法区
+**** 并发模型：共享内存+最小锁；优先无锁/批处理/异步
+**** 性能优化：减少对象分配；I/O异步化；热点预热
+**** 结构原则：高内聚低耦合；接口隔离；边界明确
+*** 细节索引
+**** GC调优：-XX:+UseG1GC；-XX:MaxGCPauseMillis=200
+**** 虚拟线程(Java21)：Thread.ofVirtual().start(...)
+**** 并发工具：ConcurrentHashMap；CompletableFuture
+**** 性能/内存分析：jmap；jcmd；async-profiler；JFR
+**** 启动与AOT：Spring Boot 3.x AOT 概念与限制
+** 网络
+*** 核心思想
+**** TCP握手/挥手：可靠建立与优雅关闭；TIME_WAIT影响
+**** HTTP本质：无状态；会话靠Token/Session；幂等设计
+**** 连接策略：长连接降RTT；重试+退避；超时与熔断
+**** 吞吐/延迟：压缩/合并；多路复用；就近访问
+*** 细节索引
+**** 抓包：tcpdump；Wireshark
+**** 诊断：curl -v；ping；traceroute；ss -tnap
+**** HTTP/2：多路复用；HPACK头压缩
+**** Netty：ChannelPipeline；EventLoopGroup；背压策略
+** 数据库
+*** 核心思想
+**** 索引设计：最左匹配；高选择性；覆盖索引优先
+**** 事务隔离：RC/ RR/ 序列化；性能与一致性权衡
+**** 查询优化：避免函数作用索引列；减少回表；限行限列
+**** 水平扩展：按业务维度分片；冷热分层；归档治理
+*** 细节索引
+**** 索引结构：B+Tree；联合索引顺序与选择性评估
+**** 执行计划：EXPLAIN；type/rows/extra 判读
+**** 慢SQL定位：slow_query_log；performance_schema
+**** 事务参数：innodb_lock_wait_timeout；autocommit
+**** 分布式ID：Snowflake；Leaf；DB号段；Redis+Lua
+** 中间件
+*** 核心思想
+**** MQ作用：削峰填谷/解耦/最终一致；幂等与去重
+**** 缓存三难：穿透(布隆)；击穿(热点预热/互斥锁)；雪崩(TTL抖动)
+**** 注册发现：健康检查；心跳；弹性扩缩
+**** 高可用：副本/ISR；故障转移；限流熔断隔离
+*** 细节索引
+**** Kafka：分区键保证有序；ACK/ISR；重试与幂等生产
+**** Redis：SETNX分布式锁；SCAN遍历；Pipeline；TTL策略
+**** 一致性：本地事务表/Outbox；MQ事务消息
+**** Nginx：upstream；proxy_pass；超时/重试/限流
+**** Spring Cloud：Gateway；Eureka/Nacos；Circuit Breaker
+** 使用与保温
+*** 决策流程
+**** 先思想后细节：判定适用性/风险→再查指令与配置
+**** 设计优先级：正确性>可用性>性能>成本(按场景调整)
+*** 保温机制
+**** 知识年检：每6个月回顾关键技术变更
+**** 小型落地：每季度做一次实操(如一次性能分析)
+**** 思想+索引笔记：思想为纲；链接到官方文档/脚本仓
+*** 风险提示
+**** 忘细节≠退化：需要时5分钟内补齐即可
+**** 关键路径场景：上线前做演练与Runbook
+@endmindmap
