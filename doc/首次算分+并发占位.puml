@@ -1,0 +1,46 @@
+@startuml
+title 舱位评分：首次算分并发占位（A成功、B返回）
+
+actor 调用方 as Caller
+participant "RatingCoordinator\n(saveWithLock)" as RC
+participant "CabinScoreSnapshotService\n(仓储)" as Repo
+database "MySQL/InnoDB\nlpms_cabin_score_snapshot" as DB
+
+== 线程A开始 ==
+Caller -> RC : saveWithLock(dto: cabinCode=CWN...)
+activate RC
+RC -> Repo : SELECT ... FOR UPDATE\nWHERE cabin_code=? AND is_delete=0
+Repo -> DB : 行级锁(cabin_code)
+DB --> Repo : current = null（无记录）
+Repo --> RC : null
+
+alt 首次算分（无记录）
+  RC -> Repo : INSERT 占位行\ncaul_status=CALCULATING(2)\ncalculated_at=now()
+end
+
+== 线程B并发 ==
+Caller -> RC : saveWithLock(dto 同舱位)
+activate RC
+RC -> Repo : SELECT ... FOR UPDATE\nWHERE cabin_code=? AND is_delete=0
+Repo -> DB : 尝试获取同一行锁（等待线程A事务）
+DB --> Repo : 拿到锁，返回 current(存在，caul_status=2)
+Repo --> RC : current.caul_status=CALCULATING
+RC --> Caller : return（并发竞争，直接跳过/稍后重试）
+deactivate RC
+
+== 线程A继续 ==
+RC -> Repo : // 非首次，无需再占位（已在上一步插入）
+RC -> Repo : UPDATE caul_status=CALCULATING（幂等，可省略）
+RC -> Repo : // remove + insert 新版本（首次可直接视为已插入）
+RC -> Repo : UPDATE is_delete=1\nWHERE cabin_code=? AND is_delete=0
+Repo -> DB : 软删旧版（首次可能无旧版，更新0行）
+Repo --> RC
+RC -> Repo : INSERT 新版本（最终数据）\ncaul_status=CALCULATING(2)
+Repo --> RC
+RC -> Repo : UPDATE caul_status=COMPLETED(1)\nWHERE cabin_code=? AND is_delete=0
+Repo --> RC
+deactivate RC
+
+Caller <-- RC : 完成（commit，释放行锁）
+
+@enduml

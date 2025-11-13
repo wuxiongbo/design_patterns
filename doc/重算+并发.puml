@@ -1,0 +1,41 @@
+@startuml
+title 舱位评分：重算并发（A更新、B返回）
+
+actor 调用方 as Caller
+participant "RatingCoordinator\n(saveWithLock)" as RC
+participant "CabinScoreSnapshotService\n(仓储)" as Repo
+database "MySQL/InnoDB\nlpms_cabin_score_snapshot" as DB
+
+== 线程A开始（重算） ==
+Caller -> RC : saveWithLock(dto: cabinCode=CWN...)
+activate RC
+RC -> Repo : SELECT ... FOR UPDATE\nWHERE cabin_code=? AND is_delete=0
+Repo -> DB : 行级锁(cabin_code)
+DB --> Repo : 返回 current（存在，caul_status=COMPLETED(1)）
+Repo --> RC : current(1)
+
+RC -> Repo : UPDATE caul_status=CALCULATING(2)\nWHERE cabin_code=? AND caul_status<>2
+Repo --> RC
+
+== 线程B并发 ==
+Caller -> RC : saveWithLock(dto 同舱位)
+activate RC
+RC -> Repo : SELECT ... FOR UPDATE\nWHERE cabin_code=? AND is_delete=0
+Repo -> DB : 等待线程A事务释放
+DB --> Repo : 返回 current（caul_status=2）
+Repo --> RC
+RC --> Caller : return（计算中，跳过/稍后重试）
+deactivate RC
+
+== 线程A继续 ==
+RC -> Repo : UPDATE is_delete=1\nWHERE cabin_code=? AND is_delete=0
+Repo --> RC : 软删旧版（current置删）
+RC -> Repo : INSERT 新版本（最终数据）\ncaul_status=CALCULATING(2)
+Repo --> RC
+RC -> Repo : UPDATE caul_status=COMPLETED(1)\nWHERE cabin_code=? AND is_delete=0
+Repo --> RC
+deactivate RC
+
+Caller <-- RC : 完成（commit，释放行锁）
+
+@enduml

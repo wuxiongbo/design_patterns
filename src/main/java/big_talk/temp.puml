@@ -1,0 +1,19 @@
+@startgantt
+Project starts 2025-01-01
+Project ends   2025-03-31
+printscale daily
+
+-- 原始区间 --
+[资源1] lasts from 2025-01-10 to 2025-02-10
+[资源2] lasts from 2025-02-11 to 2025-02-15
+[资源3] lasts from 2025-02-16 to 2025-02-20
+[资源4] lasts from 2025-02-21 to 2025-03-20
+[变更范围] lasts from 2025-02-13 to 2025-02-17
+
+-- 切割结果 --
+[结果-资源1] lasts from 2025-01-10 to 2025-02-10
+[结果-资源2] lasts from 2025-02-11 to 2025-02-12
+[结果-资源5] lasts from 2025-02-13 to 2025-02-17
+[结果-资源3] lasts from 2025-02-18 to 2025-02-20
+[结果-资源4] lasts from 2025-02-21 to 2025-03-20
+@endgantt

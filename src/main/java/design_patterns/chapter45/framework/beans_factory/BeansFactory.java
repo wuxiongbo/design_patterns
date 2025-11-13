@@ -29,11 +29,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class BeansFactory {
 
     // 存储实例化对象
-    private ConcurrentHashMap<String, Object> singletonObjects = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Object> singletonObjects = new ConcurrentHashMap<>();
 
     // 存储bean定义
     // k：BeanDefinition.id， v：BeanDefinition
-    private ConcurrentHashMap<String, BeanDefinition> beanDefinitions = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, BeanDefinition> beanDefinitions = new ConcurrentHashMap<>();
 
 
 
@@ -68,7 +68,7 @@ public class BeansFactory {
 //    @VisibleForTesting
     protected Object createBean(BeanDefinition beanDefinition) throws BeanCreationFailureException, NoSuchBeanDefinitionException {
         // 单例 则从缓存拿。
-        if (beanDefinition.isSingleton() && singletonObjects.contains(beanDefinition.getId())) {
+        if (beanDefinition.isSingleton() && singletonObjects.containsKey(beanDefinition.getId())) {
             return singletonObjects.get(beanDefinition.getId());
         }
 

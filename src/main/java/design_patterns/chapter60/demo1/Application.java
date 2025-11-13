@@ -4,7 +4,7 @@ import design_patterns.chapter60.demo1.dependence.UserCache;
 import design_patterns.chapter60.demo1.strategy.EvictionStrategy;
 import design_patterns.chapter60.demo1.strategyfactory.EvictionStrategyFactory;
 
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -26,9 +26,15 @@ public class Application {
         EvictionStrategy evictionStrategy = null;
 
         // 运行时 动态确定，根据配置文件的配置决定使用哪种策略
+        final String configPath = "chapter60/demo1/config.properties";
         Properties props = new Properties();
-        props.load(new FileInputStream("./config.properties"));
-        String type = props.getProperty("eviction_type");
+        try (InputStream inputStream = Application.class.getClassLoader().getResourceAsStream(configPath)) {
+            if (inputStream == null) {
+                throw new IllegalStateException("无法在类路径中找到配置: " + configPath);
+            }
+            props.load(inputStream);
+        }
+        String type = props.getProperty("eviction_type", "lru");
 
 
         // 获取策略
