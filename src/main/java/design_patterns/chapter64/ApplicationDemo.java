@@ -1,7 +1,6 @@
 package design_patterns.chapter64;
 
 //import the_beauty_of_design_patterns.chapter64.demo1.statemachine.v0.MarioStateMachine;
-
 import design_patterns.chapter64.statemachine.dependence.State;
 import design_patterns.chapter64.statemachine.v4.MarioStateMachine;
 
@@ -53,9 +52,10 @@ public class ApplicationDemo {
         print(mario);
 
 
+
     }
 
-    private static void print(MarioStateMachine mario) {
+    private static void print(MarioStateMachine mario){
         int score = mario.getScore();
         State state = mario.getCurrentState();
 
