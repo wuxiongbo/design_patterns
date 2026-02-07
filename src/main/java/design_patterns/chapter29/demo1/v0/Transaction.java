@@ -20,7 +20,7 @@ import lombok.Data;
 public class Transaction {
     private String id;
     private final Long buyerId;
-    private Long sellerId;
+    private final Long sellerId;
     private final Long productId;
     private final Long orderId;
     private final Long createTimestamp;

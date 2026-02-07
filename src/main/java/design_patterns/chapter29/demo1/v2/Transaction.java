@@ -5,6 +5,7 @@ import design_patterns.chapter29.demo1.dependence.InvalidTransactionException;
 import design_patterns.chapter29.demo1.dependence.STATUS;
 import design_patterns.chapter29.demo1.dependence.WalletRpcService;
 import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -19,9 +20,10 @@ import lombok.Getter;
 public class Transaction {
     private String id;
     private final Long buyerId;
-    private Long sellerId;
+    private final Long sellerId;
     private final Long productId;
     private final Long orderId;
+    @Setter
     private Long createTimestamp;
     private Double amount;
     private STATUS status;
@@ -33,19 +35,15 @@ public class Transaction {
     // 我们可以应用依赖注入，将 WalletRpcService 对象的创建反转给上层逻辑，在外部创建好之后，再注入到 Transaction 类中
 
     // 添加一个成员变量及其set方法
+    @Setter
     private WalletRpcService walletRpcService;
-    public void setWalletRpcService(WalletRpcService walletRpcService) {
-        this.walletRpcService = walletRpcService;
-    }
 
 
+    @Setter
     private TransactionLock lock;
+
     public void setTransactionLock(TransactionLock lock) {
         this.lock = lock;
-    }
-
-    public void setCreateTimestamp(Long createTimestamp) {
-        this.createTimestamp = createTimestamp;
     }
 
     // ...get() methods...
