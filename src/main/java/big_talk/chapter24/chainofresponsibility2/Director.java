@@ -1,6 +1,6 @@
 package big_talk.chapter24.chainofresponsibility2;
 
-class Director extends Manager{
+public class Director extends Manager{
     public Director(String name){
         super(name);
     }

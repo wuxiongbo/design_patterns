@@ -1,14 +1,18 @@
 package big_talk.chapter14.observer2;
 
+import lombok.Getter;
+import lombok.Setter;
 import java.util.ArrayList;
 
-class Secretary{
+public class Secretary{
     protected String name;
     public Secretary(String name){
         this.name = name;
     }
     //同事列表
     private ArrayList<Observer> list = new ArrayList<Observer>();//针对抽象的Observer编程
+    @Getter
+    @Setter
     private String action;
 
     //增加同事（有几个同事需要前台通知，就增加几个对象）
@@ -27,13 +31,7 @@ class Secretary{
         }
     }
     //得到前台状态
-    public String getAction(){
-        return this.action;
-    }
     //设置前台状态（就是设置具体通知的话）
-    public void setAction(String value){
-        this.action = value;
-    }
 }
 
 //抽象观察者

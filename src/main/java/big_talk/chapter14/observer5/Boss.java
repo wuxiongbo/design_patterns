@@ -55,7 +55,7 @@ package big_talk.chapter14.observer5;
 //     }
 // }
 
-class Boss extends Subject{
+public class Boss extends Subject{
     public Boss(String name){
         super(name);
     }

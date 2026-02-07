@@ -1,6 +1,6 @@
 package big_talk.chapter12.facade2;
 
-class NationalDebt1{
+public class NationalDebt1{
     //卖国债
     public void sell(){
         System.out.println("国债1卖出");

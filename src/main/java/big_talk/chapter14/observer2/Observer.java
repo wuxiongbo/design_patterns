@@ -1,6 +1,6 @@
 package big_talk.chapter14.observer2;
 
-abstract class Observer{
+public abstract class Observer{
     protected String name;
     protected Secretary sub;
     public Observer(String name,Secretary sub){

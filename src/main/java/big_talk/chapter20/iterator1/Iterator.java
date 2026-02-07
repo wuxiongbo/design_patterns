@@ -1,6 +1,6 @@
 package big_talk.chapter20.iterator1;
 
-abstract class Iterator{
+public abstract class Iterator{
 
     public abstract Object first();         //第一个
     public abstract Object next();          //下一个

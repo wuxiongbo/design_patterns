@@ -1,6 +1,6 @@
 package big_talk.chapter13.builder0;
 
-class ConcreteBuilder1 extends Builder {
+public class ConcreteBuilder1 extends Builder {
     private Product product = new Product();
 
     public void buildPartA(){

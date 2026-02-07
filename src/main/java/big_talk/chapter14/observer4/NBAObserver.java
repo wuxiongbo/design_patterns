@@ -58,7 +58,7 @@ import java.util.Observer;
 //     }
 // }
 
-class NBAObserver implements Observer{
+public class NBAObserver implements Observer{
 
     protected String name;
     public NBAObserver(String name){

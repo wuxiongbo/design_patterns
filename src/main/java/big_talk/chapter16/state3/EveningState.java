@@ -1,6 +1,6 @@
 package big_talk.chapter16.state3;
 
-class EveningState extends State {
+public class EveningState extends State {
     public void writeProgram(Work w)
     {
         if (w.getWorkFinished())  

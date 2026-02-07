@@ -1,6 +1,6 @@
 package big_talk.chapter17.adapter2;
 
-class Forwards extends Player {
+public class Forwards extends Player {
     public Forwards(String name){
         super(name);
     }

@@ -1,6 +1,6 @@
 package big_talk.chapter10.templatemethod2;
 
-class TestPaperB extends TestPaper {
+public class TestPaperB extends TestPaper {
     //试题1
     public void testQuestion1() {
         super.testQuestion1();

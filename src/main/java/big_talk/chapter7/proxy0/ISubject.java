@@ -1,6 +1,6 @@
 package big_talk.chapter7.proxy0;
 
-interface ISubject{
+public interface ISubject{
 	void request();
 }
 

@@ -1,14 +1,18 @@
 package big_talk.chapter14.observer3;
 
+import lombok.Getter;
+import lombok.Setter;
 import java.util.ArrayList;
 
-abstract class Subject{
+public abstract class Subject{
     protected String name;
     public Subject(String name){
         this.name = name;
     }
     //同事列表
     private ArrayList<Observer> list = new ArrayList<Observer>();//针对抽象的Observer编程
+    @Getter
+    @Setter
     private String action;
     //增加同事（有几个同事需要秘书通知，就增加几个对象）
     public void attach(Observer observer){
@@ -26,13 +30,7 @@ abstract class Subject{
         }
     }
     //得到状态
-    public String getAction(){
-        return this.action;
-    }
     //设置状态（就是设置具体通知的话）
-    public void setAction(String value){
-        this.action = value;
-    }
 }
 
 //老板

@@ -1,24 +1,16 @@
 package big_talk.chapter9.prototype5;
 
-class WorkExperience implements Cloneable {
+import lombok.Getter;
+import lombok.Setter;
+public class WorkExperience implements Cloneable {
 	//工作时间范围
+	@Getter
+	@Setter
 	private String timeArea;
-	public String getTimeArea(){
-		return this.timeArea;
-	}
-	public void setTimeArea(String value){
-		this.timeArea=value;
-	}
-
 	//所在公司
+	@Getter
+	@Setter
 	private String company;
-	public String getCompany(){
-		return this.company;
-	}
-	public void setCompany(String value){
-		this.company=value;
-	}
-
 	public WorkExperience clone(){
 		WorkExperience object = null;
 		try {

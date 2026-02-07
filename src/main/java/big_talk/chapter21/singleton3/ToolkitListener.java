@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class ToolkitListener implements ActionListener{
+public class ToolkitListener implements ActionListener{
     private JFrame toolkit;
     
     public void actionPerformed(ActionEvent e) {

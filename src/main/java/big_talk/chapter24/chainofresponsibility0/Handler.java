@@ -1,6 +1,6 @@
 package big_talk.chapter24.chainofresponsibility0;
 
-abstract class Handler{
+public abstract class Handler{
     protected Handler successor;
 
     //设置继任者

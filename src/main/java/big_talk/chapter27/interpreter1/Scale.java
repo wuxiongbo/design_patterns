@@ -1,6 +1,6 @@
 package big_talk.chapter27.interpreter1;
 
-class Scale extends Expression {
+public class Scale extends Expression {
     public void excute(String key, double value) {
         String scale = "";
         switch ((int)value) {

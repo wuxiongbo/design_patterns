@@ -1,6 +1,6 @@
 package big_talk.chapter23.command3;
 
-class Barbecuer{
+public class Barbecuer{
     //烤羊肉
     public void bakeMutton(){
         System.out.println("烤羊肉串！");

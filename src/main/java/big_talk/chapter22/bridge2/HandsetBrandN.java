@@ -1,6 +1,6 @@
 package big_talk.chapter22.bridge2;
 
-class HandsetBrandN extends HandsetBrand{
+public class HandsetBrandN extends HandsetBrand{
 
 }
 

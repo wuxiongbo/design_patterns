@@ -2,7 +2,7 @@ package big_talk.chapter13.builder1;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 
-class Test extends JFrame {
+public class Test extends JFrame {
 
     public Test() {
         setSize(400, 400);

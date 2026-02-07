@@ -2,7 +2,7 @@ package big_talk.chapter13.builder0;
 
 import java.util.ArrayList;
 
-class Product{
+public class Product{
     ArrayList<String> parts = new ArrayList<String>();
 
     //添加新的产品部件

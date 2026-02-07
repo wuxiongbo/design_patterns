@@ -1,6 +1,6 @@
 package big_talk.chapter25.mediator1;
 
-class USA extends Country {
+public class USA extends Country {
     public USA(UnitedNations unitedNations) {
         super(unitedNations);
     }

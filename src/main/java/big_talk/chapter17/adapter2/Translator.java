@@ -1,6 +1,6 @@
 package big_talk.chapter17.adapter2;
 
-class Translator extends Player {
+public class Translator extends Player {
 
     private ForeignCenter foreignCenter = new ForeignCenter();
 

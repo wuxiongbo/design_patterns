@@ -1,6 +1,6 @@
 package big_talk.chapter6.decorator0;
 
-class ConcreteDecoratorB extends Decorator {
+public class ConcreteDecoratorB extends Decorator {
 
     public void Operation() {
         super.Operation();//首先运行了原有Component的Operation()

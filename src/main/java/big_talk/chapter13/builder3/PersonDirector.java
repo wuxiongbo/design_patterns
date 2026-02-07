@@ -1,6 +1,6 @@
 package big_talk.chapter13.builder3;
 
-class PersonDirector{
+public class PersonDirector{
 
     private PersonBuilder pb;
     //初始化时指定需要建造什么样的小人

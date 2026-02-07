@@ -1,6 +1,6 @@
 package big_talk.chapter23.command0;
 
-class Invoker{
+public class Invoker{
 
     private Command command;
 

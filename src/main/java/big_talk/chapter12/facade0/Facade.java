@@ -1,6 +1,6 @@
 package big_talk.chapter12.facade0;
 
-class Facade{
+public class Facade{
     SubSystemOne one;
     SubSystemTwo two;
     SubSystemThree three;

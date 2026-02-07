@@ -1,6 +1,6 @@
 package big_talk.chapter25.mediator1;
 
-class UnitedNationsSecurityCouncil extends UnitedNations{
+public class UnitedNationsSecurityCouncil extends UnitedNations{
     private USA countryUSA;
     private Iraq countryIraq;
 

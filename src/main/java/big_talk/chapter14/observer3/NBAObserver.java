@@ -1,6 +1,6 @@
 package big_talk.chapter14.observer3;
 
-class NBAObserver extends Observer{
+public class NBAObserver extends Observer{
     public NBAObserver(String name,Subject sub){
         super(name,sub);
     }

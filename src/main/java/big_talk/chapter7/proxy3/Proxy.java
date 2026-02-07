@@ -1,6 +1,6 @@
 package big_talk.chapter7.proxy3;
 
-class Proxy implements IGiveGift{
+public class Proxy implements IGiveGift{
 
 	private Pursuit gg;				//认识追求者
 	

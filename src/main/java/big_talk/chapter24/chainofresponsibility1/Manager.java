@@ -1,6 +1,6 @@
 package big_talk.chapter24.chainofresponsibility1;
 
-class Manager{
+public class Manager{
     protected String name;
     public Manager(String name){
         this.name = name;

@@ -1,6 +1,6 @@
 package big_talk.chapter17.adapter0;
 
-class Adapter extends Target {
+public class Adapter extends Target {
 
     private Adaptee adaptee = new Adaptee(); //建立一个私有的Adaptee对象
 

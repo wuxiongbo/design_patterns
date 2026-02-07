@@ -1,6 +1,6 @@
 package big_talk.chapter16.state0;
 
-class Context {
+public class Context {
     private State state;
     public Context(State state)
     {

@@ -1,33 +1,20 @@
 package big_talk.chapter18.memento1;
 
-class GameRole {
+import lombok.Getter;
+import lombok.Setter;
+public class GameRole {
     //生命力
+    @Getter
+    @Setter
     private int vitality;
-    public int getVitality(){
-        return this.vitality;
-    }
-    public void setVitality(int value){
-        this.vitality = value;
-    }
-
     //攻击力
+    @Getter
+    @Setter
     private int attack;
-    public int getAttack(){
-        return this.attack;
-    }
-    public void setAttack(int value){
-        this.attack = value;
-    }
-
     //防御力
+    @Getter
+    @Setter
     private int defense;
-    public int getDefense(){
-        return this.defense;
-    }
-    public void setDefense(int value){
-        this.defense = value;
-    }
-
     //状态显示
     public void displayState(){
         System.out.println("角色当前状态：");

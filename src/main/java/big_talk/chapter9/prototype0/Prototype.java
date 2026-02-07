@@ -1,6 +1,6 @@
 package big_talk.chapter9.prototype0;
 
-abstract class Prototype implements Cloneable {
+public abstract class Prototype implements Cloneable {
 	private String id;
 
 	public Prototype(String id){

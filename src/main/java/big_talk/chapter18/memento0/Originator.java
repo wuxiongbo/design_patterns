@@ -1,16 +1,13 @@
 package big_talk.chapter18.memento0;
 
-class Originator {
+import lombok.Getter;
+import lombok.Setter;
+public class Originator {
     
     //状态
+    @Getter
+    @Setter
     private String state;
-    public String getState(){
-        return this.state;
-    }
-    public void setState(String value){
-        this.state = value;
-    }
-
     //显示数据
     public void show(){
         System.out.println("State:"+this.state);

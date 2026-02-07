@@ -1,6 +1,6 @@
 package big_talk.chapter10.templatemethod1;
 
-class TestPaperA {
+public class TestPaperA {
     //试题1
     public void testQuestion1() {
         System.out.println(" 杨过得到，后来给了郭靖，炼成倚天剑、屠龙刀的玄铁可能是[ ] "+

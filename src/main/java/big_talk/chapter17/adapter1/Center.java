@@ -1,6 +1,6 @@
 package big_talk.chapter17.adapter1;
 
-class Center extends Player {
+public class Center extends Player {
     public Center(String name){
         super(name);
     }

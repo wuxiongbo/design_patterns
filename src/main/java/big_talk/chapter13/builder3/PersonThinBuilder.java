@@ -1,7 +1,7 @@
 package big_talk.chapter13.builder3;
 import java.awt.Graphics;
 
-class PersonThinBuilder extends PersonBuilder {
+public class PersonThinBuilder extends PersonBuilder {
     
     public PersonThinBuilder(Graphics g){
         super(g);

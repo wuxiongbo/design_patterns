@@ -1,6 +1,6 @@
 package big_talk.chapter22.bridge3;
 
-class HandsetGame extends HandsetSoft{
+public class HandsetGame extends HandsetSoft{
     public void run(){
         System.out.println("手机游戏");
     }

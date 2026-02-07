@@ -1,6 +1,6 @@
 package big_talk.chapter12.facade2;
 
-class Fund{
+public class Fund{
     Stock1 stock1;
     Stock2 stock2;
     NationalDebt1 nd1;

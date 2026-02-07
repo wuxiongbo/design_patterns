@@ -1,7 +1,7 @@
 package big_talk.chapter13.builder3;
 import java.awt.Graphics;
 
-abstract class PersonBuilder {
+public abstract class PersonBuilder {
     protected Graphics g;
 
     public PersonBuilder(Graphics g){

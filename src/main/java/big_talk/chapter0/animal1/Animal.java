@@ -1,5 +1,7 @@
 package big_talk.chapter0.animal1;
 
+import lombok.Getter;
+import lombok.Setter;
 public class Animal {
 
 	protected String name = "";
@@ -12,13 +14,6 @@ public class Animal {
 	}
 
 	protected int shoutNum = 3;
-	public void setShoutNum(int value){
-		this.shoutNum=value;
-	}
-	public int getShoutNum(){
-		return this.shoutNum;
-	}
-
 	public String shout(){
 		return "";
 	}

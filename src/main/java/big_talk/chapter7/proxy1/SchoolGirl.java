@@ -1,13 +1,10 @@
 package big_talk.chapter7.proxy1;
 
-class SchoolGirl {
+import lombok.Getter;
+import lombok.Setter;
+public class SchoolGirl {
+	@Getter
+	@Setter
 	private String name;
-	public String getName(){
-		return this.name;
-	}
-
-	public void setName(String value){
-		this.name = value;
-	}
 }
 

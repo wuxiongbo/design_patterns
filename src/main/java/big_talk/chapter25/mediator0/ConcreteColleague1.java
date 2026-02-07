@@ -1,6 +1,6 @@
 package big_talk.chapter25.mediator0;
 
-class ConcreteColleague1 extends Colleague {
+public class ConcreteColleague1 extends Colleague {
     public ConcreteColleague1(Mediator mediator) {
         super(mediator);
     }

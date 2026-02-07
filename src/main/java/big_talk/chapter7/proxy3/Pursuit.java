@@ -1,6 +1,6 @@
 package big_talk.chapter7.proxy3;
 
-class Pursuit implements IGiveGift {
+public class Pursuit implements IGiveGift {
 
 	private SchoolGirl mm;
 	public Pursuit(SchoolGirl mm){

@@ -1,6 +1,8 @@
 package big_talk.chapter16.state3;
 
-class Work {
+import lombok.Getter;
+import lombok.Setter;
+public class Work {
 
     private State current;
     
@@ -17,21 +19,15 @@ class Work {
     }
 
     //当前的钟点
+    @Getter
+    @Setter
     private int hour;
-    public int getHour(){
-        return this.hour;
-    }
-    public void setHour(int value){
-        this.hour = value;
-    }
-
     //当前工作是否完成
+    @Setter
     private boolean workFinished = false;
-    public boolean getWorkFinished(){
-        return this.workFinished;
-    }
-    public void setWorkFinished(boolean value){
-        this.workFinished = value;
+
+    // 兼容既有调用方的 getXxx 命名
+    public boolean getWorkFinished() {
+        return workFinished;
     }
 }
-

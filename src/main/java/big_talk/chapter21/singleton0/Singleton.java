@@ -1,6 +1,6 @@
 package big_talk.chapter21.singleton0;
 
-class Singleton {
+public class Singleton {
 
     private static Singleton instance;
 

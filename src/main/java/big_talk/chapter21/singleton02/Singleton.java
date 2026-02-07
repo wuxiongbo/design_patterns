@@ -1,6 +1,6 @@
 package big_talk.chapter21.singleton02;
 
-class Singleton {
+public class Singleton {
 
     private volatile static Singleton instance;
 

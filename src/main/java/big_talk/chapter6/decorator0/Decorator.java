@@ -1,6 +1,6 @@
 package big_talk.chapter6.decorator0;
 
-abstract class Decorator extends Component {
+public abstract class Decorator extends Component {
 
     protected Component component;
 

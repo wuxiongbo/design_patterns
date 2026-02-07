@@ -1,5 +1,7 @@
 package design_patterns.chapter64.statemachine.v3;
 
+import lombok.Getter;
+import lombok.Setter;
 import design_patterns.chapter64.statemachine.dependence.State;
 import design_patterns.chapter64.statemachine.v3.state.IMario;
 import design_patterns.chapter64.statemachine.v3.state.impl.SmallMario;
@@ -28,35 +30,24 @@ import design_patterns.chapter64.statemachine.v3.state.impl.SmallMario;
  */
 public class MarioStateMachine {
 
+    @Getter
+
+    @Setter
+
     private int score;
     // 不再使用枚举来表示状态， 改用实现类
     private IMario currentState;
-
 
     public MarioStateMachine() {
         this.score = 0;
         this.currentState = new SmallMario(this);
     }
-
-    public int getScore() {
-        return this.score;
-    }
-
     public State getCurrentState() {
         return this.currentState.getName();
     }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     public void setCurrentState(IMario currentState) {
         this.currentState = currentState;
     }
-
-
-
-
 
     public void obtainMushRoom() {
         this.currentState.obtainMushRoom();
@@ -73,7 +64,5 @@ public class MarioStateMachine {
     public void meetMonster() {
         this.currentState.meetMonster();
     }
-
-
 
 }

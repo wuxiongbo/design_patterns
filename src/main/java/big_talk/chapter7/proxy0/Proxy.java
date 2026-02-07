@@ -1,6 +1,6 @@
 package big_talk.chapter7.proxy0;
 
-class Proxy implements ISubject{
+public class Proxy implements ISubject{
 
 	private RealSubject rs;
 

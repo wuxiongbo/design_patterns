@@ -57,7 +57,7 @@ import java.util.Observable;
 //     }
 // }
 
-class Boss extends Observable{
+public class Boss extends Observable{
     protected String name;
     private String action;
     

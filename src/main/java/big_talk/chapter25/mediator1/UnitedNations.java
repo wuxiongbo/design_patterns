@@ -1,6 +1,6 @@
 package big_talk.chapter25.mediator1;
 
-abstract class UnitedNations{
+public abstract class UnitedNations{
     //声明
     public abstract void declare(String message,Country country);
 }

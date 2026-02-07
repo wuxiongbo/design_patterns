@@ -1,6 +1,6 @@
 package big_talk.chapter22.bridge3;
 
-abstract class HandsetSoft{
+public abstract class HandsetSoft{
     //运行
     public abstract void run();
 }

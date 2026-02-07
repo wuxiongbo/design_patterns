@@ -1,32 +1,20 @@
 package big_talk.chapter24.chainofresponsibility2;
 
-class Request {
+import lombok.Getter;
+import lombok.Setter;
+public class Request {
     //申请类别
+    @Getter
+    @Setter
     private String requestType;
-    public String getRequestType(){
-        return this.requestType;
-    }
-    public void setRequestType(String value){
-        this.requestType = value;
-    }
-
     //申请内容
+    @Getter
+    @Setter
     private String requestContent;
-    public String getRequestContent(){
-        return this.requestContent;
-    }
-    public void setRequestContent(String value){
-        this.requestContent = value;
-    }
-
     //数量
+    @Getter
+    @Setter
     private int number;
-    public int getNumber(){
-        return this.number;
-    }
-    public void setNumber(int value){
-        this.number = value;
-    }
 }
 
 //管理者抽象类

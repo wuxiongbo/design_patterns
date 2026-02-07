@@ -1,6 +1,6 @@
 package big_talk.chapter23.command3;
 
-abstract class Command {
+public abstract class Command {
     protected Barbecuer receiver;
 
     public Command(Barbecuer receiver){

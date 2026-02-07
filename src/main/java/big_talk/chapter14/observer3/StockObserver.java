@@ -1,6 +1,6 @@
 package big_talk.chapter14.observer3;
 
-class StockObserver extends Observer{
+public class StockObserver extends Observer{
     public StockObserver(String name,Subject sub){
         super(name,sub);
     }

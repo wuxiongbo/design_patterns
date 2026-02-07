@@ -1,6 +1,6 @@
 package big_talk.chapter26.flyweight0;
 
-class ConcreteFlyweight extends Flyweight {
+public class ConcreteFlyweight extends Flyweight {
     public void operation(int extrinsicstate){
         System.out.println("具体Flyweight:"+extrinsicstate);
     }

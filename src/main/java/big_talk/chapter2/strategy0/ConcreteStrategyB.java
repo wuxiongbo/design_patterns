@@ -1,7 +1,7 @@
 package big_talk.chapter2.strategy0;
 
 //具体算法B
-class ConcreteStrategyB extends Strategy {
+public class ConcreteStrategyB extends Strategy {
     //算法B实现方法
     public void algorithmInterface() {
         System.out.println("算法B实现");

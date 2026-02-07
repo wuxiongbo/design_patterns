@@ -1,6 +1,6 @@
 package big_talk.chapter7.proxy3;
 
-interface IGiveGift{
+public interface IGiveGift{
 	void giveDolls();
 	void giveFlowers();
 	void giveChocolate();

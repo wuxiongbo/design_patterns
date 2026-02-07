@@ -1,6 +1,6 @@
 package big_talk.chapter10.templatemethod0;
 
-abstract class AbstractClass {
+public abstract class AbstractClass {
     //模板方法
     public void templateMethod() {
         

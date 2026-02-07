@@ -1,13 +1,13 @@
 package big_talk.chapter18.memento0;
 
-class Caretaker{
+import lombok.Getter;
+import lombok.Setter;
+public class Caretaker{
+
+    @Getter
+
+    @Setter
 
     private Memento memento;
-    public Memento getMemento(){
-        return this.memento;
-    }
-    public void setMemento(Memento value){
-        this.memento = value;
-    }
 }
 

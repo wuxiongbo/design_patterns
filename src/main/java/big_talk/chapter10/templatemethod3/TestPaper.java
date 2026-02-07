@@ -1,6 +1,6 @@
 package big_talk.chapter10.templatemethod3;
 
-abstract class TestPaper {
+public abstract class TestPaper {
 
     //试题1
     public void testQuestion1() {

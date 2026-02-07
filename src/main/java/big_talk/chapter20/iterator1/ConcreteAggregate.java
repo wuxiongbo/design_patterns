@@ -2,7 +2,7 @@ package big_talk.chapter20.iterator1;
 
 import java.util.ArrayList;
 
-class ConcreteAggregate extends Aggregate{
+public class ConcreteAggregate extends Aggregate{
 
     //声明一个ArrayList泛型变量，用于存放聚合对象
     private ArrayList<Object> items = new ArrayList<Object>();

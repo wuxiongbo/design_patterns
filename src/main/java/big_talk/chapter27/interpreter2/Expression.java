@@ -1,6 +1,6 @@
 package big_talk.chapter27.interpreter2;
 
-abstract class Expression {
+public abstract class Expression {
     //解释器
     public void interpret(PlayContext context)
     {

@@ -1,6 +1,6 @@
 package big_talk.chapter6.decorator0;
 
-class ConcreteDecoratorA extends Decorator {
+public class ConcreteDecoratorA extends Decorator {
     
     private String addedState;//本类独有子段，以区别于ConcreteDecoratorB类
 

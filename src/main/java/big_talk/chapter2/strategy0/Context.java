@@ -1,7 +1,7 @@
 package big_talk.chapter2.strategy0;
 
 //上下文
-class Context {
+public class Context {
     Strategy strategy;
 
     //初始化时，传入具体的策略对象

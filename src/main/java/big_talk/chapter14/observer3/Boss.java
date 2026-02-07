@@ -1,6 +1,6 @@
 package big_talk.chapter14.observer3;
 
-class Boss extends Subject{
+public class Boss extends Subject{
     public Boss(String name){
         super(name);
     }

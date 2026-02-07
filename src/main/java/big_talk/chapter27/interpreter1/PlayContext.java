@@ -1,13 +1,11 @@
 package big_talk.chapter27.interpreter1;
 
-class PlayContext {
+import lombok.Getter;
+import lombok.Setter;
+public class PlayContext {
+    @Getter
+    @Setter
     private String playText;
-    public String getPlayText(){
-        return this.playText;
-    }
-    public void setPlayText(String value){
-        this.playText = value;
-    }
 }
 
 //抽象表达式类

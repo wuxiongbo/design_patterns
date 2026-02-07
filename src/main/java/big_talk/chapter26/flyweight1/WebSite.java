@@ -1,6 +1,6 @@
 package big_talk.chapter26.flyweight1;
 
-class WebSite {
+public class WebSite {
     private String name = "";
     public WebSite(String name) {
         this.name = name;

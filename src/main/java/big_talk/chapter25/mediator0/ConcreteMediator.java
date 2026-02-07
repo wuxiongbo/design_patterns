@@ -1,6 +1,6 @@
 package big_talk.chapter25.mediator0;
 
-class ConcreteMediator extends Mediator{
+public class ConcreteMediator extends Mediator{
     private ConcreteColleague1 colleague1;
     private ConcreteColleague2 colleague2;
 

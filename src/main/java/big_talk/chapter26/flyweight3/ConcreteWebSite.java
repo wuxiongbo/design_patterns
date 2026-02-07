@@ -1,6 +1,6 @@
 package big_talk.chapter26.flyweight3;
 
-class ConcreteWebSite extends WebSite {
+public class ConcreteWebSite extends WebSite {
     private String name = "";
     public ConcreteWebSite(String name) {
         this.name = name;

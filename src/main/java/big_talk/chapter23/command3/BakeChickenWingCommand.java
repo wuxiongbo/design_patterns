@@ -1,6 +1,6 @@
 package big_talk.chapter23.command3;
 
-class BakeChickenWingCommand extends Command{
+public class BakeChickenWingCommand extends Command{
     public BakeChickenWingCommand(Barbecuer receiver){
         super(receiver);
     }

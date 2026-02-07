@@ -1,6 +1,6 @@
 package big_talk.chapter20.iterator1;
 
-class ConcreteIterator extends Iterator{
+public class ConcreteIterator extends Iterator{
     private ConcreteAggregate aggregate;
     private int current = 0;
 

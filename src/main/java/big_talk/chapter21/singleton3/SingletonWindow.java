@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 
-class SingletonWindow{
+public class SingletonWindow{
     public SingletonWindow(){
         JFrame frame = new JFrame("单例模式");
         frame.setSize(1024,768);

@@ -1,6 +1,6 @@
 package big_talk.chapter23.command2;
 
-class BakeMuttonCommand extends Command{
+public class BakeMuttonCommand extends Command{
     public BakeMuttonCommand(Barbecuer receiver){
         super(receiver);
     }

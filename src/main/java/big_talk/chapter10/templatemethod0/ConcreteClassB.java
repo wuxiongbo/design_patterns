@@ -1,6 +1,6 @@
 package big_talk.chapter10.templatemethod0;
 
-class ConcreteClassB extends AbstractClass {
+public class ConcreteClassB extends AbstractClass {
     public void primitiveOperation1(){
         System.out.println("具体类B方法1实现");
     }

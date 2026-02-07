@@ -58,7 +58,7 @@ import java.util.Observer;
 //     }
 // }
 
-class StockObserver implements Observer{
+public class StockObserver implements Observer{
 
     protected String name;
     public StockObserver(String name){

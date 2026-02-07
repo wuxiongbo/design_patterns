@@ -1,6 +1,6 @@
 package big_talk.chapter27.interpreter1;
 
-abstract class Expression {
+public abstract class Expression {
     
     public void interpret(PlayContext context) {
       if (context.getPlayText().length() == 0) {

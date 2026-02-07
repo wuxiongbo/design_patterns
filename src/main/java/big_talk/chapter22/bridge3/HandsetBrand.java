@@ -1,6 +1,6 @@
 package big_talk.chapter22.bridge3;
 
-abstract class HandsetBrand{
+public abstract class HandsetBrand{
     protected HandsetSoft soft;
 
     //设置手机软件

@@ -1,6 +1,6 @@
 package big_talk.chapter14.observer0;
 
-class ConcreteSubject extends Subject{
+public class ConcreteSubject extends Subject{
     //具体通知者的方法
 }
 

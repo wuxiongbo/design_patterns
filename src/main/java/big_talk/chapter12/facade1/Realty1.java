@@ -1,6 +1,6 @@
 package big_talk.chapter12.facade1;
 
-class Realty1{
+public class Realty1{
     //卖房地产
     public void sell(){
         System.out.println("房地产1卖出");

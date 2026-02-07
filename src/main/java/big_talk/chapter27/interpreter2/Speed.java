@@ -1,6 +1,6 @@
 package big_talk.chapter27.interpreter2;
 
-class Speed extends Expression {
+public class Speed extends Expression {
     public void excute(String key, double value) {
         String speed;
         if (value < 500)

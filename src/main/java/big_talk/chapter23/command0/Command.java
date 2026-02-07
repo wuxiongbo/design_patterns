@@ -1,6 +1,6 @@
 package big_talk.chapter23.command0;
 
-abstract class Command {
+public abstract class Command {
     protected Receiver receiver;
 
     public Command(Receiver receiver){

@@ -1,6 +1,6 @@
 package big_talk.chapter22.bridge2;
 
-class HandsetBrand{
+public class HandsetBrand{
     public void run(){
     }
 }

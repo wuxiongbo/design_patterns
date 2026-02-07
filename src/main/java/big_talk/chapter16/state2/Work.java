@@ -1,23 +1,16 @@
 package big_talk.chapter16.state2;
 
-class Work{
+import lombok.Getter;
+import lombok.Setter;
+public class Work{
     //时间钟点
+    @Getter
+    @Setter
     private int hour;   
-    public int getHour(){
-        return this.hour;
-    }
-    public void setHour(int value){
-        this.hour = value;
-    }
     //是否完成工作任务
+    @Getter
+    @Setter
     private boolean workFinished = false;   
-    public boolean getWorkFinished(){
-        return this.workFinished;
-    }
-    public void setWorkFinished(boolean value){
-        this.workFinished = value;
-    }
-
     public void writeProgram()        {
         if (hour < 12)
             System.out.println("当前时间："+hour+"点 上午工作，精神百倍");

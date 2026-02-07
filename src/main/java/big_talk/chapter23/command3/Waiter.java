@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-class Waiter{
+public class Waiter{
     private ArrayList<Command> orders = new ArrayList<Command>();
 
     //设置订单

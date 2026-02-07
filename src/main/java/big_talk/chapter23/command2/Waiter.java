@@ -1,6 +1,6 @@
 package big_talk.chapter23.command2;
 
-class Waiter{
+public class Waiter{
     private Command command;
 
     //设置订单

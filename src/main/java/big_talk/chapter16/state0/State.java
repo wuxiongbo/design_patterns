@@ -1,6 +1,6 @@
 package big_talk.chapter16.state0;
 
-abstract class State {
+public abstract class State {
 
     public abstract void handle(Context context);
     

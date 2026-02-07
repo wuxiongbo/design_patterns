@@ -1,6 +1,6 @@
 package big_talk.chapter9.prototype1;
 
-class Resume  {
+public class Resume  {
 	private String name;
 	private String sex;
 	private String age;

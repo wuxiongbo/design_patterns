@@ -2,7 +2,7 @@ package big_talk.chapter26.flyweight0;
 
 import java.util.Hashtable;
 
-class FlyweightFactory {
+public class FlyweightFactory {
     private Hashtable<String,Flyweight> flyweights = new Hashtable<String,Flyweight>();
 
     public FlyweightFactory(){

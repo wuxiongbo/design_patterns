@@ -1,6 +1,6 @@
 package big_talk.chapter20.iterator1;
 
-abstract class Aggregate{
+public abstract class Aggregate{
     //创建迭代器
     public abstract Iterator createIterator();
 }

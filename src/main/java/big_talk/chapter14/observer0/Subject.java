@@ -1,8 +1,10 @@
 package big_talk.chapter14.observer0;
 
+import lombok.Getter;
+import lombok.Setter;
 import java.util.ArrayList;
 
-abstract class Subject{
+public abstract class Subject{
     private ArrayList<Observer> list = new ArrayList<Observer>();//针对抽象的Observer编程
     
     //增加观察者
@@ -19,14 +21,9 @@ abstract class Subject{
             item.update();
         }
     }
+    @Getter
+    @Setter
     protected String subjectState;
-    public String getSubjectState(){
-        return this.subjectState;
-    }
-    public void setSubjectState(String value){
-        this.subjectState = value;
-    }
 }
 
 //具体通知者
-

@@ -1,6 +1,6 @@
 package big_talk.chapter12.facade0;
 
-class SubSystemTwo{
+public class SubSystemTwo{
     public void methodTwo(){
         System.out.println("子系统方法二");
     }

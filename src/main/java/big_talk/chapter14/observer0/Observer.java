@@ -1,6 +1,6 @@
 package big_talk.chapter14.observer0;
 
-abstract class Observer{
+public abstract class Observer{
     public abstract void update();
 }
 

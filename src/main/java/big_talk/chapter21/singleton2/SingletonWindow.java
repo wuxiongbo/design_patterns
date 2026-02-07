@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class SingletonWindow{
+public class SingletonWindow{
     public SingletonWindow(){
         JFrame frame = new JFrame("单例模式");
         frame.setSize(1024,768);

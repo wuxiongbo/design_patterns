@@ -1,6 +1,6 @@
 package big_talk.chapter22.bridge1;
 
-class HandsetGame{
+public class HandsetGame{
     public void run(){
     }
 }

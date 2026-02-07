@@ -1,6 +1,6 @@
 package big_talk.chapter14.observer1;
 
-class StockObserver{
+public class StockObserver{
     private String name;
     private Secretary sub;
     public StockObserver(String name,Secretary sub){

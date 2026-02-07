@@ -1,6 +1,6 @@
 package big_talk.chapter17.adapter2;
 
-abstract class Player {
+public abstract class Player {
     protected String name;
     public Player(String name){
         this.name = name;

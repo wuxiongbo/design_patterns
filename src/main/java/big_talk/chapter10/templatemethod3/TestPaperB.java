@@ -1,6 +1,6 @@
 package big_talk.chapter10.templatemethod3;
 
-class TestPaperB extends TestPaper {
+public class TestPaperB extends TestPaper {
     //试题1
     protected String answer1() {
         return "d";

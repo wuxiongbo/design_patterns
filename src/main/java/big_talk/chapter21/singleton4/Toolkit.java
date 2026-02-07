@@ -1,7 +1,7 @@
 package big_talk.chapter21.singleton4;
 import javax.swing.JFrame;
 
-class Toolkit extends JFrame {
+public class Toolkit extends JFrame {
 
     private static Toolkit toolkit;
 

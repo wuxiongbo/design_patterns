@@ -1,6 +1,6 @@
 package big_talk.chapter12.facade2;
 
-class Stock1{
+public class Stock1{
     //卖股票
     public void sell(){
         System.out.println("股票1卖出");
