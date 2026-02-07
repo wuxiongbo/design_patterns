@@ -47,3 +47,7 @@
 ## other
 - 对话以及分析过程均使用中文
 - 当我说 【分析xxxx】或者【总结xxxx】的时候，请生成xxxx.md文件报告，这里的xxxx 根据主题命名。
+
+## MCP 工具与优先级
+- 优先使用 IntelliJ MCP 工具完成项目内操作，尤其是 `get_run_configurations`、`execute_run_configuration`、`get_file_problems`、`get_project_dependencies`、`get_project_modules`、`find_files_by_glob`、`find_files_by_name_keyword`、`get_all_open_file_paths`、`list_directory_tree`、`open_file_in_editor`、`reformat_file`、`get_file_text_by_path`、`replace_text_in_file`、`search_in_files_by_regex`、`search_in_files_by_text`、`get_symbol_info`、`rename_refactoring`、`execute_terminal_command`、`get_repositories`、`create_new_file`、`runNotebookCell`。
+- 当需要运行配置时，先调用 `get_run_configurations` 获取名称，再用 `execute_run_configuration` 执行。

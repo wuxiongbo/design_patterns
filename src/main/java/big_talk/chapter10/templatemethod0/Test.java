@@ -21,39 +21,4 @@ public class Test {
 }
 
 //模板方法抽象类
-abstract class AbstractClass {
-    //模板方法
-    public void templateMethod() {
-        
-        //写一些可以被子类共享的代码
-
-        this.primitiveOperation1();
-        this.primitiveOperation2();
-    }
-    
-    public abstract void primitiveOperation1(); //子类个性的行为，放到子类去实现
-    public abstract void primitiveOperation2(); //子类个性的行为，放到子类去实现
-
-}
-
-//模板方法具体类A
-class ConcreteClassA extends AbstractClass {
-    public void primitiveOperation1(){
-        System.out.println("具体类A方法1实现");
-    }
-    public void primitiveOperation2(){
-        System.out.println("具体类A方法2实现");
-    }
-}
-
-//模板方法具体类B
-class ConcreteClassB extends AbstractClass {
-    public void primitiveOperation1(){
-        System.out.println("具体类B方法1实现");
-    }
-    public void primitiveOperation2(){
-        System.out.println("具体类B方法2实现");
-    }
-}
-
 

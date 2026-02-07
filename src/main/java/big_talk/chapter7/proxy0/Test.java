@@ -19,33 +19,4 @@ public class Test {
 }
 
 //ISubject接口
-interface ISubject{
-	void request();
-}
-
-//RealSubject类
-class RealSubject implements ISubject {
-	
-	public void request(){
-		System.out.println("真实的请求。");
-	}
-
-}
-
-//Proxy类
-class Proxy implements ISubject{
-
-	private RealSubject rs;
-
-	public Proxy(){
-		this.rs = new RealSubject();
-	}				
-	
-	public void request(){		
-		this.rs.request();
-	}
-}
-
-
-
 

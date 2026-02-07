@@ -27,29 +27,4 @@ public class Test {
 // }
 
 //手机游戏类
-class HandsetGame{
-    public void run(){
-    }
-}
-
-//手机品牌M的游戏
-class HandsetBrandMGame extends HandsetGame{
-    public void run(){
-        System.out.println("运行M品牌手机游戏");
-    }
-}
-//手机品牌N的游戏
-class HandsetBrandNGame extends HandsetGame{
-    public void run(){
-        System.out.println("运行N品牌手机游戏");
-    }
-}
-
-
-
-
-
-
-
-
 

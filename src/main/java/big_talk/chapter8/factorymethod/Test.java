@@ -24,40 +24,4 @@ public class Test {
 }
 
 //Product类
-abstract class Product {
-	public abstract void make();
-}
-
-//ConcreteProductA类
-class ConcreteProductA extends Product {
-	public void make(){
-		System.out.println("产品A制造");
-	}
-}
-
-//ConcreteProductB类
-class ConcreteProductB extends Product {
-	public void make(){
-		System.out.println("产品B制造");
-	}
-}
-
-//Creator类
-abstract class Creator {
-	public abstract Product factoryMethod();
-}
-
-class ConcreteCreatorA extends Creator{
-	public Product factoryMethod(){
-		return new ConcreteProductA();
-	}
-}
-
-class ConcreteCreatorB extends Creator{
-	public Product factoryMethod(){
-		return new ConcreteProductB();
-	}
-}
-
-
 

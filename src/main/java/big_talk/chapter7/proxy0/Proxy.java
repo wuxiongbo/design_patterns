@@ -1,0 +1,15 @@
+package big_talk.chapter7.proxy0;
+
+class Proxy implements ISubject{
+
+	private RealSubject rs;
+
+	public Proxy(){
+		this.rs = new RealSubject();
+	}				
+	
+	public void request(){		
+		this.rs.request();
+	}
+}
+

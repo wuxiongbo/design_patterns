@@ -1,0 +1,53 @@
+@startuml
+package "design_patterns.chapter73.demo1.v1" {
+
+  interface Mediator {
+    +handleEvent(component: Component, event: String)
+  }
+
+  class LandingPageDialog {
+    -loginButton: Button
+    -regButton: Button
+    -selection: Selection
+    -usernameInput: Input
+    -passwordInput: Input
+    -repeatedPswdInput: Input
+    -hintText: Text
+    +handleEvent(component: Component, event: String)
+  }
+
+  class UIControl {
+    +main(args: String[])
+    -findViewById(viewId: String): View
+  }
+
+  LandingPageDialog ..|> Mediator
+  UIControl ..> LandingPageDialog : create/use
+  UIControl ..> Button
+  UIControl ..> Input
+  UIControl ..> Selection
+  UIControl ..> Text
+  UIControl ..> OnClickListener
+  UIControl ..> View
+  Mediator ..> Component
+  LandingPageDialog ..> Button
+  LandingPageDialog ..> Selection
+  LandingPageDialog ..> Input
+  LandingPageDialog ..> Text
+  LandingPageDialog ..> Component
+}
+
+package "design_patterns.chapter73.dependence" {
+  class Button
+  class Input
+  class Selection
+  class Text
+  class Component
+}
+
+package "design_patterns.chapter59.dependence" {
+  interface OnClickListener
+  class View
+}
+
+@enduml

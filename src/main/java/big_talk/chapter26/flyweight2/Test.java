@@ -38,40 +38,4 @@ public class Test {
 }
 
 //抽象的网站类
-abstract class WebSite{
-    public abstract void use();
-}
-
-//具体网站类
-class ConcreteWebSite extends WebSite {
-    private String name = "";
-    public ConcreteWebSite(String name) {
-        this.name = name;
-    }
-    public void use() {
-        System.out.println("网站分类：" + name);
-    }
-}
-
-//网站工厂
-class WebSiteFactory {
-    private Hashtable<String,WebSite> flyweights = new Hashtable<String,WebSite>();
-
-    //获得网站分类
-    public WebSite getWebSiteCategory(String key)
-    {
-        if (!flyweights.contains(key))
-            flyweights.put(key, new ConcreteWebSite(key));
-        return (WebSite)flyweights.get(key);
-    }
-
-    //获得网站分类总数
-    public int getWebSiteCount()
-    {
-        return flyweights.size();
-    }
-}
-
-
-
 
