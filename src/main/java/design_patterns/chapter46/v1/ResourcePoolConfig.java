@@ -23,7 +23,7 @@ public class ResourcePoolConfig {
 
 
     // 配置项
-    private String name;
+    private final String name;
     private int maxTotal = DEFAULT_MAX_TOTAL;
     private int maxIdle = DEFAULT_MAX_IDLE;
     private int minIdle = DEFAULT_MIN_IDLE;

@@ -19,7 +19,7 @@ public class ArrayIterator<E> implements Iterator<E> {
 
 
     // 待遍历的对象 与  迭代器。 是 单向依赖关系
-    private ArrayList<E> arrayList;
+    private final ArrayList<E> arrayList;
 
     // 依赖注入
     public ArrayIterator(ArrayList<E> arrayList) {

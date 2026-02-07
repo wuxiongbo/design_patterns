@@ -17,7 +17,7 @@ import my_demo.command.demo1.command.receiver.Stock;
 public class SellStock implements Order {
 
     // 委托人
-    private Stock abcStock;
+    private final Stock abcStock;
 
     public SellStock(Stock abcStock){
         this.abcStock = abcStock;

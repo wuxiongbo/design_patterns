@@ -11,8 +11,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TempRange {
-    private int low;
-    private int high;
+    private final int low;
+    private final int high;
 
     public TempRange(int low, int high) {
         this.low = low;

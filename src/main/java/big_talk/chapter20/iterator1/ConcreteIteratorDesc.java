@@ -1,7 +1,7 @@
 package big_talk.chapter20.iterator1;
 
 public class ConcreteIteratorDesc extends Iterator{
-    private ConcreteAggregate aggregate;
+    private final ConcreteAggregate aggregate;
     private int current = 0;
 
     public ConcreteIteratorDesc(ConcreteAggregate aggregate){
@@ -34,4 +34,3 @@ public class ConcreteIteratorDesc extends Iterator{
         return aggregate.getCurrentItem(current);
     }
 }
-

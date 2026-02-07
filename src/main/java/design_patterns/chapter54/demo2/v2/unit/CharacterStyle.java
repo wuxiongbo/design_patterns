@@ -14,8 +14,8 @@ import design_patterns.chapter54.depencence.Font;
  */
 public class CharacterStyle {
 
-    private Font font;
-    private int size;
+    private final Font font;
+    private final int size;
     private int colorRGB;
 
     public CharacterStyle(Font font, int size, int colorRGB) {

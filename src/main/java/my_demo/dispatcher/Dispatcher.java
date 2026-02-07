@@ -13,8 +13,8 @@ import my_demo.dispatcher.view.StudentView;
  */
 public class Dispatcher {
 
-    private StudentView studentView;
-    private HomeView homeView;
+    private final StudentView studentView;
+    private final HomeView homeView;
 
     public Dispatcher(){
         studentView = new StudentView();

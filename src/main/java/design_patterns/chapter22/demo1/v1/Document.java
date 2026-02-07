@@ -13,8 +13,8 @@ import design_patterns.chapter22.demo1.dependence.Html;
  * </pre>
  */
 public class Document {
-    private Html html;
-    private String url;
+    private final Html html;
+    private final String url;
 
     // 改造前
 //    public Document(String url) {

@@ -1,10 +1,10 @@
 package big_talk.chapter9.prototype4;
 
 public class Resume implements Cloneable {
-	private String name;
+	private final String name;
 	private String sex;
 	private String age;
-	private WorkExperience work;		//声明一个工作经历的对象
+	private final WorkExperience work;		//声明一个工作经历的对象
 	public Resume(String name){
 		this.name = name;
 		this.work = new WorkExperience();//对这个工作经历对象实例化

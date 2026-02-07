@@ -17,7 +17,7 @@ import design_patterns.chapter22.demo2.v3.serialization.interface1.Serializable;
 public class DemoClass_1 {
 
     // 巧妙的通过接口，对功能进行了隔离。  本类只能调序列化方法，而调不到反序列化方法。
-    private Serializable serializer;
+    private final Serializable serializer;
 
     public DemoClass_1(Serializable serializer) {
         this.serializer = serializer;

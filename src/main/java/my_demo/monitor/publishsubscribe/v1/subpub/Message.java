@@ -10,10 +10,10 @@ import lombok.Setter;
 public class Message<Msg> {
     @Getter
     @Setter
-    private String publisher;
+    private final String publisher;
     @Getter
     @Setter
-    private Msg msg;
+    private final Msg msg;
 
     public Message(String publisher, Msg msg) {
         this.publisher = publisher;

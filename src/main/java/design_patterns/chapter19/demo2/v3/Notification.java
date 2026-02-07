@@ -12,7 +12,7 @@ package design_patterns.chapter19.demo2.v3;
 
 public class Notification {
 
-    private MessageSender messageSender;
+    private final MessageSender messageSender;
 
     // 通过构造函数将messageSender传递进来。而非在构造方法里面 new。 这就是依赖注入的体现。
     // 为了更加灵活，我们将入参抽象为接口。

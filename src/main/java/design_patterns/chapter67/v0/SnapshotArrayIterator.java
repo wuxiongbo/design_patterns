@@ -15,7 +15,7 @@ public class SnapshotArrayIterator<E> implements Iterator<E> {
 
     private int cursor;
 
-    private ArrayList<E> snapshot;
+    private final ArrayList<E> snapshot;
 
     public SnapshotArrayIterator(ArrayList<E> arrayList) {
 

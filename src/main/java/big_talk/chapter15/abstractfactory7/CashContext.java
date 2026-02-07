@@ -11,7 +11,7 @@ public class CashContext {
 
     private static String assemblyName = "code.chapter15.abstractfactory7.";
     
-    private ISale cs;   //声明一个ISale接口对象
+    private final ISale cs;   //声明一个ISale接口对象
     
     //通过构造方法，传入具体的收费策略
     public CashContext(int cashType){

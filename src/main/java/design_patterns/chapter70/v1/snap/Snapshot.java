@@ -10,7 +10,7 @@ package design_patterns.chapter70.v1.snap;
  */
 public class Snapshot {
 
-    private String text;
+    private final String text;
 
     public Snapshot(String text) {
         this.text = text;

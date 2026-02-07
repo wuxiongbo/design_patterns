@@ -2,7 +2,7 @@ package big_talk.chapter6.decorator2;
 
 public class Person {
 
-	private String name;
+	private final String name;
     public Person(String name) {
         this.name = name;
     }

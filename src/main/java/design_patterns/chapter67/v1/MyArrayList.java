@@ -20,9 +20,9 @@ public class MyArrayList<E> extends ArrayList<E> {
     private int actualSize; // 真实元素个数。   actual 真实的
 
     // 添加元素的 时间戳
-    private long[] addTimestamps;
+    private final long[] addTimestamps;
     // 删除元素的 时间戳
-    private long[] delTimestamps;
+    private final long[] delTimestamps;
 
     public MyArrayList() {
         super();

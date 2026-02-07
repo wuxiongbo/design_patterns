@@ -22,8 +22,8 @@ import org.apache.commons.lang.StringUtils;
  */
 public class SecurityTransporter extends Transporter {
 
-    private String appId;
-    private String appToken;
+    private final String appId;
+    private final String appToken;
 
     public SecurityTransporter(HttpClient httpClient, String appId, String appToken) {
         super(httpClient);

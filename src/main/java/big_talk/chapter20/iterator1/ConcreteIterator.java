@@ -1,7 +1,7 @@
 package big_talk.chapter20.iterator1;
 
 public class ConcreteIterator extends Iterator{
-    private ConcreteAggregate aggregate;
+    private final ConcreteAggregate aggregate;
     private int current = 0;
 
     //初始化时将具体的聚集对象传入
@@ -36,4 +36,3 @@ public class ConcreteIterator extends Iterator{
 }
 
 //具体迭代器类(倒序），继承Iterator
-

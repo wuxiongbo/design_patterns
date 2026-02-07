@@ -14,8 +14,8 @@ import java.util.Map;
  */
 public class LessExpression implements Expression {
 
-    private String key;
-    private long value;
+    private final String key;
+    private final long value;
 
 
     // String strExpression = "key2 < 30";

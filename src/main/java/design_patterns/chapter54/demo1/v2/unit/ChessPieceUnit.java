@@ -17,9 +17,9 @@ import lombok.Data;
  */
 @Data
 public class ChessPieceUnit {
-    private int id;
-    private String text;
-    private Color color;
+    private final int id;
+    private final String text;
+    private final Color color;
 
     public ChessPieceUnit(int id, String text, Color color) {
         this.id = id;

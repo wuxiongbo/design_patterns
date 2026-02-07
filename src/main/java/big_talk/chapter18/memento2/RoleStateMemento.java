@@ -5,13 +5,13 @@ import lombok.Setter;
 public class RoleStateMemento {
     @Getter
     @Setter
-    private int vitality;
+    private final int vitality;
     @Getter
     @Setter
-    private int attack;
+    private final int attack;
     @Getter
     @Setter
-    private int defense;
+    private final int defense;
 
     //将生命力、攻击力、防御力存入状态存储箱对象中
     public RoleStateMemento (int vitality,int attack,int defense){

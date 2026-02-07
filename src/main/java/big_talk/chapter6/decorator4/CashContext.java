@@ -2,7 +2,7 @@ package big_talk.chapter6.decorator4;
 
 public class CashContext {
 
-    private CashSuper cs;   //声明一个CashSuper对象
+    private final CashSuper cs;   //声明一个CashSuper对象
 
     //通过构造方法，传入具体的收费策略
     public CashContext(int cashType){
@@ -22,6 +22,8 @@ public class CashContext {
             case 5:
                 this.cs = new CashReturnRebate(0.8d,300d,100d);
                 break;
+            default:
+                throw new IllegalArgumentException("Unsupported cashType: " + cashType);
         }
     }
 

@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class Deserializer {
     private static final String IDENTIFIER_STRING = "UEUEUE;";
-    private Gson gson;
+    private final Gson gson;
 
     public Deserializer() {
         this.gson = new Gson();

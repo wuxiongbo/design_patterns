@@ -16,10 +16,10 @@ import design_patterns.chapter54.demo2.v2.unit.CharacterStyle;
  */
 public class Character {
 
-    private char c;
+    private final char c;
 
     // 抽取不变属性，设置成享元
-    private CharacterStyle style;
+    private final CharacterStyle style;
 
     public Character(char c, CharacterStyle style) {
         this.c = c;

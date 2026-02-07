@@ -17,7 +17,7 @@ import java.lang.reflect.Proxy;
  */
 public class MetricsCollectorProxy {
 
-    private MetricsCollector metricsCollector;
+    private final MetricsCollector metricsCollector;
 
     public MetricsCollectorProxy() {
         this.metricsCollector = new MetricsCollector();

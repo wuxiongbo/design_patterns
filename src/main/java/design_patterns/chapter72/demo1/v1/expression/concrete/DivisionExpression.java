@@ -11,8 +11,8 @@ import design_patterns.chapter72.demo1.v1.expression.Expression;
  * </pre>
  */
 public class DivisionExpression implements Expression {
-    private Expression exp1;
-    private Expression exp2;
+    private final Expression exp1;
+    private final Expression exp2;
 
     public DivisionExpression(Expression exp1, Expression exp2) {
         this.exp1 = exp1;

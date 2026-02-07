@@ -17,7 +17,7 @@ package design_patterns.chapter10.demo2;
  */
 public class PageAnalyzer {
 
-    private Url url; // 组合
+    private final Url url; // 组合
 
     public PageAnalyzer() {
         this.url = new Url();

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class EmailMsgSender implements MsgSender {
 
-    private List<String> emailAddresses;
+    private final List<String> emailAddresses;
 
     public EmailMsgSender(List<String> emailAddresses) {
         this.emailAddresses = emailAddresses;

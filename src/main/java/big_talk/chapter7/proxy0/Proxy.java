@@ -2,7 +2,7 @@ package big_talk.chapter7.proxy0;
 
 public class Proxy implements ISubject{
 
-	private RealSubject rs;
+	private final RealSubject rs;
 
 	public Proxy(){
 		this.rs = new RealSubject();

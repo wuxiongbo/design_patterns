@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class AlertRuleInterpreter {
 
-    private Expression expression;
+    private final Expression expression;
 
     // key1 > 100 && key2 < 30 || key3 < 100 || key4 == 88
     public AlertRuleInterpreter(String ruleExpression) {

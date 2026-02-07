@@ -18,7 +18,7 @@ import design_patterns.chapter22.demo1.dependence.Html;
  */
 public class DocumentFactory {
 
-    private HtmlDownloader downloader;
+    private final HtmlDownloader downloader;
 
     public DocumentFactory(HtmlDownloader downloader) {
         this.downloader = downloader;

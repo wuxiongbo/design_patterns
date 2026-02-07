@@ -1,7 +1,7 @@
 package big_talk.chapter26.flyweight3;
 
 public class User{
-    private String name;
+    private final String name;
     public User(String value){
         this.name=value;
     }

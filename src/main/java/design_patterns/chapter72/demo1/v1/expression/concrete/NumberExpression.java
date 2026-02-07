@@ -11,7 +11,7 @@ import design_patterns.chapter72.demo1.v1.expression.Expression;
  * </pre>
  */
 public class NumberExpression implements Expression {
-    private long number;
+    private final long number;
 
     public NumberExpression(long number) {
         this.number = number;

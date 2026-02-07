@@ -50,7 +50,7 @@ public class UserController {
 
     private UserService userService; // 依赖注入
 
-    private EventBus eventBus;
+    private final EventBus eventBus;
 
     private static final int DEFAULT_EVENTBUS_THREAD_POOL_SIZE = 20;
 

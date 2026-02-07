@@ -15,7 +15,7 @@ import design_patterns.chapter17.dependence.Response;
  */
 public class Transporter {
     // 依赖注入
-    private HttpClient httpClient;
+    private final HttpClient httpClient;
     public Transporter(HttpClient httpClient) {
         this.httpClient = httpClient;
     }

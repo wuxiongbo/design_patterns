@@ -15,7 +15,7 @@ import java.util.Map;
  * </pre>
  */
 public class RedisConfig implements Updater, Viewer {
-    private ConfigSource configSource; //配置中心（比如zookeeper）
+    private final ConfigSource configSource; //配置中心（比如zookeeper）
 
     /**
      * 一些redis 的配置信息

@@ -13,12 +13,12 @@ import design_patterns.chapter54.depencence.Font;
 public class Character {
 
     // 文字
-    private char c;
+    private final char c;
 
     // 格式。 格式包括文字的 字体、大小、颜色
-    private Font font;
-    private int size;
-    private int colorRGB;
+    private final Font font;
+    private final int size;
+    private final int colorRGB;
 
     public Character(char c, Font font, int size, int colorRGB) {
         this.c = c;

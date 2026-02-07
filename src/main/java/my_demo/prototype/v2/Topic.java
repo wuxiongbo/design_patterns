@@ -10,8 +10,8 @@ import java.util.HashMap;
  */
 @Data
 public class Topic implements Cloneable{
-    private HashMap<String, String> option;
-    private String key;
+    private final HashMap<String, String> option;
+    private final String key;
 
     public Topic(HashMap<String, String> option, String key) {
         this.key = key;

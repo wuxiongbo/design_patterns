@@ -9,7 +9,7 @@ package my_demo.decorator.dependence;
  * </pre>
  */
 public class Borrower {
-    private String name;
+    private final String name;
 
     public Borrower(String name) {
         this.name = name;

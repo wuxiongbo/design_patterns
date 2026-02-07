@@ -12,13 +12,13 @@ import lombok.Data;
  */
 @Data
 public class ChessPiece {
-    private int id;
+    private final int id;
 
-    private String text;   // 棋子类型（将、相、士、炮等）
-    private Color color;   // 棋子颜色（红方、黑方）
+    private final String text;   // 棋子类型（将、相、士、炮等）
+    private final Color color;   // 棋子颜色（红方、黑方）
 
-    private int positionX; // 棋子在棋局中的位置
-    private int positionY; // 棋子在棋局中的位置
+    private final int positionX; // 棋子在棋局中的位置
+    private final int positionY; // 棋子在棋局中的位置
 
     public ChessPiece(int id, String text, Color color, int positionX, int positionY) {
         this.id = id;

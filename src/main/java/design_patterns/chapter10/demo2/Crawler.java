@@ -17,7 +17,7 @@ package design_patterns.chapter10.demo2;
  */
 public class Crawler {
 
-    private Url url; // 组合
+    private final Url url; // 组合
 
     public Crawler() {
         this.url = new Url();

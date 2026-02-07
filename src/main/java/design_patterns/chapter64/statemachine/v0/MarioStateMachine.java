@@ -18,8 +18,8 @@ import design_patterns.chapter64.statemachine.dependence.State;
  */
 public class MarioStateMachine {
 
-    private int score;
-    private State currentState;
+    private final int score;
+    private final State currentState;
 
     public MarioStateMachine() {
         this.score = 0;

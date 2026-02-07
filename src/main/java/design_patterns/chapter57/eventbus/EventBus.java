@@ -25,7 +25,7 @@ public class EventBus {
 
     private Executor executor;
 
-    private ObserverRegistry registry = new ObserverRegistry();
+    private final ObserverRegistry registry = new ObserverRegistry();
 
     public EventBus() {
         this(MoreExecutors.directExecutor());

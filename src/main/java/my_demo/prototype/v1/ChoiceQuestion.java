@@ -11,7 +11,7 @@ import java.util.Map;
 @Data
 public class ChoiceQuestion {
 
-    private String name;                 // 题目
+    private final String name;                 // 题目
     private Map<String, String> option;  // 选项；A、B、C、D
     private String key;                  // 答案；B
 

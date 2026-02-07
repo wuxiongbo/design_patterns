@@ -35,7 +35,7 @@ public class UserController {
 
     private List<RegObserver> regObservers = new ArrayList<>();
 
-    private Executor executor;
+    private final Executor executor;
 
     public UserController(Executor executor) {
         this.executor = executor;

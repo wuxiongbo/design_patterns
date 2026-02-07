@@ -17,8 +17,8 @@ import java.util.Random;
  * </pre>
  */
 public class BackendServer {
-    private long serverNo;
-    private String serverAddress;
+    private final long serverNo;
+    private final String serverAddress;
 
     private static final int SERVER_COUNT = 3;
     private static final Map<Long, BackendServer> serverInstances = new HashMap<>();

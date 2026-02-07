@@ -14,7 +14,7 @@ import my_demo.command.demo2.command.Receiver;
 public class ConcreteCommandA implements Command {
 
     // 任何类都可能成为一个接收者，只要它能够实现 命令(ConcreteCommand)的相应功能就行。
-    private Receiver delegate;
+    private final Receiver delegate;
 
     public ConcreteCommandA() {
         delegate = new Receiver();

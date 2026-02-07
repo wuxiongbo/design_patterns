@@ -15,7 +15,7 @@ import design_patterns.chapter16.demo2.interfaces.MessageQueue;
 public class Demo {
 
     // 基于接口而非实现编程
-    private MessageQueue msgQueue;
+    private final MessageQueue msgQueue;
 
     // 依赖注入
     public Demo(MessageQueue msgQueue) {

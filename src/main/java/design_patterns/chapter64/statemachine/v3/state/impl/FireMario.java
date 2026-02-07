@@ -14,7 +14,7 @@ import design_patterns.chapter64.statemachine.v3.state.IMario;
  */
 public class FireMario implements IMario {
 
-    private MarioStateMachine stateMachine;
+    private final MarioStateMachine stateMachine;
     // 依赖注入  状态机
     public FireMario(MarioStateMachine stateMachine) {
         this.stateMachine = stateMachine;

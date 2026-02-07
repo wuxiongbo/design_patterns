@@ -1,7 +1,7 @@
 package big_talk.chapter9.prototype0;
 
 public abstract class Prototype implements Cloneable {
-	private String id;
+	private final String id;
 
 	public Prototype(String id){
 		this.id=id;

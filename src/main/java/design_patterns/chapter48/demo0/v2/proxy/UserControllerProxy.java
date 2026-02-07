@@ -26,10 +26,10 @@ import design_patterns.chapter48.dependence.UserVo;
 public class UserControllerProxy implements IUserController {
 
     // 增强业务
-    private MetricsCollector metricsCollector;
+    private final MetricsCollector metricsCollector;
 
     // 委托对象(被代理对象)
-    private UserController userController;
+    private final UserController userController;
 
 
     public UserControllerProxy(UserController userController) {

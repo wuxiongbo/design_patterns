@@ -15,11 +15,11 @@ import lombok.Data;
 public class ChessPiece {
 
     // 抽取  <<不变属性>> 。   将棋子的 id、text、color 属性拆分出来，设计成独立的类，并且作为享元
-    private ChessPieceUnit chessPieceUnit;
+    private final ChessPieceUnit chessPieceUnit;
 
     // 保留  <<变化属性>> 。
-    private int positionX;
-    private int positionY;
+    private final int positionX;
+    private final int positionY;
 
     public ChessPiece(ChessPieceUnit unit, int positionX, int positionY) {
         this.chessPieceUnit = unit;

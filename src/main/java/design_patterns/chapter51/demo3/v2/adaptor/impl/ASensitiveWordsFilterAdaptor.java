@@ -13,7 +13,7 @@ import design_patterns.chapter51.demo3.v2.adaptor.ISensitiveWordsFilter;
  */
 public class ASensitiveWordsFilterAdaptor implements ISensitiveWordsFilter {
 
-    private ASensitiveWordsFilter aFilter;
+    private final ASensitiveWordsFilter aFilter;
 
     public ASensitiveWordsFilterAdaptor(ASensitiveWordsFilter aFilter) {
         this.aFilter = aFilter;

@@ -21,7 +21,7 @@ public class Adaptor
 
 
     // 聚合
-    private Adaptee adaptee;
+    private final Adaptee adaptee;
 
     // 依赖注入
     public Adaptor(Adaptee adaptee) {

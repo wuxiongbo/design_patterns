@@ -9,7 +9,7 @@ package design_patterns.chapter19.demo2.v1;
  * </pre>
  */
 public class Notification {
-    private MessageSender messageSender;
+    private final MessageSender messageSender;
 
 
     // 直接在 Notification 内部创建 依赖的类。

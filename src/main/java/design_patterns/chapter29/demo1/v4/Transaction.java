@@ -21,8 +21,8 @@ public class Transaction {
     private String id;
     private Long buyerId;
     private Long sellerId;
-    private Long productId;
-    private Long orderId;
+    private final Long productId;
+    private final Long orderId;
     private Long createTimestamp;
     private Double amount;
     private STATUS status;

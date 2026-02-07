@@ -3,7 +3,7 @@ package big_talk.chapter26.flyweight2;
 import java.util.Hashtable;
 
 public class WebSiteFactory {
-    private Hashtable<String,WebSite> flyweights = new Hashtable<String,WebSite>();
+    private final Hashtable<String,WebSite> flyweights = new Hashtable<String,WebSite>();
 
     //获得网站分类
     public WebSite getWebSiteCategory(String key)

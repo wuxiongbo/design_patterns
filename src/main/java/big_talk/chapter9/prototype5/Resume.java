@@ -1,7 +1,7 @@
 package big_talk.chapter9.prototype5;
 
 public class Resume implements Cloneable {
-	private String name;
+	private final String name;
 	private String sex;
 	private String age;
 	private WorkExperience work;

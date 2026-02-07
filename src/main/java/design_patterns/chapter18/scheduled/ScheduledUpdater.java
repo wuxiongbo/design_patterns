@@ -17,9 +17,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class ScheduledUpdater {
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-    private long initialDelayInSeconds;
-    private long periodInSeconds;
-    private Updater updater;
+    private final long initialDelayInSeconds;
+    private final long periodInSeconds;
+    private final Updater updater;
 
 
     public ScheduledUpdater(Updater updater, long initialDelayInSeconds, long periodInSeconds) {

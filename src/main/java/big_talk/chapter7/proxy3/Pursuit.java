@@ -2,7 +2,7 @@ package big_talk.chapter7.proxy3;
 
 public class Pursuit implements IGiveGift {
 
-	private SchoolGirl mm;
+	private final SchoolGirl mm;
 	public Pursuit(SchoolGirl mm){
 		this.mm = mm;
 	}

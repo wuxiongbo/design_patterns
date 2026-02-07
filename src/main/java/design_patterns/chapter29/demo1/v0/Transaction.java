@@ -19,11 +19,11 @@ import lombok.Data;
 @Data
 public class Transaction {
     private String id;
-    private Long buyerId;
+    private final Long buyerId;
     private Long sellerId;
-    private Long productId;
-    private Long orderId;
-    private Long createTimestamp;
+    private final Long productId;
+    private final Long orderId;
+    private final Long createTimestamp;
     private Double amount;
     private STATUS status;
     private String walletTransactionId;

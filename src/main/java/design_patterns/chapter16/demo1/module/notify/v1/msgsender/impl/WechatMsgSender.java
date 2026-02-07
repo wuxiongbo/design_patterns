@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class WechatMsgSender implements MsgSender {
 
-    private List<String> wechatIds;
+    private final List<String> wechatIds;
 
     public WechatMsgSender(List<String> wechatIds) {
         this.wechatIds = wechatIds;

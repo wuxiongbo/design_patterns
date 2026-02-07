@@ -3,7 +3,7 @@ package big_talk.chapter6.decorator3;
 //具体人类
 public class Person implements ICharacter {
 
-	private String name;
+	private final String name;
     public Person(String name) {
         this.name = name;
     }

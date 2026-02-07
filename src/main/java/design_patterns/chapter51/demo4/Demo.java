@@ -15,7 +15,7 @@ import design_patterns.chapter51.demo4.external_system.targets.IA;
 
 public class Demo {
 
-    private IA a;
+    private final IA a;
 
     public Demo(IA a) {
         this.a = a;

@@ -18,7 +18,7 @@ public class UserCache {
 
     private Map<String, User> cacheData = new HashMap<>();
 
-    private EvictionStrategy eviction;
+    private final EvictionStrategy eviction;
 
     public UserCache(EvictionStrategy eviction) {
         this.eviction = eviction;

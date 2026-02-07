@@ -14,8 +14,8 @@ import java.util.Map;
  */
 public class GreaterExpression implements Expression {
 
-    private String key;
-    private long value;
+    private final String key;
+    private final long value;
 
 
     // String strExpression = "key1 > 100";

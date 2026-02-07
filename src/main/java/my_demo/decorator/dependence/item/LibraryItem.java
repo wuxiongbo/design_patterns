@@ -9,7 +9,7 @@ package my_demo.decorator.dependence.item;
  * </pre>
  */
 public abstract class LibraryItem {
-    private String name;
+    private final String name;
 
     public LibraryItem(String name) {
         this.name = name;

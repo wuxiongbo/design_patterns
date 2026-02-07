@@ -30,10 +30,10 @@ import java.util.List;
  */
 public class ClassPathXmlApplicationContext implements ApplicationContext {
     // 用于 创建对象、 保存 BeanDefinition
-    private BeansFactory beansFactory;
+    private final BeansFactory beansFactory;
 
     // 用于 将配置文件 解析为 BeanDefinition
-    private BeanConfigParser beanConfigParser;
+    private final BeanConfigParser beanConfigParser;
 
     public ClassPathXmlApplicationContext(String configLocation)  {
         this.beansFactory = new BeansFactory();

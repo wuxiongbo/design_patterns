@@ -14,7 +14,7 @@ import design_patterns.chapter51.demo4.external_system.adaptee.IB;
 // 适配器 将 外部系统B 适配 为 外部系统A 的接口
 public class B_Adaptor implements IA {
 
-    private IB b;
+    private final IB b;
 
     public B_Adaptor(IB b) {
         this.b = b;

@@ -15,7 +15,7 @@ import design_patterns.chapter50.demo1.dependence.IA;
 public class ADecorator implements IA {
 
     // 原始类
-    private IA a;
+    private final IA a;
 
     // 依赖注入
     public ADecorator(IA a) {

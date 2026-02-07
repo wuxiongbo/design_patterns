@@ -1,8 +1,8 @@
 package big_talk.chapter14.observer1;
 
 public class StockObserver{
-    private String name;
-    private Secretary sub;
+    private final String name;
+    private final Secretary sub;
     public StockObserver(String name,Secretary sub){
         this.name = name;
         this.sub = sub;

@@ -10,7 +10,7 @@ package design_patterns.chapter19.demo2.v2;
  */
 
 public class Notification {
-    private MessageSender messageSender;
+    private final MessageSender messageSender;
 
     // 通过构造函数将messageSender传递进来。而非在构造方法里面new
     public Notification(MessageSender messageSender) {

@@ -2,7 +2,7 @@ package big_talk.chapter13.builder2;
 import java.awt.Graphics;
 
 public class PersonThinBuilder {
-    private Graphics g;
+    private final Graphics g;
 
     public PersonThinBuilder(Graphics g){
         this.g=g;

@@ -1,7 +1,7 @@
 package big_talk.chapter7.proxy2;
 
 public class Proxy {
-	private SchoolGirl mm;
+	private final SchoolGirl mm;
 	public Proxy(SchoolGirl mm){
 		this.mm = mm;
 	}

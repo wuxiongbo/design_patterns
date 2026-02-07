@@ -23,7 +23,7 @@ public class Movie {
 	 * 影片类型对应的价格码
 	 */
 	@Setter
-	private int priceCode;
+	private final int priceCode;
 
 
 	public Movie(String title, int priceCode) {

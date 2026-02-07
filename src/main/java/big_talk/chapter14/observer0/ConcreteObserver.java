@@ -1,8 +1,8 @@
 package big_talk.chapter14.observer0;
 
 public class ConcreteObserver extends Observer{
-    private String name;
-    private Subject sub;
+    private final String name;
+    private final Subject sub;
     public ConcreteObserver(String name,Subject sub){
         this.name = name;
         this.sub = sub;

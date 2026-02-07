@@ -4,7 +4,7 @@ import big_talk.chapter2.strategy4.cash.CashSuper;
 
 public class CashContext {
 
-    private CashSuper cs;   //声明一个CashSuper对象
+    private final CashSuper cs;   //声明一个CashSuper对象
 
     //通过构造方法，传入具体的收费策略
     public CashContext(CashSuper csuper) {
