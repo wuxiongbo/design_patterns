@@ -1,9 +1,7 @@
 package refactoring.chapter01.ver06;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * frequentRentalPoints 变量 改为查询函数后

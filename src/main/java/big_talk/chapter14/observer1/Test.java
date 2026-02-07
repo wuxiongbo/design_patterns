@@ -1,7 +1,5 @@
 package big_talk.chapter14.observer1;
 
-import java.util.ArrayList;
-
 public class Test {
 
 	public static void main(String[] args){

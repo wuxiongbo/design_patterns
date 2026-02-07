@@ -1,7 +1,5 @@
 package design_patterns.chapter51.demo5;
 
-import com.mysql.jdbc.Driver;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -68,7 +66,6 @@ public class Collections {
             }
         };
     }
-
 
     /**
      * 前面我们讲到，适配器模式主要用于接口的适配，实际上，它还可以用在 “不同格式的数据” 之间的适配。

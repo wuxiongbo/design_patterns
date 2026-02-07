@@ -1,7 +1,5 @@
 package design_patterns.chapter50.demo2.component;
 
-import design_patterns.chapter50.demo0.Demo;
-
 import java.io.IOException;
 
 /**
@@ -56,8 +54,6 @@ public abstract class InputStream {
 
     // 模板
     public abstract int read() throws IOException;
-
-
 
     public int read(byte b[]) throws IOException {
         return read(b, 0, b.length);

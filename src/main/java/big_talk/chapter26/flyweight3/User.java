@@ -1,7 +1,5 @@
 package big_talk.chapter26.flyweight3;
 
-import java.util.Hashtable;
-
 class User{
     private String name;
     public User(String value){

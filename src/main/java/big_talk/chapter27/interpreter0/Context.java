@@ -1,7 +1,5 @@
 package big_talk.chapter27.interpreter0;
 
-import java.util.ArrayList;
-
 class Context {
     private String input;
     public String getInput(){

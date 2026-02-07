@@ -1,7 +1,6 @@
 package big_talk.chapter14.observer4;
 
 import java.util.Observable;
-import java.util.Observer;
 
 // //jdk中Observer代码
 // public interface Observer {
@@ -79,7 +78,6 @@ class Boss extends Observable{
         super.notifyObservers();//调用父类Observable方法，通知所有观察者
     }
 }
-
 
 //看股票同事类
 

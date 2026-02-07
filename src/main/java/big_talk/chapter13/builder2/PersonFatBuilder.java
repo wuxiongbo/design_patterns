@@ -1,6 +1,5 @@
 package big_talk.chapter13.builder2;
 import java.awt.Graphics;
-import javax.swing.JFrame;
 
 class PersonFatBuilder {
     private Graphics g;

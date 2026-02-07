@@ -1,7 +1,5 @@
 package big_talk.chapter14.observer1;
 
-import java.util.ArrayList;
-
 class StockObserver{
     private String name;
     private Secretary sub;

@@ -1,6 +1,5 @@
 package design_patterns.chapter50.demo0;
 
-import design_patterns.chapter10.demo1.Main;
 import design_patterns.chapter50.dependence.BufferedFileInputStream;
 
 import java.io.*;
@@ -59,7 +58,6 @@ public class Demo {
         }
 
     }
-
 
     /**
      *

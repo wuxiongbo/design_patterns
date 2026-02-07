@@ -1,7 +1,5 @@
 package my_demo.monitor.publishsubscribe.v2;
 
-import org.reactivestreams.Subscriber;
-
 /**
  *
  * reactivestreams  接口的简单实现
@@ -23,7 +21,6 @@ public class Main {
         subscriber.next(new MySubscriber()).next(new MySubscriber());
 
         publisher.setMsg("hello world");
-
 
         // 1. Subscriber(订阅者)  主动 "订阅" (注册到)   Publisher(发布者)
         publisher.subscribe(subscriber);

@@ -1,8 +1,5 @@
 package refactoring.chapter01.ver09;
 
-import refactoring.chapter01.ver09.price.Price;
-import refactoring.chapter01.ver09.price.impl.RegularPrice;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,9 +1,7 @@
 package refactoring.chapter01.ver08;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * 修改前：{@link refactoring.chapter01.ver07.Rental#getCharge()}
@@ -113,7 +111,6 @@ public class Customer {
                 .append("</EM> frequent renter points<P>");
         return result.toString();
     }
-
 
     // 译注：此即所谓query method
     private int getTotalFrequentRenterPoints() {

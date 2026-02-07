@@ -6,7 +6,6 @@ import my_demo.monitor.publishsubscribe.v1.subcriber.ISubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.*;
 
 /**
@@ -36,7 +35,6 @@ public class SubscribePublish {
      * 订阅消费任务
      */
     private ThreadPoolExecutor threadPoolExecutor;
-
 
     public SubscribePublish(String name) {
         this.name = name;
@@ -75,7 +73,6 @@ public class SubscribePublish {
 
     }
 
-
     // 订阅，取消订阅
     public void subscribe(ISubscriber<?> subscriber) {
         subscribers.add(subscriber);
@@ -84,7 +81,6 @@ public class SubscribePublish {
     public void unSubscribe(ISubscriber<?> subscriber) {
         subscribers.remove(subscriber);
     }
-
 
     public <Msg> void publish(String publisherName, Msg msg, boolean block) {
 
@@ -95,7 +91,6 @@ public class SubscribePublish {
             notifyMsg(publisherName, msg);
             return;
         }
-
 
         // <异步 非阻塞>
         // 消息存到队列，异步消费
@@ -113,7 +108,6 @@ public class SubscribePublish {
 
     }
 
-
     // 队列消费后 通知所有的 订阅者
     @SuppressWarnings("unchecked")
     private <Msg> void notifyMsg() throws InterruptedException {
@@ -128,7 +122,6 @@ public class SubscribePublish {
         }
 
     }
-
 
     // 通知所有的订阅者
     @SuppressWarnings("unchecked")
@@ -148,11 +141,7 @@ public class SubscribePublish {
 
         }
 
-
     }
 
-
 }
-
-
 

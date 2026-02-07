@@ -5,7 +5,6 @@ import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
-import java.nio.channels.spi.SelectorProvider;
 import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -31,17 +30,14 @@ public class Reactor implements Runnable {
     private final int port;
     private final String host;
 
-
     // 构造方法，初始化
     // selector  中心I/O多路复用器
     private final Selector selector;
     private final SocketChannel socket;
 
-
     public Reactor(String host, int port) throws IOException {
         this.port = port;
         this.host = host;
-
 
         // 初始化serverSocket对象
         socket = SocketChannel.open();
@@ -49,7 +45,6 @@ public class Reactor implements Runnable {
         socket.configureBlocking(false);
         // 创建selector对象
         selector = Selector.open();
-
 
         // 将serverSocket注册到selector上，让其帮忙监听 CONNECT 事件。
         // 以下两种写法：
@@ -59,12 +54,8 @@ public class Reactor implements Runnable {
 
         SelectionKey sk = socket.register(selector, SelectionKey.OP_CONNECT);
 
-
-
         // 为key 绑定附加对象 Connector。
         sk.attach(new Connector(socket, selector));
-
-
 
 //         还可以使用 SPI provider，来创建 selector 和 serverSocket对象。如下：
 //         SelectorProvider p = SelectorProvider.provider();
@@ -73,8 +64,6 @@ public class Reactor implements Runnable {
 
         System.out.println("client: start select event...");
     }
-
-
 
     // 单线程跑即可
     @Override
@@ -128,7 +117,6 @@ public class Reactor implements Runnable {
 
         }
     }
-
 
     /**
      * 入口 {@link Reactor#run()}

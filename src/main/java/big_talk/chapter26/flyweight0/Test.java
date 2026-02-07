@@ -1,7 +1,5 @@
 package big_talk.chapter26.flyweight0;
 
-import java.util.Hashtable;
-
 public class Test {
 
     public static void main(String[] args) {

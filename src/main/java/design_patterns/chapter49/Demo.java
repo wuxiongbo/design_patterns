@@ -1,14 +1,10 @@
 package design_patterns.chapter49;
 
-import design_patterns.chapter10.demo1.Main;
-import com.mysql.cj.jdbc.Driver;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.Statement;
-
 
 /**
  * <p>桥接模式</p>
@@ -45,7 +41,7 @@ import java.sql.Statement;
  *      一个类 存在 两个 或 多个 独立变化的 '维度'，我们通过 “组合” 的方式，让这 两个或多个 '维度' 可以独立进行 `扩展`。
  *      通过 “组合关系” 来替代 “继承关系”，避免继承层次的指数级爆炸。非常类似于，“组合 优于 “继承” 设计原则。
  *      这种 理解方式 更加 通用，应用场景比较多。
- *      ( 对于 “维度”的理解，可以看示例 {@link Main})
+ *      ( 对于 “维度”的理解，可参考 chapter16 demo1 示例 )
  *
  *
  * 不管是哪种理解方式，它们的代码结构都是相同的，都是一种 类之间的“组合关系”。
@@ -64,7 +60,7 @@ import java.sql.Statement;
  *      第一件事情：要求 JVM ‘查找’ 并 ‘加载’ 指定的 Driver 类
  *      第二件事情：执行 Driver类 的静态代码，也就是将 MySQL Driver类 ‘注册’ 到 DriverManager 类 中
  *
- * @see Driver
+ * @see java.sql.Driver
  * Driver 类。  业务的“实现”
  * <pre>{@code
  *   public class Driver extends NonRegisteringDriver implements java.sql.Driver {
@@ -95,7 +91,7 @@ import java.sql.Statement;
  * 而 Driver 实现类 都实现了相同的接口（java.sql.Driver），这就是 可以灵活切换 Driver 的原因。
  *
  *
- * @see DriverManager
+ * @see java.sql.DriverManager
  * DriverManager 类。  业务的 “抽象”
  * public class DriverManager {
  *
@@ -165,7 +161,6 @@ public class Demo {
         Connection con = DriverManager.getConnection(url);
         Statement stmt = con.createStatement();
         String query = "select * from test";
-
 
         ResultSet rs = stmt.executeQuery(query);
         while(rs.next()) {

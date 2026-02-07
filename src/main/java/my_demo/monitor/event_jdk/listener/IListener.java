@@ -1,11 +1,9 @@
 package my_demo.monitor.event_jdk.listener;
 
-import my_demo.monitor.event_jdk.event.OpenEvent;
 import my_demo.monitor.event_jdk.event.base.PrintEvent;
 import my_demo.monitor.event_jdk.eventsource.WindowsEventSource;
 
 import java.util.EventListener;
-import java.util.EventObject;
 
 /**
  * <p>监听器接口</p>

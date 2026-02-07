@@ -1,9 +1,5 @@
 package refactoring.chapter01.ver10;
 
-import refactoring.chapter01.ver09.Movie;
-import refactoring.chapter01.ver09.price.Price;
-import refactoring.chapter01.ver10.price.impl.RegularPrice;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +32,6 @@ public class Customer {
     public String getName() {
         return _name;
     }
-
 
     @SuppressWarnings("DuplicatedCode")
     public String statement() {
@@ -90,7 +85,6 @@ public class Customer {
 
         return result.toString();
     }
-
 
     // 译注：此即所谓query method
     private int getTotalFrequentRenterPoints() {

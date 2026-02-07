@@ -1,7 +1,5 @@
 package big_talk.chapter26.flyweight3;
 
-import java.util.Hashtable;
-
 class ConcreteWebSite extends WebSite {
     private String name = "";
     public ConcreteWebSite(String name) {

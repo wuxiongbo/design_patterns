@@ -1,9 +1,6 @@
 package my_demo.monitor.callback.hollywood.demo5.upper;
 
 import my_demo.monitor.callback.hollywood.demo5.lower.Director3;
-import my_demo.monitor.callback.reactive_programming.FlowDemo;
-
-import java.util.Observer;
 
 /**
  * <p> Observable 已经过时 </p>

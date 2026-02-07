@@ -1,9 +1,5 @@
 package big_talk.chapter23.command3;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-
 public class Test {
 
     public static void main(String[] args) {

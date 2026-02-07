@@ -1,7 +1,5 @@
 package big_talk.chapter20.iterator1;
 
-import java.util.ArrayList;
-
 abstract class Iterator{
 
     public abstract Object first();         //第一个

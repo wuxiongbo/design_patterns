@@ -1,7 +1,5 @@
 package big_talk.chapter14.observer2;
 
-import java.util.ArrayList;
-
 class StockObserver extends Observer{
     public StockObserver(String name,Secretary sub){
         super(name,sub);
@@ -11,7 +9,6 @@ class StockObserver extends Observer{
         System.out.println(super.sub.name+"："+super.sub.getAction()+"！"+super.name+"，请关闭股票行情，赶紧工作。");
     }
 }
-
 
 //看NBA同事类
 

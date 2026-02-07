@@ -1,6 +1,5 @@
 package big_talk.chapter14.observer4;
 
-import java.util.Observable;
 import java.util.Observer;
 
 // //jdk中Observer代码
@@ -80,7 +79,6 @@ public class Test {
         boss1.addObserver(employee3);
 
         boss1.deleteObserver(employee1); //魏关姹其实没有被通知到，所有减去观察者
-
 
         //老板回来
         boss1.setAction("我胡汉三回来了");

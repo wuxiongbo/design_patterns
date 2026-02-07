@@ -1,6 +1,5 @@
 package big_talk.chapter13.builder3;
 import java.awt.Graphics;
-import javax.swing.JFrame;
 
 abstract class PersonBuilder {
     protected Graphics g;

@@ -1,8 +1,5 @@
 package big_talk.chapter14.observer5;
 
-import java.util.Observable;
-import java.util.Observer;
-
 // //jdk中Observer代码
 // public interface Observer {
 //     void update(Observable o, Object arg);
@@ -63,7 +60,6 @@ class Boss extends Subject{
         super(name);
     }
 }
-
 
 //看股票同事类
 

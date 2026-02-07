@@ -1,11 +1,7 @@
 package refactoring.chapter01.ver07;
 
-import refactoring.chapter01.ver08.Movie;
-
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * 通过计算逻辑的提炼，我可以完成一个 htmlStatement()，并复用原本 statement() 内的所有计算。
@@ -133,7 +129,6 @@ public class Customer {
 
         return result.toString();
     }
-
 
     // 译注：此即所谓query method
     private int getTotalFrequentRenterPoints() {

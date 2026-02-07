@@ -1,7 +1,5 @@
 package design_patterns.chapter43.demo1;
 
-import org.springframework.boot.ApplicationContextFactory;
-
 /**
  *
  * 单例模式在spring中的应用：

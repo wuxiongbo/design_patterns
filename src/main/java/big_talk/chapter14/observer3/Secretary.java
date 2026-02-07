@@ -1,7 +1,5 @@
 package big_talk.chapter14.observer3;
 
-import java.util.ArrayList;
-
 class Secretary extends Subject{
     public Secretary(String name){
         super(name);

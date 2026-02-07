@@ -51,3 +51,13 @@
 ## MCP 工具与优先级
 - 优先使用 IntelliJ MCP 工具完成项目内操作，尤其是 `get_run_configurations`、`execute_run_configuration`、`get_file_problems`、`get_project_dependencies`、`get_project_modules`、`find_files_by_glob`、`find_files_by_name_keyword`、`get_all_open_file_paths`、`list_directory_tree`、`open_file_in_editor`、`reformat_file`、`get_file_text_by_path`、`replace_text_in_file`、`search_in_files_by_regex`、`search_in_files_by_text`、`get_symbol_info`、`rename_refactoring`、`execute_terminal_command`、`get_repositories`、`create_new_file`、`runNotebookCell`。
 - 当需要运行配置时，先调用 `get_run_configurations` 获取名称，再用 `execute_run_configuration` 执行。
+
+## 编码执行流程（通用）
+- 【强制】任何代码改动（新增、重构、清理、导包、重命名）必须遵循“先分析、后修改、再验证”的流程，禁止盲改全量文件。
+- 【强制】结构化修改必须优先使用 IDE/IntelliJ 语义级能力；禁止仅靠正则或纯文本脚本直接批量改代码（仅在语义级工具不可用时可例外）。
+- 【强制】若使用脚本批处理，必须先产出“候选改动清单”并抽样核对，通过后再分批落盘，禁止一次性全量覆盖。
+- 【强制】导包清理必须按“语义级检查优先”执行，禁止删除未完成引用校验的导包。
+- 【强制】每次批量改动后必须立即编译校验；若 `mvn` 不可用，必须使用 IntelliJ MCP 的 `build_project`。
+- 【强制】对报错文件必须逐个执行 `get_file_problems(errorsOnly=true)` 并修复，错误未清零前禁止进入下一轮改动。
+- 【强制】同一轮任务内，已修复文件禁止再次被粗粒度批处理覆盖；若确需二次处理，必须先复核差异并记录原因。
+- 【强制】交付前必须完成一次最终增量编译，并确认“无新增编译错误、无明显回归”。

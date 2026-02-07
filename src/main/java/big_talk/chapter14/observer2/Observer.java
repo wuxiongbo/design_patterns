@@ -1,7 +1,5 @@
 package big_talk.chapter14.observer2;
 
-import java.util.ArrayList;
-
 abstract class Observer{
     protected String name;
     protected Secretary sub;

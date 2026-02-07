@@ -3,8 +3,6 @@ package design_patterns.chapter58;
 import design_patterns.chapter58.concrete.ConcreteClass1;
 import design_patterns.chapter58.framework.AbstractClass;
 
-import java.util.AbstractList;
-
 /**
  * <p> 模板模式 </p>
  *

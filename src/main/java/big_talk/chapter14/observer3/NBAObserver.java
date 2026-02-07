@@ -1,7 +1,5 @@
 package big_talk.chapter14.observer3;
 
-import java.util.ArrayList;
-
 class NBAObserver extends Observer{
     public NBAObserver(String name,Subject sub){
         super(name,sub);
