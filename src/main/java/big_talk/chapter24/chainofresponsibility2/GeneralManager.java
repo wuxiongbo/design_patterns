@@ -6,15 +6,12 @@ public class GeneralManager extends Manager{
     }
 
     public void requestApplications(Request request){
-        if (request.getRequestType()=="请假"){
+        if ("请假".equals(request.getRequestType())) {
             System.out.println(this.name+":"+request.getRequestContent()+" 数量："+request.getNumber()+"天，被批准");
-        }
-        else if (request.getRequestType()=="加薪" && request.getNumber()<=5000){
+        } else if ("加薪".equals(request.getRequestType()) && request.getNumber()<=5000) {
             System.out.println(this.name+":"+request.getRequestContent()+" 数量："+request.getNumber()+"元，被批准");
-        }
-        else if (request.getRequestType()=="加薪" && request.getNumber()>5000){
+        } else if ("加薪".equals(request.getRequestType()) && request.getNumber()>5000) {
             System.out.println(this.name+":"+request.getRequestContent()+" 数量："+request.getNumber()+"元，再说吧");
         }
     }
 }
-
