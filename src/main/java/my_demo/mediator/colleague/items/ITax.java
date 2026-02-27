@@ -6,7 +6,9 @@ package my_demo.mediator.colleague.items;
  * @Description:
  */
 public interface ITax {
-    public void raise();	//升税
-    public void drop();		//降税
+    // 升税
+    void raise();
+    // 降税
+    void drop();
 
 }

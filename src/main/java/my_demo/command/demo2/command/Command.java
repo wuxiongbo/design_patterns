@@ -9,5 +9,5 @@ package my_demo.command.demo2.command;
  * </pre>
  */
 public interface Command {
-    public abstract void execute();
+     abstract void execute();
 }

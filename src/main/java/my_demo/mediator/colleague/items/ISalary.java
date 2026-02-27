@@ -7,6 +7,8 @@ package my_demo.mediator.colleague.items;
  */
 //工资
 public interface ISalary {
-    public void increaseSalary();	//加新
-    public void decreaseSalary();	//降薪
+    // 加新
+    void increaseSalary();
+    // 降薪
+    void decreaseSalary();
 }

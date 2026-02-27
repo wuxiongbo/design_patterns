@@ -6,6 +6,6 @@ package big_talk.chapter8.calculator1;
  */
 public interface IFactory {
 
-    public AddFactory.Operation createOperation();
+     AddFactory.Operation createOperation();
 
 }

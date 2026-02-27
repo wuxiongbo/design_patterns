@@ -11,6 +11,6 @@ import design_patterns.chapter44.dependence.model.SystemConfig;
  * </pre>
  */
 public interface ISystemConfigParser {
-    public SystemConfig parse(String configText);
+     SystemConfig parse(String configText);
 
 }

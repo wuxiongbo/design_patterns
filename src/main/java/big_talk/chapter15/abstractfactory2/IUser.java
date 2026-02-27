@@ -3,8 +3,8 @@ package big_talk.chapter15.abstractfactory2;
 //用户类接口
 public interface IUser {
 
-    public void insert(User user);
+     void insert(User user);
 
-    public User getUser(int id);
+     User getUser(int id);
 }
 

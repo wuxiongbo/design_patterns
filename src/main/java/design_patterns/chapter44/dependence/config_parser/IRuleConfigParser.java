@@ -11,5 +11,5 @@ import design_patterns.chapter44.dependence.model.RuleConfig;
  * </pre>
  */
 public interface IRuleConfigParser {
-    public RuleConfig parse(String configText);
+     RuleConfig parse(String configText);
 }

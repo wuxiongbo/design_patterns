@@ -2,7 +2,8 @@ package refactoring.chapter01.ver11.price;
 
 public interface Price {
 
-	int getPriceCode(); // 取得价格代号
+	// 取得价格代号
+	int getPriceCode();
 
 	double getCharge(int daysRented);
 

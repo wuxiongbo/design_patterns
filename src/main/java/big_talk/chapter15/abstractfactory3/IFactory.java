@@ -3,9 +3,9 @@ package big_talk.chapter15.abstractfactory3;
 //工厂接口
 public interface IFactory {
 
-    public IUser createUser();
+     IUser createUser();
 
-    public IDepartment createDepartment();
+     IDepartment createDepartment();
     
 }
 

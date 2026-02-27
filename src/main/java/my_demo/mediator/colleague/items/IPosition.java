@@ -8,6 +8,8 @@ package my_demo.mediator.colleague.items;
 
 //职位
 public interface IPosition {
-    public void promote();	//升职
-    public void demote();	//降职
+    // 升职
+    void promote();
+    // 降职
+    void demote();
 }

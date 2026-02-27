@@ -6,8 +6,10 @@ package big_talk.chapter20.iterator2;
  */
 public interface Iterator {
 
-    public boolean hasNext();       //如果迭代具有更多元素，则返回true
+    // 如果迭代具有更多元素，则返回true
+    boolean hasNext();
 
-    public Object next();           //返回迭代中的下一个元素
+    // 返回迭代中的下一个元素
+    Object next();
 
 }

@@ -6,12 +6,16 @@ package big_talk.chapter20.iterator2;
  */
 public interface ListIterator {
 
-    public boolean hasNext();       //如果此列表迭代器在向前遍历列表时具有更多元素，则返回true
+    // 如果此列表迭代器在向前遍历列表时具有更多元素，则返回true
+    boolean hasNext();
 
-    public Object next();           //返回列表中的下一个元素并前进光标位置
+    // 返回列表中的下一个元素并前进光标位置
+    Object next();
 
-    public boolean hasPrevious();   //如果此列表迭代器在反向遍历列表时具有更多元素，则返回true
+    // 如果此列表迭代器在反向遍历列表时具有更多元素，则返回true
+    boolean hasPrevious();
 
-    public Object previous();       //返回列表中的上一个元素并向后移动光标位置
+    // 返回列表中的上一个元素并向后移动光标位置
+    Object previous();
 
 }

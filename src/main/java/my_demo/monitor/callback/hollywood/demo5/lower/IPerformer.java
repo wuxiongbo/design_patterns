@@ -10,5 +10,5 @@ package my_demo.monitor.callback.hollywood.demo5.lower;
  */
 public interface IPerformer {
     // 回调
-    public void update(int i);
+     void update(int i);
 }
