@@ -23,8 +23,6 @@ public class ServerMain {
             executorService.execute(new Reactor(2021));
         }
 
-        ServerMain.class.wait();
-
         synchronized (ServerMain.class) {
             System.out.println(ClassLayout.parseInstance(Reactor.class).toPrintable());
             ServerMain.class.wait();

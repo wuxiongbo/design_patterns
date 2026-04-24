@@ -92,7 +92,15 @@ public class Handler implements Runnable {
     private void read() throws IOException {
 
         // 从 Channel 读数据，写入 到  处于 “写模式” 中的 buffer
-        socketChannel.read(buffer.inputBuffer);
+        int count = socketChannel.read(buffer.inputBuffer);
+        if (count == -1) {
+            sk.cancel();
+            socketChannel.close();
+            return;
+        }
+        if (count == 0) {
+            return;
+        }
 
         // 执行业务逻辑代码
         process();
@@ -113,9 +121,18 @@ public class Handler implements Runnable {
             int count = socketChannel.write(buffer.outputBuffer);
 
             System.out.println("write :" + count + "byte, remaining:" + buffer.outputBuffer.hasRemaining());
+
+            if (!buffer.outputBuffer.hasRemaining()) {
+                buffer.outputBuffer.clear();
+                buffer.outputBuffer.flip();
+                sk.interestOps(SelectionKey.OP_READ);
+                stateRecord.state = StateRecord.READING;
+            }
         } else {
 
             // 感兴趣的操作
+            buffer.outputBuffer.clear();
+            buffer.outputBuffer.flip();
             sk.interestOps(SelectionKey.OP_READ);
 
             stateRecord.state = StateRecord.READING;
@@ -135,11 +152,13 @@ public class Handler implements Runnable {
         byte[] inBytes = new byte[remaining];
         // 将 "读模式" 缓存区 中的数据，读取到 byte数组 中
         buffer.inputBuffer.get(inBytes);
+        buffer.inputBuffer.clear();
 
 
         // 消费 接收到的消息， 生成 回复的消息
         byte[] outBytes = doProcessMsg(new String(inBytes));
         // 数据写入 处于 "写模式" 中的 缓存区
+        buffer.outputBuffer.clear();
         buffer.outputBuffer.put(outBytes);
         // 写完后，将 buffer 从 "写模式" 切换到 "读模式"
         buffer.outputBuffer.flip();

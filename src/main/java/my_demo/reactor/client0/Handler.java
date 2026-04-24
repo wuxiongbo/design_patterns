@@ -85,15 +85,23 @@ public class Handler implements Runnable {
 
     private void read() throws IOException {
         // 将从 管道 读到的数据，写到 处于 “写模式” 的 buffer 中
-        socketChannel.read(buffer.inputBuffer);
+        int count = socketChannel.read(buffer.inputBuffer);
+        if (count == -1) {
+            sk.cancel();
+            socketChannel.close();
+            return;
+        }
+        if (count == 0) {
+            return;
+        }
         // 切换 buffer 到 "读模式"
         buffer.inputBuffer.flip();
 
         // 执行业务逻辑代码
         processMsg();
 
-        // 关注 读、写事件
-        sk.interestOps(SelectionKey.OP_WRITE | SelectionKey.OP_READ);
+        // 客户端处理完响应后，没有新的待写数据，继续关注读事件
+        sk.interestOps(SelectionKey.OP_READ);
 
         stateRecord.state = StateRecord.SENDING;
     }
@@ -101,6 +109,7 @@ public class Handler implements Runnable {
     // 将数据 预写入 到 ByteBuffer 缓存
     public void send(String text) throws IOException {
         // 数据写入 处于 "写模式" 中的 buffer 缓存区
+        buffer.outputBuffer.clear();
         buffer.outputBuffer.put(text.getBytes());
         // 切换 buffer 到 "读模式"
         buffer.outputBuffer.flip();
@@ -114,18 +123,24 @@ public class Handler implements Runnable {
     // 真正将数据 从 缓存 写入 到 SocketChannel 管道
     private void doWrite() throws IOException {
 
-        try (SocketChannel socketChannel = (SocketChannel) sk.channel()) {
+        SocketChannel socketChannel = (SocketChannel) sk.channel();
 
-            if (buffer.outputBuffer.hasRemaining()) {
-                // 从 处于 “读模式” 的 buffer 中 读数据，通过 Channel 将 从 buffer中 读到的数据 写出去
-                int count = socketChannel.write(buffer.outputBuffer);
-                System.out.println("write :" + count + "byte, remaining:" + buffer.outputBuffer.hasRemaining());
+        if (buffer.outputBuffer.hasRemaining()) {
+            // 从 处于 “读模式” 的 buffer 中 读数据，通过 Channel 将 从 buffer中 读到的数据 写出去
+            int count = socketChannel.write(buffer.outputBuffer);
+            System.out.println("write :" + count + "byte, remaining:" + buffer.outputBuffer.hasRemaining());
 
-                stateRecord.state = StateRecord.READING;
-            } else {
-                /*取消对写的注册*/
+            if (!buffer.outputBuffer.hasRemaining()) {
+                buffer.outputBuffer.clear();
+                buffer.outputBuffer.flip();
                 sk.interestOps(SelectionKey.OP_READ);
+                stateRecord.state = StateRecord.READING;
             }
+        } else {
+            /*取消对写的注册*/
+            buffer.outputBuffer.clear();
+            buffer.outputBuffer.flip();
+            sk.interestOps(SelectionKey.OP_READ);
         }
     }
 
@@ -135,6 +150,7 @@ public class Handler implements Runnable {
         byte[] bytes = new byte[buffer.inputBuffer.remaining()];
         // 将 处于 “读模式” 的 缓存区 中的数据， 读取到 byte数组 中
         buffer.inputBuffer.get(bytes);
+        buffer.inputBuffer.clear();
 
         // 模拟业务逻辑代码
         String msg = new String(bytes);

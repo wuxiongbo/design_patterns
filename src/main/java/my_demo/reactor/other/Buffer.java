@@ -14,5 +14,6 @@ public class Buffer {
     public final ByteBuffer outputBuffer = ByteBuffer.allocate(1024);
 
     public Buffer() {
+        outputBuffer.flip();
     }
 }

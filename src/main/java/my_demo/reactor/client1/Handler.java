@@ -70,13 +70,22 @@ public class Handler implements Runnable {
     }
 
     public void read() throws IOException {
-        socketChannel.read(buffer.inputBuffer);
+        int count = socketChannel.read(buffer.inputBuffer);
+        if (count == -1) {
+            sk.cancel();
+            socketChannel.close();
+            return;
+        }
+        if (count == 0) {
+            return;
+        }
         process();
         stateRecord.state = StateRecord.SENDING;
-        sk.interestOps(SelectionKey.OP_WRITE | SelectionKey.OP_READ);
+        sk.interestOps(SelectionKey.OP_READ);
     }
 
     public void send(String text) throws IOException {
+        buffer.outputBuffer.clear();
         buffer.outputBuffer.put(text.getBytes());
         buffer.outputBuffer.flip();
 
@@ -87,14 +96,21 @@ public class Handler implements Runnable {
     }
 
     private void doWrite() throws IOException {
-        try (SocketChannel sc = (SocketChannel) sk.channel()) {
-            if (buffer.outputBuffer.hasRemaining()) {
-                int count = sc.write(buffer.outputBuffer);
-                System.out.println("1write :" + count + "byte, remaining:" + buffer.outputBuffer.hasRemaining());
-                stateRecord.state = StateRecord.READING;
-            } else {
+        SocketChannel sc = (SocketChannel) sk.channel();
+        if (buffer.outputBuffer.hasRemaining()) {
+            int count = sc.write(buffer.outputBuffer);
+            System.out.println("1write :" + count + "byte, remaining:" + buffer.outputBuffer.hasRemaining());
+
+            if (!buffer.outputBuffer.hasRemaining()) {
+                buffer.outputBuffer.clear();
+                buffer.outputBuffer.flip();
                 sk.interestOps(SelectionKey.OP_READ);
+                stateRecord.state = StateRecord.READING;
             }
+        } else {
+            buffer.outputBuffer.clear();
+            buffer.outputBuffer.flip();
+            sk.interestOps(SelectionKey.OP_READ);
         }
     }
 
@@ -103,6 +119,7 @@ public class Handler implements Runnable {
 
         byte[] bytes = new byte[buffer.inputBuffer.remaining()];
         buffer.inputBuffer.get(bytes);
+        buffer.inputBuffer.clear();
 
         String msg = new String(bytes);
         System.out.println("客户端1 读取 到消息：" + msg);
