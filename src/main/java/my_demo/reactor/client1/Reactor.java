@@ -2,14 +2,11 @@ package my_demo.reactor.client1;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.channels.ClosedChannelException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.Set;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  * <p>Reactor</p>
@@ -27,37 +24,43 @@ public class Reactor implements Runnable {
     private final int port;
     private final String host;
 
-
     private final Selector selector;
-    private final SocketChannel socket;
+    private final SocketChannel socketChannel;
 
 
     public Reactor(String host, int port) throws IOException {
         this.port = port;
         this.host = host;
 
-        socket = SocketChannel.open();
-        socket.configureBlocking(false);
+        // 创建selector对象
         selector = Selector.open();
+        // 初始化serverSocket对象
+        socketChannel = openSocketChannel();
+        // 将 socketChannel 注册到 selector
+        registerScAndAttach();
+    }
 
-        SelectionKey sk = socket.register(selector, SelectionKey.OP_CONNECT);
 
-        sk.attach(new Connector(socket, selector));
+    private SocketChannel openSocketChannel() throws IOException {
+        // 初始化 serverSocket 对象
+        SocketChannel socket = SocketChannel.open();
+        // 配置非阻塞
+        socket.configureBlocking(false);
+        return socket;
+    }
 
-
-        System.out.println("client1: start select event...");
+    private void registerScAndAttach() throws ClosedChannelException {
+        // 将 socketChannel 注册到 selector
+        SelectionKey sk = socketChannel.register(selector, SelectionKey.OP_CONNECT);
+        // 绑定  附加对象 Connector 到 key
+        sk.attach(new my_demo.reactor.client2.Connector(selector, socketChannel));
+        System.out.println("client2: start select event...");
     }
 
     @Override
     public void run() {
         try {
-            socket.connect(new InetSocketAddress(host, port));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-
+            socketChannel.connect(new InetSocketAddress(host, port));
             while (!Thread.interrupted()) {
                 selector.select(1000 * 60);
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
@@ -84,23 +87,5 @@ public class Reactor implements Runnable {
             }
 
         }
-    }
-
-    public static void main(String[] args) throws IOException, InterruptedException {
-        // 单线程
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(
-                1,
-                1,
-                0L,
-                TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>(),
-                Executors.defaultThreadFactory());
-
-        executorService.execute(new Reactor("127.0.0.1", 2021));
-
-        synchronized (Reactor.class) {
-            Reactor.class.wait();
-        }
-
     }
 }

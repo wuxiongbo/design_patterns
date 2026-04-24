@@ -1,7 +1,10 @@
 package my_demo.reactor.client1;
 
+import my_demo.reactor.other.Buffer;
+import my_demo.reactor.other.StateRecord;
+
 import java.io.IOException;
-import java.nio.ByteBuffer;
+import java.nio.channels.ClosedChannelException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
@@ -25,25 +28,32 @@ import java.nio.channels.SocketChannel;
  */
 public class Handler implements Runnable {
 
-    Selector selector;
-    SocketChannel socket;
-    SelectionKey sk;
+    private final Selector selector;
+    private final SocketChannel socketChannel;
 
+    private SelectionKey sk;
 
-    ByteBuffer input = ByteBuffer.allocate(1024);
-    ByteBuffer output = ByteBuffer.allocate(1024);
+    // 状态记录器
+    private final StateRecord stateRecord = new StateRecord();
+    // 缓存区
+    private final Buffer buffer = new Buffer();
 
-    static final int READING = 0, SENDING = 1;
-    int state = READING;
+    public Handler(Selector selector, SocketChannel socketChannel) throws IOException {
 
-
-    public Handler(Selector selector, SocketChannel socket) throws IOException {
         this.selector = selector;
-        this.socket = socket;
-        this.socket.configureBlocking(false);
-        sk = this.socket.register(selector, SelectionKey.OP_READ);
-        sk.attach(this);
+
+        this.socketChannel = socketChannel;
+        this.socketChannel.configureBlocking(false);
+
+        this.sk = registerScAndAttach(selector);
+
         selector.wakeup();
+    }
+
+    private SelectionKey registerScAndAttach(Selector selector) throws ClosedChannelException {
+        SelectionKey sk =  this.socketChannel.register(selector, SelectionKey.OP_READ);
+        sk.attach(this);
+        return sk;
     }
 
     @Override
@@ -60,39 +70,45 @@ public class Handler implements Runnable {
     }
 
     public void read() throws IOException {
-        socket.read(input);
+        socketChannel.read(buffer.inputBuffer);
         process();
-        state = SENDING;
+        stateRecord.state = StateRecord.SENDING;
         sk.interestOps(SelectionKey.OP_WRITE | SelectionKey.OP_READ);
     }
 
     public void send(String text) throws IOException {
-        output.put(text.getBytes());
-        output.flip();
-        sk = this.socket.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
-        sk.attach(this);
-        state = SENDING;
+        buffer.outputBuffer.put(text.getBytes());
+        buffer.outputBuffer.flip();
+
+        // 已经注册过，只需要更新当前 SelectionKey 关注的事件
+        sk.interestOps(SelectionKey.OP_WRITE | SelectionKey.OP_READ);
+
+        stateRecord.state = StateRecord.SENDING;
     }
 
     private void doWrite() throws IOException {
-        SocketChannel sc = (SocketChannel) sk.channel();
-
-        if (output.hasRemaining()) {
-            int count = sc.write(output);
-            System.out.println("1write :" + count + "byte, remaining:" + output.hasRemaining());
-            state = READING;
-        } else {
-            sk.interestOps(SelectionKey.OP_READ);
+        try (SocketChannel sc = (SocketChannel) sk.channel()) {
+            if (buffer.outputBuffer.hasRemaining()) {
+                int count = sc.write(buffer.outputBuffer);
+                System.out.println("1write :" + count + "byte, remaining:" + buffer.outputBuffer.hasRemaining());
+                stateRecord.state = StateRecord.READING;
+            } else {
+                sk.interestOps(SelectionKey.OP_READ);
+            }
         }
     }
 
     void process() {
-        input.flip();
-        int remaining = input.remaining();
-        byte[] bytes = new byte[remaining];
-        input.get(bytes);
+        buffer.inputBuffer.flip();
+
+        byte[] bytes = new byte[buffer.inputBuffer.remaining()];
+        buffer.inputBuffer.get(bytes);
+
         String msg = new String(bytes);
         System.out.println("客户端1 读取 到消息：" + msg);
     }
 
+    public int getState() {
+        return stateRecord.state;
+    }
 }

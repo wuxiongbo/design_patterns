@@ -6,7 +6,6 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.util.Set;
-import java.util.concurrent.*;
 
 /**
  * <p>Reactor</p>
@@ -46,28 +45,39 @@ import java.util.concurrent.*;
  * </pre>
  */
 public class Reactor implements Runnable {
+
     // 中心I/O多路复用器
+    // 等待一批 Channel 上发生 IO 事件。
     private final Selector selector;
-    private final ServerSocketChannel serverSocket;
 
     public Reactor(int port) throws IOException {
-        // 创建serverSocket对象
-        serverSocket = ServerSocketChannel.open();
+        // 1) 创建selector对象
+        this.selector = Selector.open();
+
+        // 2) 创建serverSocket对象，并将 serverSocket 注册到 selector
+        registerSscAndAttach(port);
+    }
+
+    private ServerSocketChannel openServerSocket(int port) throws IOException {
+        ServerSocketChannel serverSocket = ServerSocketChannel.open();
         // 绑定端口
         serverSocket.socket().bind(new InetSocketAddress(port));
         // 配置非阻塞
         serverSocket.configureBlocking(false);
-        // 创建selector对象
-        selector = Selector.open();
+        return serverSocket;
+    }
 
+    private void registerSscAndAttach(int port) throws IOException {
 
-        // serverSocket注册到selector上，帮忙监听accept事件。
-        // 这里，个人觉得有个非常 有趣的点。
-        // serverSocket.register(selector) 其实等价于 selector.register(this)
+        // 1）创建serverSocket对象
+        ServerSocketChannel serverSocket = openServerSocket(port);
+
+        // 2）将 serverSocket 注册到 selector 上，帮忙监听 accept 事件。
+        // 这里 个人觉得有个非常 有趣的点。 serverSocket.register(selector) 其实等价于 selector.register(this)
         SelectionKey sk = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
 
-        // 绑定附加对象 Acceptor 到 key
-        sk.attach(new Acceptor(serverSocket, selector));
+        // 3）为 SelectionKey  绑定  附加对象 Acceptor
+        sk.attach(new Acceptor(selector, serverSocket));
 
 //         还可以使用 SPI provider，来创建 selector 和 serverSocket对象。如下：
 //         SelectorProvider p = SelectorProvider.provider();
@@ -86,17 +96,21 @@ public class Reactor implements Runnable {
             // EventLoop
             while (!Thread.interrupted()) {
 
-                // 获取 所有的就绪事件
+                // 1) 获取 所有的就绪事件
                 selector.select(1000 * 60);
 
                 // 获取已就绪的事件列表
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
+
+                // 遍历事件列表
                 for (SelectionKey selectedKey : selectedKeys) {
                     // 事件分发器
                     dispatch(selectedKey);
                 }
+
                 // 清空事件列表
                 selectedKeys.clear();
+
             }
 
         } catch (IOException e) {
@@ -107,7 +121,7 @@ public class Reactor implements Runnable {
 
     private void dispatch(SelectionKey key) {
         if (key.isValid()) {
-            // 获取管道上的附加对象。 Acceptor、Handler
+            /// 获取管道上的附加对象。 {@link Acceptor#run()} {@link Handler#run()}
             Runnable r = (Runnable) key.attachment();
             if (r != null) {
                 // 这里可以改造成多线程
@@ -116,32 +130,4 @@ public class Reactor implements Runnable {
         }
     }
 
-
-    /**
-     * 入口 {@link Reactor#run()}
-     * @param args
-     * @throws IOException
-     * @throws InterruptedException
-     */
-    public static void main(String[] args) throws IOException, InterruptedException {
-        // 单线程
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(
-                1,
-                1,
-                0L,
-                TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>(),
-                Executors.defaultThreadFactory());
-
-        executorService.execute(new Reactor(2021));
-
-
-        Reactor.class.wait();
-
-//        synchronized (Reactor.class) {
-//            System.out.println(ClassLayout.parseInstance(Reactor.class).toPrintable());
-//            Reactor.class.wait();
-//        }
-
-    }
 }

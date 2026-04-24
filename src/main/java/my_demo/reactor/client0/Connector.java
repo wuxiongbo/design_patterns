@@ -1,4 +1,4 @@
-package my_demo.reactor.client;
+package my_demo.reactor.client0;
 
 import java.io.IOException;
 import java.nio.channels.Selector;
@@ -14,13 +14,12 @@ import java.nio.channels.SocketChannel;
  */
 public class Connector implements Runnable {
 
-    SocketChannel socket;
-    // 中心I/O多路复用器
     private final Selector selector;
+    private final SocketChannel socket;
 
-    public Connector(SocketChannel serverSocket, Selector selector) {
-        this.socket = serverSocket;
+    public Connector(Selector selector, SocketChannel serverSocket) {
         this.selector = selector;
+        this.socket = serverSocket;
     }
 
     @Override

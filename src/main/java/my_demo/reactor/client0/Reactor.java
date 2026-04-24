@@ -1,15 +1,12 @@
-package my_demo.reactor.client;
+package my_demo.reactor.client0;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.channels.ClosedChannelException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.Set;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  * <p>Reactor</p>
@@ -33,29 +30,40 @@ public class Reactor implements Runnable {
     // 构造方法，初始化
     // selector  中心I/O多路复用器
     private final Selector selector;
-    private final SocketChannel socket;
+    private final SocketChannel socketChannel;
 
     public Reactor(String host, int port) throws IOException {
         this.port = port;
         this.host = host;
 
+        // 创建selector对象
+        this.selector = Selector.open();
+        // 初始化 serverSocket 对象
+        this.socketChannel = openSocketChannel();
+
+        // 将 socketChannel 注册到 selector
+        registerScAndAttach();
+
+    }
+
+    private SocketChannel openSocketChannel() throws IOException {
         // 初始化serverSocket对象
-        socket = SocketChannel.open();
+        SocketChannel socket = SocketChannel.open();
         // 配置非阻塞
         socket.configureBlocking(false);
-        // 创建selector对象
-        selector = Selector.open();
+        return socket;
+    }
 
-        // 将serverSocket注册到selector上，让其帮忙监听 CONNECT 事件。
+    private void registerScAndAttach() throws ClosedChannelException {
+        // 1)将 serverSocket 注册到 selector 上，让其帮忙监听 CONNECT 事件。
         // 以下两种写法：
-
 //        SelectionKey sk = socket.register(selector, 0);
 //        sk.interestOps(SelectionKey.OP_CONNECT);
 
-        SelectionKey sk = socket.register(selector, SelectionKey.OP_CONNECT);
+        SelectionKey sk = socketChannel.register(selector, SelectionKey.OP_CONNECT);
 
-        // 为key 绑定附加对象 Connector。
-        sk.attach(new Connector(socket, selector));
+        // 2)绑定 附加对象 Connector  到 SelectionKey。
+        sk.attach(new Connector(selector, socketChannel));
 
 //         还可以使用 SPI provider，来创建 selector 和 serverSocket对象。如下：
 //         SelectorProvider p = SelectorProvider.provider();
@@ -65,20 +73,16 @@ public class Reactor implements Runnable {
         System.out.println("client: start select event...");
     }
 
+
     // 单线程跑即可
     @Override
     public void run() {
         try {
-            // 当前客户端，主动 连接 目标服务器。
-            socket.connect(new InetSocketAddress(host, port));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        try {
+            // 当前客户端，主动 连接到 目标服务器。
+            socketChannel.connect(new InetSocketAddress(host, port));
 
             while (!Thread.interrupted()) {
-
                 // 监听就绪事件
                 selector.select(1000 * 60);
 
@@ -108,37 +112,11 @@ public class Reactor implements Runnable {
     private void dispatch(SelectionKey key) {
         // 校验 key是否被取消
         if (key.isValid()) {
-
-            // 获取 与当前管道绑定的 附加对象。 Connector 、Handler
+            /// 取出 当前 SelectionKey  绑定的 附加对象，并执行回调 {@link Connector#run()}、{@link Handler#run()}
             Runnable r = (Runnable) key.attachment();
             if (r != null) {
                 r.run();
             }
-
         }
-    }
-
-    /**
-     * 入口 {@link Reactor#run()}
-     * @param args
-     * @throws IOException
-     * @throws InterruptedException
-     */
-    public static void main(String[] args) throws IOException, InterruptedException {
-        // 单线程
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(
-                1,
-                1,
-                0L,
-                TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>(),
-                Executors.defaultThreadFactory());
-
-        executorService.execute(new Reactor("127.0.0.1", 2021));
-
-        synchronized (Reactor.class) {
-            Reactor.class.wait();
-        }
-
     }
 }

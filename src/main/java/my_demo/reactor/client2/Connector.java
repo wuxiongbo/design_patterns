@@ -14,12 +14,12 @@ import java.nio.channels.SocketChannel;
  */
 public class Connector implements Runnable {
 
-    SocketChannel socket;
-    Selector selector;
+    private final Selector selector;
+    private final SocketChannel socket;
 
-    public Connector(SocketChannel serverSocket, Selector selector) {
-        this.socket = serverSocket;
+    public Connector(Selector selector, SocketChannel serverSocket) {
         this.selector = selector;
+        this.socket = serverSocket;
     }
 
     @Override

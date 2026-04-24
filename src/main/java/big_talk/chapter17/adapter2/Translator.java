@@ -2,7 +2,7 @@ package big_talk.chapter17.adapter2;
 
 public class Translator extends Player {
 
-    private ForeignCenter foreignCenter = new ForeignCenter();
+    private final ForeignCenter foreignCenter = new ForeignCenter();
 
     public Translator(String name){
         super(name);

@@ -14,19 +14,19 @@ import java.nio.channels.SocketChannel;
  */
 public class Connector implements Runnable {
 
-    SocketChannel socket;
-    Selector selector;
+    private final Selector selector;
+    private final SocketChannel socketChannel;
 
-    public Connector(SocketChannel serverSocket, Selector selector) {
-        this.socket = serverSocket;
+    public Connector(Selector selector, SocketChannel serverSocket) {
+        this.socketChannel = serverSocket;
         this.selector = selector;
     }
 
     @Override
     public void run() {
         try {
-            if (socket.finishConnect()) {
-                Handler handler = new Handler(selector, socket);
+            if (socketChannel.finishConnect()) {
+                Handler handler = new Handler(selector, socketChannel);
                 handler.send("11111111111111111");
             }
         } catch (IOException e) {
